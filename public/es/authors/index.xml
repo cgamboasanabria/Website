@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Authors on </title>
+    <link>/es/authors/</link>
+    <description>Recent content in Authors on </description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>es-cr</language>
+    
+	    <atom:link href="/es/authors/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>/es/authors/admin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/es/authors/admin/</guid>
+      <description>&lt;p&gt;Nacido en San José, Costa Rica en 1989, César Gamboa es un Estadístico egresado de la Escuela de Estadística de la Universidad de Costa Rica. Profesor universitario de Probabilidad y Estadística, además de programación en el lenguaje R, es también un investigador de temas demográficos dedicado a la utilización de algoritmos para la optimización de procesos y el análisis por medio de simulaciones computacionales.&lt;/p&gt;
+
+&lt;p&gt;Reconocido por su capacidad de análisis estadístico, manejo de distintos software y lenguajes de programación para análisis de datos como R, Python, Git, o Unix. Versatil para la automatización de procesos mediante algoritmos especializados, capacidad analítica y matemática y gran facilidad para el aprendizaje de forma autodidacta.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
