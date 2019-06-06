@@ -52,7 +52,7 @@ time_format = "3:04 PM"
 # Enter contact details (optional). To hide a field, clear it to "".
 email = "cesar.gamboa.sanabria@gmail.com"
 #phone = "888 888 88 88"
-address = "Piso 3, Facultad de Ciencias Económicas, Sede Rodrigo Facio de la Universidad de Costa Rica, San Pedro, Montes de Oca, San José, Costa Rica"
+address = "San Pedro, Montes de Oca, San José, Costa Rica"
 
 # Office hours: use `<br>` to insert a line break, or set to "" to remove office hours
 #office_hours = """Monday 10:00 to 13:00<br>

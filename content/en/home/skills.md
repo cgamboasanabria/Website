@@ -18,18 +18,54 @@ subtitle = ""
   icon = "r-project"
   icon_pack = "fab"
   name = "R"
-  description = "90%"
+  description = "100%"
   
+[[feature]]
+  icon = "python"
+  icon_pack = "fab"
+  name = "Python"
+  description = "70%"  
+  
+[[feature]]
+  icon = "github"
+  icon_pack = "fab"
+  name = "git"
+  description = "100%" 
+  
+[[feature]]
+  icon = "chart-area"
+  icon_pack = "fas"
+  name = "Descriptive analysis"
+  description = "Statistical plots and tables" 
+
+[[feature]]
+  icon = "clone"
+  icon_pack = "fas"
+  name = "Survey design"
+  description = "Design and tabulation" 
+
+[[feature]]
+  icon = "database"
+  icon_pack = "fas"
+  name = "Data bases"
+  description = "Development and debugging" 
+
 [[feature]]
   icon = "chart-line"
   icon_pack = "fas"
-  name = "Statistics"
-  description = "100%"  
-  
+  name = "Forecasts"
+  description = "Time series analysis, regression models and classification" 
+
 [[feature]]
-  icon = "camera-retro"
+  icon = "columns"
   icon_pack = "fas"
-  name = "Photography"
-  description = "10%"
+  name = "Multivariate analysis"
+  description = "Dimension reduction and clustering" 
+
+[[feature]]
+  icon = "users"
+  icon_pack = "fas"
+  name = "Data Mining"
+  description = "Sentiment analysis and text mining" 
 
 +++

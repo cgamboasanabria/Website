@@ -1,6 +1,6 @@
 ---
 # Display name
-name: Nelson Bighetti
+name: César Gamboa Sanabria
 
 # Username (this should match the folder name)
 authors:
@@ -10,32 +10,34 @@ authors:
 superuser: true
 
 # Role/position
-role: Professor of Artificial Intelligence
+role: Data analyst
 
 # Organizations/Affiliations
 organizations:
-- name: Stanford University
-  url: ""
+- name: National Institute of Statistics and Census
+  url: "www.inec.go.cr"
+- name: University of Costa Rica
+  url: "http://estadistica.ucr.ac.cr/index.php/es/"
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include distributed robotics, mobile computing and programmable matter.
+bio: My field of study is statistics, especially in classification analysis, forecasts and demographic topics focusing on programming.
 
 interests:
-- Artificial Intelligence
-- Computational Linguistics
-- Information Retrieval
+- Statistics
+- Data Analysis
+- Programming
+- Forecasts
+- Getting and cleaning data
+- Data Mining
 
 education:
   courses:
-  - course: PhD in Artificial Intelligence
-    institution: Stanford University
-    year: 2012
-  - course: MEng in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2009
-  - course: BSc in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2008
+  - course: Masters in Statistics
+    institution: University of Costa Rica
+    year: 2018-presente
+  - course: B.S. in Statistics
+    institution: University of Costa Rica
+    year: 2017
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/widgets/#icons
@@ -45,20 +47,21 @@ social:
 - icon: envelope
   icon_pack: fas
   link: '#contact'  # For a direct email link, use "mailto:test@example.org".
+  mailto: cesar.gamboa.sanabria@gmail.com
 - icon: twitter
   icon_pack: fab
-  link: https://twitter.com/GeorgeCushen
-- icon: google-scholar
-  icon_pack: ai
-  link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
+  link: https://twitter.com/gamboasanabria
+- icon: linkedin
+  icon_pack: fab
+  link: https://www.linkedin.com/in/cgamboasanabria/
 - icon: github
   icon_pack: fab
-  link: https://github.com/gcushen
+  link: https://github.com/cgamboasanabria
 # Link to a PDF of your resume/CV from the About widget.
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.  
-# - icon: cv
-#   icon_pack: ai
-#   link: files/cv.pdf
+- icon: cv
+  icon_pack: ai
+  link: files/CV.pdf
 
 # Enter email to display Gravatar (if Gravatar enabled in Config)
 email: ""
@@ -70,6 +73,6 @@ user_groups:
 - Visitors
 ---
 
-Nelson Bighetti is a professor of artificial intelligence at the Stanford AI Lab. His research interests include distributed robotics, mobile computing and programmable matter. He leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+Born in San José, Costa Rica in 1989, César Gamboa is a Statistician graduated from the School of Statistics of University of Costa Rica. Professor of Probability and Statistics, in addition to programming in the R language, he is also a demographic researcher dedicated to the use of algorithms for optimization and analysis by through computer simulations.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate. 
+Recognized for his capacity for statistical analysis,  software and programming languages management for data analysis such as R, Python, and Git. Versatile for the automation of processes through specialized algorithms, analytical and mathematical capacity and the ability for self-taught learning.
