@@ -1,0 +1,280 @@
++++
+# Accomplishments widget.
+widget = "accomplishments"  # See https://sourcethemes.com/academic/docs/page-builder/
+headless = true  # This file represents a page section.
+active = true  # Activate this widget? true/false
+weight = 50  # Order that this section will appear.
+
+title = "Reconocimientos académicos"
+subtitle = ""
+
+# Date format
+#   Refer to https://sourcethemes.com/academic/docs/customization/#date-format
+date_format = "Jan 2006"
+
+# Accomplishments.
+#   Add/remove as many `[[item]]` blocks below as you like.
+#   `title`, `organization` and `date_start` are the required parameters.
+#   Leave other parameters empty if not required.
+#   Begin/end multi-line descriptions with 3 quotes `"""`.
+
+[[item]]
+  organization = "Universidad de Costa Rica"
+  organization_url = "https://www.ucr.ac.cr"
+  title = "Métodos y aplicaciones de RDS – Muestreo dirigido por Encuestados (16 horas)"
+  url = ""
+  certificate_url = ""
+  date_start = "2017-05-01"
+  date_end = ""
+  description = ""
+
+[[item]]
+  organization = "Universidad de Costa Rica"
+  organization_url = "https://www.ucr.ac.cr"
+  title = "Métodos modernos de tratamiento e imputación de datos faltantes (12 horas)"
+  url = ""
+  certificate_url = ""
+  date_start = "2017-05-01"
+  date_end = ""
+  description = ""
+
+[[item]]
+  organization = "Universidad de Costa Rica"
+  organization_url = "https://www.ucr.ac.cr"
+  title = "Programación estadística con SQL (32 horas)"
+  url = ""
+  certificate_url = ""
+  date_start = "2017-06-01"
+  date_end = ""
+  description = ""
+
+[[item]]
+  organization = "Universidad de Costa Rica"
+  organization_url = "https://www.ucr.ac.cr"
+  title = "Sistemas de Información Geográfica aplicados a Estadística (21 horas)"
+  url = ""
+  certificate_url = ""
+  date_start = "2017-06-01"
+  date_end = ""
+  description = ""
+
+[[item]]
+  organization = "Benemérita Universidad Autónoma de Puebla"
+  organization_url = "https://www.fcfm.buap.mx/EIEPE2017/"
+  title = "Expositor y asistente (40 horas) en el VII Encuentro Internacional en la Enseñanza de la Estadística y la Probabilidad"
+  url = ""
+  certificate_url = ""
+  date_start = "2017-06-01"
+  date_end = ""
+  description = ""
+
+[[item]]
+  organization = "Coursera"
+  organization_url = "https://www.coursera.org"
+  title = "The Data Scientist’s Toolbox"
+  url = ""
+  certificate_url = "https://www.coursera.org/account/accomplishments/records/VQVUWN3JLJL5"
+  date_start = "2017-01-01"
+  date_end = ""
+  description = ""
+  
+[[item]]
+  organization = "Coursera"
+  organization_url = "https://www.coursera.org"
+  title = "R Programming"
+  url = ""
+  certificate_url = "https://www.coursera.org/account/accomplishments/records/98REVLNWAG28"
+  date_start = "2017-01-01"
+  date_end = ""
+  description = ""
+
+[[item]]
+  organization = "Coursera"
+  organization_url = "https://www.coursera.org"
+  title = "Getting and Cleaning Data"
+  url = ""
+  certificate_url = "https://www.coursera.org/account/accomplishments/records/RHVJ75BZVUPR"
+  date_start = "2017-01-01"
+  date_end = ""
+  description = ""
+
+[[item]]
+  organization = "Coursera"
+  organization_url = "https://www.coursera.org"
+  title = "Getting and Cleaning Data"
+  url = ""
+  certificate_url = "https://www.coursera.org/account/accomplishments/records/RHVJ75BZVUPR"
+  date_start = "2017-02-01"
+  date_end = ""
+  description = ""
+
+[[item]]
+  organization = "Coursera"
+  organization_url = "https://www.coursera.org"
+  title = "Exploratory Data Analysis"
+  url = ""
+  certificate_url = "https://www.coursera.org/account/accomplishments/records/V3CD55M9247Z"
+  date_start = "2017-02-01"
+  date_end = ""
+  description = ""
+
+[[item]]
+  organization = "Coursera"
+  organization_url = "https://www.coursera.org"
+  title = "Statistical Inference"
+  url = ""
+  certificate_url = "https://www.coursera.org/account/accomplishments/records/NFUFWFNNAZYK"
+  date_start = "2017-02-01"
+  date_end = ""
+  description = ""
+
+[[item]]
+  organization = "Coursera"
+  organization_url = "https://www.coursera.org"
+  title = "Statistical Inference"
+  url = ""
+  certificate_url = "https://www.coursera.org/account/accomplishments/records/NFUFWFNNAZYK"
+  date_start = "2017-02-01"
+  date_end = ""
+  description = ""
+
+[[item]]
+  organization = "Coursera"
+  organization_url = "https://www.coursera.org"
+  title = "Regression Models"
+  url = ""
+  certificate_url = "https://www.coursera.org/account/accomplishments/records/553GUVWS96DP"
+  date_start = "2017-02-01"
+  date_end = ""
+  description = ""
+
+[[item]]
+  organization = "Coursera"
+  organization_url = "https://www.coursera.org"
+  title = "Reproducible Research"
+  url = ""
+  certificate_url = "https://www.coursera.org/account/accomplishments/records/QDMHTXKFMGNZ"
+  date_start = "2017-03-01"
+  date_end = ""
+  description = ""
+
+[[item]]
+  organization = "Coursera"
+  organization_url = "https://www.coursera.org"
+  title = "Practical Machine Learning"
+  url = ""
+  certificate_url = "https://www.coursera.org/account/accomplishments/records/TUVKZHLJGNQA"
+  date_start = "2017-03-01"
+  date_end = ""
+  description = ""
+
+[[item]]
+  organization = "Coursera"
+  organization_url = "https://www.coursera.org"
+  title = "Data Science Capstone"
+  url = ""
+  certificate_url = "https://www.coursera.org/account/accomplishments/records/N344Z4P7JM8G"
+  date_start = "2017-07-01"
+  date_end = ""
+  description = ""
+
+[[item]]
+  organization = "Coursera"
+  organization_url = "https://www.coursera.org"
+  title = "Developing Data Products"
+  url = ""
+  certificate_url = "https://www.coursera.org/account/accomplishments/records/U4EJFXDYVMKJ"
+  date_start = "2017-06-01"
+  date_end = ""
+  description = ""
+
+[[item]]
+  organization = "Coursera"
+  organization_url = "https://www.coursera.org"
+  title = "The Unix Workbench"
+  url = ""
+  certificate_url = "https://www.coursera.org/account/accomplishments/records/LTG3PWZZ8C8K"
+  date_start = "2017-11-01"
+  date_end = ""
+  description = ""
+  
+[[item]]
+  organization = "Coursera"
+  organization_url = "https://www.coursera.org"
+  title = "Data Science"
+  url = ""
+  certificate_url = "https://www.coursera.org/account/accomplishments/specialization/73G4QAHN3BE3"
+  date_start = "2018-01-01"
+  date_end = ""
+  description = ""
+  
+[[item]]
+  organization = "Universidad de Costa Rica"
+  organization_url = "https://www.ucr.ac.cr"
+  title = "Análisis de Series de Tiempo (16 horas)"
+  url = ""
+  certificate_url = ""
+  date_start = "2016-02-01"
+  date_end = ""
+  description = ""
+
+[[item]]
+  organization = "Universidad de Costa Rica"
+  organization_url = "https://www.ucr.ac.cr"
+  title = "Primera Escuela de Big Data y Estadística (16 horas)"
+  url = ""
+  certificate_url = ""
+  date_start = "2016-05-01"
+  date_end = ""
+  description = ""
+
+[[item]]
+  organization = "Universidad de Costa Rica"
+  organization_url = "https://www.ucr.ac.cr"
+  title = "Expositor en Simposio Académico Estudiantes de Estadística"
+  url = ""
+  certificate_url = ""
+  date_start = "2016-05-01"
+  date_end = ""
+  description = ""
+
+[[item]]
+  organization = "Universidad de Costa Rica"
+  organization_url = "https://www.ucr.ac.cr"
+  title = "Programación Estadística en R (16 horas)"
+  url = ""
+  certificate_url = ""
+  date_start = "2016-06-01"
+  date_end = ""
+  description = ""
+
+[[item]]
+  organization = "Universidad de Costa Rica"
+  organization_url = "https://www.ucr.ac.cr"
+  title = "Expositor en Simposio Académico Estudiantes de Estadística"
+  url = ""
+  certificate_url = ""
+  date_start = "2016-06-01"
+  date_end = ""
+  description = ""
+
+[[item]]
+  organization = "Universidad de Costa Rica"
+  organization_url = "https://www.ucr.ac.cr"
+  title = "Primer Simposio Centroamericano de Estadística Bayesiana (14 horas)"
+  url = ""
+  certificate_url = ""
+  date_start = "2016-06-01"
+  date_end = ""
+  description = ""
+  
+[[item]]
+  organization = "Universidad de Costa Rica"
+  organization_url = "https://www.ucr.ac.cr"
+  title = "Primera Escuela Latinoamericana de Estadística Bayesiana (24 horas)"
+  url = ""
+  certificate_url = ""
+  date_start = "2016-06-01"
+  date_end = ""
+  description = ""
++++
