@@ -1,14 +1,14 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: "2019 06 06 Prueba"
+title: "2019 06 06 Prova3"
 subtitle: ""
 summary: ""
 authors: []
 tags: []
 categories: []
-date: 2019-06-06T10:59:50-06:00
-lastmod: 2019-06-06T10:59:50-06:00
+date: 2019-06-06T18:14:19-06:00
+lastmod: 2019-06-06T18:14:19-06:00
 featured: false
 draft: false
 
@@ -27,3 +27,19 @@ image:
 #   Otherwise, set `projects = []`.
 projects: []
 ---
+
+
+Otro post de prueba
+
+```{r}
+summary(mtcars)
+```
+
+```{r}
+plot(cars)
+```
+
+
+$$
+\sum_{i=1}^n x_i^2
+$$

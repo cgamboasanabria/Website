@@ -4,7 +4,7 @@
   
   <url>
     <loc>/en/</loc>
-    <lastmod>2019-06-06T10:59:50-06:00</lastmod>
+    <lastmod>2019-06-06T18:14:19-06:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -19,13 +19,13 @@
   </url>
   
   <url>
-    <loc>/en/post/2019-06-06-prueba/</loc>
-    <lastmod>2019-06-06T10:59:50-06:00</lastmod>
+    <loc>/en/post/2019-06-06-prova3/</loc>
+    <lastmod>2019-06-06T18:14:19-06:00</lastmod>
   </url>
   
   <url>
     <loc>/en/post/</loc>
-    <lastmod>2019-06-06T10:59:50-06:00</lastmod>
+    <lastmod>2019-06-06T18:14:19-06:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
@@ -36,6 +36,21 @@
                 hreflang="en"
                 href="/en/post/"
                 />
+  </url>
+  
+  <url>
+    <loc>/en/post/2019-06-06-prova2/</loc>
+    <lastmod>2019-06-06T18:13:12-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/en/post/2019-06-06-post-de-prueba/</loc>
+    <lastmod>2019-06-06T18:06:34-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/en/post/2019-06-06-prueba/</loc>
+    <lastmod>2019-06-06T10:59:50-06:00</lastmod>
   </url>
   
   <url>
@@ -221,6 +236,10 @@
                 hreflang="en"
                 href="/en/authors/"
                 />
+  </url>
+  
+  <url>
+    <loc>/en/post/prova/</loc>
   </url>
   
   <url>

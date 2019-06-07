@@ -18,7 +18,7 @@ subtitle = ""
   icon = "r-project"
   icon_pack = "fab"
   name = "R"
-  description = "100%"
+  description = "100% (this webpage has been developed using RStudio)"
   
 [[feature]]
   icon = "python"
