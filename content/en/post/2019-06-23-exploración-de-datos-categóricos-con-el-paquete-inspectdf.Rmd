@@ -1,0 +1,105 @@
+---
+# Documentation: https://sourcethemes.com/academic/docs/managing-content/
+
+title: "Exploratory data analysis with categorical data"
+subtitle: "The inspecdf package as a tool for descriptive analysis"
+summary: "This post follows to show how to use the inspectdf package for data analysis"
+authors: ["César Gamboa Sanabria"]
+tags: ["R", "RStudio", "Exploratory data analysis", "Descriptive", "Categorical data"]
+categories: ["Exploratory data analysis"]
+date: 2019-06-23T13:42:09-06:00
+lastmod: 2019-06-23T13:42:09-06:00
+featured: false
+draft: false
+
+# Featured image
+# To use, add an image named `featured.jpg/png` to your page's folder.
+# Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
+image:
+  caption: ""
+  focal_point: ""
+  preview_only: true
+# Projects (optional).
+#   Associate this post with one or more of your projects.
+#   Simply enter your project's folder or file name without extension.
+#   E.g. `projects = ["internal-project"]` references `content/project/deep-learning/index.md`.
+#   Otherwise, set `projects = []`.
+projects: []
+---
+
+It is a common task to find datasets which have different types of variables, and they could be numeric, time data, or even categorical. The [inspectdf](https://github.com/alastairrushworth/inspectdf) package offers a set of functions to analyze the behavior of this kind of data.
+
+First of all, we have to install the package.
+
+```{r, eval=FALSE}
+library(devtools)
+install_github("alastairrushworth/inspectdf")
+```
+
+
+When we installed the package, it is necessary to load it. We do the same with `dplyr` package, especially for use the pipe `%>%`.
+
+```{r, warning=FALSE, message=FALSE, results='hide'}
+library(inspectdf)
+library(dplyr)
+```
+
+For this example, the dataset `starwars` will be used. This dataset is in ` dplyr` package and which has data from various characters in this cinematographic universe.
+
+```{r}
+starwars %>% 
+    head()
+```
+
+### Tabular exploratory data analysis
+
+The `inspectdf` package allows you to calculate some descriptive statistics quickly for any variable using the` inspect_types() `function.
+
+```{r}
+starwars %>% 
+    inspect_types()
+```
+
+The previous result shows that there are seven variables of type `character`, which represents 53.84% of the dataset. Also, there are two numerical variables, which represent 15.38%. The above is useful for a first look, but it is interesting to go a little further and describe all the variables in more detail. For this, the `inspect_cat ()` function could be useful.
+
+```{r}
+starwars %>% 
+    inspect_cat()
+```
+
+The `inspect_cat ()` function shows in the first column the name of the variable, in the second one the number of unique values it contains, that is, the variable * eye_color * has 15 different levels, or what is the same, there are 15 colors and different eyes in the database. The third column shows the most common value that appears in the variable; for example, the most common species that appear in the dataset are humans. The fourth column indicates the percentage that represents the most common level; for example, the brown eyes represent 24.13% of all the colors present in the data. So what does the fifth column represent? Well, it is a list with the proportions of each level of the variable. Consider the * df * object from the previous result.
+
+```{r}
+df <- starwars %>% 
+    inspect_cat()
+df$levels$eye_color
+    ```
+
+The table above shows the proportion of each eye color. The same applies to any of the other variables.
+
+### Graphical exploratory data analysis
+
+Sometimes the numerical values are not easy to interpret it, either due to a quantity of data or due to visual issues. The `inspectdf` package also graphically allows for exploratory data analysis.
+
+```{r}
+df %>% 
+    show_plot()
+```
+
+The previous result contains the same information as the `df` object, but now it is easier, faster, and even easier to interpret. However, this result can be improved, because the variable * name * does not work much in the graph because all the names are different. It can solve by modifying the argument `high_cardinality`, which means that only those categories that appear a certain number of times say four will be in the plot.
+
+```{r}
+df %>% 
+    show_plot(high_cardinality = 4)
+```
+
+Finally, if the colors are not entirely pleasant, they can be manipulated through the five color palettes offered by the package, we only have to modify the `col_palette` argument with numbers between one and five to achieve this.
+
+```{r}
+df %>% 
+    show_plot(high_cardinality = 4, col_palette = 4)
+
+df %>% 
+    show_plot(high_cardinality = 4, col_palette = 5)
+```
+

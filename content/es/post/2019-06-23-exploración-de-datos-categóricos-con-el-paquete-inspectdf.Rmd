@@ -1,0 +1,105 @@
+---
+# Documentation: https://sourcethemes.com/academic/docs/managing-content/
+
+title: "Análisis exploratorio de datos categóricos"
+subtitle: "El paquete inspectdf como herramienta de análisis descriptivo"
+summary: "Este post presenta el paquete inspectdf como herramienta para el análisis exploratorio de datos categóricos"
+authors: ["César Gamboa Sanabria"]
+tags: ["R", "RStudio", "Análisis exploratorio", "Descripivos", "Datos categóricos"]
+categories: ["Análisis exploratorio"]
+date: 2019-06-23T13:42:09-06:00
+lastmod: 2019-06-23T13:42:09-06:00
+featured: false
+draft: false
+
+# Featured image
+# To use, add an image named `featured.jpg/png` to your page's folder.
+# Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
+image:
+  caption: ""
+  focal_point: ""
+  preview_only: true
+
+# Projects (optional).
+#   Associate this post with one or more of your projects.
+#   Simply enter your project's folder or file name without extension.
+#   E.g. `projects = ["internal-project"]` references `content/project/deep-learning/index.md`.
+#   Otherwise, set `projects = []`.
+projects: []
+---
+
+Es muy común en el día a día encontrarse con bases de datos que cuentan con diferentes tipos de variables, ya sean numéricas, temporales, de texto o categóricas. Estas últimas son el tema de discusión de este post. El paquete [inspectdf](https://github.com/alastairrushworth/inspectdf) ofrece un conjunto de funciones que resultan particularmente útiles cuando lo que se busca es explorar el comportamiento de este tipo de variables.
+
+El primer paso es tener debidamente instalado el paquete `inspectdf`.
+
+```{r, eval=FALSE}
+library(devtools)
+install_github("alastairrushworth/inspectdf")
+```
+
+Una vez instalado es necesario cargarlo, así como cargar también el paquete `dplyr`, especialmente para poder usar el operador `%>%`.
+
+```{r, warning=FALSE, message=FALSE, results='hide'}
+library(inspectdf)
+library(dplyr)
+```
+
+Para este ejemplo se utilizará la base de datos `starwars`, la cual viene incluida en el paquete `dplyr` y que cuenta con datos de varios personajes de este universo cinematográfico.
+
+```{r}
+starwars %>% 
+    head()
+```
+
+### Análisis exploratorio de manera tabular
+
+EL paquete `inspectdf` permite calcular algunos estadísticos descriptivos rápidamente para cualquier tipo de variable mediante la función `inspect_types()`.
+
+```{r}
+starwars %>% 
+    inspect_types()
+```
+
+El resultado anterior muestra que hay 7 variables de tipo `character`, lo cual representa el 53.84% de la base de datos. Además, hay dos variables de tipo numérico, que representa un 15.38% del total. Lo anterior es útil para un primer vistazo, pero resulta interesante ir un poco más allá y describir más en detalle todas las variables. Para esto puede usarse la función `inspect_cat()`.
+
+```{r}
+starwars %>% 
+    inspect_cat()
+```
+
+La función `inspect_cat()` muestra en la primera columna el nombre de la variable, en la segunda la cantidad de valores únicos que contiene, es decir, la variable *eye_color* tiene 15 niveles diferentes, o lo que es lo mismo, hay 15 colores e ojos diferentes en la base de datos. La tercera columna muestra el valor más común que aparece en la variable, por ejemplo, la especie más común que aparece en la base de datos son los humanos. La cuarta columna indica el porcentaje que representa el nivel más común, por ejemplo, los ojos color café representan el 24.13% de todos los colores presentes en los datos. ¿Y qué representa la quinta columna? Pues es una lista con las proporciones de cada nivel de la variable. Para ejemplificar esto último, se asignará al objeto *df* el resultado anterior.
+
+```{r}
+df <- starwars %>% 
+    inspect_cat()
+df$levels$eye_color
+    ```
+
+La tabla anterior muestra la proporción de cada color de ojos. Esto mismo se aplica a cualquiera de las otras variables.
+
+### Análisis exploratorio de manera gráfica
+
+En algunas ocasiones los valores numéricos no sean tan claros ni fáciles de interpretar, ya sea por a cantidad de datos o bien por cuestiones de comodidad. El paquete `inspectdf` también permite hacer análisis exploratorio de manera gráfica
+
+```{r}
+df %>% 
+    show_plot()
+```
+
+Este resultado contiene la misma información que el objeto `df`, pero ahora es más fácil, rápido e incluso agradable para interpretar. Sin embargo, este resultado puede mejorar, pues por ejemplo la variable *name* no sirve de mucho en el gráfico porque todos los nombres son diferentes. Esto se puede solucionar modificando el argumento `high_cardinality`, lo cual hace que únicamente se grafiquen todas aquellas categorías que aparezcan un determinado número de veces, digamos cuatro.
+
+```{r}
+df %>% 
+    show_plot(high_cardinality = 4)
+```
+
+Finalmente, si los colores no resultan del todo agradables, pueden manipularse a voluntad mediante las 5 paletas de colores que ofrece el paquete y que e el futuro serán más, basta modificar el argumento `col_palette` con los números entre uno y cinco para lograr esto.
+
+```{r}
+df %>% 
+    show_plot(high_cardinality = 4, col_palette = 4)
+
+df %>% 
+    show_plot(high_cardinality = 4, col_palette = 5)
+```
+

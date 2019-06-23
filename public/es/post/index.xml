@@ -7,9 +7,110 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>es-cr</language>
     <copyright>&amp;copy; 2019</copyright>
+    <lastBuildDate>Sun, 23 Jun 2019 13:42:09 -0600</lastBuildDate>
     
 	    <atom:link href="/es/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Análisis exploratorio de datos categóricos</title>
+      <link>/es/post/2019-06-23-exploraci%C3%B3n-de-datos-categ%C3%B3ricos-con-el-paquete-inspectdf/</link>
+      <pubDate>Sun, 23 Jun 2019 13:42:09 -0600</pubDate>
+      
+      <guid>/es/post/2019-06-23-exploraci%C3%B3n-de-datos-categ%C3%B3ricos-con-el-paquete-inspectdf/</guid>
+      <description>
+
+
+&lt;p&gt;Es muy común en el día a día encontrarse con bases de datos que cuentan con diferentes tipos de variables, ya sean numéricas, temporales, de texto o categóricas. Estas últimas son el tema de discusión de este post. El paquete &lt;a href=&#34;https://github.com/alastairrushworth/inspectdf&#34;&gt;inspectdf&lt;/a&gt; ofrece un conjunto de funciones que resultan particularmente útiles cuando lo que se busca es explorar el comportamiento de este tipo de variables.&lt;/p&gt;
+&lt;p&gt;El primer paso es tener debidamente instalado el paquete &lt;code&gt;inspectdf&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(devtools)
+install_github(&amp;quot;alastairrushworth/inspectdf&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Una vez instalado es necesario cargarlo, así como cargar también el paquete &lt;code&gt;dplyr&lt;/code&gt;, especialmente para poder usar el operador &lt;code&gt;%&amp;gt;%&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(inspectdf)
+library(dplyr)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Para este ejemplo se utilizará la base de datos &lt;code&gt;starwars&lt;/code&gt;, la cual viene incluida en el paquete &lt;code&gt;dplyr&lt;/code&gt; y que cuenta con datos de varios personajes de este universo cinematográfico.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;starwars %&amp;gt;% 
+    head()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 13
+##   name  height  mass hair_color skin_color eye_color birth_year gender
+##   &amp;lt;chr&amp;gt;  &amp;lt;int&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;      &amp;lt;chr&amp;gt;      &amp;lt;chr&amp;gt;          &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt; 
+## 1 Luke~    172    77 blond      fair       blue            19   male  
+## 2 C-3PO    167    75 &amp;lt;NA&amp;gt;       gold       yellow         112   &amp;lt;NA&amp;gt;  
+## 3 R2-D2     96    32 &amp;lt;NA&amp;gt;       white, bl~ red             33   &amp;lt;NA&amp;gt;  
+## 4 Dart~    202   136 none       white      yellow          41.9 male  
+## 5 Leia~    150    49 brown      light      brown           19   female
+## 6 Owen~    178   120 brown, gr~ light      blue            52   male  
+## # ... with 5 more variables: homeworld &amp;lt;chr&amp;gt;, species &amp;lt;chr&amp;gt;, films &amp;lt;list&amp;gt;,
+## #   vehicles &amp;lt;list&amp;gt;, starships &amp;lt;list&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;analisis-exploratorio-de-manera-tabular&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Análisis exploratorio de manera tabular&lt;/h3&gt;
+&lt;p&gt;EL paquete &lt;code&gt;inspectdf&lt;/code&gt; permite calcular algunos estadísticos descriptivos rápidamente para cualquier tipo de variable mediante la función &lt;code&gt;inspect_types()&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;starwars %&amp;gt;% 
+    inspect_types()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 4 x 4
+##   type        cnt  pcnt col_name 
+##   &amp;lt;chr&amp;gt;     &amp;lt;int&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;list&amp;gt;   
+## 1 character     7 53.8  &amp;lt;chr [7]&amp;gt;
+## 2 list          3 23.1  &amp;lt;chr [3]&amp;gt;
+## 3 numeric       2 15.4  &amp;lt;chr [2]&amp;gt;
+## 4 integer       1  7.69 &amp;lt;chr [1]&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;El resultado anterior muestra que hay 7 variables de tipo &lt;code&gt;character&lt;/code&gt;, lo cual representa el 53.84% de la base de datos. Además, hay dos variables de tipo numérico, que representa un 15.38% del total. Lo anterior es útil para un primer vistazo, pero resulta interesante ir un poco más allá y describir más en detalle todas las variables. Para esto puede usarse la función &lt;code&gt;inspect_cat()&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;starwars %&amp;gt;% 
+    inspect_cat()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 7 x 5
+##   col_name     cnt common common_pcnt levels           
+##   &amp;lt;chr&amp;gt;      &amp;lt;int&amp;gt; &amp;lt;chr&amp;gt;        &amp;lt;dbl&amp;gt; &amp;lt;list&amp;gt;           
+## 1 eye_color     15 brown        24.1  &amp;lt;tibble [15 x 3]&amp;gt;
+## 2 gender         5 male         71.3  &amp;lt;tibble [5 x 3]&amp;gt; 
+## 3 hair_color    13 none         42.5  &amp;lt;tibble [13 x 3]&amp;gt;
+## 4 homeworld     49 Naboo        12.6  &amp;lt;tibble [49 x 3]&amp;gt;
+## 5 name          87 Ackbar        1.15 &amp;lt;tibble [87 x 3]&amp;gt;
+## 6 skin_color    31 fair         19.5  &amp;lt;tibble [31 x 3]&amp;gt;
+## 7 species       38 Human        40.2  &amp;lt;tibble [38 x 3]&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;La función &lt;code&gt;inspect_cat()&lt;/code&gt; muestra en la primera columna el nombre de la variable, en la segunda la cantidad de valores únicos que contiene, es decir, la variable &lt;em&gt;eye_color&lt;/em&gt; tiene 15 niveles diferentes, o lo que es lo mismo, hay 15 colores e ojos diferentes en la base de datos. La tercera columna muestra el valor más común que aparece en la variable, por ejemplo, la especie más común que aparece en la base de datos son los humanos. La cuarta columna indica el porcentaje que representa el nivel más común, por ejemplo, los ojos color café representan el 24.13% de todos los colores presentes en los datos. ¿Y qué representa la quinta columna? Pues es una lista con las proporciones de cada nivel de la variable. Para ejemplificar esto último, se asignará al objeto &lt;em&gt;df&lt;/em&gt; el resultado anterior.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;- starwars %&amp;gt;% 
+    inspect_cat()
+df$levels$eye_color&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 15 x 3
+##    value           prop   cnt
+##    &amp;lt;chr&amp;gt;          &amp;lt;dbl&amp;gt; &amp;lt;int&amp;gt;
+##  1 brown         0.241     21
+##  2 blue          0.218     19
+##  3 yellow        0.126     11
+##  4 black         0.115     10
+##  5 orange        0.0920     8
+##  6 red           0.0575     5
+##  7 hazel         0.0345     3
+##  8 unknown       0.0345     3
+##  9 blue-gray     0.0115     1
+## 10 dark          0.0115     1
+## 11 gold          0.0115     1
+## 12 green, yellow 0.0115     1
+## 13 pink          0.0115     1
+## 14 red, blue     0.0115     1
+## 15 white         0.0115     1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;La tabla anterior muestra la proporción de cada color de ojos. Esto mismo se aplica a cualquiera de las otras variables.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;analisis-exploratorio-de-manera-grafica&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Análisis exploratorio de manera gráfica&lt;/h3&gt;
+&lt;p&gt;En algunas ocasiones los valores numéricos no sean tan claros ni fáciles de interpretar, ya sea por a cantidad de datos o bien por cuestiones de comodidad. El paquete &lt;code&gt;inspectdf&lt;/code&gt; también permite hacer análisis exploratorio de manera gráfica&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df %&amp;gt;% 
+    show_plot()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/es/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Este resultado contiene la misma información que el objeto &lt;code&gt;df&lt;/code&gt;, pero ahora es más fácil, rápido e incluso agradable para interpretar. Sin embargo, este resultado puede mejorar, pues por ejemplo la variable &lt;em&gt;name&lt;/em&gt; no sirve de mucho en el gráfico porque todos los nombres son diferentes. Esto se puede solucionar modificando el argumento &lt;code&gt;high_cardinality&lt;/code&gt;, lo cual hace que únicamente se grafiquen todas aquellas categorías que aparezcan un determinado número de veces, digamos cuatro.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df %&amp;gt;% 
+    show_plot(high_cardinality = 4)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/es/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Finalmente, si los colores no resultan del todo agradables, pueden manipularse a voluntad mediante las 5 paletas de colores que ofrece el paquete y que e el futuro serán más, basta modificar el argumento &lt;code&gt;col_palette&lt;/code&gt; con los números entre uno y cinco para lograr esto.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df %&amp;gt;% 
+    show_plot(high_cardinality = 4, col_palette = 4)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/es/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df %&amp;gt;% 
+    show_plot(high_cardinality = 4, col_palette = 5)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/es/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-9-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
   </channel>
 </rss>

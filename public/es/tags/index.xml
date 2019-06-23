@@ -7,9 +7,55 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>es-cr</language>
     <copyright>&amp;copy; 2019</copyright>
+    <lastBuildDate>Sun, 23 Jun 2019 13:42:09 -0600</lastBuildDate>
     
 	    <atom:link href="/es/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Análisis exploratorio</title>
+      <link>/es/tags/an%C3%A1lisis-exploratorio/</link>
+      <pubDate>Sun, 23 Jun 2019 13:42:09 -0600</pubDate>
+      
+      <guid>/es/tags/an%C3%A1lisis-exploratorio/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Datos categóricos</title>
+      <link>/es/tags/datos-categ%C3%B3ricos/</link>
+      <pubDate>Sun, 23 Jun 2019 13:42:09 -0600</pubDate>
+      
+      <guid>/es/tags/datos-categ%C3%B3ricos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Descripivos</title>
+      <link>/es/tags/descripivos/</link>
+      <pubDate>Sun, 23 Jun 2019 13:42:09 -0600</pubDate>
+      
+      <guid>/es/tags/descripivos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>/es/tags/r/</link>
+      <pubDate>Sun, 23 Jun 2019 13:42:09 -0600</pubDate>
+      
+      <guid>/es/tags/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RStudio</title>
+      <link>/es/tags/rstudio/</link>
+      <pubDate>Sun, 23 Jun 2019 13:42:09 -0600</pubDate>
+      
+      <guid>/es/tags/rstudio/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

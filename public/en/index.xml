@@ -7,48 +7,108 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019</copyright>
-    <lastBuildDate>Thu, 06 Jun 2019 18:14:19 -0600</lastBuildDate>
+    <lastBuildDate>Sun, 23 Jun 2019 13:42:09 -0600</lastBuildDate>
     
 	    <atom:link href="/en/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>2019 06 06 Prova3</title>
-      <link>/en/post/2019-06-06-prova3/</link>
-      <pubDate>Thu, 06 Jun 2019 18:14:19 -0600</pubDate>
+      <title>Exploratory data analysis with categorical data</title>
+      <link>/en/post/2019-06-23-exploraci%C3%B3n-de-datos-categ%C3%B3ricos-con-el-paquete-inspectdf/</link>
+      <pubDate>Sun, 23 Jun 2019 13:42:09 -0600</pubDate>
       
-      <guid>/en/post/2019-06-06-prova3/</guid>
+      <guid>/en/post/2019-06-23-exploraci%C3%B3n-de-datos-categ%C3%B3ricos-con-el-paquete-inspectdf/</guid>
       <description>
 
 
-&lt;p&gt;Otro post de prueba&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(mtcars)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##       mpg             cyl             disp             hp       
-##  Min.   :10.40   Min.   :4.000   Min.   : 71.1   Min.   : 52.0  
-##  1st Qu.:15.43   1st Qu.:4.000   1st Qu.:120.8   1st Qu.: 96.5  
-##  Median :19.20   Median :6.000   Median :196.3   Median :123.0  
-##  Mean   :20.09   Mean   :6.188   Mean   :230.7   Mean   :146.7  
-##  3rd Qu.:22.80   3rd Qu.:8.000   3rd Qu.:326.0   3rd Qu.:180.0  
-##  Max.   :33.90   Max.   :8.000   Max.   :472.0   Max.   :335.0  
-##       drat             wt             qsec             vs        
-##  Min.   :2.760   Min.   :1.513   Min.   :14.50   Min.   :0.0000  
-##  1st Qu.:3.080   1st Qu.:2.581   1st Qu.:16.89   1st Qu.:0.0000  
-##  Median :3.695   Median :3.325   Median :17.71   Median :0.0000  
-##  Mean   :3.597   Mean   :3.217   Mean   :17.85   Mean   :0.4375  
-##  3rd Qu.:3.920   3rd Qu.:3.610   3rd Qu.:18.90   3rd Qu.:1.0000  
-##  Max.   :4.930   Max.   :5.424   Max.   :22.90   Max.   :1.0000  
-##        am              gear            carb      
-##  Min.   :0.0000   Min.   :3.000   Min.   :1.000  
-##  1st Qu.:0.0000   1st Qu.:3.000   1st Qu.:2.000  
-##  Median :0.0000   Median :4.000   Median :2.000  
-##  Mean   :0.4062   Mean   :3.688   Mean   :2.812  
-##  3rd Qu.:1.0000   3rd Qu.:4.000   3rd Qu.:4.000  
-##  Max.   :1.0000   Max.   :5.000   Max.   :8.000&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(cars)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-06-06-prova3_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\sum_{i=1}^n x_i^2
-\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;It is a common task to find datasets which have different types of variables, and they could be numeric, time data, or even categorical. The &lt;a href=&#34;https://github.com/alastairrushworth/inspectdf&#34;&gt;inspectdf&lt;/a&gt; package offers a set of functions to analyze the behavior of this kind of data.&lt;/p&gt;
+&lt;p&gt;First of all, we have to install the package.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(devtools)
+install_github(&amp;quot;alastairrushworth/inspectdf&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;When we installed the package, it is necessary to load it. We do the same with &lt;code&gt;dplyr&lt;/code&gt; package, especially for use the pipe &lt;code&gt;%&amp;gt;%&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(inspectdf)
+library(dplyr)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For this example, the dataset &lt;code&gt;starwars&lt;/code&gt; will be used. This dataset is in &lt;code&gt;dplyr&lt;/code&gt; package and which has data from various characters in this cinematographic universe.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;starwars %&amp;gt;% 
+    head()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 13
+##   name  height  mass hair_color skin_color eye_color birth_year gender
+##   &amp;lt;chr&amp;gt;  &amp;lt;int&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;      &amp;lt;chr&amp;gt;      &amp;lt;chr&amp;gt;          &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt; 
+## 1 Luke~    172    77 blond      fair       blue            19   male  
+## 2 C-3PO    167    75 &amp;lt;NA&amp;gt;       gold       yellow         112   &amp;lt;NA&amp;gt;  
+## 3 R2-D2     96    32 &amp;lt;NA&amp;gt;       white, bl~ red             33   &amp;lt;NA&amp;gt;  
+## 4 Dart~    202   136 none       white      yellow          41.9 male  
+## 5 Leia~    150    49 brown      light      brown           19   female
+## 6 Owen~    178   120 brown, gr~ light      blue            52   male  
+## # ... with 5 more variables: homeworld &amp;lt;chr&amp;gt;, species &amp;lt;chr&amp;gt;, films &amp;lt;list&amp;gt;,
+## #   vehicles &amp;lt;list&amp;gt;, starships &amp;lt;list&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;tabular-exploratory-data-analysis&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Tabular exploratory data analysis&lt;/h3&gt;
+&lt;p&gt;The &lt;code&gt;inspectdf&lt;/code&gt; package allows you to calculate some descriptive statistics quickly for any variable using the&lt;code&gt;inspect_types()&lt;/code&gt;function.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;starwars %&amp;gt;% 
+    inspect_types()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 4 x 4
+##   type        cnt  pcnt col_name 
+##   &amp;lt;chr&amp;gt;     &amp;lt;int&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;list&amp;gt;   
+## 1 character     7 53.8  &amp;lt;chr [7]&amp;gt;
+## 2 list          3 23.1  &amp;lt;chr [3]&amp;gt;
+## 3 numeric       2 15.4  &amp;lt;chr [2]&amp;gt;
+## 4 integer       1  7.69 &amp;lt;chr [1]&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The previous result shows that there are seven variables of type &lt;code&gt;character&lt;/code&gt;, which represents 53.84% of the dataset. Also, there are two numerical variables, which represent 15.38%. The above is useful for a first look, but it is interesting to go a little further and describe all the variables in more detail. For this, the &lt;code&gt;inspect_cat ()&lt;/code&gt; function could be useful.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;starwars %&amp;gt;% 
+    inspect_cat()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 7 x 5
+##   col_name     cnt common common_pcnt levels           
+##   &amp;lt;chr&amp;gt;      &amp;lt;int&amp;gt; &amp;lt;chr&amp;gt;        &amp;lt;dbl&amp;gt; &amp;lt;list&amp;gt;           
+## 1 eye_color     15 brown        24.1  &amp;lt;tibble [15 x 3]&amp;gt;
+## 2 gender         5 male         71.3  &amp;lt;tibble [5 x 3]&amp;gt; 
+## 3 hair_color    13 none         42.5  &amp;lt;tibble [13 x 3]&amp;gt;
+## 4 homeworld     49 Naboo        12.6  &amp;lt;tibble [49 x 3]&amp;gt;
+## 5 name          87 Ackbar        1.15 &amp;lt;tibble [87 x 3]&amp;gt;
+## 6 skin_color    31 fair         19.5  &amp;lt;tibble [31 x 3]&amp;gt;
+## 7 species       38 Human        40.2  &amp;lt;tibble [38 x 3]&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;inspect_cat ()&lt;/code&gt; function shows in the first column the name of the variable, in the second one the number of unique values it contains, that is, the variable * eye_color * has 15 different levels, or what is the same, there are 15 colors and different eyes in the database. The third column shows the most common value that appears in the variable; for example, the most common species that appear in the dataset are humans. The fourth column indicates the percentage that represents the most common level; for example, the brown eyes represent 24.13% of all the colors present in the data. So what does the fifth column represent? Well, it is a list with the proportions of each level of the variable. Consider the * df * object from the previous result.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;- starwars %&amp;gt;% 
+    inspect_cat()
+df$levels$eye_color&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 15 x 3
+##    value           prop   cnt
+##    &amp;lt;chr&amp;gt;          &amp;lt;dbl&amp;gt; &amp;lt;int&amp;gt;
+##  1 brown         0.241     21
+##  2 blue          0.218     19
+##  3 yellow        0.126     11
+##  4 black         0.115     10
+##  5 orange        0.0920     8
+##  6 red           0.0575     5
+##  7 hazel         0.0345     3
+##  8 unknown       0.0345     3
+##  9 blue-gray     0.0115     1
+## 10 dark          0.0115     1
+## 11 gold          0.0115     1
+## 12 green, yellow 0.0115     1
+## 13 pink          0.0115     1
+## 14 red, blue     0.0115     1
+## 15 white         0.0115     1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The table above shows the proportion of each eye color. The same applies to any of the other variables.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;graphical-exploratory-data-analysis&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Graphical exploratory data analysis&lt;/h3&gt;
+&lt;p&gt;Sometimes the numerical values are not easy to interpret it, either due to a quantity of data or due to visual issues. The &lt;code&gt;inspectdf&lt;/code&gt; package also graphically allows for exploratory data analysis.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df %&amp;gt;% 
+    show_plot()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/en/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;The previous result contains the same information as the &lt;code&gt;df&lt;/code&gt; object, but now it is easier, faster, and even easier to interpret. However, this result can be improved, because the variable * name * does not work much in the graph because all the names are different. It can solve by modifying the argument &lt;code&gt;high_cardinality&lt;/code&gt;, which means that only those categories that appear a certain number of times say four will be in the plot.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df %&amp;gt;% 
+    show_plot(high_cardinality = 4)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/en/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Finally, if the colors are not entirely pleasant, they can be manipulated through the five color palettes offered by the package, we only have to modify the &lt;code&gt;col_palette&lt;/code&gt; argument with numbers between one and five to achieve this.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df %&amp;gt;% 
+    show_plot(high_cardinality = 4, col_palette = 4)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/en/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df %&amp;gt;% 
+    show_plot(high_cardinality = 4, col_palette = 5)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/en/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-9-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
 </description>
     </item>
     

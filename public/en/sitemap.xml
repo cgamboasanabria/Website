@@ -4,7 +4,7 @@
   
   <url>
     <loc>/en/</loc>
-    <lastmod>2019-06-06T18:14:19-06:00</lastmod>
+    <lastmod>2019-06-23T13:42:09-06:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -19,13 +19,95 @@
   </url>
   
   <url>
-    <loc>/en/post/2019-06-06-prova3/</loc>
-    <lastmod>2019-06-06T18:14:19-06:00</lastmod>
+    <loc>/en/authors/</loc>
+    <lastmod>2019-06-23T13:42:09-06:00</lastmod>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/authors/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/authors/"
+                />
+  </url>
+  
+  <url>
+    <loc>/en/tags/categorical-data/</loc>
+    <lastmod>2019-06-23T13:42:09-06:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/en/categories/</loc>
+    <lastmod>2019-06-23T13:42:09-06:00</lastmod>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/categories/"
+                />
+  </url>
+  
+  <url>
+    <loc>/en/authors/c%C3%A9sar-gamboa-sanabria/</loc>
+    <lastmod>2019-06-23T13:42:09-06:00</lastmod>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/authors/c%C3%A9sar-gamboa-sanabria/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/authors/c%C3%A9sar-gamboa-sanabria/"
+                />
+  </url>
+  
+  <url>
+    <loc>/en/tags/descriptive/</loc>
+    <lastmod>2019-06-23T13:42:09-06:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/en/categories/exploratory-data-analysis/</loc>
+    <lastmod>2019-06-23T13:42:09-06:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/en/tags/exploratory-data-analysis/</loc>
+    <lastmod>2019-06-23T13:42:09-06:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/en/post/2019-06-23-exploraci%C3%B3n-de-datos-categ%C3%B3ricos-con-el-paquete-inspectdf/</loc>
+    <lastmod>2019-06-23T13:42:09-06:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/post/2019-06-23-exploraci%C3%B3n-de-datos-categ%C3%B3ricos-con-el-paquete-inspectdf/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/post/2019-06-23-exploraci%C3%B3n-de-datos-categ%C3%B3ricos-con-el-paquete-inspectdf/"
+                />
   </url>
   
   <url>
     <loc>/en/post/</loc>
-    <lastmod>2019-06-06T18:14:19-06:00</lastmod>
+    <lastmod>2019-06-23T13:42:09-06:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
@@ -35,6 +117,54 @@
                 rel="alternate"
                 hreflang="en"
                 href="/en/post/"
+                />
+  </url>
+  
+  <url>
+    <loc>/en/tags/r/</loc>
+    <lastmod>2019-06-23T13:42:09-06:00</lastmod>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/tags/r/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/tags/r/"
+                />
+  </url>
+  
+  <url>
+    <loc>/en/tags/rstudio/</loc>
+    <lastmod>2019-06-23T13:42:09-06:00</lastmod>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/tags/rstudio/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/tags/rstudio/"
+                />
+  </url>
+  
+  <url>
+    <loc>/en/tags/</loc>
+    <lastmod>2019-06-23T13:42:09-06:00</lastmod>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/tags/"
                 />
   </url>
   
@@ -64,36 +194,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="/en/authors/admin/"
-                />
-  </url>
-  
-  <url>
-    <loc>/en/authors/</loc>
-    <priority>0</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/authors/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/authors/"
-                />
-  </url>
-  
-  <url>
-    <loc>/en/categories/</loc>
-    <priority>0</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/categories/"
                 />
   </url>
   
@@ -137,21 +237,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="/en/talk/"
-                />
-  </url>
-  
-  <url>
-    <loc>/en/tags/</loc>
-    <priority>0</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/tags/"
                 />
   </url>
   
