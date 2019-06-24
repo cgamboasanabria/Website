@@ -18,7 +18,7 @@ draft: false
 image:
   caption: ""
   focal_point: ""
-  preview_only: true
+  preview_only: false
 # Projects (optional).
 #   Associate this post with one or more of your projects.
 #   Simply enter your project's folder or file name without extension.
@@ -104,16 +104,16 @@ df$levels$eye_color</code></pre>
 <p>Sometimes the numerical values are not easy to interpret it, either due to a quantity of data or due to visual issues. The <code>inspectdf</code> package also graphically allows for exploratory data analysis.</p>
 <pre class="r"><code>df %&gt;% 
     show_plot()</code></pre>
-<p><img src="/en/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="/en/post/post1/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>The previous result contains the same information as the <code>df</code> object, but now it is easier, faster, and even easier to interpret. However, this result can be improved, because the variable * name * does not work much in the graph because all the names are different. It can solve by modifying the argument <code>high_cardinality</code>, which means that only those categories that appear a certain number of times say four will be in the plot.</p>
 <pre class="r"><code>df %&gt;% 
     show_plot(high_cardinality = 4)</code></pre>
-<p><img src="/en/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="/en/post/post1/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>Finally, if the colors are not entirely pleasant, they can be manipulated through the five color palettes offered by the package, we only have to modify the <code>col_palette</code> argument with numbers between one and five to achieve this.</p>
 <pre class="r"><code>df %&gt;% 
     show_plot(high_cardinality = 4, col_palette = 4)</code></pre>
-<p><img src="/en/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="/en/post/post1/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <pre class="r"><code>df %&gt;% 
     show_plot(high_cardinality = 4, col_palette = 5)</code></pre>
-<p><img src="/en/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-9-2.png" width="672" /></p>
+<p><img src="/en/post/post1/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-9-2.png" width="672" /></p>
 </div>

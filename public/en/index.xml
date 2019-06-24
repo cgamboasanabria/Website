@@ -7,17 +7,26 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019</copyright>
-    <lastBuildDate>Sun, 23 Jun 2019 13:42:09 -0600</lastBuildDate>
+    <lastBuildDate>Thu, 27 Jun 2019 10:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="/en/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>R as a tool of statistical analysis</title>
+      <link>/en/talk/conversatorior/</link>
+      <pubDate>Thu, 27 Jun 2019 10:00:00 +0000</pubDate>
+      
+      <guid>/en/talk/conversatorior/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Exploratory data analysis with categorical data</title>
-      <link>/en/post/2019-06-23-exploraci%C3%B3n-de-datos-categ%C3%B3ricos-con-el-paquete-inspectdf/</link>
+      <link>/en/post/post1/2019-06-23-exploraci%C3%B3n-de-datos-categ%C3%B3ricos-con-el-paquete-inspectdf/</link>
       <pubDate>Sun, 23 Jun 2019 13:42:09 -0600</pubDate>
       
-      <guid>/en/post/2019-06-23-exploraci%C3%B3n-de-datos-categ%C3%B3ricos-con-el-paquete-inspectdf/</guid>
+      <guid>/en/post/post1/2019-06-23-exploraci%C3%B3n-de-datos-categ%C3%B3ricos-con-el-paquete-inspectdf/</guid>
       <description>
 
 
@@ -96,18 +105,18 @@ df$levels$eye_color&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Sometimes the numerical values are not easy to interpret it, either due to a quantity of data or due to visual issues. The &lt;code&gt;inspectdf&lt;/code&gt; package also graphically allows for exploratory data analysis.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df %&amp;gt;% 
     show_plot()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/en/post/post1/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;The previous result contains the same information as the &lt;code&gt;df&lt;/code&gt; object, but now it is easier, faster, and even easier to interpret. However, this result can be improved, because the variable * name * does not work much in the graph because all the names are different. It can solve by modifying the argument &lt;code&gt;high_cardinality&lt;/code&gt;, which means that only those categories that appear a certain number of times say four will be in the plot.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df %&amp;gt;% 
     show_plot(high_cardinality = 4)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/en/post/post1/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Finally, if the colors are not entirely pleasant, they can be manipulated through the five color palettes offered by the package, we only have to modify the &lt;code&gt;col_palette&lt;/code&gt; argument with numbers between one and five to achieve this.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df %&amp;gt;% 
     show_plot(high_cardinality = 4, col_palette = 4)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/en/post/post1/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df %&amp;gt;% 
     show_plot(high_cardinality = 4, col_palette = 5)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-9-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/en/post/post1/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-9-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
