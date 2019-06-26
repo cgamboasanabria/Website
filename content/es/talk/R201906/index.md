@@ -10,7 +10,7 @@ abstract: "El curso está dirigido a profesionales en: Estadística, Ingeniería
 #   End time can optionally be hidden by prefixing the line with `#`.
 date: "2019-07-16TT17:00:00Z"
 date_end: "2019-07-19T21:00:00Z"
-all_day: true
+all_day: false
 
 # Schedule page publish date (NOT talk date).
 publishDate: "2019-07-16T17:00:00Z"
