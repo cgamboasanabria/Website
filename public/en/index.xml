@@ -7,10 +7,19 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019</copyright>
-    <lastBuildDate>Thu, 27 Jun 2019 10:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 16 Jul 2019 17:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="/en/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>R Programming</title>
+      <link>/en/talk/r201906/</link>
+      <pubDate>Tue, 16 Jul 2019 17:00:00 +0000</pubDate>
+      
+      <guid>/en/talk/r201906/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>R as a tool of statistical analysis</title>
