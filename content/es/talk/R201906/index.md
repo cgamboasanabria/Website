@@ -3,7 +3,7 @@ title: Programación estadística en R
 event: Programa de educación continua
 event_url: http://estadistica.ucr.ac.cr/index.php/es/uses/cursos
 location: San José, Costa Rica
-summary: Este curso se compone de dieciséis horas distribuidas en cuatro sesiones de cuatro horas cada una.  El propósito del curso es proporcionar al estudiante un punto de partida para comenzar a utilizar de forma básica el lenguaje de programación R. Mediante el uso de este lenguaje el estudiante podrá leer y crear datos, manipular objetos, generar distintos tipos de visualización de datos y obtener estadísticos básicos.
+summary: Este curso se compone de dieciséis horas distribuidas en cuatro sesiones de cuatro horas cada una.  El propósito del curso es proporcionar al estudiante un punto de partida para comenzar a utilizar de forma básica el lenguaje de programación R. Mediante el uso de este lenguaje el estudiante podrá leer y crear datos, manipular objetos, generar distintos tipos de visualización de datos y obtener estadísticos básicos. 
 abstract: "El curso está dirigido a profesionales en: Estadística, Ingeniería industrial, Economía, Tecnología de alimentos, Agronomía, Biología, Medicina y otras disciplinas que requieran de un alto componente estadístico en investigación."
 
 # Talk start and end times.

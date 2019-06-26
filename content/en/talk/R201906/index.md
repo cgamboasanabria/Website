@@ -3,7 +3,7 @@ title: R Programming
 event: Extension Program in Statistics
 event_url: http://estadistica.ucr.ac.cr/index.php/es/uses/cursos
 location: San José, Costa Rica
-summary: This course consists of sixteen hours, divided into four sessions of four hours each. The purpose of the course is to provide the student with the starting point to use the R programming language. By using this language, the student can read and create data, manipulate objects, generate different types of data visualization, and obtain basic statistics.
+summary: This course consists of sixteen hours, divided into four sessions of four hours each. The purpose of the course is to provide the student with the starting point to use the R programming language. By using this language, the student can read and create data, manipulate objects, generate different types of data visualization, and obtain basic statistics. 
 abstract: "The course is aimed at professionals in Statistics, Industrial Engineering, Economics, Food Technology, Agronomy, Biology, Medicine, and other disciplines that require a high statistical component in research."
 
 # Talk start and end times.
