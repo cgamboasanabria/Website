@@ -1,0 +1,124 @@
+---
+# Documentation: https://sourcethemes.com/academic/docs/managing-content/
+
+title: "Familia de funciones apply - Parte 1"
+subtitle: "La función apply()"
+summary: "Se muestran ejemplos de uso de la función apply"
+authors: ["César Gamboa Sanabria"]
+tags: ["R", "RStudio", "Funciones apply", "apply"]
+categories: ["Fundamentos de R"]
+date: 2019-07-22T17:42:09-06:00
+lastmod: 2019-07-22T17:42:09-06:00
+featured: false
+draft: false
+
+# Featured image
+# To use, add an image named `featured.jpg/png` to your page's folder.
+# Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
+image:
+  caption: ""
+  focal_point: ""
+  preview_only: true
+
+# Projects (optional).
+#   Associate this post with one or more of your projects.
+#   Simply enter your project's folder or file name without extension.
+#   E.g. `projects = ["internal-project"]` references `content/project/deep-learning/index.md`.
+#   Otherwise, set `projects = []`.
+projects: []
+---
+
+La familia de funciones apply pertenecen al paquete base de R, son de especial utilidad al combinar su uso con funciones para manipular porciones de matrices, arreglos, listas y marcos de datos de una manera repetitiva. Estas funciones permiten cruzar los datos de múltiples maneras para así evadir el uso de ciclos que usualmente son computacionalmente más pesados.
+
+La primera función de la que hablaremos en esta serie es la función `apply()`, la cual en su forma de utilización más sencilla se utiliza para evaluar sobre los márgenes (1=filas ó 2=columnas) de un arreglo o una matriz para aplicar una función a las mismas.
+
+Como primer ejemplo se parte de una matriz con tres filas y tres columnas.
+
+```{r}
+mat <- matrix(c(2, 4, 6, 7, 8, 9, 1, 12, 21), nrow = 3, ncol = 3)
+mat
+```
+
+Si se desea, por ejemplo, obtener la suma de cada columna puede usarse la función `apply()` de la siguiente manera.
+
+```{r}
+apply(mat, 2, sum)
+```
+
+O bien, puede calcularse si se desea el promedio de cada una de las filas.
+
+```{r}
+apply(mat, 1, mean)
+```
+
+Existen además algunas funciones ya programadas en el paquete `base` de R que replican rápidamente los resultados anteriores. Por ejemplo está la función `colSums()` para calcular la cuma de cada columna, y `rowMeans()` para obtener la media aritmética de cada fila.
+
+```{r}
+colSums(mat)
+rowMeans(mat)
+```
+
+Los dos casos mostrados anteriormente ejemplifican un uso básico de la función `apply()`, sin embargo, esta función es mucho más potente y es capaz de trabajar de manera multidimensional. Consideremos, por ejemplo, un objeto en dos dimensiones (filas y columnas) similar al creado con anterioridad, es decir, una matriz.
+
+```{r}
+mat2 <- matrix(1:9, nrow = 3, ncol = 3)
+mat2
+```
+
+El objeto `mat2` representa un caso particular de lo que en R se conoce como arreglos, los cuales pueden ser creados mediante la función `array()`.
+
+```{r}
+array(data=1:9, dim = c(3,3))
+```
+
+La función `array()` también permite agregar etiquetas a las filas y las columnas mediante su argumento `dimnames`.
+
+```{r}
+nombres.columnas <- c("COL1","COL2","COL3")
+nombres.filas <- c("FILA1","FILA2","FILA3")
+arreglo <- array(data=1:9, dim = c(3,3), 
+                 dimnames = list(nombres.columnas, nombres.filas))
+arreglo
+```
+
+Pueden agregarse varias dimensiones a los arreglos. Para esto, supongamos que se desean tener las siguientes dimensiones:
+
+ - DIM1: Números del 1 al 9.
+ - DIM2: Números del 1 al 9 multiplicados por 10.
+ - DIM3: Números del 1 al 9 multiplicados por 100.
+ - DIM4: Números del 1 al 9 multiplicados por 1000.
+
+Una forma de generar el arreglo anterior es mediante el siguiente código:
+
+```{r}
+nombres.dimensiones <- c("DIM1","DIM2","DIM3","DIM4")
+arreglo <- array(data = c(seq(from=1, to=9, by=1),           #1 al 9
+                          seq(from=10, to=90, by=10),        #10 al 90
+                          seq(from=100, to=900, by=100),     #100 al 900
+                          seq(from=1000, to=9000, by=1000)), #1000 al 9000
+                 dim = c(3, 3, 4),                           #3 filas, 3 columnas y 4 dimensiones
+                 dimnames = list(nombres.filas,
+                                 nombres.columnas,
+                                 nombres.dimensiones))
+arreglo
+```
+
+Partiendo del arreglo anterior, supongamos que se desea obtener de cada dimensión el valor máximo por filas.
+
+```{r}
+apply(arreglo, c(3,1), max)
+```
+
+O bien, quizás interese obtener de cada dimensión el valor máximo de cada columna.
+
+```{r}
+apply(arreglo, c(3,2), max)
+```
+
+El siguiente resultado muestra el mínimo de cada columna en cada dimensión.
+
+```{r}
+apply(arreglo, c(2,3), min)
+```
+
+Los ejemplos anteriores pueden ser aplicados a un número mayor de dimensiones, para ello basta con tener un arreglo adecuado y operar sobre los márgenes correspondientes con la función `apply()`.

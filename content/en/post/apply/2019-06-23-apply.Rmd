@@ -1,0 +1,124 @@
+---
+# Documentation: https://sourcethemes.com/academic/docs/managing-content/
+
+title: "Apply family functions - Part 1"
+subtitle: "The apply() function"
+summary: "The apply function to multidimensional data."
+authors: ["César Gamboa Sanabria"]
+tags: ["R", "RStudio", "apply family functions", "apply"]
+categories: ["R basics"]
+date: 2019-07-22T17:42:09-06:00
+lastmod: 2019-07-22T17:42:09-06:00
+featured: false
+draft: false
+
+# Featured image
+# To use, add an image named `featured.jpg/png` to your page's folder.
+# Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
+image:
+  caption: ""
+  focal_point: ""
+  preview_only: true
+
+# Projects (optional).
+#   Associate this post with one or more of your projects.
+#   Simply enter your project's folder or file name without extension.
+#   E.g. `projects = ["internal-project"]` references `content/project/deep-learning/index.md`.
+#   Otherwise, set `projects = []`.
+projects: []
+---
+
+The apply family functions belong to the R base package, they are especially useful when combining their use with functions to manipulate pieces of matrices, arrays, lists and data frames. These functions allow you to cross data in multiple ways to avoid the use of for loops that are usually computationally heavier.
+
+The first function we will talk about in this series is the `apply ()` function, which in its simplest form of use is used to evaluate the margins (1 = rows or 2 = columns) of a matrix or an array to apply a function to them.
+
+As a first example, we start from a matrix with three rows and three columns.
+
+```{r}
+mat <- matrix(c(2, 4, 6, 7, 8, 9, 1, 12, 21), nrow = 3, ncol = 3)
+mat
+```
+
+If you wish, for example, to obtain the sum of each column, you can use the `apply ()` function as follows.
+
+```{r}
+apply(mat, 2, sum)
+```
+
+We can also calculate the average of each row.
+
+```{r}
+apply(mat, 1, mean)
+```
+
+There are also some functions already programmed in the R `base` package that quickly replicate the previous results. For example, there is the `colSums ()` function to calculate the amount of each column, and `rowMeans ()` to obtain the arithmetic mean of each row.
+
+```{r}
+colSums(mat)
+rowMeans(mat)
+```
+
+The two cases shown above exemplify a basic use of the `apply ()` function, however, this function is much more powerful and is capable of working in a multidimensional way. Consider, for example, an object in two dimensions (rows and columns) similar to the one created previously, that is, an array.
+
+```{r}
+mat2 <- matrix(1:9, nrow = 3, ncol = 3)
+mat2
+```
+
+The `mat2` object represents a particular case of an array, which can be created using the` array () `function.
+
+```{r}
+array(data=1:9, dim = c(3,3))
+```
+
+The `array ()` function also allows you to add tags to the rows and columns using its `dimnames` argument.
+
+```{r}
+nombres.columnas <- c("COL1","COL2","COL3")
+nombres.filas <- c("FILA1","FILA2","FILA3")
+arreglo <- array(data=1:9, dim = c(3,3), 
+                 dimnames = list(nombres.columnas, nombres.filas))
+arreglo
+```
+
+We can add multiple dimensions to an array. For this, suppose you want to have the following sizes:
+
+ - DIM1: Numbers from 1 to 9.
+ - DIM2: Numbers from 1 to 9 multiplied by 10.
+ - DIM3: Numbers from 1 to 9 multiplied by 100.
+ - DIM4: Numbers from 1 to 9 increased by 1000.
+
+One way to generate the previous arrangement is by using the following code:
+
+```{r}
+nombres.dimensiones <- c("DIM1","DIM2","DIM3","DIM4")
+arreglo <- array(data = c(seq(from=1, to=9, by=1),           #1 al 9
+                          seq(from=10, to=90, by=10),        #10 al 90
+                          seq(from=100, to=900, by=100),     #100 al 900
+                          seq(from=1000, to=9000, by=1000)), #1000 al 9000
+                 dim = c(3, 3, 4),                           #3 filas, 3 columnas y 4 dimensiones
+                 dimnames = list(nombres.filas,
+                                 nombres.columnas,
+                                 nombres.dimensiones))
+arreglo
+```
+
+Starting from the previous array, suppose that you want to obtain the maximum value per row from each dimension.
+
+```{r}
+apply(arreglo, c(3,1), max)
+```
+
+Or, you may want to obtain the maximum value of each column from each dimension.
+
+```{r}
+apply(arreglo, c(3,2), max)
+```
+
+The following result shows the minimum of each column in each dimension.
+
+```{r}
+apply(arreglo, c(2,3), min)
+```
+
+The previous examples can be applied to arrays with a higher dimension; for this, it is enough to have an adequate arrangement and operate on the corresponding margins with the `apply ()` function.
