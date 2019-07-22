@@ -4,7 +4,7 @@
   
   <url>
     <loc>/en/</loc>
-    <lastmod>2019-07-22T17:42:09-06:00</lastmod>
+    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -19,13 +19,23 @@
   </url>
   
   <url>
-    <loc>/en/post/apply/2019-06-23-apply/</loc>
-    <lastmod>2019-07-22T17:42:09-06:00</lastmod>
+    <loc>/en/post/2019-06-23-apply/</loc>
+    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/post/2019-06-23-apply/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/post/2019-06-23-apply/"
+                />
   </url>
   
   <url>
     <loc>/en/authors/</loc>
-    <lastmod>2019-07-22T17:42:09-06:00</lastmod>
+    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -41,7 +51,7 @@
   
   <url>
     <loc>/en/categories/</loc>
-    <lastmod>2019-07-22T17:42:09-06:00</lastmod>
+    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -57,7 +67,7 @@
   
   <url>
     <loc>/en/authors/c%C3%A9sar-gamboa-sanabria/</loc>
-    <lastmod>2019-07-22T17:42:09-06:00</lastmod>
+    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -73,7 +83,7 @@
   
   <url>
     <loc>/en/post/</loc>
-    <lastmod>2019-07-22T17:42:09-06:00</lastmod>
+    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
@@ -88,7 +98,7 @@
   
   <url>
     <loc>/en/tags/r/</loc>
-    <lastmod>2019-07-22T17:42:09-06:00</lastmod>
+    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -104,13 +114,13 @@
   
   <url>
     <loc>/en/categories/r-basics/</loc>
-    <lastmod>2019-07-22T17:42:09-06:00</lastmod>
+    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/en/tags/rstudio/</loc>
-    <lastmod>2019-07-22T17:42:09-06:00</lastmod>
+    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -126,7 +136,7 @@
   
   <url>
     <loc>/en/tags/</loc>
-    <lastmod>2019-07-22T17:42:09-06:00</lastmod>
+    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -142,7 +152,7 @@
   
   <url>
     <loc>/en/tags/apply/</loc>
-    <lastmod>2019-07-22T17:42:09-06:00</lastmod>
+    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -158,7 +168,7 @@
   
   <url>
     <loc>/en/tags/apply-family-functions/</loc>
-    <lastmod>2019-07-22T17:42:09-06:00</lastmod>
+    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -220,20 +230,30 @@
   </url>
   
   <url>
-    <loc>/en/tags/exploratory-data-analysis/</loc>
-    <lastmod>2019-06-23T13:42:09-06:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/en/categories/exploratory-data-analysis/</loc>
     <lastmod>2019-06-23T13:42:09-06:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/en/post/post1/2019-06-23-exploraci%C3%B3n-de-datos-categ%C3%B3ricos-con-el-paquete-inspectdf/</loc>
+    <loc>/en/tags/exploratory-data-analysis/</loc>
     <lastmod>2019-06-23T13:42:09-06:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/en/post/2019-06-23-exploraci%C3%B3n-de-datos-categ%C3%B3ricos-con-el-paquete-inspectdf/</loc>
+    <lastmod>2019-06-23T13:42:09-06:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/post/2019-06-23-exploraci%C3%B3n-de-datos-categ%C3%B3ricos-con-el-paquete-inspectdf/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/post/2019-06-23-exploraci%C3%B3n-de-datos-categ%C3%B3ricos-con-el-paquete-inspectdf/"
+                />
   </url>
   
   <url>
