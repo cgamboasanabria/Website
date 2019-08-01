@@ -1,0 +1,82 @@
+---
+# Documentation: https://sourcethemes.com/academic/docs/managing-content/
+
+title: "Apply family functions - Part 2"
+subtitle: "The tapply() function"
+summary: "The tapply function in data analysis."
+authors: ["César Gamboa Sanabria"]
+tags: ["R", "RStudio", "apply family functions", "tapply"]
+categories: ["R basics"]
+date: 2019-07-31T18:55:57-06:00
+lastmod: 2019-07-31T18:55:57-06:00
+featured: false
+draft: false
+
+# Featured image
+# To use, add an image named `featured.jpg/png` to your page's folder.
+# Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
+image:
+  caption: ""
+  focal_point: ""
+  preview_only: false
+
+# Projects (optional).
+#   Associate this post with one or more of your projects.
+#   Simply enter your project's folder or file name without extension.
+#   E.g. `projects = ["internal-project"]` references `content/project/deep-learning/index.md`.
+#   Otherwise, set `projects = []`.
+projects: []
+---
+
+In this second part of the post series on the apply family of functions, it is the `tapply()` function. Unlike the `apply ()` function discussed in the first post, the `tapply()` function is often used to apply a function to subsets of a vector. Usually, when working with databases, there are variables of different nature, some can be numerical, others categorical, the idea of `tapply()` is to obtain summaries of a vector but being grouped concerning other vectors (variables).
+
+On this occasion, we will use the starwars database seen in the post on the `inspectdf` package again.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+base <- read.csv("C:\\Users\\Dell\\OneDrive\\Academico\\Proyectos\\GitHub\\Website\\content\\es\\post\\referencias\\heroes_information.csv")[,-1]
+library(DT)
+library(dplyr)
+library(inspectdf)
+```
+
+If we need to know the average height of the characters, execute the following command.
+
+```{r}
+mean(starwars$height, na.rm = TRUE)
+```
+
+However, it is more valuable to obtain the average height according to another variable of interest that allows us to make some comparison, such as gender. For this, we can use the `tapply()` function.
+
+```{r}
+tapply(X=starwars$height,     
+       INDEX=starwars$gender, 
+       FUN=mean)              
+```
+
+The *NA* that appear are due to missing values within the database, so the `mean()` function does not calculate the average correctly unless an imputation of these missing values is made or indicated that the `mean()` function must omit the missing values using the argument `na.rm = TRUE`. In most of the `apply` family functions, the arguments that belong to the function being applied (in this case `mean() `) must go after the ` FUN` argument.
+
+```{r}
+tapply(X=starwars$height,     
+       INDEX=starwars$gender,
+       FUN=mean,              
+       na.rm=TRUE)            
+```
+
+The `tapply()` function is not limited to a single grouping variable. The same "dimensions" concept that we discuss in the `apply ()` function can be used to `tapply()`, but this time the grouping variables must be specified within a list. As an example, suppose we are interested in the average height according to gender and eye color.
+
+```{r}
+tapply(X=starwars$height,
+       INDEX=list(starwars$eye_color, starwars$gender), 
+       FUN=mean, 
+       na.rm=TRUE)
+```
+
+We can add more grouping variables, but all of them must be within the list. For example, it is possible to grouping also by the skin color, although in this case, the result would show many missing values because not all combinations exist. That is a demonstration that each time we grouping variables, these groupings should make sense; otherwise, the analysis will not be useful.
+
+```{r}
+tapply(X=starwars$height,
+       INDEX=list(starwars$eye_color, starwars$gender, starwars$skin_color), 
+       FUN=mean, 
+       na.rm=TRUE)
+```
+

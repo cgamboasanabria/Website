@@ -7,10 +7,654 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>es-cr</language>
     <copyright>&amp;copy; 2019</copyright>
-    <lastBuildDate>Sun, 21 Jul 2019 17:42:09 -0600</lastBuildDate>
+    <lastBuildDate>Wed, 31 Jul 2019 18:55:57 -0600</lastBuildDate>
     
 	    <atom:link href="/es/tags/funciones-apply/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Familia de funciones apply - Parte 2</title>
+      <link>/es/post/2019-07-31-tapply/</link>
+      <pubDate>Wed, 31 Jul 2019 18:55:57 -0600</pubDate>
+      
+      <guid>/es/post/2019-07-31-tapply/</guid>
+      <description>
+
+
+&lt;p&gt;En esta segunda parte de la serie de post sobre la familia de funciones apply le toca el turno la función &lt;code&gt;tapply()&lt;/code&gt;. A diferencia de la función &lt;code&gt;apply()&lt;/code&gt; tratada en el primer post, la función &lt;code&gt;tapply()&lt;/code&gt; se usa frecuentemente para aplicar una función a subconjuntos de un vector. Normalmente, al trabajar con bases de datos, se cuenta con variables de distinta naturaleza, algunas pueden ser numéricas, otras categóricas, la idea de &lt;code&gt;tapply()&lt;/code&gt; es obtener resúmenes de un vector pero siendo agrupado en relación a otros vectores (variables).&lt;/p&gt;
+&lt;p&gt;En esta ocasión utilizaremos e nuevo la base de datos de starwars vista en el post sobre el paquete &lt;code&gt;inspectdf&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Si quisiéramos saber la altura promedio de los personajes, basta con ejecutar el siguiente comando.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mean(starwars$height, na.rm = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 174.358&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Sin embargo, es más valioso obtener la altura promedio de acuerdo con otra variable de interés que nos permita hacer alguna comparación, como por ejemplo el género. Para esto podemos utilizar la función &lt;code&gt;tapply()&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tapply(X=starwars$height,     #Variable de interés
+       INDEX=starwars$gender, #Variable de agrupamiento
+       FUN=mean)              #Función a aplicar&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##        female hermaphrodite          male          none 
+##            NA           175            NA            NA&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Los &lt;em&gt;NA&lt;/em&gt; que aparecen se deben a que existen valores faltantes dentro de la base de datos, por lo cual la función &lt;code&gt;mean()&lt;/code&gt; no calcula correctamente el promedio a menos que se realice una imputación de estos valores faltantes o bien se indique que la función &lt;code&gt;mean()&lt;/code&gt; debe omitir los valores faltantes usando el argumento &lt;code&gt;na.rm=TRUE&lt;/code&gt;. En la mayoría de las funciones de la familia &lt;code&gt;apply&lt;/code&gt;, los argumentos que pertenecen a al función que se está aplicando (en este caso &lt;code&gt;mean()&lt;/code&gt;) deben ir después del argumento &lt;code&gt;FUN&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tapply(X=starwars$height,     #Variable de interés
+       INDEX=starwars$gender, #Variable de agrupamiento
+       FUN=mean,              #Función a aplicar
+       na.rm=TRUE)            #Se omiten los NA&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##        female hermaphrodite          male          none 
+##      165.4706      175.0000      179.2373      200.0000&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;La función &lt;code&gt;tapply()&lt;/code&gt; no está limitada a una única variable de agrupamiento. El mismo concepto de “dimensiones” que aplicamos en la función &lt;code&gt;apply()&lt;/code&gt; puede ser aplicado a &lt;code&gt;tapply()&lt;/code&gt;, pero en esta ocasión las variables de agrupamiento deben especificarse dentro de una lista. A modo de ejemplo, supongamos que nos interesa saber la altura promedio según el género y el color de ojos.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tapply(X=starwars$height,
+       INDEX=list(starwars$eye_color, starwars$gender), 
+       FUN=mean, 
+       na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##               female hermaphrodite     male none
+## black          195.5            NA 182.0000  NaN
+## blue           167.0            NA 189.2308   NA
+## blue-gray         NA            NA 182.0000   NA
+## brown          160.0            NA 168.5000   NA
+## dark              NA            NA      NaN   NA
+## gold              NA            NA 191.0000   NA
+## green, yellow     NA            NA 216.0000   NA
+## hazel          178.0            NA 170.0000   NA
+## orange            NA           175 181.2857   NA
+## pink              NA            NA 180.0000   NA
+## red               NA            NA 190.5000  200
+## red, blue       96.0            NA       NA   NA
+## unknown          NaN            NA 136.0000   NA
+## white          178.0            NA       NA   NA
+## yellow         168.0            NA 180.1111   NA&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Si se desea pueden agregarse más variables de agrupamiento, pero todas deben ser dentro de la lista. Por ejemplo, podría ser de interés agrupar también por el color de piel de los personajes, aunque en este caso el resultado mostraría muchos valores faltantes pues no todas las combinaciones existen. Esto es una demostración de que cada vez que se agrupen variables, estos agrupamientos deben tener sentido, pues de lo contrario solo se añadiría ruido al análisis.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tapply(X=starwars$height,
+       INDEX=list(starwars$eye_color, starwars$gender, starwars$skin_color), 
+       FUN=mean, 
+       na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## , , blue
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA  196   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel            178            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , blue, grey
+## 
+##               female hermaphrodite  male none
+## black             NA            NA    NA   NA
+## blue              NA            NA    NA   NA
+## blue-gray         NA            NA    NA   NA
+## brown             NA            NA    NA   NA
+## dark              NA            NA    NA   NA
+## gold              NA            NA    NA   NA
+## green, yellow     NA            NA    NA   NA
+## hazel             NA            NA    NA   NA
+## orange            NA            NA    NA   NA
+## pink              NA            NA    NA   NA
+## red               NA            NA    NA   NA
+## red, blue         NA            NA    NA   NA
+## unknown           NA            NA    NA   NA
+## white             NA            NA    NA   NA
+## yellow            NA            NA 115.5   NA
+## 
+## , , brown
+## 
+##               female hermaphrodite  male none
+## black             NA            NA    NA   NA
+## blue              NA            NA 234.0   NA
+## blue-gray         NA            NA    NA   NA
+## brown             NA            NA 129.5   NA
+## dark              NA            NA    NA   NA
+## gold              NA            NA    NA   NA
+## green, yellow     NA            NA    NA   NA
+## hazel             NA            NA    NA   NA
+## orange            NA            NA    NA   NA
+## pink              NA            NA    NA   NA
+## red               NA            NA    NA   NA
+## red, blue         NA            NA    NA   NA
+## unknown           NA            NA    NA   NA
+## white             NA            NA    NA   NA
+## yellow            NA            NA 198.0   NA
+## 
+## , , brown mottle
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA  180   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , brown, white
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA  216   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , dark
+## 
+##               female hermaphrodite   male none
+## black             NA            NA     NA   NA
+## blue             184            NA     NA   NA
+## blue-gray         NA            NA     NA   NA
+## brown             NA            NA 183.25   NA
+## dark              NA            NA    NaN   NA
+## gold              NA            NA     NA   NA
+## green, yellow     NA            NA     NA   NA
+## hazel             NA            NA     NA   NA
+## orange            NA            NA     NA   NA
+## pink              NA            NA     NA   NA
+## red               NA            NA     NA   NA
+## red, blue         NA            NA     NA   NA
+## unknown           NA            NA     NA   NA
+## white             NA            NA     NA   NA
+## yellow            NA            NA     NA   NA
+## 
+## , , fair
+## 
+##               female hermaphrodite     male none
+## black             NA            NA       NA   NA
+## blue           158.5            NA 181.1250   NA
+## blue-gray         NA            NA 182.0000   NA
+## brown          163.0            NA 185.3333   NA
+## dark              NA            NA       NA   NA
+## gold              NA            NA       NA   NA
+## green, yellow     NA            NA       NA   NA
+## hazel             NA            NA 170.0000   NA
+## orange            NA            NA       NA   NA
+## pink              NA            NA       NA   NA
+## red               NA            NA       NA   NA
+## red, blue         NA            NA       NA   NA
+## unknown           NA            NA       NA   NA
+## white             NA            NA       NA   NA
+## yellow            NA            NA       NA   NA
+## 
+## , , fair, green, yellow
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow           168            NA   NA   NA
+## 
+## , , gold
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , green
+## 
+##               female hermaphrodite  male none
+## black             NA            NA 184.5   NA
+## blue              NA            NA    NA   NA
+## blue-gray         NA            NA    NA   NA
+## brown             NA            NA  66.0   NA
+## dark              NA            NA    NA   NA
+## gold              NA            NA    NA   NA
+## green, yellow     NA            NA    NA   NA
+## hazel             NA            NA    NA   NA
+## orange            NA            NA 206.0   NA
+## pink              NA            NA    NA   NA
+## red               NA            NA 190.0   NA
+## red, blue         NA            NA    NA   NA
+## unknown           NA            NA    NA   NA
+## white             NA            NA    NA   NA
+## yellow            NA            NA 183.0   NA
+## 
+## , , green-tan, brown
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA           175   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , green, grey
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA  193   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , grey
+## 
+##               female hermaphrodite     male none
+## black            213            NA 198.3333   NA
+## blue              NA            NA       NA   NA
+## blue-gray         NA            NA       NA   NA
+## brown             NA            NA       NA   NA
+## dark              NA            NA       NA   NA
+## gold              NA            NA 191.0000   NA
+## green, yellow     NA            NA       NA   NA
+## hazel             NA            NA       NA   NA
+## orange            NA            NA 224.0000   NA
+## pink              NA            NA       NA   NA
+## red               NA            NA       NA   NA
+## red, blue         NA            NA       NA   NA
+## unknown           NA            NA       NA   NA
+## white             NA            NA       NA   NA
+## yellow            NA            NA       NA   NA
+## 
+## , , grey, blue
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   79   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , grey, green, yellow
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA  163   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , grey, red
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA  112   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , light
+## 
+##               female hermaphrodite  male none
+## black             NA            NA    NA   NA
+## blue          165.00            NA 176.5   NA
+## blue-gray         NA            NA    NA   NA
+## brown         159.25            NA 185.5   NA
+## dark              NA            NA    NA   NA
+## gold              NA            NA    NA   NA
+## green, yellow     NA            NA    NA   NA
+## hazel            NaN            NA    NA   NA
+## orange            NA            NA    NA   NA
+## pink              NA            NA    NA   NA
+## red               NA            NA    NA   NA
+## red, blue         NA            NA    NA   NA
+## unknown           NA            NA    NA   NA
+## white             NA            NA    NA   NA
+## yellow            NA            NA    NA   NA
+## 
+## , , metal
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA  200
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , mottled green
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA  191   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , none
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA  NaN
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , orange
+## 
+##               female hermaphrodite male none
+## black             NA            NA  188   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA  196   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , pale
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA  188   NA
+## pink              NA            NA  180   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white            178            NA   NA   NA
+## yellow            NA            NA  184   NA
+## 
+## , , red
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA  175   NA
+## 
+## , , red, blue, white
+## 
+##               female hermaphrodite male none
+## black            178            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , silver, red
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         96            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , tan
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA  187   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , unknown
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA  228   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown          NaN            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , white
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA  233   NA
+## 
+## , , white, blue
+## 
+##               female hermaphrodite male none
+## black             NA            NA  122   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , white, red
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , yellow
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue             168            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>Familia de funciones apply - Parte 1</title>

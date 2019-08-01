@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="es-cr">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.3.1">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="César Gamboa Sanabria">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Se muestran ejemplos de uso de la función tapply()">
+
+  
+  <link rel="alternate" hreflang="en" href="/en/post/2019-07-31-tapply/">
+  
+  <link rel="alternate" hreflang="es-cr" href="/es/post/2019-07-31-tapply/">
+
+  
+
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#3f51b5">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.css" integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ==" crossorigin="anonymous">
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700|Merriweather|Roboto+Mono">
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.min.2a17bfb632980d1f1c42d8c79d2187b0.css">
+
+  
+
+  
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-141652833-1 ', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+  
+
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="/es/post/2019-07-31-tapply/">
+
+  
+  
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="twitter:site" content="@gamboasanabria">
+  <meta property="twitter:creator" content="@gamboasanabria">
+  
+  <meta property="og:site_name" content="">
+  <meta property="og:url" content="/es/post/2019-07-31-tapply/">
+  <meta property="og:title" content="Familia de funciones apply - Parte 2 | ">
+  <meta property="og:description" content="Se muestran ejemplos de uso de la función tapply()"><meta property="og:image" content="/img/icon-192.png">
+  <meta property="og:locale" content="es-cr">
+  
+  <meta property="article:published_time" content="2019-07-31T18:55:57-06:00">
+  
+  <meta property="article:modified_time" content="2019-07-31T18:55:57-06:00">
+  
+
+  
+
+
+  
+
+
+
+
+
+  <title>Familia de funciones apply - Parte 2 | </title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Buscar</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Buscar..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/es"></a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Barra de navegación">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/es/#about"><span>Inicio</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/es/#experience"><span>Experiencia y formación académica</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/es/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/es/#talks"><span>Actividades</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/es/#contact"><span>Contacto</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
+            <i class="fas fa-globe" aria-hidden="true"></i>
+            <span>Español</span>
+          </a>
+          <ul class="dropdown-menu">
+            
+            <li class="dropdown-item my-0 py-0 mx-0 px-0">
+              <a href="/en/post/2019-07-31-tapply/">
+                <span>English</span>
+              </a>
+            </li>
+            
+          </ul>
+        </li>
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1 itemprop="name">Familia de funciones apply - Parte 2</h1>
+
+  
+  <p class="page-subtitle">La función tapply()</p>
+  
+
+  
+    
+
+
+
+<meta content="2019-07-31 18:55:57 -0600 CST" itemprop="datePublished">
+<meta content="2019-07-31 18:55:57 -0600 CST" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  <span itemprop="author name" itemtype="http://schema.org/Person">César Gamboa Sanabria</span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>Jul 31, 2019</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    18 min de lectura
+  </span>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/es/post/2019-07-31-tapply/#disqus_thread"></a>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    <a href="/es/categories/fundamentos-de-r/">Fundamentos de R</a></span>
+  
+
+  
+    
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Familia%20de%20funciones%20apply%20-%20Parte%202&amp;url=%2fes%2fpost%2f2019-07-31-tapply%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=%2fes%2fpost%2f2019-07-31-tapply%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fes%2fpost%2f2019-07-31-tapply%2f&amp;title=Familia%20de%20funciones%20apply%20-%20Parte%202"
+         target="_blank" rel="noopener">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=%2fes%2fpost%2f2019-07-31-tapply%2f&amp;title=Familia%20de%20funciones%20apply%20-%20Parte%202"
+         target="_blank" rel="noopener">
+        <i class="fab fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Familia%20de%20funciones%20apply%20-%20Parte%202&amp;body=%2fes%2fpost%2f2019-07-31-tapply%2f">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+
+<p>En esta segunda parte de la serie de post sobre la familia de funciones apply le toca el turno la función <code>tapply()</code>. A diferencia de la función <code>apply()</code> tratada en el primer post, la función <code>tapply()</code> se usa frecuentemente para aplicar una función a subconjuntos de un vector. Normalmente, al trabajar con bases de datos, se cuenta con variables de distinta naturaleza, algunas pueden ser numéricas, otras categóricas, la idea de <code>tapply()</code> es obtener resúmenes de un vector pero siendo agrupado en relación a otros vectores (variables).</p>
+<p>En esta ocasión utilizaremos e nuevo la base de datos de starwars vista en el post sobre el paquete <code>inspectdf</code>.</p>
+<p>Si quisiéramos saber la altura promedio de los personajes, basta con ejecutar el siguiente comando.</p>
+<pre class="r"><code>mean(starwars$height, na.rm = TRUE)</code></pre>
+<pre><code>## [1] 174.358</code></pre>
+<p>Sin embargo, es más valioso obtener la altura promedio de acuerdo con otra variable de interés que nos permita hacer alguna comparación, como por ejemplo el género. Para esto podemos utilizar la función <code>tapply()</code>.</p>
+<pre class="r"><code>tapply(X=starwars$height,     #Variable de interés
+       INDEX=starwars$gender, #Variable de agrupamiento
+       FUN=mean)              #Función a aplicar</code></pre>
+<pre><code>##        female hermaphrodite          male          none 
+##            NA           175            NA            NA</code></pre>
+<p>Los <em>NA</em> que aparecen se deben a que existen valores faltantes dentro de la base de datos, por lo cual la función <code>mean()</code> no calcula correctamente el promedio a menos que se realice una imputación de estos valores faltantes o bien se indique que la función <code>mean()</code> debe omitir los valores faltantes usando el argumento <code>na.rm=TRUE</code>. En la mayoría de las funciones de la familia <code>apply</code>, los argumentos que pertenecen a al función que se está aplicando (en este caso <code>mean()</code>) deben ir después del argumento <code>FUN</code>.</p>
+<pre class="r"><code>tapply(X=starwars$height,     #Variable de interés
+       INDEX=starwars$gender, #Variable de agrupamiento
+       FUN=mean,              #Función a aplicar
+       na.rm=TRUE)            #Se omiten los NA</code></pre>
+<pre><code>##        female hermaphrodite          male          none 
+##      165.4706      175.0000      179.2373      200.0000</code></pre>
+<p>La función <code>tapply()</code> no está limitada a una única variable de agrupamiento. El mismo concepto de “dimensiones” que aplicamos en la función <code>apply()</code> puede ser aplicado a <code>tapply()</code>, pero en esta ocasión las variables de agrupamiento deben especificarse dentro de una lista. A modo de ejemplo, supongamos que nos interesa saber la altura promedio según el género y el color de ojos.</p>
+<pre class="r"><code>tapply(X=starwars$height,
+       INDEX=list(starwars$eye_color, starwars$gender), 
+       FUN=mean, 
+       na.rm=TRUE)</code></pre>
+<pre><code>##               female hermaphrodite     male none
+## black          195.5            NA 182.0000  NaN
+## blue           167.0            NA 189.2308   NA
+## blue-gray         NA            NA 182.0000   NA
+## brown          160.0            NA 168.5000   NA
+## dark              NA            NA      NaN   NA
+## gold              NA            NA 191.0000   NA
+## green, yellow     NA            NA 216.0000   NA
+## hazel          178.0            NA 170.0000   NA
+## orange            NA           175 181.2857   NA
+## pink              NA            NA 180.0000   NA
+## red               NA            NA 190.5000  200
+## red, blue       96.0            NA       NA   NA
+## unknown          NaN            NA 136.0000   NA
+## white          178.0            NA       NA   NA
+## yellow         168.0            NA 180.1111   NA</code></pre>
+<p>Si se desea pueden agregarse más variables de agrupamiento, pero todas deben ser dentro de la lista. Por ejemplo, podría ser de interés agrupar también por el color de piel de los personajes, aunque en este caso el resultado mostraría muchos valores faltantes pues no todas las combinaciones existen. Esto es una demostración de que cada vez que se agrupen variables, estos agrupamientos deben tener sentido, pues de lo contrario solo se añadiría ruido al análisis.</p>
+<pre class="r"><code>tapply(X=starwars$height,
+       INDEX=list(starwars$eye_color, starwars$gender, starwars$skin_color), 
+       FUN=mean, 
+       na.rm=TRUE)</code></pre>
+<pre><code>## , , blue
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA  196   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel            178            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , blue, grey
+## 
+##               female hermaphrodite  male none
+## black             NA            NA    NA   NA
+## blue              NA            NA    NA   NA
+## blue-gray         NA            NA    NA   NA
+## brown             NA            NA    NA   NA
+## dark              NA            NA    NA   NA
+## gold              NA            NA    NA   NA
+## green, yellow     NA            NA    NA   NA
+## hazel             NA            NA    NA   NA
+## orange            NA            NA    NA   NA
+## pink              NA            NA    NA   NA
+## red               NA            NA    NA   NA
+## red, blue         NA            NA    NA   NA
+## unknown           NA            NA    NA   NA
+## white             NA            NA    NA   NA
+## yellow            NA            NA 115.5   NA
+## 
+## , , brown
+## 
+##               female hermaphrodite  male none
+## black             NA            NA    NA   NA
+## blue              NA            NA 234.0   NA
+## blue-gray         NA            NA    NA   NA
+## brown             NA            NA 129.5   NA
+## dark              NA            NA    NA   NA
+## gold              NA            NA    NA   NA
+## green, yellow     NA            NA    NA   NA
+## hazel             NA            NA    NA   NA
+## orange            NA            NA    NA   NA
+## pink              NA            NA    NA   NA
+## red               NA            NA    NA   NA
+## red, blue         NA            NA    NA   NA
+## unknown           NA            NA    NA   NA
+## white             NA            NA    NA   NA
+## yellow            NA            NA 198.0   NA
+## 
+## , , brown mottle
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA  180   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , brown, white
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA  216   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , dark
+## 
+##               female hermaphrodite   male none
+## black             NA            NA     NA   NA
+## blue             184            NA     NA   NA
+## blue-gray         NA            NA     NA   NA
+## brown             NA            NA 183.25   NA
+## dark              NA            NA    NaN   NA
+## gold              NA            NA     NA   NA
+## green, yellow     NA            NA     NA   NA
+## hazel             NA            NA     NA   NA
+## orange            NA            NA     NA   NA
+## pink              NA            NA     NA   NA
+## red               NA            NA     NA   NA
+## red, blue         NA            NA     NA   NA
+## unknown           NA            NA     NA   NA
+## white             NA            NA     NA   NA
+## yellow            NA            NA     NA   NA
+## 
+## , , fair
+## 
+##               female hermaphrodite     male none
+## black             NA            NA       NA   NA
+## blue           158.5            NA 181.1250   NA
+## blue-gray         NA            NA 182.0000   NA
+## brown          163.0            NA 185.3333   NA
+## dark              NA            NA       NA   NA
+## gold              NA            NA       NA   NA
+## green, yellow     NA            NA       NA   NA
+## hazel             NA            NA 170.0000   NA
+## orange            NA            NA       NA   NA
+## pink              NA            NA       NA   NA
+## red               NA            NA       NA   NA
+## red, blue         NA            NA       NA   NA
+## unknown           NA            NA       NA   NA
+## white             NA            NA       NA   NA
+## yellow            NA            NA       NA   NA
+## 
+## , , fair, green, yellow
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow           168            NA   NA   NA
+## 
+## , , gold
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , green
+## 
+##               female hermaphrodite  male none
+## black             NA            NA 184.5   NA
+## blue              NA            NA    NA   NA
+## blue-gray         NA            NA    NA   NA
+## brown             NA            NA  66.0   NA
+## dark              NA            NA    NA   NA
+## gold              NA            NA    NA   NA
+## green, yellow     NA            NA    NA   NA
+## hazel             NA            NA    NA   NA
+## orange            NA            NA 206.0   NA
+## pink              NA            NA    NA   NA
+## red               NA            NA 190.0   NA
+## red, blue         NA            NA    NA   NA
+## unknown           NA            NA    NA   NA
+## white             NA            NA    NA   NA
+## yellow            NA            NA 183.0   NA
+## 
+## , , green-tan, brown
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA           175   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , green, grey
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA  193   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , grey
+## 
+##               female hermaphrodite     male none
+## black            213            NA 198.3333   NA
+## blue              NA            NA       NA   NA
+## blue-gray         NA            NA       NA   NA
+## brown             NA            NA       NA   NA
+## dark              NA            NA       NA   NA
+## gold              NA            NA 191.0000   NA
+## green, yellow     NA            NA       NA   NA
+## hazel             NA            NA       NA   NA
+## orange            NA            NA 224.0000   NA
+## pink              NA            NA       NA   NA
+## red               NA            NA       NA   NA
+## red, blue         NA            NA       NA   NA
+## unknown           NA            NA       NA   NA
+## white             NA            NA       NA   NA
+## yellow            NA            NA       NA   NA
+## 
+## , , grey, blue
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   79   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , grey, green, yellow
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA  163   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , grey, red
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA  112   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , light
+## 
+##               female hermaphrodite  male none
+## black             NA            NA    NA   NA
+## blue          165.00            NA 176.5   NA
+## blue-gray         NA            NA    NA   NA
+## brown         159.25            NA 185.5   NA
+## dark              NA            NA    NA   NA
+## gold              NA            NA    NA   NA
+## green, yellow     NA            NA    NA   NA
+## hazel            NaN            NA    NA   NA
+## orange            NA            NA    NA   NA
+## pink              NA            NA    NA   NA
+## red               NA            NA    NA   NA
+## red, blue         NA            NA    NA   NA
+## unknown           NA            NA    NA   NA
+## white             NA            NA    NA   NA
+## yellow            NA            NA    NA   NA
+## 
+## , , metal
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA  200
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , mottled green
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA  191   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , none
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA  NaN
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , orange
+## 
+##               female hermaphrodite male none
+## black             NA            NA  188   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA  196   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , pale
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA  188   NA
+## pink              NA            NA  180   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white            178            NA   NA   NA
+## yellow            NA            NA  184   NA
+## 
+## , , red
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA  175   NA
+## 
+## , , red, blue, white
+## 
+##               female hermaphrodite male none
+## black            178            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , silver, red
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         96            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , tan
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA  187   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , unknown
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA  228   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown          NaN            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , white
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA  233   NA
+## 
+## , , white, blue
+## 
+##               female hermaphrodite male none
+## black             NA            NA  122   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , white, red
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue              NA            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA
+## 
+## , , yellow
+## 
+##               female hermaphrodite male none
+## black             NA            NA   NA   NA
+## blue             168            NA   NA   NA
+## blue-gray         NA            NA   NA   NA
+## brown             NA            NA   NA   NA
+## dark              NA            NA   NA   NA
+## gold              NA            NA   NA   NA
+## green, yellow     NA            NA   NA   NA
+## hazel             NA            NA   NA   NA
+## orange            NA            NA   NA   NA
+## pink              NA            NA   NA   NA
+## red               NA            NA   NA   NA
+## red, blue         NA            NA   NA   NA
+## unknown           NA            NA   NA   NA
+## white             NA            NA   NA   NA
+## yellow            NA            NA   NA   NA</code></pre>
+
+    </div>
+
+    
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/es/tags/r/">R</a>
+  
+  <a class="badge badge-light" href="/es/tags/rstudio/">RStudio</a>
+  
+  <a class="badge badge-light" href="/es/tags/funciones-apply/">Funciones apply</a>
+  
+  <a class="badge badge-light" href="/es/tags/tapply/">tapply</a>
+  
+</div>
+
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+
+      
+      
+      <div class="article-widget">
+        <div class="hr-light"></div>
+        <h3>Relacionado</h3>
+        <ul>
+          
+          <li><a href="/es/post/2019-06-23-apply/">Familia de funciones apply - Parte 1</a></li>
+          
+          <li><a href="/es/post/2019-06-23-exploraci%C3%B3n-de-datos-categ%C3%B3ricos-con-el-paquete-inspectdf/">Análisis exploratorio de datos categóricos</a></li>
+          
+        </ul>
+      </div>
+      
+    
+
+    
+
+    
+<section id="comments">
+  <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "www-cesargamboasanabria-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML-full" integrity="sha256-GhM+5JHb6QUzOQPXSJLEWP7R73CbkisjzK5Eyij4U9w=" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==" crossorigin="anonymous"></script>
+    
+
+    
+    
+    
+    <script id="dsq-count-scr" src="//www-cesargamboasanabria-com.disqus.com/count.js" async></script>
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/es/index.json";
+      const i18n = {
+        'placeholder': "Buscar...",
+        'results': "resultados encontrados",
+        'no_results': "No se encontraron resultados"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Proyectos",
+        'publication' : "Publicaciones",
+        'talk' : "Charlas"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.9ef1b53ee2bde6c7f33b150c6ba4d452.js"></script>
+
+    
+
+
+
+
+
+
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    &copy; 2019 &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Citar</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copiar
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Descargar
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

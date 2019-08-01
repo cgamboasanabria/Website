@@ -4,7 +4,7 @@
   
   <url>
     <loc>/es/</loc>
-    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
+    <lastmod>2019-07-31T18:55:57-06:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -20,7 +20,7 @@
   
   <url>
     <loc>/es/authors/</loc>
-    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
+    <lastmod>2019-07-31T18:55:57-06:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -36,7 +36,7 @@
   
   <url>
     <loc>/es/categories/</loc>
-    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
+    <lastmod>2019-07-31T18:55:57-06:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -52,7 +52,7 @@
   
   <url>
     <loc>/es/authors/c%C3%A9sar-gamboa-sanabria/</loc>
-    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
+    <lastmod>2019-07-31T18:55:57-06:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -67,35 +67,35 @@
   </url>
   
   <url>
-    <loc>/es/post/2019-06-23-apply/</loc>
-    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
+    <loc>/es/post/2019-07-31-tapply/</loc>
+    <lastmod>2019-07-31T18:55:57-06:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/en/post/2019-06-23-apply/"
+                href="/en/post/2019-07-31-tapply/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="/es/post/2019-06-23-apply/"
+                href="/es/post/2019-07-31-tapply/"
                 />
   </url>
   
   <url>
     <loc>/es/tags/funciones-apply/</loc>
-    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
+    <lastmod>2019-07-31T18:55:57-06:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/es/categories/fundamentos-de-r/</loc>
-    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
+    <lastmod>2019-07-31T18:55:57-06:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/es/post/</loc>
-    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
+    <lastmod>2019-07-31T18:55:57-06:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -110,7 +110,7 @@
   
   <url>
     <loc>/es/tags/r/</loc>
-    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
+    <lastmod>2019-07-31T18:55:57-06:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -126,7 +126,7 @@
   
   <url>
     <loc>/es/tags/rstudio/</loc>
-    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
+    <lastmod>2019-07-31T18:55:57-06:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -142,7 +142,7 @@
   
   <url>
     <loc>/es/tags/</loc>
-    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
+    <lastmod>2019-07-31T18:55:57-06:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -153,6 +153,37 @@
                 rel="alternate"
                 hreflang="es"
                 href="/es/tags/"
+                />
+  </url>
+  
+  <url>
+    <loc>/es/tags/tapply/</loc>
+    <lastmod>2019-07-31T18:55:57-06:00</lastmod>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/tags/tapply/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/tags/tapply/"
+                />
+  </url>
+  
+  <url>
+    <loc>/es/post/2019-06-23-apply/</loc>
+    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/post/2019-06-23-apply/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/post/2019-06-23-apply/"
                 />
   </url>
   

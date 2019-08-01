@@ -4,7 +4,7 @@
   
   <url>
     <loc>/en/</loc>
-    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
+    <lastmod>2019-07-31T18:55:57-06:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -15,6 +15,160 @@
                 rel="alternate"
                 hreflang="en"
                 href="/en/"
+                />
+  </url>
+  
+  <url>
+    <loc>/en/post/2019-07-31-tapply/</loc>
+    <lastmod>2019-07-31T18:55:57-06:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/post/2019-07-31-tapply/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/post/2019-07-31-tapply/"
+                />
+  </url>
+  
+  <url>
+    <loc>/en/authors/</loc>
+    <lastmod>2019-07-31T18:55:57-06:00</lastmod>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/authors/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/authors/"
+                />
+  </url>
+  
+  <url>
+    <loc>/en/categories/</loc>
+    <lastmod>2019-07-31T18:55:57-06:00</lastmod>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/categories/"
+                />
+  </url>
+  
+  <url>
+    <loc>/en/authors/c%C3%A9sar-gamboa-sanabria/</loc>
+    <lastmod>2019-07-31T18:55:57-06:00</lastmod>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/authors/c%C3%A9sar-gamboa-sanabria/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/authors/c%C3%A9sar-gamboa-sanabria/"
+                />
+  </url>
+  
+  <url>
+    <loc>/en/post/</loc>
+    <lastmod>2019-07-31T18:55:57-06:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/post/"
+                />
+  </url>
+  
+  <url>
+    <loc>/en/tags/r/</loc>
+    <lastmod>2019-07-31T18:55:57-06:00</lastmod>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/tags/r/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/tags/r/"
+                />
+  </url>
+  
+  <url>
+    <loc>/en/categories/r-basics/</loc>
+    <lastmod>2019-07-31T18:55:57-06:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/en/tags/rstudio/</loc>
+    <lastmod>2019-07-31T18:55:57-06:00</lastmod>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/tags/rstudio/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/tags/rstudio/"
+                />
+  </url>
+  
+  <url>
+    <loc>/en/tags/</loc>
+    <lastmod>2019-07-31T18:55:57-06:00</lastmod>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/tags/"
+                />
+  </url>
+  
+  <url>
+    <loc>/en/tags/apply-family-functions/</loc>
+    <lastmod>2019-07-31T18:55:57-06:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/en/tags/tapply/</loc>
+    <lastmod>2019-07-31T18:55:57-06:00</lastmod>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/tags/tapply/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/tags/tapply/"
                 />
   </url>
   
@@ -34,123 +188,6 @@
   </url>
   
   <url>
-    <loc>/en/authors/</loc>
-    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
-    <priority>0</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/authors/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/authors/"
-                />
-  </url>
-  
-  <url>
-    <loc>/en/categories/</loc>
-    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
-    <priority>0</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/categories/"
-                />
-  </url>
-  
-  <url>
-    <loc>/en/authors/c%C3%A9sar-gamboa-sanabria/</loc>
-    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
-    <priority>0</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/authors/c%C3%A9sar-gamboa-sanabria/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/authors/c%C3%A9sar-gamboa-sanabria/"
-                />
-  </url>
-  
-  <url>
-    <loc>/en/post/</loc>
-    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/post/"
-                />
-  </url>
-  
-  <url>
-    <loc>/en/tags/r/</loc>
-    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
-    <priority>0</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/tags/r/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/tags/r/"
-                />
-  </url>
-  
-  <url>
-    <loc>/en/categories/r-basics/</loc>
-    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/en/tags/rstudio/</loc>
-    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
-    <priority>0</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/tags/rstudio/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/tags/rstudio/"
-                />
-  </url>
-  
-  <url>
-    <loc>/en/tags/</loc>
-    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
-    <priority>0</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/tags/"
-                />
-  </url>
-  
-  <url>
     <loc>/en/tags/apply/</loc>
     <lastmod>2019-07-21T17:42:09-06:00</lastmod>
     <priority>0</priority>
@@ -164,12 +201,6 @@
                 hreflang="en"
                 href="/en/tags/apply/"
                 />
-  </url>
-  
-  <url>
-    <loc>/en/tags/apply-family-functions/</loc>
-    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>

@@ -1,0 +1,82 @@
+---
+# Documentation: https://sourcethemes.com/academic/docs/managing-content/
+
+title: "Familia de funciones apply - Parte 2"
+subtitle: "La función tapply()"
+summary: "Se muestran ejemplos de uso de la función tapply()"
+authors: ["César Gamboa Sanabria"]
+tags: ["R", "RStudio", "Funciones apply", "tapply"]
+categories: ["Fundamentos de R"]
+date: 2019-07-31T18:55:57-06:00
+lastmod: 2019-07-31T18:55:57-06:00
+featured: false
+draft: false
+
+# Featured image
+# To use, add an image named `featured.jpg/png` to your page's folder.
+# Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
+image:
+  caption: ""
+  focal_point: ""
+  preview_only: false
+
+# Projects (optional).
+#   Associate this post with one or more of your projects.
+#   Simply enter your project's folder or file name without extension.
+#   E.g. `projects = ["internal-project"]` references `content/project/deep-learning/index.md`.
+#   Otherwise, set `projects = []`.
+projects: []
+---
+
+En esta segunda parte de la serie de post sobre la familia de funciones apply le toca el turno la función `tapply()`. A diferencia de la función `apply()` tratada en el primer post, la función `tapply()` se usa frecuentemente para aplicar una función a subconjuntos de un vector. Normalmente, al trabajar con bases de datos, se cuenta con variables de distinta naturaleza, algunas pueden ser numéricas, otras categóricas, la idea de `tapply()` es obtener resúmenes de un vector pero siendo agrupado en relación a otros vectores (variables).
+
+En esta ocasión utilizaremos e nuevo la base de datos de starwars vista en el post sobre el paquete `inspectdf`.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+base <- read.csv("C:\\Users\\Dell\\OneDrive\\Academico\\Proyectos\\GitHub\\Website\\content\\es\\post\\referencias\\heroes_information.csv")[,-1]
+library(DT)
+library(dplyr)
+library(inspectdf)
+```
+
+Si quisiéramos saber la altura promedio de los personajes, basta con ejecutar el siguiente comando.
+
+```{r}
+mean(starwars$height, na.rm = TRUE)
+```
+
+Sin embargo, es más valioso obtener la altura promedio de acuerdo con otra variable de interés que nos permita hacer alguna comparación, como por ejemplo el género. Para esto podemos utilizar la función `tapply()`.
+
+```{r}
+tapply(X=starwars$height,     #Variable de interés
+       INDEX=starwars$gender, #Variable de agrupamiento
+       FUN=mean)              #Función a aplicar
+```
+
+Los *NA* que aparecen se deben a que existen valores faltantes dentro de la base de datos, por lo cual la función `mean()` no calcula correctamente el promedio a menos que se realice una imputación de estos valores faltantes o bien se indique que la función `mean()` debe omitir los valores faltantes usando el argumento `na.rm=TRUE`. En la mayoría de las funciones de la familia `apply`, los argumentos que pertenecen a al función que se está aplicando (en este caso `mean()`) deben ir después del argumento `FUN`.
+
+```{r}
+tapply(X=starwars$height,     #Variable de interés
+       INDEX=starwars$gender, #Variable de agrupamiento
+       FUN=mean,              #Función a aplicar
+       na.rm=TRUE)            #Se omiten los NA
+```
+
+La función `tapply()` no está limitada a una única variable de agrupamiento. El mismo concepto de "dimensiones" que aplicamos en la función `apply()` puede ser aplicado a `tapply()`, pero en esta ocasión las variables de agrupamiento deben especificarse dentro de una lista. A modo de ejemplo, supongamos que nos interesa saber la altura promedio según el género y el color de ojos.
+
+```{r}
+tapply(X=starwars$height,
+       INDEX=list(starwars$eye_color, starwars$gender), 
+       FUN=mean, 
+       na.rm=TRUE)
+```
+
+Si se desea pueden agregarse más variables de agrupamiento, pero todas deben ser dentro de la lista. Por ejemplo, podría ser de interés agrupar también por el color de piel de los personajes, aunque en este caso el resultado mostraría muchos valores faltantes pues no todas las combinaciones existen. Esto es una demostración de que cada vez que se agrupen variables, estos agrupamientos deben tener sentido, pues de lo contrario solo se añadiría ruido al análisis.
+
+```{r}
+tapply(X=starwars$height,
+       INDEX=list(starwars$eye_color, starwars$gender, starwars$skin_color), 
+       FUN=mean, 
+       na.rm=TRUE)
+```
+
