@@ -50,7 +50,7 @@
   
   <url>
     <loc>/en/authors/</loc>
-    <lastmod>2019-12-09T18:55:57-06:00</lastmod>
+    <lastmod>2019-12-08T18:55:57-06:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -66,7 +66,7 @@
   
   <url>
     <loc>/en/categories/</loc>
-    <lastmod>2019-12-09T18:55:57-06:00</lastmod>
+    <lastmod>2019-12-08T18:55:57-06:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -82,7 +82,7 @@
   
   <url>
     <loc>/en/authors/c%C3%A9sar-gamboa-sanabria/</loc>
-    <lastmod>2019-12-09T18:55:57-06:00</lastmod>
+    <lastmod>2019-12-08T18:55:57-06:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -98,7 +98,7 @@
   
   <url>
     <loc>/en/tags/funciones-apply/</loc>
-    <lastmod>2019-12-09T18:55:57-06:00</lastmod>
+    <lastmod>2019-12-08T18:55:57-06:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -114,7 +114,7 @@
   
   <url>
     <loc>/en/post/</loc>
-    <lastmod>2019-12-09T18:55:57-06:00</lastmod>
+    <lastmod>2019-12-08T18:55:57-06:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
@@ -129,7 +129,7 @@
   
   <url>
     <loc>/en/tags/r/</loc>
-    <lastmod>2019-12-09T18:55:57-06:00</lastmod>
+    <lastmod>2019-12-08T18:55:57-06:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -145,13 +145,13 @@
   
   <url>
     <loc>/en/categories/r-basics/</loc>
-    <lastmod>2019-12-09T18:55:57-06:00</lastmod>
+    <lastmod>2019-12-08T18:55:57-06:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/en/tags/rstudio/</loc>
-    <lastmod>2019-12-09T18:55:57-06:00</lastmod>
+    <lastmod>2019-12-08T18:55:57-06:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -167,7 +167,7 @@
   
   <url>
     <loc>/en/tags/</loc>
-    <lastmod>2019-12-09T18:55:57-06:00</lastmod>
+    <lastmod>2019-12-08T18:55:57-06:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -183,7 +183,7 @@
   
   <url>
     <loc>/en/post/2019-12-08-lapply_sapply_vapply/</loc>
-    <lastmod>2019-12-09T18:55:57-06:00</lastmod>
+    <lastmod>2019-12-08T18:55:57-06:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
@@ -198,7 +198,7 @@
   
   <url>
     <loc>/en/tags/lapply/</loc>
-    <lastmod>2019-12-09T18:55:57-06:00</lastmod>
+    <lastmod>2019-12-08T18:55:57-06:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -214,7 +214,7 @@
   
   <url>
     <loc>/en/tags/sapply/</loc>
-    <lastmod>2019-12-09T18:55:57-06:00</lastmod>
+    <lastmod>2019-12-08T18:55:57-06:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -230,7 +230,7 @@
   
   <url>
     <loc>/en/tags/vapply/</loc>
-    <lastmod>2019-12-09T18:55:57-06:00</lastmod>
+    <lastmod>2019-12-08T18:55:57-06:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -355,13 +355,13 @@
   </url>
   
   <url>
-    <loc>/en/categories/exploratory-data-analysis/</loc>
+    <loc>/en/tags/exploratory-data-analysis/</loc>
     <lastmod>2019-06-23T13:42:09-06:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/en/tags/exploratory-data-analysis/</loc>
+    <loc>/en/categories/exploratory-data-analysis/</loc>
     <lastmod>2019-06-23T13:42:09-06:00</lastmod>
     <priority>0</priority>
   </url>

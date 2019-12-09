@@ -7,7 +7,7 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>es-cr</language>
     <copyright>&amp;copy; 2019</copyright>
-    <lastBuildDate>Mon, 09 Dec 2019 18:55:57 -0600</lastBuildDate>
+    <lastBuildDate>Sun, 08 Dec 2019 18:55:57 -0600</lastBuildDate>
     
 	    <atom:link href="/es/tags/sapply/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>Familia de funciones apply - Parte 3</title>
       <link>/es/post/2019-12-08-lapply_sapply_vapply/</link>
-      <pubDate>Mon, 09 Dec 2019 18:55:57 -0600</pubDate>
+      <pubDate>Sun, 08 Dec 2019 18:55:57 -0600</pubDate>
       
       <guid>/es/post/2019-12-08-lapply_sapply_vapply/</guid>
       <description>

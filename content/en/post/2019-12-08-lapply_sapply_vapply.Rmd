@@ -7,8 +7,8 @@ summary: "The lapply(), sapply() and vapply() functions in data analysis."
 authors: ["César Gamboa Sanabria"]
 tags: ["R", "RStudio", "Funciones apply", "lapply", "sapply", "vapply"]
 categories: ["R basics"]
-date: 2019-12-09T18:55:57-06:00
-lastmod: 2019-12-09T18:55:57-06:00
+date: 2019-12-08T18:55:57-06:00
+lastmod: 2019-12-08T18:55:57-06:00
 featured: false
 draft: false
 
