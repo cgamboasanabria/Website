@@ -1,0 +1,155 @@
+---
+# Documentation: https://sourcethemes.com/academic/docs/managing-content/
+
+title: "apply family functions - Part 3"
+subtitle: "lapply(), sapply() and vapply() functions"
+summary: "The lapply(), sapply() and vapply() functions in data analysis."
+authors: ["César Gamboa Sanabria"]
+tags: ["R", "RStudio", "Funciones apply", "lapply", "sapply", "vapply"]
+categories: ["R basics"]
+date: 2019-12-09T18:55:57-06:00
+lastmod: 2019-12-09T18:55:57-06:00
+featured: false
+draft: false
+
+# Featured image
+# To use, add an image named `featured.jpg/png` to your page's folder.
+# Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
+image:
+  caption: ""
+  focal_point: ""
+  preview_only: false
+
+# Projects (optional).
+#   Associate this post with one or more of your projects.
+#   Simply enter your project's folder or file name without extension.
+#   E.g. `projects = ["internal-project"]` references `content/project/deep-learning/index.md`.
+#   Otherwise, set `projects = []`.
+projects: []
+---
+
+In this new post about the apply family functions, we'll show some examples of three new functions: `lapply()`, `sapply()`, and `vapply()`. These functions generally works with objects of class `list`; however, other variants can work with vectors.
+
+Suppose now we have several databases on which we need to obtain the sum of each column. We'll generate a simple function that returns a database of random numbers in the range $ [1,100] $ and also contains missing values, with a certain number of rows and columns.
+
+```{r}
+dat <- function(rows, columns){
+    values <- sample(x = c(NA,1:100), 
+        size = rows*columns,
+        replace = TRUE)
+    as.data.frame(matrix(data = values,
+                         nrow = rows, 
+                         ncol = columns))
+}
+```
+
+Thus, for example, we can generate a database with 50 rows and 5 columns by executing the following command:
+
+```{r}
+set.seed(20191208)
+df1 <- dat(50, 5)
+```
+
+
+Let's generate more other databases of dimensions $100\times5$ and $150\times5$.
+
+```{r}
+set.seed(20191208)
+df2 <- dat(100, 5)
+df3 <- dat(150, 5)
+```
+
+As we saw in [this post](https://www.cesargamboasanabria.com/en/post/2019-06-23-apply/), we could use the `apply()` function to get the sum of the columns.
+
+```{r}
+apply(df1,2,sum)
+apply(df2,2,sum)
+apply(df3,2,sum)
+```
+
+Or, something simpler would be to use the function `colSums()`.
+
+```{r}
+colSums(df1)
+colSums(df2)
+colSums(df3)
+```
+
+However, we could have a large number of databases, so the above procedures are not viable since writing so many lines of code is quite dull.
+
+That's the time the lists come into play. The three databases we generate can be stored in a single list as follows.
+
+```{r}
+list1 <- list(df1, df2, df3)
+```
+
+By having a list, each database becomes an element of that list. For example, element 1 is the set *df1*, while the sets *df2* and *df3* are elements 2 and three, respectively. One way to call the elements within a list is by `[[]]`, as follows we call the data set *df2*:
+
+```{r}
+list1[[2]]
+```
+
+Now, if we need to apply the `colSums()` function to each data set, we can use the `lapply()` function:
+
+```{r}
+lapply(list1, colSums)
+```
+
+The result is a list with the sum of the columns of each database. If we need to do the sums, but without counting the missing values, we have to incorporate the respective argument of the `colSums()` function.
+
+```{r}
+lapply(list1, colSums, na.rm=TRUE)
+```
+
+As you can see, the `lapply()` function works with three arguments: a list -in this case, the list object-, a function that we want to apply to each element of that list -in this case, `colSums()`-, and if necessary, the arguments requested by the indicated function -in this case `na.rm = TRUE` of the `colSums()`- function.
+
+The previous result returns the calculations in an object of class `list`; however, in many cases, it is desirable to obtain a more orderly format. The `sapply()` function works identically to `lapply()`, with the proviso that **if the result of each item in the list has the same length**, the `sapply()` function groups the result. By using the `lapply()` motion, we obtain a list of three elements, where each element is a vector of length five, that is, they all have the same length, so the `sapply()` function would return the following:
+
+```{r}
+sapply(list1, colSums)
+sapply(list1, colSums, na.rm=TRUE)
+```
+
+Although the `sapply()` function seems more useful than `lapply()`, it has a small inconvenience, and it is always going to work... How can this be an inconvenience? Let's incorporate a new data set, but this time with six columns instead of five like the previous ones.
+
+```{r}
+df4 <- dat(150, 6)
+list2 <- list(df1, df2, df3, df4)
+```
+
+If we use the `lapply()` function again, we would again obtain the sums by columns in the form of a list:
+
+```{r}
+lapply(list2, colSums, na.rm=TRUE)
+```
+
+While if we apply the `sapply()` function:
+
+```{r}
+sapply(list2, colSums, na.rm=TRUE)
+```
+
+Now we get a list, that is, the same result as with `sapply()`. The reason is that not all elements have the same length, before there were three vectors of length five, while now also a vector of length six. This fact seems to be irrelevant, since a result is still being obtained, however depending on the context that result will not always be valid.
+
+Suppose that based on the analysis we are doing, we know that the sum of the columns can only return a vector of length five and that if the result is something else, it may be due to an error in one of the databases, such as additional columns. The `vapply()` function allows us, like `sapply()`, to apply a function to the elements of a list, but specifying that the expected result, in this case, is a numerical vector of length five. Let's first make a comparison between `sapply()` and `vapply()` with the object `list`, which has three databases with five columns:
+
+```{r}
+sapply(list1, colSums, na.rm=TRUE)
+vapply(list1, colSums, numeric(5), na.rm=TRUE)
+```
+
+The results are identical. But now let's repeat the previous example but for the object `list2`, which contains a data set with six columns.
+
+```{r}
+sapply(list2, colSums, na.rm=TRUE)
+```
+
+The `sapply()` function performs the calculation, but under the assumption that the expected result is vectors of length five, this result is incorrect. The `vapply()` function helps us control this problem.
+
+```{r, error=TRUE}
+vapply(list2, colSums, numeric(5), na.rm=TRUE)
+```
+
+When trying to execute the code, we get an error, since evaluating the function in element number four of the list returns a vector of length six and not five as expected. 
+
+The `vapply()` function is generally more advisable than `sapply()` because it allows you to have more control over the expected results.

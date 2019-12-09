@@ -1,0 +1,151 @@
+---
+# Documentation: https://sourcethemes.com/academic/docs/managing-content/
+
+title: "Familia de funciones apply - Parte 3"
+subtitle: "Las funciones lapply(), sapply() y vapply()"
+summary: "Se muestran ejemplos de uso de las funciones lapply(), sapply() y vapply()"
+authors: ["César Gamboa Sanabria"]
+tags: ["R", "RStudio", "Funciones apply", "lapply", "sapply", "vapply"]
+categories: ["Fundamentos de R"]
+date: 2019-12-09T18:55:57-06:00
+lastmod: 2019-12-09T18:55:57-06:00
+featured: false
+draft: false
+
+# Featured image
+# To use, add an image named `featured.jpg/png` to your page's folder.
+# Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
+image:
+  caption: ""
+  focal_point: ""
+  preview_only: false
+
+# Projects (optional).
+#   Associate this post with one or more of your projects.
+#   Simply enter your project's folder or file name without extension.
+#   E.g. `projects = ["internal-project"]` references `content/project/deep-learning/index.md`.
+#   Otherwise, set `projects = []`.
+projects: []
+---
+En este nuevo post sobre la familia de funciones apply, es momento de mostrar algunos ejemplos de uso sobre tres nuevas funciones: `lapply()`, `sapply()` y `vapply()`. Las tres funciones están pensadas para trabajar con objetos de clase `list`, sin embargo, otras variantes pueden trabajarse con vectores.
+
+Supongamos que tenemos varias bases de datos sobre las cuales necesitamos obtener la suma de las columnas. Vamos primero a generar una sencilla función que nos devuelva una base de datos de números aleatorios del intervalo $[1,100]$ y que además contenga valores faltantes, con un determinado número de filas y columnas.
+
+```{r}
+datos <- function(filas, columnas){
+    valores <- sample(x = c(NA,1:100), 
+        size = filas*columnas,
+        replace = TRUE)
+    as.data.frame(matrix(data = valores,
+                         nrow = filas, 
+                         ncol = columnas))
+}
+```
+
+Así, por ejemplo, podemos generar una base de datos con 50 filas y 5 columnas ejecutando el siguiente comando:
+
+```{r}
+set.seed(20191208)
+df1 <- datos(50, 5)
+```
+
+Generemos otras dos bases de datos de dimensiones $100\times5$ y $150\times5$.
+
+```{r}
+set.seed(20191208)
+df2 <- datos(100, 5)
+df3 <- datos(150, 5)
+```
+
+Como vimos en [este post](https://www.cesargamboasanabria.com/es/post/2019-06-23-apply/), podríamos utilizar la función `apply()` para obtener la suma de las columnas.
+
+```{r}
+apply(df1,2,sum)
+apply(df2,2,sum)
+apply(df3,2,sum)
+```
+
+O bien, algo más sencillo sería utilizar la función `colSums()`.
+
+```{r}
+colSums(df1)
+colSums(df2)
+colSums(df3)
+```
+
+Sin embargo, podríamos tener una gran cantidad de bases datos, con lo cual los procedimientos anteriores no son viables, pues escribir tantas líneas de código es bastante aburrido...
+
+Es ahí donde entran en juego las listas. Las tres bases de datos que generamos podemos almacenarlas en una sola lista de la siguiente manera.
+
+```{r}
+lista <- list(df1, df2, df3)
+```
+
+Al tener una lista, cada base de datos se convierte en un elemento de esa lista. Por ejemplo, el elemento 1 de esa lista es el conjunto *df1*, mientras que los conjuntos *df2* y *df3* son los elementos 2 y tres respectivamente. Una forma de llamar a los elementos dentro de una lista es mediante `[[]]`, de la siguiente manera llamamos al conjunto de datos *df2*:
+
+```{r}
+lista[[2]]
+```
+
+Ahora, si quisiéramos aplicar la función `colSums()` a cada conjunto de datos, podemos utilizar la función `lapply()`:
+
+```{r}
+lapply(lista, colSums)
+```
+
+El resultado es una lista con la suma de las columnas de cada base de datos. Si quisiéramos realizar las sumas pero sin contar los valores faltantes, solo hay que incorporar el argumento respectivo de la función `colSums()`.
+
+```{r}
+lapply(lista, colSums, na.rm=TRUE)
+```
+
+Como puede notarse, la función `lapply()` trabaja básicamente con tres argumentos: una lista (en este caso el objeto lista), una función que deseamos aplicarle a cada elemento de esa lista (en este caso `colSums()`), y de ser necesario, los argumentos que solicitados por la función in dicada (en este caso `na.rm=TRUE` de la función `colSums()`).
+
+El resultado anterior devuelve los cálculos en un objeto de clase `list`, sin embargo, en muchas ocasiones es deseable obtener un formato algo más ordenado. la función `sapply()` trabaja de forma idéntica a `lapply()`, con la salvedad de que **si el resultado de cada elemento de la lista posee la misma longitud**, la función `sapply()` agrupa el resultado. Al utilizar la sunción `lapply()` obtenemos una lista de tres elementos, donde cada elemento es un vector de longitud cinco, es decir, todos tienen la misma longitud, por lo que la función `sapply()` devolvería lo siguiente:
+
+```{r}
+sapply(lista, colSums)
+sapply(lista, colSums, na.rm=TRUE)
+```
+
+Aunque la función `sapply()` parezca más útil que `lapply()`, tiene un pequeño inconveniente, y es que siempre va a funcionar... ¿Cómo puede esto ser un inconveniente? Incorporemos un nuevo conjunto de datos, pero esta vez con seis columnas en lugar de cinco como los anteriores.
+
+```{r}
+df4 <- datos(150, 6)
+lista2 <- list(df1, df2, df3, df4)
+```
+
+Si utilizamos nuevamente la función `lapply()`, obtendríamos de nuevo las sumas por columnas en forma de una lista:
+
+```{r}
+lapply(lista2, colSums, na.rm=TRUE)
+```
+
+Mientras que si aplicamos la función `sapply()`:
+
+```{r}
+sapply(lista2, colSums, na.rm=TRUE)
+```
+
+Ahora obtenemos una lista, es decir, el mismo resultado que con `sapply()`. Esto sucede porque ahora no todos los elementos tienen la misma longitud, antes se tenían tres vectores de longitud cinco, mientras que ahora también se tiene un vector de longitud seis. Esto parece ser algo sin importancia, pues igual se está obteniendo un resultado, sin embargo dependiendo del contexto ese resultado no siempre será válido.
+
+Supongamos que basados en el análisis que estamos realizando, sabemos que la suma de las columnas solamente puede devolver un vector de longitud cinco, y que si el resultado es otra cosa puede deberse a un error en alguna de las bases de datos, como columnas adicionales. La función `vapply()` nos permite, al igual que `sapply()`, aplicar una función a los elementos de una lista, pero especificando que el resultado esperado, en este caso, es un vector numérico de longitud cinco. Hagamos primero una comparación entre `sapply()` y `vapply()` con el objeto `lista`, que tiene tres bases de datos con cinco columnas:
+
+```{r}
+sapply(lista, colSums, na.rm=TRUE)
+vapply(lista, colSums, numeric(5), na.rm=TRUE)
+```
+
+Los resultados son idénticos. Pero ahora repitamos el ejemplo anterior pero para el objeto `lista2`, que contiene un conjunto de datos con seis columnas.
+
+```{r}
+sapply(lista2, colSums, na.rm=TRUE)
+```
+
+La función `sapply()` realiza el cálculo, pero bajo el supuesto de que el resultado esperado son vectores de longitud cinco, este resultado es incorrecto. La función `vapply()` nos ayuda a controlar esto:
+
+```{r, error=TRUE}
+vapply(lista2, colSums, numeric(5), na.rm=TRUE)
+```
+
+Al intentar ejecutar el código obtenemos un error, pues evaluar la función en el elemento número cuatro de la lista hace que se obtenga un vector de longitud seis, y no de cinco como esperábamos. Utilizar `vapply()` es, generalmente, más recomendable que `sapply()` pues permite tener un mayor control sobre los resultados esperados.

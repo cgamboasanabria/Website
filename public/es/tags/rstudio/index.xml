@@ -7,10 +7,282 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>es-cr</language>
     <copyright>&amp;copy; 2019</copyright>
-    <lastBuildDate>Wed, 31 Jul 2019 18:55:57 -0600</lastBuildDate>
+    <lastBuildDate>Mon, 09 Dec 2019 18:55:57 -0600</lastBuildDate>
     
 	    <atom:link href="/es/tags/rstudio/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Familia de funciones apply - Parte 3</title>
+      <link>/es/post/2019-12-08-lapply_sapply_vapply/</link>
+      <pubDate>Mon, 09 Dec 2019 18:55:57 -0600</pubDate>
+      
+      <guid>/es/post/2019-12-08-lapply_sapply_vapply/</guid>
+      <description>
+
+
+&lt;p&gt;En este nuevo post sobre la familia de funciones apply, es momento de mostrar algunos ejemplos de uso sobre tres nuevas funciones: &lt;code&gt;lapply()&lt;/code&gt;, &lt;code&gt;sapply()&lt;/code&gt; y &lt;code&gt;vapply()&lt;/code&gt;. Las tres funciones están pensadas para trabajar con objetos de clase &lt;code&gt;list&lt;/code&gt;, sin embargo, otras variantes pueden trabajarse con vectores.&lt;/p&gt;
+&lt;p&gt;Supongamos que tenemos varias bases de datos sobre las cuales necesitamos obtener la suma de las columnas. Vamos primero a generar una sencilla función que nos devuelva una base de datos de números aleatorios del intervalo &lt;span class=&#34;math inline&#34;&gt;\([1,100]\)&lt;/span&gt; y que además contenga valores faltantes, con un determinado número de filas y columnas.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;datos &amp;lt;- function(filas, columnas){
+    valores &amp;lt;- sample(x = c(NA,1:100), 
+        size = filas*columnas,
+        replace = TRUE)
+    as.data.frame(matrix(data = valores,
+                         nrow = filas, 
+                         ncol = columnas))
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Así, por ejemplo, podemos generar una base de datos con 50 filas y 5 columnas ejecutando el siguiente comando:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(20191208)
+df1 &amp;lt;- datos(50, 5)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Generemos otras dos bases de datos de dimensiones &lt;span class=&#34;math inline&#34;&gt;\(100\times5\)&lt;/span&gt; y &lt;span class=&#34;math inline&#34;&gt;\(150\times5\)&lt;/span&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(20191208)
+df2 &amp;lt;- datos(100, 5)
+df3 &amp;lt;- datos(150, 5)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Como vimos en &lt;a href=&#34;https://www.cesargamboasanabria.com/es/post/2019-06-23-apply/&#34;&gt;este post&lt;/a&gt;, podríamos utilizar la función &lt;code&gt;apply()&lt;/code&gt; para obtener la suma de las columnas.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(df1,2,sum)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   V1   V2   V3   V4   V5 
+## 2546 2602 2699 1993 2482&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(df2,2,sum)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   V1   V2   V3   V4   V5 
+## 5148 4692   NA 5024 5177&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(df3,2,sum)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   V1   V2   V3   V4   V5 
+##   NA 7554   NA   NA   NA&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;O bien, algo más sencillo sería utilizar la función &lt;code&gt;colSums()&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;colSums(df1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   V1   V2   V3   V4   V5 
+## 2546 2602 2699 1993 2482&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;colSums(df2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   V1   V2   V3   V4   V5 
+## 5148 4692   NA 5024 5177&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;colSums(df3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   V1   V2   V3   V4   V5 
+##   NA 7554   NA   NA   NA&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Sin embargo, podríamos tener una gran cantidad de bases datos, con lo cual los procedimientos anteriores no son viables, pues escribir tantas líneas de código es bastante aburrido…&lt;/p&gt;
+&lt;p&gt;Es ahí donde entran en juego las listas. Las tres bases de datos que generamos podemos almacenarlas en una sola lista de la siguiente manera.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lista &amp;lt;- list(df1, df2, df3)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Al tener una lista, cada base de datos se convierte en un elemento de esa lista. Por ejemplo, el elemento 1 de esa lista es el conjunto &lt;em&gt;df1&lt;/em&gt;, mientras que los conjuntos &lt;em&gt;df2&lt;/em&gt; y &lt;em&gt;df3&lt;/em&gt; son los elementos 2 y tres respectivamente. Una forma de llamar a los elementos dentro de una lista es mediante &lt;code&gt;[[]]&lt;/code&gt;, de la siguiente manera llamamos al conjunto de datos &lt;em&gt;df2&lt;/em&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lista[[2]]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      V1 V2  V3  V4  V5
+## 1    35 90  35  84  79
+## 2    51 36   4 100   5
+## 3    76 47  65  90  36
+## 4    17 22  97  72   1
+## 5    95 16   8  86  65
+## 6    73 31  47  52  87
+## 7    37 23  64  85  13
+## 8    81 62  33  82  27
+## 9    59 63  79  40  45
+## 10   38 25  34   9  24
+## 11   92 82  53  75  80
+## 12   94 51  50  35  87
+## 13   44 54  10  49  71
+## 14   96 23  54  62  99
+## 15   73 87   8  64  16
+## 16   58 94  67  41 100
+## 17   92 93  78  34  59
+## 18   30 64  53  49  80
+## 19   14 21  94  59  86
+## 20   14  9  51  42  19
+## 21   55 99  12  70  54
+## 22   30 34  93  76  68
+## 23   19 40  85  29  51
+## 24   46 83  98  41  88
+## 25   48 34 100  49  37
+## 26   29 34  72  11  62
+## 27   39 78  68  41  20
+## 28   68 62  51  68  76
+## 29   92 69  37  15  95
+## 30   15 25  63  72  24
+## 31   72 90   4  63  35
+## 32    7 34  91  95   5
+## 33   62 43   1  66  57
+## 34   32 69  29  87  30
+## 35   96 67  21  32  13
+## 36   13 71  26  96  91
+## 37   58 72  30  66   5
+## 38   80 45  84  45  86
+## 39   84 89  83  86   2
+## 40   44 78  13   6  23
+## 41   24 70  63  93   1
+## 42   22 65  32  85  40
+## 43   32 54  79  34  88
+## 44   10 12  37  31  21
+## 45   48 28   9  61  75
+## 46   19 95  22  71  41
+## 47   60 48   4  26  30
+## 48   79 34  59  80  65
+## 49   25 77  61   5  95
+## 50   69  7  71  75  60
+## 51   33 53 100  43  19
+## 52   16 82   9  98  52
+## 53   53 60  35   3  77
+## 54    9 31  33  61  72
+## 55   42 17  64  40  80
+## 56   71 87  95  31  72
+## 57   79 20  11   6  67
+## 58   67 55  57  55  31
+## 59   82 82   5  87  93
+## 60   84 34  20  22   9
+## 61   38 22  92  45  24
+## 62   48 75  60   5  74
+## 63   44 78  78  29  66
+## 64   10 70  14  37  16
+## 65   12 12  93  66  19
+## 66   88 29  63  94  30
+## 67   77 44  34  59  96
+## 68    5 46  81  11  72
+## 69   79 40  73  26  99
+## 70   96 24  46  94   7
+## 71   46 64  12   2  30
+## 72    3 38  50  89  85
+## 73   86 17  14  21  37
+## 74   57 37  NA  15  36
+## 75   23 12  48  20  46
+## 76   41  7  82  69  46
+## 77   59  5   4  93  98
+## 78   47 52  23  59  94
+## 79   19 47  58  12  47
+## 80   44 34  15  15  47
+## 81   15 38  57  84  67
+## 82   98  8  83  10  64
+## 83   50 38  48  95  40
+## 84   17 18  24   1  59
+## 85   73 12   2  30  48
+## 86   41 79  38  48  68
+## 87   12 84  77  25  79
+## 88   66 52   5  85  41
+## 89   80 39  60  29  29
+## 90  100 43  15  16   3
+## 91    9 37  75  52  94
+## 92   94 22  19  48  52
+## 93   53  9 100  83  52
+## 94   37 39  78  31  65
+## 95   96 26  66  87  22
+## 96   64 25  29   7  55
+## 97   62 50  91  21  45
+## 98   18 44  94  15  18
+## 99   61 11  48  48  50
+## 100  98 45  27  17  68&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ahora, si quisiéramos aplicar la función &lt;code&gt;colSums()&lt;/code&gt; a cada conjunto de datos, podemos utilizar la función &lt;code&gt;lapply()&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lapply(lista, colSums)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [[1]]
+##   V1   V2   V3   V4   V5 
+## 2546 2602 2699 1993 2482 
+## 
+## [[2]]
+##   V1   V2   V3   V4   V5 
+## 5148 4692   NA 5024 5177 
+## 
+## [[3]]
+##   V1   V2   V3   V4   V5 
+##   NA 7554   NA   NA   NA&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;El resultado es una lista con la suma de las columnas de cada base de datos. Si quisiéramos realizar las sumas pero sin contar los valores faltantes, solo hay que incorporar el argumento respectivo de la función &lt;code&gt;colSums()&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lapply(lista, colSums, na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [[1]]
+##   V1   V2   V3   V4   V5 
+## 2546 2602 2699 1993 2482 
+## 
+## [[2]]
+##   V1   V2   V3   V4   V5 
+## 5148 4692 4887 5024 5177 
+## 
+## [[3]]
+##   V1   V2   V3   V4   V5 
+## 7780 7554 7470 7826 7033&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Como puede notarse, la función &lt;code&gt;lapply()&lt;/code&gt; trabaja básicamente con tres argumentos: una lista (en este caso el objeto lista), una función que deseamos aplicarle a cada elemento de esa lista (en este caso &lt;code&gt;colSums()&lt;/code&gt;), y de ser necesario, los argumentos que solicitados por la función in dicada (en este caso &lt;code&gt;na.rm=TRUE&lt;/code&gt; de la función &lt;code&gt;colSums()&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;El resultado anterior devuelve los cálculos en un objeto de clase &lt;code&gt;list&lt;/code&gt;, sin embargo, en muchas ocasiones es deseable obtener un formato algo más ordenado. la función &lt;code&gt;sapply()&lt;/code&gt; trabaja de forma idéntica a &lt;code&gt;lapply()&lt;/code&gt;, con la salvedad de que &lt;strong&gt;si el resultado de cada elemento de la lista posee la misma longitud&lt;/strong&gt;, la función &lt;code&gt;sapply()&lt;/code&gt; agrupa el resultado. Al utilizar la sunción &lt;code&gt;lapply()&lt;/code&gt; obtenemos una lista de tres elementos, donde cada elemento es un vector de longitud cinco, es decir, todos tienen la misma longitud, por lo que la función &lt;code&gt;sapply()&lt;/code&gt; devolvería lo siguiente:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sapply(lista, colSums)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    [,1] [,2] [,3]
+## V1 2546 5148   NA
+## V2 2602 4692 7554
+## V3 2699   NA   NA
+## V4 1993 5024   NA
+## V5 2482 5177   NA&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sapply(lista, colSums, na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    [,1] [,2] [,3]
+## V1 2546 5148 7780
+## V2 2602 4692 7554
+## V3 2699 4887 7470
+## V4 1993 5024 7826
+## V5 2482 5177 7033&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Aunque la función &lt;code&gt;sapply()&lt;/code&gt; parezca más útil que &lt;code&gt;lapply()&lt;/code&gt;, tiene un pequeño inconveniente, y es que siempre va a funcionar… ¿Cómo puede esto ser un inconveniente? Incorporemos un nuevo conjunto de datos, pero esta vez con seis columnas en lugar de cinco como los anteriores.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df4 &amp;lt;- datos(150, 6)
+lista2 &amp;lt;- list(df1, df2, df3, df4)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Si utilizamos nuevamente la función &lt;code&gt;lapply()&lt;/code&gt;, obtendríamos de nuevo las sumas por columnas en forma de una lista:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lapply(lista2, colSums, na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [[1]]
+##   V1   V2   V3   V4   V5 
+## 2546 2602 2699 1993 2482 
+## 
+## [[2]]
+##   V1   V2   V3   V4   V5 
+## 5148 4692 4887 5024 5177 
+## 
+## [[3]]
+##   V1   V2   V3   V4   V5 
+## 7780 7554 7470 7826 7033 
+## 
+## [[4]]
+##   V1   V2   V3   V4   V5   V6 
+## 8205 6712 6794 8049 7562 7335&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Mientras que si aplicamos la función &lt;code&gt;sapply()&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sapply(lista2, colSums, na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [[1]]
+##   V1   V2   V3   V4   V5 
+## 2546 2602 2699 1993 2482 
+## 
+## [[2]]
+##   V1   V2   V3   V4   V5 
+## 5148 4692 4887 5024 5177 
+## 
+## [[3]]
+##   V1   V2   V3   V4   V5 
+## 7780 7554 7470 7826 7033 
+## 
+## [[4]]
+##   V1   V2   V3   V4   V5   V6 
+## 8205 6712 6794 8049 7562 7335&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ahora obtenemos una lista, es decir, el mismo resultado que con &lt;code&gt;sapply()&lt;/code&gt;. Esto sucede porque ahora no todos los elementos tienen la misma longitud, antes se tenían tres vectores de longitud cinco, mientras que ahora también se tiene un vector de longitud seis. Esto parece ser algo sin importancia, pues igual se está obteniendo un resultado, sin embargo dependiendo del contexto ese resultado no siempre será válido.&lt;/p&gt;
+&lt;p&gt;Supongamos que basados en el análisis que estamos realizando, sabemos que la suma de las columnas solamente puede devolver un vector de longitud cinco, y que si el resultado es otra cosa puede deberse a un error en alguna de las bases de datos, como columnas adicionales. La función &lt;code&gt;vapply()&lt;/code&gt; nos permite, al igual que &lt;code&gt;sapply()&lt;/code&gt;, aplicar una función a los elementos de una lista, pero especificando que el resultado esperado, en este caso, es un vector numérico de longitud cinco. Hagamos primero una comparación entre &lt;code&gt;sapply()&lt;/code&gt; y &lt;code&gt;vapply()&lt;/code&gt; con el objeto &lt;code&gt;lista&lt;/code&gt;, que tiene tres bases de datos con cinco columnas:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sapply(lista, colSums, na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    [,1] [,2] [,3]
+## V1 2546 5148 7780
+## V2 2602 4692 7554
+## V3 2699 4887 7470
+## V4 1993 5024 7826
+## V5 2482 5177 7033&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;vapply(lista, colSums, numeric(5), na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    [,1] [,2] [,3]
+## V1 2546 5148 7780
+## V2 2602 4692 7554
+## V3 2699 4887 7470
+## V4 1993 5024 7826
+## V5 2482 5177 7033&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Los resultados son idénticos. Pero ahora repitamos el ejemplo anterior pero para el objeto &lt;code&gt;lista2&lt;/code&gt;, que contiene un conjunto de datos con seis columnas.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sapply(lista2, colSums, na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [[1]]
+##   V1   V2   V3   V4   V5 
+## 2546 2602 2699 1993 2482 
+## 
+## [[2]]
+##   V1   V2   V3   V4   V5 
+## 5148 4692 4887 5024 5177 
+## 
+## [[3]]
+##   V1   V2   V3   V4   V5 
+## 7780 7554 7470 7826 7033 
+## 
+## [[4]]
+##   V1   V2   V3   V4   V5   V6 
+## 8205 6712 6794 8049 7562 7335&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;La función &lt;code&gt;sapply()&lt;/code&gt; realiza el cálculo, pero bajo el supuesto de que el resultado esperado son vectores de longitud cinco, este resultado es incorrecto. La función &lt;code&gt;vapply()&lt;/code&gt; nos ayuda a controlar esto:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;vapply(lista2, colSums, numeric(5), na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Error in vapply(lista2, colSums, numeric(5), na.rm = TRUE): Los valores deben ser de longitud 5, 
+## pero el resultado FUN(X [[4]]) es la longitud 6&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Al intentar ejecutar el código obtenemos un error, pues evaluar la función en el elemento número cuatro de la lista hace que se obtenga un vector de longitud seis, y no de cinco como esperábamos. Utilizar &lt;code&gt;vapply()&lt;/code&gt; es, generalmente, más recomendable que &lt;code&gt;sapply()&lt;/code&gt; pues permite tener un mayor control sobre los resultados esperados.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Familia de funciones apply - Parte 2</title>
