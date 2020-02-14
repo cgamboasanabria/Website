@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
     <loc>/es/</loc>
     <lastmod>2020-01-28T17:00:00+00:00</lastmod>
-    <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -51,7 +50,6 @@
   <url>
     <loc>/es/authors/</loc>
     <lastmod>2019-12-08T18:55:57-06:00</lastmod>
-    <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -67,7 +65,6 @@
   <url>
     <loc>/es/categories/</loc>
     <lastmod>2019-12-08T18:55:57-06:00</lastmod>
-    <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -83,7 +80,6 @@
   <url>
     <loc>/es/authors/c%C3%A9sar-gamboa-sanabria/</loc>
     <lastmod>2019-12-08T18:55:57-06:00</lastmod>
-    <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -114,7 +110,6 @@
   <url>
     <loc>/es/tags/funciones-apply/</loc>
     <lastmod>2019-12-08T18:55:57-06:00</lastmod>
-    <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -130,7 +125,21 @@
   <url>
     <loc>/es/categories/fundamentos-de-r/</loc>
     <lastmod>2019-12-08T18:55:57-06:00</lastmod>
-    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/es/tags/lapply/</loc>
+    <lastmod>2019-12-08T18:55:57-06:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/tags/lapply/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/tags/lapply/"
+                />
   </url>
   
   <url>
@@ -151,7 +160,6 @@
   <url>
     <loc>/es/tags/r/</loc>
     <lastmod>2019-12-08T18:55:57-06:00</lastmod>
-    <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -167,7 +175,6 @@
   <url>
     <loc>/es/tags/rstudio/</loc>
     <lastmod>2019-12-08T18:55:57-06:00</lastmod>
-    <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -181,41 +188,8 @@
   </url>
   
   <url>
-    <loc>/es/tags/</loc>
-    <lastmod>2019-12-08T18:55:57-06:00</lastmod>
-    <priority>0</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/tags/"
-                />
-  </url>
-  
-  <url>
-    <loc>/es/tags/lapply/</loc>
-    <lastmod>2019-12-08T18:55:57-06:00</lastmod>
-    <priority>0</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/tags/lapply/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/tags/lapply/"
-                />
-  </url>
-  
-  <url>
     <loc>/es/tags/sapply/</loc>
     <lastmod>2019-12-08T18:55:57-06:00</lastmod>
-    <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -229,9 +203,23 @@
   </url>
   
   <url>
+    <loc>/es/tags/</loc>
+    <lastmod>2019-12-08T18:55:57-06:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/tags/"
+                />
+  </url>
+  
+  <url>
     <loc>/es/tags/vapply/</loc>
     <lastmod>2019-12-08T18:55:57-06:00</lastmod>
-    <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -262,7 +250,6 @@
   <url>
     <loc>/es/tags/tapply/</loc>
     <lastmod>2019-07-31T18:55:57-06:00</lastmod>
-    <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -272,6 +259,21 @@
                 rel="alternate"
                 hreflang="es"
                 href="/es/tags/tapply/"
+                />
+  </url>
+  
+  <url>
+    <loc>/es/tags/apply/</loc>
+    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/tags/apply/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/tags/apply/"
                 />
   </url>
   
@@ -287,22 +289,6 @@
                 rel="alternate"
                 hreflang="es"
                 href="/es/post/2019-06-23-apply/"
-                />
-  </url>
-  
-  <url>
-    <loc>/es/tags/apply/</loc>
-    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
-    <priority>0</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/tags/apply/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/tags/apply/"
                 />
   </url>
   
@@ -337,15 +323,13 @@
   </url>
   
   <url>
-    <loc>/es/categories/an%C3%A1lisis-exploratorio/</loc>
+    <loc>/es/tags/an%C3%A1lisis-exploratorio/</loc>
     <lastmod>2019-06-23T13:42:09-06:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
-    <loc>/es/tags/an%C3%A1lisis-exploratorio/</loc>
+    <loc>/es/categories/an%C3%A1lisis-exploratorio/</loc>
     <lastmod>2019-06-23T13:42:09-06:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -366,13 +350,11 @@
   <url>
     <loc>/es/tags/datos-categ%C3%B3ricos/</loc>
     <lastmod>2019-06-23T13:42:09-06:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/es/tags/descripivos/</loc>
     <lastmod>2019-06-23T13:42:09-06:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -406,7 +388,6 @@
   
   <url>
     <loc>/es/publication_types/</loc>
-    <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"

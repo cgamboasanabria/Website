@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
     <loc>/en/</loc>
     <lastmod>2020-01-28T17:00:00+00:00</lastmod>
-    <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
@@ -49,9 +48,23 @@
   </url>
   
   <url>
+    <loc>/en/post/2019-12-08-lapply_sapply_vapply/</loc>
+    <lastmod>2019-12-08T18:55:57-06:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/post/2019-12-08-lapply_sapply_vapply/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/post/2019-12-08-lapply_sapply_vapply/"
+                />
+  </url>
+  
+  <url>
     <loc>/en/authors/</loc>
     <lastmod>2019-12-08T18:55:57-06:00</lastmod>
-    <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
@@ -67,7 +80,6 @@
   <url>
     <loc>/en/categories/</loc>
     <lastmod>2019-12-08T18:55:57-06:00</lastmod>
-    <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
@@ -83,7 +95,6 @@
   <url>
     <loc>/en/authors/c%C3%A9sar-gamboa-sanabria/</loc>
     <lastmod>2019-12-08T18:55:57-06:00</lastmod>
-    <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
@@ -99,7 +110,6 @@
   <url>
     <loc>/en/tags/funciones-apply/</loc>
     <lastmod>2019-12-08T18:55:57-06:00</lastmod>
-    <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
@@ -109,6 +119,21 @@
                 rel="alternate"
                 hreflang="en"
                 href="/en/tags/funciones-apply/"
+                />
+  </url>
+  
+  <url>
+    <loc>/en/tags/lapply/</loc>
+    <lastmod>2019-12-08T18:55:57-06:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/tags/lapply/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/tags/lapply/"
                 />
   </url>
   
@@ -130,7 +155,6 @@
   <url>
     <loc>/en/tags/r/</loc>
     <lastmod>2019-12-08T18:55:57-06:00</lastmod>
-    <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
@@ -146,13 +170,11 @@
   <url>
     <loc>/en/categories/r-basics/</loc>
     <lastmod>2019-12-08T18:55:57-06:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/en/tags/rstudio/</loc>
     <lastmod>2019-12-08T18:55:57-06:00</lastmod>
-    <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
@@ -166,56 +188,8 @@
   </url>
   
   <url>
-    <loc>/en/tags/</loc>
-    <lastmod>2019-12-08T18:55:57-06:00</lastmod>
-    <priority>0</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/tags/"
-                />
-  </url>
-  
-  <url>
-    <loc>/en/post/2019-12-08-lapply_sapply_vapply/</loc>
-    <lastmod>2019-12-08T18:55:57-06:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/post/2019-12-08-lapply_sapply_vapply/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/post/2019-12-08-lapply_sapply_vapply/"
-                />
-  </url>
-  
-  <url>
-    <loc>/en/tags/lapply/</loc>
-    <lastmod>2019-12-08T18:55:57-06:00</lastmod>
-    <priority>0</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/tags/lapply/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/tags/lapply/"
-                />
-  </url>
-  
-  <url>
     <loc>/en/tags/sapply/</loc>
     <lastmod>2019-12-08T18:55:57-06:00</lastmod>
-    <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
@@ -229,9 +203,23 @@
   </url>
   
   <url>
+    <loc>/en/tags/</loc>
+    <lastmod>2019-12-08T18:55:57-06:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/tags/"
+                />
+  </url>
+  
+  <url>
     <loc>/en/tags/vapply/</loc>
     <lastmod>2019-12-08T18:55:57-06:00</lastmod>
-    <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
@@ -242,6 +230,11 @@
                 hreflang="en"
                 href="/en/tags/vapply/"
                 />
+  </url>
+  
+  <url>
+    <loc>/en/tags/apply-family-functions/</loc>
+    <lastmod>2019-07-31T18:55:57-06:00</lastmod>
   </url>
   
   <url>
@@ -260,15 +253,8 @@
   </url>
   
   <url>
-    <loc>/en/tags/apply-family-functions/</loc>
-    <lastmod>2019-07-31T18:55:57-06:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/en/tags/tapply/</loc>
     <lastmod>2019-07-31T18:55:57-06:00</lastmod>
-    <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
@@ -278,6 +264,21 @@
                 rel="alternate"
                 hreflang="en"
                 href="/en/tags/tapply/"
+                />
+  </url>
+  
+  <url>
+    <loc>/en/tags/apply/</loc>
+    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/tags/apply/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/tags/apply/"
                 />
   </url>
   
@@ -293,22 +294,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="/en/post/2019-06-23-apply/"
-                />
-  </url>
-  
-  <url>
-    <loc>/en/tags/apply/</loc>
-    <lastmod>2019-07-21T17:42:09-06:00</lastmod>
-    <priority>0</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/tags/apply/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/tags/apply/"
                 />
   </url>
   
@@ -345,25 +330,21 @@
   <url>
     <loc>/en/tags/categorical-data/</loc>
     <lastmod>2019-06-23T13:42:09-06:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/en/tags/descriptive/</loc>
     <lastmod>2019-06-23T13:42:09-06:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/en/tags/exploratory-data-analysis/</loc>
     <lastmod>2019-06-23T13:42:09-06:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/en/categories/exploratory-data-analysis/</loc>
     <lastmod>2019-06-23T13:42:09-06:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -412,7 +393,6 @@
   
   <url>
     <loc>/en/publication_types/</loc>
-    <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
