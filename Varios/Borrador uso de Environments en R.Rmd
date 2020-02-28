@@ -1,0 +1,181 @@
+# Función eapply
+
+## Uso de Environments
+
+En pocas palabras, en R un *Environment* es un sitio para almacenar variables, o valores que asignamos a objetos. Cada vez que se inicia una nueva sesión de R, todos los objetos creados se añadirán al *Environment* **global**. Si creamos el objeto `x`, este quedará entonces en el *Environment* predeterminado de R, la función `ls()` sirve para listar los objetos creados y en este caso comprobar que `x` existe.
+
+```{r}
+x <- 28022020
+ls()
+```
+
+Es posible asignar el *Environment* **global** a un objeto, digamos `environment_1`. Una cosa curiosa es que tras hacer esto, `environment_1` es un objeto que está en el *Environmet* **global**, pero al mismo tiempo es el *Environmet* **global**.
+
+```{r}
+environment_1 <- globalenv()
+class(environment_1)
+ls()
+```
+
+Este caso podría interpretarse como usar una lista, tema que ya fue discutido en [este post](https://www.cesargamboasanabria.com/es/post/2019-12-08-lapply_sapply_vapply/). Como el objeto `environment_1` es el ambiente global, contiene al objeto `x`, que fue asignado al *Environment* **global**; y también se contiene a sí mismo de una manera algo cíclica...
+
+```{r}
+environment_1$x
+environment_1$environment_1
+environment_1$environment_1$environment_1
+ls(environment_1$environment_1$environment_1$environment_1)
+```
+
+El objeto `environment_1` podría, en palabras del buen docto Emmett Brown, crear una paradoja que destruiría el universo, así que lo mejor es eliminarlo. La sección 2.1.10 de la [definición del lenguaje R](https://cran.r-project.org/doc/manuals/R-lang.html#Environment-objects) ofrece una descripción más formal de lo que es un *Environment*.
+
+```{r}
+rm(environment_1)
+ls()
+```
+
+Es posible crear un *Environment* nuevo que sea independiente del *Environment* **global**, la cual llamaremos `environment_2`. Al crearlo, podemos ver que este se encuentra vacío en comparación al *Environment* **global**, el cual contiene a `x` y a `environment_2`. Además, si generamos directaamente una nueva variable, digamos `z`, esta se asignará al *Environment* **global**.
+
+```{r}
+environment_2 <- new.env()
+environment_2
+ls(globalenv())
+ls(environment_2)
+
+z <- pi
+
+ls(globalenv())
+ls(environment_2)
+```
+
+Ahora crearemos una variable llamada `y` y se la asignaremos al `environment_2`. Tras hacer eso, la variable `y` estará contenida **únicamente** en el `environment_2` y no en el *Environment* **global**, a pesar de que este último contiene al `environment_2`.
+
+```{r}
+environment_2$y <- "Esto es muy abstracto"
+
+ls(globalenv())
+ls(environment_2)
+
+environment(x)
+
+```
+
+¿Los *Environment* sirven para algo más aparte de filosofar? La respuesta es que sí, y son fundamentales en algo muy utilizado en R: Las funciones. Por lo general, al construir una función se asume tiene únicamente dos componentes: los argumentos y el contenido de la función. Consideremos una sencilla función que invierte el signo de un número.
+
+```{r}
+invertir_signo <- function(numero){
+    numero*-1
+}
+```
+
+En el caso anterior, la función `invertir_signo()` **numero** tiene un único argumento, mientras que su contenido es **numero*-1**. Sin embargo, las funciones cuentan con un tercer argumento: El *Environment*. Cuando la función `invertir_signo()` fue creada, quedó almacenada en el *Environment* **global**.
+
+```{r}
+ls(globalenv())
+ls(environment_2)
+environment(invertir_signo)
+```
+
+La consecuencia de esto es que la función `invertir_signo()` únicamente podrá ser evaluada en el *Environment* que tiene asignado. Por ejemplo, la función puede ser evaluada sobre el objeto `x`, que está en el *environment* **global**:
+
+```{r}
+invertir_signo(x)
+```
+
+Si creamos un objeto que también se llame `x`, pero que se encuentre en el `environment_2`, la función `invertir_signo()` seguirá siendo evaluada en el *Environment* **global**.
+
+```{r}
+environment_2$x <- 123456
+invertir_signo(x)
+```
+
+## La función eapply
+
+Estos pequeños detalles que no suelen manejarse en la vida diaria pueden llegar a ser indispensables en ciertas situaciones, como cuando se quiere utilizar la función `eapply()`. Connociendo los aspectos más elementales de cómo trabajan los *Environment*, vamos a eliminar todos los objetos creados hasta ahora, esto para mantener el orden.
+
+```{r}
+rm(list = ls())
+```
+
+Como también repasamos en [este post](https://www.cesargamboasanabria.com/es/post/2019-12-08-lapply_sapply_vapply/), la función `lapply()` aplica una función a cada elemento de una lista. De forma similar, la función `eapply()` aplica una función a cada elemento nombrado en un *Environment* con la diferencia que en `eaaply()` el primer argumento es un *Environment*, y no una lista como en `lapply()`. vamos a crear entonces un nuevo *Environment* para aplicarle una función a sus elemntos que devuelva la raíz cuadrada de cada uno y sumarle 10:
+
+```{r}
+environment_1 <- new.env()
+environment_1$elemento_1 <- 4
+environment_1$elemento_2 <- 9
+environment_1$elemento_3 <- 25
+
+eapply(environment_1, function(x){
+    sqrt(x)+10
+})
+```
+
+El resultado puede solicitarse sin las etiquetas de los nombres:
+
+```{r}
+eapply(environment_1, function(x){
+    sqrt(x)+10
+}, USE.NAMES = FALSE)
+```
+
+Las anteriores ejecuciones de la función `eapply()` evalúan nuestra función en todos los elemntos que contenga el *Environment*, pero hay excepciones si se tienen *elementos ocultos*. Los *elementos ocultos* son objetos que existen pero que no están a simple vista, podems crear el *elemento_4* como oculto de la siguiente manera:
+
+```{r}
+environment_1$.elemento_4 <- 48
+ls(environment_1)
+```
+
+Si repetimos la evaluación anterior de la función `eaaply()`, se ejecutará solamente con los *elementos visibles*: 
+
+```{r}
+eapply(environment_1, function(x){
+    sqrt(x)+10
+})
+```
+
+Pero podemos pedir que se ejecute sobre **todos** los elementos:
+
+```{r}
+eapply(environment_1, function(x){
+    sqrt(x)+10
+}, all.names = TRUE)
+```
+
+# Función rapply
+
+En esta función, la "r" hace referencia a "recursivo". Podría decirse que tiene dos objetivos: Aplicar una función de manera recursiva a una lista o aplicar dicha función a solo los elementos de una lista con una clase específica. Esto de especial utilidad, pues como ya lo hemos discutido, las listas en R son quizás los objetos más útiles que hay, pues de manera muy sencilla almacenan bases de datos, números, cadenas de caracteres, gráficos, y más, por lo que resulta útil aplicar una función a, digamos, todos los elementos numéricos de una lista, sin la necesidad de conocer en qué posiciones se encuentran dichos elementos dentro de la lista. Un ejemplo sencillo se puede aplicar al famoso conjunto de datos `iris`:
+
+```{r}
+rapply(iris, mean, class="numeric")
+rapply(iris, table, class="factor")
+```
+
+O bien, si tenemos una lista con distintas clases de objetos, podemos pedir que nos multiplique por dos aquellos elementos de la lista que son numéricos:
+
+```{r}
+rapply(list(2,5,7,"Esto no se puede multiplicar porque es una cadena de caracteres"), function(x){x*2}, class="numeric")
+```
+
+# Función mapply
+
+La función `mapply()` puede verse como la versión multivariada de las funciones *apply*.Por ejemplo, con `lapply()` solo puede aplicarse la función a los elementos de una lista, pero si se tiene una lista cuyos elementos son un argumento de una función y otra lista a cuyos elementos son el otro argumento de la función, entonces se usa `mapply()`. La función que se va a aplicar debe tener un número de argumentos al menos igual al número de listas que se van a pasar a `mapply`. `MoreArgs` sirve en caso de que se tengan más argumentos que se necesiten pasar a la función. Resulta más sencillo mostrar su funcionamiento con un ejemplo que con palabras. Supongamos que queremos obtener el resultado de $x*y+1$ variando los valores de $x$ e $y$ de la siguiente manera: $1\cdot2+1,2\cdot3+1,3\cdot4+1,\cdots,10000\cdot10001+1$. La forma de obtener este cálculo mediante un ciclo `for` es la siguiente:
+
+```{r, eval=FALSE}
+z <- NULL
+k <- 1
+x <- 1:10000
+y <- 2:10001
+for(i in 1:10000){
+    z[k] <- x[i]*y[i]+1
+    k <- k+1
+}
+```
+
+Mientras que con la función `mapply()` se obtiene así:
+
+```{r, eval=FALSE}
+mapply(function(x,y){x*y+1},
+       x=1:10000,
+       y=2:10001)
+```
+
+Ambas llegan al mismo resultado, sin embargo, `mapply()` es considerablemente más eficiente al realizar el cálculo. Compararemos los tiempos de ejecución de distintos procesos en el siguiente post, donde se mostrarán algunas versiones en paralelo de las funciones apply.

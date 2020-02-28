@@ -1,0 +1,54 @@
+# eapply function
+
+## Using environments
+
+In R, an *Environment* is a site to assign variables or values that we assign to objects. Each time a new R session begins, all created objects stay in the *global* **environment**.  If we create the object `x`, it will then be in the *R* default *Environment*. The`ls()` function lists the created objects, so we can check that `x` actually exists.
+
+```{r}
+x <- 28022020
+ls()
+```
+
+It is possible to assign the **global** *Environment* to an object that we'll call `environment_1`. The curious thing is that after doing this, `environment_1` is an object into the **global** *Environment* , but at the same time, it is the **global** *Environmet*.
+
+```{r}
+environment_1 <- globalenv()
+class(environment_1)
+ls()
+```
+
+This process is similar to using a list, a topic that we talked about in [this post](https://www.cesargamboasanabria.com/en/post/2019-12-08-lapply_sapply_vapply/). Since the object `environment_1` is the global environment, it contains the object`x`, which we assign to the **global** *Environment* and also includes itself in a cyclical way...
+
+```{r}
+environment_1$x
+environment_1$environment_1
+environment_1$environment_1$environment_1
+ls(environment_1$environment_1$environment_1$environment_1)
+```
+
+The `environment_1` object could, as Emmett Brown someday said, it creates a paradox that would destroy the universe, so it is best to eliminate it. Section 2.1.10 of the [R language definition](https://cran.r-project.org/doc/manuals/R-lang.html#Environment-objects) offers a more formal description of what a *Environment * is.
+
+```{r}
+rm(environment_1)
+ls()
+```
+
+It is possible to create a new *Environment* that is independent of the global *Environment*, which we will call environment_2`. When creating it, we can see that it is empty compared to the *global* **Environment**, which contains `x` and `environment_2`. Also, if we directly generate a new variable, say `z`, it will set to the *global * **Environment**.
+
+```{r}
+environment_2$y <- "This is an abstract topic"
+
+ls(globalenv())
+ls(environment_2)
+
+environment(x)
+
+```
+
+Has an *Environment* a real use? The answer is yes, and they are fundamental in something widely used in R: Functions. In general, when building a function, it is assumed that it has only two components: the arguments and the content of the function. Consider a simple function that reverses the sign of a number.
+
+```{r}
+reverse_sigo <- function(number){
+    number*-1
+}
+```

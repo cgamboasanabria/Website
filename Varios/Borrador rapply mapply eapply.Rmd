@@ -1,0 +1,2 @@
+Uso de environments en https://digitheadslabnotebook.blogspot.com/2011/06/environments-in-r.html
+Funciones rapply, mapply y eapply en http://theautomatic.net/2018/11/13/those-other-apply-functions/.
