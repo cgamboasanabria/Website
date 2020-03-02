@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.3.1">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="César Gamboa Sanabria">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="The eapply(), rapply() and mapply() functions in data analysis.">
+
+  
+  <link rel="alternate" hreflang="es" href="/es/post/2020-03-01-eapply_rapply_mapply/">
+  
+  <link rel="alternate" hreflang="en-us" href="/en/post/2020-03-01-eapply_rapply_mapply/">
+
+  
+
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#3f51b5">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.css" integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ==" crossorigin="anonymous">
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700|Merriweather|Roboto+Mono">
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.min.6fb0665a835e482cbcda17fe0fc04296.css">
+
+  
+
+  
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-141652833-1 ', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+  
+
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="/en/post/2020-03-01-eapply_rapply_mapply/">
+
+  
+  
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="twitter:site" content="@gamboasanabria">
+  <meta property="twitter:creator" content="@gamboasanabria">
+  
+  <meta property="og:site_name" content="">
+  <meta property="og:url" content="/en/post/2020-03-01-eapply_rapply_mapply/">
+  <meta property="og:title" content="apply family functions - Part 4 | ">
+  <meta property="og:description" content="The eapply(), rapply() and mapply() functions in data analysis."><meta property="og:image" content="/img/icon-192.png">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2020-03-01T18:55:57-06:00">
+  
+  <meta property="article:modified_time" content="2020-03-01T18:55:57-06:00">
+  
+
+  
+
+
+  
+
+
+
+
+
+  <title>apply family functions - Part 4 | </title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/en"></a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/en/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/en/#experience"><span>Experience</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/en/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/en/#talks"><span>Activities</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/en/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
+            <i class="fas fa-globe" aria-hidden="true"></i>
+            <span>English</span>
+          </a>
+          <ul class="dropdown-menu">
+            
+            <li class="dropdown-item my-0 py-0 mx-0 px-0">
+              <a href="/es/post/2020-03-01-eapply_rapply_mapply/">
+                <span>Español</span>
+              </a>
+            </li>
+            
+          </ul>
+        </li>
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1 itemprop="name">apply family functions - Part 4</h1>
+
+  
+  <p class="page-subtitle">eapply(), rapply() and mapply() functions</p>
+  
+
+  
+    
+
+
+
+<meta content="2020-03-01 18:55:57 -0600 CST" itemprop="datePublished">
+<meta content="2020-03-01 18:55:57 -0600 CST" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  <span itemprop="author name" itemtype="http://schema.org/Person">César Gamboa Sanabria</span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>Mar 1, 2020</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    7 min read
+  </span>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/en/post/2020-03-01-eapply_rapply_mapply/#disqus_thread"></a>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    <a href="/en/categories/r-basics/">R basics</a></span>
+  
+
+  
+    
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=apply%20family%20functions%20-%20Part%204&amp;url=%2fen%2fpost%2f2020-03-01-eapply_rapply_mapply%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=%2fen%2fpost%2f2020-03-01-eapply_rapply_mapply%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fen%2fpost%2f2020-03-01-eapply_rapply_mapply%2f&amp;title=apply%20family%20functions%20-%20Part%204"
+         target="_blank" rel="noopener">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=%2fen%2fpost%2f2020-03-01-eapply_rapply_mapply%2f&amp;title=apply%20family%20functions%20-%20Part%204"
+         target="_blank" rel="noopener">
+        <i class="fab fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=apply%20family%20functions%20-%20Part%204&amp;body=%2fen%2fpost%2f2020-03-01-eapply_rapply_mapply%2f">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+
+<div id="eapply-function" class="section level1">
+<h1>eapply function</h1>
+<div id="using-environments" class="section level2">
+<h2>Using environments</h2>
+<p>In R, an <em>Environment</em> is a site to assign variables or values that we assign to objects. Each time a new R session begins, all created objects stay in the <em>global</em> <strong>environment</strong>. If we create the object <code>x</code>, it will then be in the <em>R</em> default <em>Environment</em>. The<code>ls()</code> function lists the created objects, so we can check that <code>x</code> actually exists.</p>
+<pre class="r"><code>x &lt;- 28022020
+ls()</code></pre>
+<pre><code>## [1] &quot;x&quot;</code></pre>
+<p>It is possible to assign the <strong>global</strong> <em>Environment</em> to an object that we’ll call <code>environment_1</code>. The curious thing is that after doing this, <code>environment_1</code> is an object into the <strong>global</strong> <em>Environment</em> , but at the same time, it is the <strong>global</strong> <em>Environmet</em>.</p>
+<pre class="r"><code>environment_1 &lt;- globalenv()
+class(environment_1)</code></pre>
+<pre><code>## [1] &quot;environment&quot;</code></pre>
+<pre class="r"><code>ls()</code></pre>
+<pre><code>## [1] &quot;environment_1&quot; &quot;x&quot;</code></pre>
+<p>This process is similar to using a list, a topic that we talked about in <a href="https://www.cesargamboasanabria.com/en/post/2019-12-08-lapply_sapply_vapply/">this post</a>. Since the object <code>environment_1</code> is the global environment, it contains the object<code>x</code>, which we assign to the <strong>global</strong> <em>Environment</em> and also includes itself in a cyclical way…</p>
+<pre class="r"><code>environment_1$x</code></pre>
+<pre><code>## [1] 28022020</code></pre>
+<pre class="r"><code>environment_1$environment_1</code></pre>
+<pre><code>## &lt;environment: R_GlobalEnv&gt;</code></pre>
+<pre class="r"><code>environment_1$environment_1$environment_1</code></pre>
+<pre><code>## &lt;environment: R_GlobalEnv&gt;</code></pre>
+<pre class="r"><code>ls(environment_1$environment_1$environment_1$environment_1)</code></pre>
+<pre><code>## [1] &quot;environment_1&quot; &quot;x&quot;</code></pre>
+<p>The <code>environment_1</code> object could, as Emmett Brown someday said, it creates a paradox that would destroy the universe, so it is best to eliminate it. Section 2.1.10 of the <a href="https://cran.r-project.org/doc/manuals/R-lang.html#Environment-objects">R language definition</a> offers a more formal description of what a <em>Environment </em> is.</p>
+<pre class="r"><code>rm(environment_1)
+ls()</code></pre>
+<pre><code>## [1] &quot;x&quot;</code></pre>
+<p>It is possible to create a new <em>Environment</em> that is independent of the global <em>Environment</em>, which we will call <code>environment_2</code>. When creating it, we can see that it is empty compared to the <em>global</em> <strong>Environment</strong>, which contains <code>x</code> and <code>environment_2</code>. Also, if we directly generate a new variable, say <code>z</code>, it will set to the <em>global </em> <strong>Environment</strong>.</p>
+<pre class="r"><code>environment_2 &lt;- new.env()
+environment_2</code></pre>
+<pre><code>## &lt;environment: 0x0000000013231bb8&gt;</code></pre>
+<pre class="r"><code>ls(globalenv())</code></pre>
+<pre><code>## [1] &quot;environment_2&quot; &quot;x&quot;</code></pre>
+<pre class="r"><code>ls(environment_2)</code></pre>
+<pre><code>## character(0)</code></pre>
+<pre class="r"><code>z &lt;- pi
+
+ls(globalenv())</code></pre>
+<pre><code>## [1] &quot;environment_2&quot; &quot;x&quot;             &quot;z&quot;</code></pre>
+<pre class="r"><code>ls(environment_2)</code></pre>
+<pre><code>## character(0)</code></pre>
+<p>Now we create a new object called <code>y</code>and we assign it to <code>environment_2</code>. Now, the object <code>y</code> will be contain <strong>only</strong> in <code>environment_2</code> and not in <em>Environment</em> <strong>global</strong>, even if the last one contains <code>environment_2</code>.</p>
+<pre class="r"><code>environment_2$y &lt;- &quot;This is an abstract topic&quot;
+
+ls(globalenv())</code></pre>
+<pre><code>## [1] &quot;environment_2&quot; &quot;x&quot;             &quot;z&quot;</code></pre>
+<pre class="r"><code>ls(environment_2)</code></pre>
+<pre><code>## [1] &quot;y&quot;</code></pre>
+<pre class="r"><code>environment(x)</code></pre>
+<pre><code>## NULL</code></pre>
+<p>Has an <em>Environment</em> a real use? The answer is yes, and they are fundamental in something widely used in R: Functions. In general, when building a function, it is assumed that it has only two components: the arguments and the content of the function. Consider a simple function that reverses the sign of a number.</p>
+<pre class="r"><code>reverse_sign &lt;- function(number){
+    number*-1
+}</code></pre>
+<p>In the previous case, the <code>reverse_sign()</code> function has a single argument <strong>number</strong>, while its content is <span class="math inline">\(number\cdot -1\)</span>. However, the functions have a third argument: <em>Environment</em>. When the <code>reverse_sign()</code> function created, it was in the <strong>global</strong> <em>Environment</em>.</p>
+<pre class="r"><code>ls(globalenv())</code></pre>
+<pre><code>## [1] &quot;environment_2&quot; &quot;reverse_sign&quot;  &quot;x&quot;             &quot;z&quot;</code></pre>
+<pre class="r"><code>ls(environment_2)</code></pre>
+<pre><code>## [1] &quot;y&quot;</code></pre>
+<pre class="r"><code>environment(reverse_sign)</code></pre>
+<pre><code>## &lt;environment: R_GlobalEnv&gt;</code></pre>
+<p>The consequence is that the <code>reverse_sign()</code> function only works in the <em>Environment</em> assigned to it. For example, the function run only on the object <code>x</code> that is in the <strong>global</strong> <em>Environment</em>:</p>
+<pre class="r"><code>reverse_sign(x)</code></pre>
+<pre><code>## [1] -28022020</code></pre>
+<p>If we create an object that is also called <code>x</code>, but that is in the<code>environment_2</code>, the <code>reverse_sign()</code> function still running only in the <strong>global</strong> <em>Environment</em>.</p>
+<pre class="r"><code>environment_2$x &lt;- 123456
+reverse_sign(x)</code></pre>
+<pre><code>## [1] -28022020</code></pre>
+</div>
+<div id="eapply-function-1" class="section level2">
+<h2>eapply function</h2>
+<p>These small details that we usually don’t handle in regular tasks using R may become indispensable in certain situations, such as when you want to use the <code>eapply()</code> function. Knowing basics on how an <em>Environment</em> works, we are going to eliminate all the objects created so far, this to keep everything in order.</p>
+<pre class="r"><code>rm(list = ls())</code></pre>
+<p>As we also review in <a href="https://www.cesargamboasanabria.com/en/post/2019-12-08-lapply_sapply_vapply/">this post</a>, the <code>lapply()</code> function applies a function to each element of a list. Similarly, the <code>eapply()</code> function applies a function to each element named in an <em>Environment</em> with the difference that in <code>eaaply()</code>, the first argument is an <em>Environment</em>, and not a list as in <code>lapply()</code>. Let’s create now a new <em>Environment</em> to apply a function to its elements that return the square root of each one plus 10:</p>
+<pre class="r"><code>environment_1 &lt;- new.env()
+environment_1$element_1 &lt;- 4
+environment_1$element_2 &lt;- 9
+environment_1$element_3 &lt;- 25
+
+eapply(environment_1, function(x){
+    sqrt(x)+10
+})</code></pre>
+<pre><code>## $element_1
+## [1] 12
+## 
+## $element_2
+## [1] 13
+## 
+## $element_3
+## [1] 15</code></pre>
+<p>We can also display the result without name tags:</p>
+<pre class="r"><code>eapply(environment_1, function(x){
+    sqrt(x)+10
+}, USE.NAMES = FALSE)</code></pre>
+<pre><code>## [[1]]
+## [1] 12
+## 
+## [[2]]
+## [1] 13
+## 
+## [[3]]
+## [1] 15</code></pre>
+<p>Previous runs of the <code>eapply()</code> function evaluate our function in all the elements contained in the <em>Environment</em>, but there are exceptions if there are <em>hidden elements</em>. The <em>hidden elements</em> are objects that exist but are not visible to the naked eye, we can create the <em>element_4</em> as hidden as follows:</p>
+<pre class="r"><code>environment_1$.element_4 &lt;- 48
+ls(environment_1)</code></pre>
+<pre><code>## [1] &quot;element_1&quot; &quot;element_2&quot; &quot;element_3&quot;</code></pre>
+<p>If we repeat the previous evaluation of the <code>eapply()</code> function, it only runs with the <em>visible elements</em>:</p>
+<pre class="r"><code>eapply(environment_1, function(x){
+    sqrt(x)+10
+})</code></pre>
+<pre><code>## $element_1
+## [1] 12
+## 
+## $element_2
+## [1] 13
+## 
+## $element_3
+## [1] 15</code></pre>
+<p>But we can run that function over all elements:</p>
+<pre class="r"><code>eapply(environment_1, function(x){
+    sqrt(x)+10
+}, all.names = TRUE)</code></pre>
+<pre><code>## $element_1
+## [1] 12
+## 
+## $.element_4
+## [1] 16.9282
+## 
+## $element_2
+## [1] 13
+## 
+## $element_3
+## [1] 15</code></pre>
+</div>
+</div>
+<div id="rapply-function" class="section level1">
+<h1>rapply function</h1>
+<p>In this function, the “r” refers to “recursive”. This function has two objectives: Apply a function recursively to a list or apply that function only to the elements of a list with a specific class. This second reason is especially useful because the lists in R are perhaps the most useful objects when we are using that language because they store databases, numbers, character strings, graphics, and more. We can apply a function to every numeric element of a list, without the need to know in which positions these elements are within the list. A simple example can be applied to the famous <code>iris</code> data set:</p>
+<pre class="r"><code>rapply(iris, mean, class=&quot;numeric&quot;)</code></pre>
+<pre><code>## Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
+##     5.843333     3.057333     3.758000     1.199333</code></pre>
+<pre class="r"><code>rapply(iris, table, class=&quot;factor&quot;)</code></pre>
+<pre><code>##     Species.setosa Species.versicolor  Species.virginica 
+##                 50                 50                 50</code></pre>
+<p>Or, if we have a list with different classes, we may want to multiply by two those elements of the list that are numerical:</p>
+<pre class="r"><code>rapply(list(2,5,7,&quot;We can&#39;t multiply this element because is a string&quot;), function(x){x*2}, class=&quot;numeric&quot;)</code></pre>
+<pre><code>## [1]  4 10 14</code></pre>
+</div>
+<div id="mapply-function" class="section level1">
+<h1>mapply function</h1>
+<p>The <code>mapply()</code> function can be seen as the multivariate version of the <em>apply</em> functions. For example, <code>lapply()</code> function can only be applied to the elements of a list, but if you have a list whose elements are an argument of a function and another list whose elements are the other argument of the function, then <code>mapply()</code> is used. The function to be applied must have as many arguments as the number of lists to pass to <code>mapply()</code>. <code>MoreArgs</code> argument is useful if there are more arguments that need to use in the function. It is easier to show its operation with an example than with words. Suppose we want to obtain the result of <span class="math inline">\(x*y+1\)</span> by varying the values of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> as follows: <span class="math inline">\(1\cdot 2 + 1, 2\cdot 3 + 1, 3\cdot 4 + 1, \cdots , 10000\cdot 10001 + 1\)</span>. We can obtain this calculation through a <code>for</code> loop as follows:</p>
+<pre class="r"><code>z &lt;- NULL
+k &lt;- 1
+x &lt;- 1:10000
+y &lt;- 2:10001
+for(i in 1:10000){
+    z[k] &lt;- x[i]*y[i]+1
+    k &lt;- k+1
+}</code></pre>
+<p>But we can also use the <code>mapply()</code> function:</p>
+<pre class="r"><code>mapply(function(x,y){x*y+1},
+       x=1:10000,
+       y=2:10001)</code></pre>
+<p>Both functions display the same result; however, <code>mapply()</code> is considerably more efficient when performing the calculation. We will compare the running time of different processes in the next post when I’ll show you some parallel versions of the apply family functions.</p>
+</div>
+
+    </div>
+
+    
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/en/tags/r/">R</a>
+  
+  <a class="badge badge-light" href="/en/tags/rstudio/">RStudio</a>
+  
+  <a class="badge badge-light" href="/en/tags/apply-functions/">apply functions</a>
+  
+  <a class="badge badge-light" href="/en/tags/eapply/">eapply</a>
+  
+  <a class="badge badge-light" href="/en/tags/rapply/">rapply</a>
+  
+  <a class="badge badge-light" href="/en/tags/mapply/">mapply</a>
+  
+</div>
+
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+
+      
+      
+      <div class="article-widget">
+        <div class="hr-light"></div>
+        <h3>Related</h3>
+        <ul>
+          
+          <li><a href="/en/post/2019-12-08-lapply_sapply_vapply/">apply family functions - Part 3</a></li>
+          
+          <li><a href="/en/post/2019-07-31-tapply/">Apply family functions - Part 2</a></li>
+          
+          <li><a href="/en/post/2019-06-23-apply/">Apply family functions - Part 1</a></li>
+          
+          <li><a href="/en/post/2019-06-23-exploraci%C3%B3n-de-datos-categ%C3%B3ricos-con-el-paquete-inspectdf/">Exploratory data analysis with categorical data</a></li>
+          
+        </ul>
+      </div>
+      
+    
+
+    
+
+    
+<section id="comments">
+  <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "www-cesargamboasanabria-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML-full" integrity="sha256-GhM+5JHb6QUzOQPXSJLEWP7R73CbkisjzK5Eyij4U9w=" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==" crossorigin="anonymous"></script>
+    
+
+    
+    
+    
+    <script id="dsq-count-scr" src="//www-cesargamboasanabria-com.disqus.com/count.js" async></script>
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/en/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.3394a224b26ce58ff36f44c54743e0ab.js"></script>
+
+    
+
+
+
+
+
+
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    © 2019 &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

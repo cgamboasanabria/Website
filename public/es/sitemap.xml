@@ -4,7 +4,7 @@
   
   <url>
     <loc>/es/</loc>
-    <lastmod>2020-01-28T17:00:00+00:00</lastmod>
+    <lastmod>2020-03-01T18:55:57-06:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -14,6 +14,181 @@
                 rel="alternate"
                 hreflang="es"
                 href="/es/"
+                />
+  </url>
+  
+  <url>
+    <loc>/es/authors/</loc>
+    <lastmod>2020-03-01T18:55:57-06:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/authors/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/authors/"
+                />
+  </url>
+  
+  <url>
+    <loc>/es/categories/</loc>
+    <lastmod>2020-03-01T18:55:57-06:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/categories/"
+                />
+  </url>
+  
+  <url>
+    <loc>/es/authors/c%C3%A9sar-gamboa-sanabria/</loc>
+    <lastmod>2020-03-01T18:55:57-06:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/authors/c%C3%A9sar-gamboa-sanabria/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/authors/c%C3%A9sar-gamboa-sanabria/"
+                />
+  </url>
+  
+  <url>
+    <loc>/es/tags/eapply/</loc>
+    <lastmod>2020-03-01T18:55:57-06:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/tags/eapply/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/tags/eapply/"
+                />
+  </url>
+  
+  <url>
+    <loc>/es/post/2020-03-01-eapply_rapply_mapply/</loc>
+    <lastmod>2020-03-01T18:55:57-06:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/post/2020-03-01-eapply_rapply_mapply/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/post/2020-03-01-eapply_rapply_mapply/"
+                />
+  </url>
+  
+  <url>
+    <loc>/es/tags/funciones-apply/</loc>
+    <lastmod>2020-03-01T18:55:57-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/es/categories/fundamentos-de-r/</loc>
+    <lastmod>2020-03-01T18:55:57-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/es/tags/mapply/</loc>
+    <lastmod>2020-03-01T18:55:57-06:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/tags/mapply/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/tags/mapply/"
+                />
+  </url>
+  
+  <url>
+    <loc>/es/post/</loc>
+    <lastmod>2020-03-01T18:55:57-06:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/post/"
+                />
+  </url>
+  
+  <url>
+    <loc>/es/tags/r/</loc>
+    <lastmod>2020-03-01T18:55:57-06:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/tags/r/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/tags/r/"
+                />
+  </url>
+  
+  <url>
+    <loc>/es/tags/rapply/</loc>
+    <lastmod>2020-03-01T18:55:57-06:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/tags/rapply/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/tags/rapply/"
+                />
+  </url>
+  
+  <url>
+    <loc>/es/tags/rstudio/</loc>
+    <lastmod>2020-03-01T18:55:57-06:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/tags/rstudio/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/tags/rstudio/"
+                />
+  </url>
+  
+  <url>
+    <loc>/es/tags/</loc>
+    <lastmod>2020-03-01T18:55:57-06:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/tags/"
                 />
   </url>
   
@@ -48,51 +223,6 @@
   </url>
   
   <url>
-    <loc>/es/authors/</loc>
-    <lastmod>2019-12-08T18:55:57-06:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/authors/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/authors/"
-                />
-  </url>
-  
-  <url>
-    <loc>/es/categories/</loc>
-    <lastmod>2019-12-08T18:55:57-06:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/categories/"
-                />
-  </url>
-  
-  <url>
-    <loc>/es/authors/c%C3%A9sar-gamboa-sanabria/</loc>
-    <lastmod>2019-12-08T18:55:57-06:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/authors/c%C3%A9sar-gamboa-sanabria/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/authors/c%C3%A9sar-gamboa-sanabria/"
-                />
-  </url>
-  
-  <url>
     <loc>/es/post/2019-12-08-lapply_sapply_vapply/</loc>
     <lastmod>2019-12-08T18:55:57-06:00</lastmod>
     <xhtml:link
@@ -105,26 +235,6 @@
                 hreflang="es"
                 href="/es/post/2019-12-08-lapply_sapply_vapply/"
                 />
-  </url>
-  
-  <url>
-    <loc>/es/tags/funciones-apply/</loc>
-    <lastmod>2019-12-08T18:55:57-06:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/tags/funciones-apply/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/tags/funciones-apply/"
-                />
-  </url>
-  
-  <url>
-    <loc>/es/categories/fundamentos-de-r/</loc>
-    <lastmod>2019-12-08T18:55:57-06:00</lastmod>
   </url>
   
   <url>
@@ -143,51 +253,6 @@
   </url>
   
   <url>
-    <loc>/es/post/</loc>
-    <lastmod>2019-12-08T18:55:57-06:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/post/"
-                />
-  </url>
-  
-  <url>
-    <loc>/es/tags/r/</loc>
-    <lastmod>2019-12-08T18:55:57-06:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/tags/r/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/tags/r/"
-                />
-  </url>
-  
-  <url>
-    <loc>/es/tags/rstudio/</loc>
-    <lastmod>2019-12-08T18:55:57-06:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/tags/rstudio/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/tags/rstudio/"
-                />
-  </url>
-  
-  <url>
     <loc>/es/tags/sapply/</loc>
     <lastmod>2019-12-08T18:55:57-06:00</lastmod>
     <xhtml:link
@@ -199,21 +264,6 @@
                 rel="alternate"
                 hreflang="es"
                 href="/es/tags/sapply/"
-                />
-  </url>
-  
-  <url>
-    <loc>/es/tags/</loc>
-    <lastmod>2019-12-08T18:55:57-06:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/tags/"
                 />
   </url>
   
@@ -323,12 +373,12 @@
   </url>
   
   <url>
-    <loc>/es/tags/an%C3%A1lisis-exploratorio/</loc>
+    <loc>/es/categories/an%C3%A1lisis-exploratorio/</loc>
     <lastmod>2019-06-23T13:42:09-06:00</lastmod>
   </url>
   
   <url>
-    <loc>/es/categories/an%C3%A1lisis-exploratorio/</loc>
+    <loc>/es/tags/an%C3%A1lisis-exploratorio/</loc>
     <lastmod>2019-06-23T13:42:09-06:00</lastmod>
   </url>
   

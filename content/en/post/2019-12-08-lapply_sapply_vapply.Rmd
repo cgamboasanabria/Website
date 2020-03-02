@@ -5,7 +5,7 @@ title: "apply family functions - Part 3"
 subtitle: "lapply(), sapply() and vapply() functions"
 summary: "The lapply(), sapply() and vapply() functions in data analysis."
 authors: ["César Gamboa Sanabria"]
-tags: ["R", "RStudio", "Funciones apply", "lapply", "sapply", "vapply"]
+tags: ["R", "RStudio", "apply functions", "lapply", "sapply", "vapply"]
 categories: ["R basics"]
 date: 2019-12-08T18:55:57-06:00
 lastmod: 2019-12-08T18:55:57-06:00

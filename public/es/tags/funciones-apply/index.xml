@@ -7,10 +7,187 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>es-cr</language>
     <copyright>&amp;copy; 2019</copyright>
-    <lastBuildDate>Sun, 08 Dec 2019 18:55:57 -0600</lastBuildDate>
+    <lastBuildDate>Sun, 01 Mar 2020 18:55:57 -0600</lastBuildDate>
     
 	    <atom:link href="/es/tags/funciones-apply/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Familia de funciones apply - Parte 4</title>
+      <link>/es/post/2020-03-01-eapply_rapply_mapply/</link>
+      <pubDate>Sun, 01 Mar 2020 18:55:57 -0600</pubDate>
+      
+      <guid>/es/post/2020-03-01-eapply_rapply_mapply/</guid>
+      <description>
+
+
+&lt;div id=&#34;función-eapply&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Función eapply&lt;/h1&gt;
+&lt;div id=&#34;uso-de-environments&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Uso de Environments&lt;/h2&gt;
+&lt;p&gt;En pocas palabras, en R un &lt;em&gt;Environment&lt;/em&gt; es un sitio para almacenar variables, o valores que asignamos a objetos. Cada vez que se inicia una nueva sesión de R, todos los objetos creados se añadirán al &lt;em&gt;Environment&lt;/em&gt; &lt;strong&gt;global&lt;/strong&gt;. Si creamos el objeto &lt;code&gt;x&lt;/code&gt;, este quedará entonces en el &lt;em&gt;Environment&lt;/em&gt; predeterminado de R, la función &lt;code&gt;ls()&lt;/code&gt; sirve para listar los objetos creados y en este caso comprobar que &lt;code&gt;x&lt;/code&gt; existe.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- 28022020
+ls()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;x&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Es posible asignar el &lt;em&gt;Environment&lt;/em&gt; &lt;strong&gt;global&lt;/strong&gt; a un objeto, digamos &lt;code&gt;environment_1&lt;/code&gt;. Una cosa curiosa es que tras hacer esto, &lt;code&gt;environment_1&lt;/code&gt; es un objeto que está en el &lt;em&gt;Environmet&lt;/em&gt; &lt;strong&gt;global&lt;/strong&gt;, pero al mismo tiempo es el &lt;em&gt;Environmet&lt;/em&gt; &lt;strong&gt;global&lt;/strong&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_1 &amp;lt;- globalenv()
+class(environment_1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;environment&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;environment_1&amp;quot; &amp;quot;x&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Este caso podría interpretarse como usar una lista, tema que ya fue discutido en &lt;a href=&#34;https://www.cesargamboasanabria.com/es/post/2019-12-08-lapply_sapply_vapply/&#34;&gt;este post&lt;/a&gt;. Como el objeto &lt;code&gt;environment_1&lt;/code&gt; es el ambiente global, contiene al objeto &lt;code&gt;x&lt;/code&gt;, que fue asignado al &lt;em&gt;Environment&lt;/em&gt; &lt;strong&gt;global&lt;/strong&gt;; y también se contiene a sí mismo de una manera algo cíclica…&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_1$x&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 28022020&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_1$environment_1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;environment: R_GlobalEnv&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_1$environment_1$environment_1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;environment: R_GlobalEnv&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls(environment_1$environment_1$environment_1$environment_1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;environment_1&amp;quot; &amp;quot;x&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;El objeto &lt;code&gt;environment_1&lt;/code&gt; podría, en palabras del buen docto Emmett Brown, crear una paradoja que destruiría el universo, así que lo mejor es eliminarlo. La sección 2.1.10 de la &lt;a href=&#34;https://cran.r-project.org/doc/manuals/R-lang.html#Environment-objects&#34;&gt;definición del lenguaje R&lt;/a&gt; ofrece una descripción más formal de lo que es un &lt;em&gt;Environment&lt;/em&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rm(environment_1)
+ls()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;x&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Es posible crear un &lt;em&gt;Environment&lt;/em&gt; nuevo que sea independiente del &lt;em&gt;Environment&lt;/em&gt; &lt;strong&gt;global&lt;/strong&gt;, la cual llamaremos &lt;code&gt;environment_2&lt;/code&gt;. Al crearlo, podemos ver que este se encuentra vacío en comparación al &lt;em&gt;Environment&lt;/em&gt; &lt;strong&gt;global&lt;/strong&gt;, el cual contiene a &lt;code&gt;x&lt;/code&gt; y a &lt;code&gt;environment_2&lt;/code&gt;. Además, si generamos directamente una nueva variable, digamos &lt;code&gt;z&lt;/code&gt;, esta se asignará al &lt;em&gt;Environment&lt;/em&gt; &lt;strong&gt;global&lt;/strong&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_2 &amp;lt;- new.env()
+environment_2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;environment: 0x000000000ee21aa8&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls(globalenv())&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;environment_2&amp;quot; &amp;quot;x&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls(environment_2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## character(0)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;z &amp;lt;- pi
+
+ls(globalenv())&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;environment_2&amp;quot; &amp;quot;x&amp;quot;             &amp;quot;z&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls(environment_2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## character(0)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ahora crearemos una variable llamada &lt;code&gt;y&lt;/code&gt; y se la asignaremos al &lt;code&gt;environment_2&lt;/code&gt;. Tras hacer eso, la variable &lt;code&gt;y&lt;/code&gt; estará contenida &lt;strong&gt;únicamente&lt;/strong&gt; en el &lt;code&gt;environment_2&lt;/code&gt; y no en el &lt;em&gt;Environment&lt;/em&gt; &lt;strong&gt;global&lt;/strong&gt;, a pesar de que este último contiene al &lt;code&gt;environment_2&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_2$y &amp;lt;- &amp;quot;Esto es muy abstracto&amp;quot;
+
+ls(globalenv())&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;environment_2&amp;quot; &amp;quot;x&amp;quot;             &amp;quot;z&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls(environment_2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;y&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment(x)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## NULL&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;¿Los &lt;em&gt;Environment&lt;/em&gt; sirven para algo más aparte de filosofar? La respuesta es que sí, y son fundamentales en algo muy utilizado en R: Las funciones. Por lo general, al construir una función se asume tiene únicamente dos componentes: los argumentos y el contenido de la función. Consideremos una sencilla función que invierte el signo de un número.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;invertir_signo &amp;lt;- function(numero){
+    numero*-1
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;En el caso anterior, la función &lt;code&gt;invertir_signo()&lt;/code&gt; &lt;strong&gt;numero&lt;/strong&gt; tiene un único argumento, mientras que su contenido es &lt;span class=&#34;math inline&#34;&gt;\(numero\cdot -1\)&lt;/span&gt;. Sin embargo, las funciones cuentan con un tercer argumento: El &lt;em&gt;Environment&lt;/em&gt;. Cuando la función &lt;code&gt;invertir_signo()&lt;/code&gt; fue creada, quedó almacenada en el &lt;em&gt;Environment&lt;/em&gt; &lt;strong&gt;global&lt;/strong&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls(globalenv())&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;environment_2&amp;quot;  &amp;quot;invertir_signo&amp;quot; &amp;quot;x&amp;quot;              &amp;quot;z&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls(environment_2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;y&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment(invertir_signo)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;environment: R_GlobalEnv&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;La consecuencia de esto es que la función &lt;code&gt;invertir_signo()&lt;/code&gt; únicamente podrá ser evaluada en el &lt;em&gt;Environment&lt;/em&gt; que tiene asignado. Por ejemplo, la función puede ser evaluada sobre el objeto &lt;code&gt;x&lt;/code&gt;, que está en el &lt;em&gt;environment&lt;/em&gt; &lt;strong&gt;global&lt;/strong&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;invertir_signo(x)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] -28022020&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Si creamos un objeto que también se llame &lt;code&gt;x&lt;/code&gt;, pero que se encuentre en el &lt;code&gt;environment_2&lt;/code&gt;, la función &lt;code&gt;invertir_signo()&lt;/code&gt; seguirá siendo evaluada en el &lt;em&gt;Environment&lt;/em&gt; &lt;strong&gt;global&lt;/strong&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_2$x &amp;lt;- 123456
+invertir_signo(x)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] -28022020&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;la-función-eapply&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;La función eapply&lt;/h2&gt;
+&lt;p&gt;Estos pequeños detalles que no suelen manejarse en la vida diaria pueden llegar a ser indispensables en ciertas situaciones, como cuando se quiere utilizar la función &lt;code&gt;eapply()&lt;/code&gt;. Connociendo los aspectos más elementales de cómo trabajan los &lt;em&gt;Environment&lt;/em&gt;, vamos a eliminar todos los objetos creados hasta ahora, esto para mantener el orden.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rm(list = ls())&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Como también repasamos en &lt;a href=&#34;https://www.cesargamboasanabria.com/es/post/2019-12-08-lapply_sapply_vapply/&#34;&gt;este post&lt;/a&gt;, la función &lt;code&gt;lapply()&lt;/code&gt; aplica una función a cada elemento de una lista. De forma similar, la función &lt;code&gt;eapply()&lt;/code&gt; aplica una función a cada elemento nombrado en un &lt;em&gt;Environment&lt;/em&gt; con la diferencia que en &lt;code&gt;eaaply()&lt;/code&gt; el primer argumento es un &lt;em&gt;Environment&lt;/em&gt;, y no una lista como en &lt;code&gt;lapply()&lt;/code&gt;. vamos a crear entonces un nuevo &lt;em&gt;Environment&lt;/em&gt; para aplicarle una función a sus elemntos que devuelva la raíz cuadrada de cada uno y sumarle 10:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_1 &amp;lt;- new.env()
+environment_1$elemento_1 &amp;lt;- 4
+environment_1$elemento_2 &amp;lt;- 9
+environment_1$elemento_3 &amp;lt;- 25
+
+eapply(environment_1, function(x){
+    sqrt(x)+10
+})&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## $elemento_1
+## [1] 12
+## 
+## $elemento_2
+## [1] 13
+## 
+## $elemento_3
+## [1] 15&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;El resultado puede solicitarse sin las etiquetas de los nombres:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;eapply(environment_1, function(x){
+    sqrt(x)+10
+}, USE.NAMES = FALSE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [[1]]
+## [1] 12
+## 
+## [[2]]
+## [1] 13
+## 
+## [[3]]
+## [1] 15&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Las anteriores ejecuciones de la función &lt;code&gt;eapply()&lt;/code&gt; evalúan nuestra función en todos los elemntos que contenga el &lt;em&gt;Environment&lt;/em&gt;, pero hay excepciones si se tienen &lt;em&gt;elementos ocultos&lt;/em&gt;. Los &lt;em&gt;elementos ocultos&lt;/em&gt; son objetos que existen pero que no están a simple vista, podems crear el &lt;em&gt;elemento_4&lt;/em&gt; como oculto de la siguiente manera:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_1$.elemento_4 &amp;lt;- 48
+ls(environment_1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;elemento_1&amp;quot; &amp;quot;elemento_2&amp;quot; &amp;quot;elemento_3&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Si repetimos la evaluación anterior de la función &lt;code&gt;eaaply()&lt;/code&gt;, se ejecutará solamente con los &lt;em&gt;elementos visibles&lt;/em&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;eapply(environment_1, function(x){
+    sqrt(x)+10
+})&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## $elemento_1
+## [1] 12
+## 
+## $elemento_2
+## [1] 13
+## 
+## $elemento_3
+## [1] 15&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Pero podemos pedir que se ejecute sobre &lt;strong&gt;todos&lt;/strong&gt; los elementos:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;eapply(environment_1, function(x){
+    sqrt(x)+10
+}, all.names = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## $.elemento_4
+## [1] 16.9282
+## 
+## $elemento_1
+## [1] 12
+## 
+## $elemento_2
+## [1] 13
+## 
+## $elemento_3
+## [1] 15&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;función-rapply&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Función rapply&lt;/h1&gt;
+&lt;p&gt;En esta función, la “r” hace referencia a “recursivo”. Podría decirse que tiene dos objetivos: Aplicar una función de manera recursiva a una lista o aplicar dicha función a solo los elementos de una lista con una clase específica. Esto de especial utilidad, pues como ya lo hemos discutido, las listas en R son quizás los objetos más útiles que hay, pues de manera muy sencilla almacenan bases de datos, números, cadenas de caracteres, gráficos, y más, por lo que resulta útil aplicar una función a, digamos, todos los elementos numéricos de una lista, sin la necesidad de conocer en qué posiciones se encuentran dichos elementos dentro de la lista. Un ejemplo sencillo se puede aplicar al famoso conjunto de datos &lt;code&gt;iris&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rapply(iris, mean, class=&amp;quot;numeric&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
+##     5.843333     3.057333     3.758000     1.199333&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rapply(iris, table, class=&amp;quot;factor&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##     Species.setosa Species.versicolor  Species.virginica 
+##                 50                 50                 50&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;O bien, si tenemos una lista con distintas clases de objetos, podemos pedir que nos multiplique por dos aquellos elementos de la lista que son numéricos:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rapply(list(2,5,7,&amp;quot;Esto no se puede multiplicar porque es una cadena de caracteres&amp;quot;), function(x){x*2}, class=&amp;quot;numeric&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1]  4 10 14&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;función-mapply&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Función mapply&lt;/h1&gt;
+&lt;p&gt;La función &lt;code&gt;mapply()&lt;/code&gt; puede verse como la versión multivariada de las funciones &lt;em&gt;apply&lt;/em&gt;.Por ejemplo, con &lt;code&gt;lapply()&lt;/code&gt; solo puede aplicarse la función a los elementos de una lista, pero si se tiene una lista cuyos elementos son un argumento de una función y otra lista a cuyos elementos son el otro argumento de la función, entonces se usa &lt;code&gt;mapply()&lt;/code&gt;. La función que se va a aplicar debe tener un número de argumentos al menos igual al número de listas que se van a pasar a &lt;code&gt;mapply&lt;/code&gt;. &lt;code&gt;MoreArgs&lt;/code&gt; sirve en caso de que se tengan más argumentos que se necesiten pasar a la función. Resulta más sencillo mostrar su funcionamiento con un ejemplo que con palabras. Supongamos que queremos obtener el resultado de &lt;span class=&#34;math inline&#34;&gt;\(x*y+1\)&lt;/span&gt; variando los valores de &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; e &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; de la siguiente manera: &lt;span class=&#34;math inline&#34;&gt;\(1\cdot2+1,2\cdot3+1,3\cdot4+1,\cdots,10000\cdot10001+1\)&lt;/span&gt;. La forma de obtener este cálculo mediante un ciclo &lt;code&gt;for&lt;/code&gt; es la siguiente:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;z &amp;lt;- NULL
+k &amp;lt;- 1
+x &amp;lt;- 1:10000
+y &amp;lt;- 2:10001
+for(i in 1:10000){
+    z[k] &amp;lt;- x[i]*y[i]+1
+    k &amp;lt;- k+1
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Mientras que con la función &lt;code&gt;mapply()&lt;/code&gt; se obtiene así:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mapply(function(x,y){x*y+1},
+       x=1:10000,
+       y=2:10001)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ambas llegan al mismo resultado, sin embargo, &lt;code&gt;mapply()&lt;/code&gt; es considerablemente más eficiente al realizar el cálculo. Compararemos los tiempos de ejecución de distintos procesos en el siguiente post, donde se mostrarán algunas versiones en paralelo de las funciones apply.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Familia de funciones apply - Parte 3</title>

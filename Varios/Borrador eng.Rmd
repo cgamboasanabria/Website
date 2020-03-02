@@ -2,7 +2,7 @@
 
 ## Using environments
 
-In R, an *Environment* is a site to assign variables or values that we assign to objects. Each time a new R session begins, all created objects stay in the *global* **environment**.  If we create the object `x`, it will then be in the *R* default *Environment*. The`ls()` function lists the created objects, so we can check that `x` actually exists.
+In R, an *Environment* is a site to assign variables or values that we assign to objects. Each time a new R session begins, all created objects stay in the *global* **environment**.  If we create the object `x`, it will then be in the *R* default *Environment*. The`ls()` function lists the created objects, so we can check that `x` actually exists.
 
 ```{r}
 x <- 28022020
@@ -48,7 +48,122 @@ environment(x)
 Has an *Environment* a real use? The answer is yes, and they are fundamental in something widely used in R: Functions. In general, when building a function, it is assumed that it has only two components: the arguments and the content of the function. Consider a simple function that reverses the sign of a number.
 
 ```{r}
-reverse_sigo <- function(number){
+reverse_sign <- function(number){
     number*-1
 }
 ```
+
+In the previous case, the `reverse_sign()` function has a single argument **number**, while its content is **number* -1**. However, the functions have a third argument: *Environment*. When the `reverse_sign()` function created, it was in the **global** *Environment*.
+
+```{r}
+ls(globalenv())
+ls(environment_2)
+environment(reverse_sign)
+```
+
+The consequence is that the `reverse_sign()` function only works in the *Environment* assigned to it. For example, the function run only on the object `x` that is in the **global** *Environment*:
+
+```{r}
+reverse_sign(x)
+```
+
+
+If we create an object that is also called `x`, but that is in the`environment_2`, the `reverse_sign()` function still running only in the **global** *Environment*.
+
+```{r}
+environment_2$x <- 123456
+reverse_sign(x)
+```
+
+## eapply function
+
+These small details that we usually don't handle in regular tasks using R may become indispensable in certain situations, such as when you want to use the `eapply()` function. Knowing basics on how an *Environment* works, we are going to eliminate all the objects created so far, this to keep everything in order.
+
+```{r}
+rm(list = ls())
+```
+
+As we also review in [this post](https://www.cesargamboasanabria.com/en/post/2019-12-08-lapply_sapply_vapply/), the `lapply()` function applies a function to each element of a list. Similarly, the `eapply()` function applies a function to each element named in an *Environment* with the difference that in `eaaply()`, the first argument is an *Environment*, and not a list as in `lapply() `. Let's create now a new *Environment* to apply a function to its elements that return the square root of each one plus 10:
+
+```{r}
+environment_1 <- new.env()
+environment_1$elemento_1 <- 4
+environment_1$elemento_2 <- 9
+environment_1$elemento_3 <- 25
+
+eapply(environment_1, function(x){
+    sqrt(x)+10
+})
+```
+
+We can also display the result without name tags:
+
+```{r}
+eapply(environment_1, function(x){
+    sqrt(x)+10
+}, USE.NAMES = FALSE)
+```
+
+Previous runs of the `eapply()` function evaluate our function in all the elements contained in the *Environment*, but there are exceptions if there are *hidden elements*. The *hidden elements* are objects that exist but are not visible to the naked eye, we can create the *element_4* as hidden as follows:
+
+```{r}
+environment_1$.elemento_4 <- 48
+ls(environment_1)
+```
+
+
+If we repeat the previous evaluation of the `eapply()` function, it only runs with the *visible elements*:
+
+```{r}
+eapply(environment_1, function(x){
+    sqrt(x)+10
+})
+```
+
+But we can run that function over all elements:
+
+```{r}
+eapply(environment_1, function(x){
+    sqrt(x)+10
+}, all.names = TRUE)
+```
+
+# rapply function
+
+In this function, the "r" refers to "recursive". This function has two objectives: Apply a function recursively to a list or apply that function only to the elements of a list with a specific class. This second reason is especially useful because the lists in R are perhaps the most useful objects when we are using that language because they store databases, numbers, character strings, graphics, and more. We can apply a function to every numeric element of a list, without the need to know in which positions these elements are within the list. A simple example can be applied to the famous `iris` data set:
+
+```{r}
+rapply(iris, mean, class="numeric")
+rapply(iris, table, class="factor")
+```
+
+Or, if we have a list with different classes, we may want to multiply by two those elements of the list that are numerical:
+
+```{r}
+rapply(list(2,5,7,"We can't multiply this element because is a string"), function(x){x*2}, class="numeric")
+```
+
+# mapply function
+
+The `mapply()` function can be seen as the multivariate version of the *apply* functions. For example, `lapply()` function can only be applied to the elements of a list, but if you have a list whose elements are an argument of a function and another list whose elements are the other argument of the function, then `mapply()` is used. The function to be applied must have as many arguments as the number of lists to pass to `mapply()`. `MoreArgs` argument is useful if there are more arguments that need to use in the function. It is easier to show its operation with an example than with words. Suppose we want to obtain the result of $x*y+1$ by varying the values of $x$ and $y$ as follows: $1\cdot 2 + 1, 2\cdot 3 + 1, 3\cdot 4 + 1, \cdots , 10000\cdot 10001 + 1$. We can obtain this calculation through a `for` loop as follows:
+
+```{r, eval=FALSE}
+z <- NULL
+k <- 1
+x <- 1:10000
+y <- 2:10001
+for(i in 1:10000){
+    z[k] <- x[i]*y[i]+1
+    k <- k+1
+}
+```
+
+But we can also use the `mapply()` function:
+
+```{r, eval=FALSE}
+mapply(function(x,y){x*y+1},
+       x=1:10000,
+       y=2:10001)
+```
+
+Both functions display the same result; however, `mapply()` is considerably more efficient when performing the calculation. We will compare the running time of different processes in the next post when I'll show you some parallel versions of the apply family functions.

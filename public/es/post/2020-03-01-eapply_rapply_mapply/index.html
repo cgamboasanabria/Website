@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="es-cr">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.3.1">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="César Gamboa Sanabria">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Se muestran ejemplos de uso de las funciones eapply(), rapply() y mapply()">
+
+  
+  <link rel="alternate" hreflang="en" href="/en/post/2020-03-01-eapply_rapply_mapply/">
+  
+  <link rel="alternate" hreflang="es-cr" href="/es/post/2020-03-01-eapply_rapply_mapply/">
+
+  
+
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#3f51b5">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.css" integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ==" crossorigin="anonymous">
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700|Merriweather|Roboto+Mono">
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.min.6fb0665a835e482cbcda17fe0fc04296.css">
+
+  
+
+  
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-141652833-1 ', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+  
+
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="/es/post/2020-03-01-eapply_rapply_mapply/">
+
+  
+  
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="twitter:site" content="@gamboasanabria">
+  <meta property="twitter:creator" content="@gamboasanabria">
+  
+  <meta property="og:site_name" content="">
+  <meta property="og:url" content="/es/post/2020-03-01-eapply_rapply_mapply/">
+  <meta property="og:title" content="Familia de funciones apply - Parte 4 | ">
+  <meta property="og:description" content="Se muestran ejemplos de uso de las funciones eapply(), rapply() y mapply()"><meta property="og:image" content="/img/icon-192.png">
+  <meta property="og:locale" content="es-cr">
+  
+  <meta property="article:published_time" content="2020-03-01T18:55:57-06:00">
+  
+  <meta property="article:modified_time" content="2020-03-01T18:55:57-06:00">
+  
+
+  
+
+
+  
+
+
+
+
+
+  <title>Familia de funciones apply - Parte 4 | </title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Buscar</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Buscar..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/es"></a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Barra de navegación">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/es/#about"><span>Inicio</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/es/#experience"><span>Experiencia y formación académica</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/es/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/es/#talks"><span>Actividades</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/es/#contact"><span>Contacto</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
+            <i class="fas fa-globe" aria-hidden="true"></i>
+            <span>Español</span>
+          </a>
+          <ul class="dropdown-menu">
+            
+            <li class="dropdown-item my-0 py-0 mx-0 px-0">
+              <a href="/en/post/2020-03-01-eapply_rapply_mapply/">
+                <span>English</span>
+              </a>
+            </li>
+            
+          </ul>
+        </li>
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1 itemprop="name">Familia de funciones apply - Parte 4</h1>
+
+  
+  <p class="page-subtitle">Las funciones eapply(), rapply() y mapply()</p>
+  
+
+  
+    
+
+
+
+<meta content="2020-03-01 18:55:57 -0600 CST" itemprop="datePublished">
+<meta content="2020-03-01 18:55:57 -0600 CST" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  <span itemprop="author name" itemtype="http://schema.org/Person">César Gamboa Sanabria</span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>Mar 1, 2020</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    7 min de lectura
+  </span>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/es/post/2020-03-01-eapply_rapply_mapply/#disqus_thread"></a>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    <a href="/es/categories/fundamentos-de-r/">Fundamentos de R</a></span>
+  
+
+  
+    
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Familia%20de%20funciones%20apply%20-%20Parte%204&amp;url=%2fes%2fpost%2f2020-03-01-eapply_rapply_mapply%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=%2fes%2fpost%2f2020-03-01-eapply_rapply_mapply%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fes%2fpost%2f2020-03-01-eapply_rapply_mapply%2f&amp;title=Familia%20de%20funciones%20apply%20-%20Parte%204"
+         target="_blank" rel="noopener">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=%2fes%2fpost%2f2020-03-01-eapply_rapply_mapply%2f&amp;title=Familia%20de%20funciones%20apply%20-%20Parte%204"
+         target="_blank" rel="noopener">
+        <i class="fab fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Familia%20de%20funciones%20apply%20-%20Parte%204&amp;body=%2fes%2fpost%2f2020-03-01-eapply_rapply_mapply%2f">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+
+<div id="función-eapply" class="section level1">
+<h1>Función eapply</h1>
+<div id="uso-de-environments" class="section level2">
+<h2>Uso de Environments</h2>
+<p>En pocas palabras, en R un <em>Environment</em> es un sitio para almacenar variables, o valores que asignamos a objetos. Cada vez que se inicia una nueva sesión de R, todos los objetos creados se añadirán al <em>Environment</em> <strong>global</strong>. Si creamos el objeto <code>x</code>, este quedará entonces en el <em>Environment</em> predeterminado de R, la función <code>ls()</code> sirve para listar los objetos creados y en este caso comprobar que <code>x</code> existe.</p>
+<pre class="r"><code>x &lt;- 28022020
+ls()</code></pre>
+<pre><code>## [1] &quot;x&quot;</code></pre>
+<p>Es posible asignar el <em>Environment</em> <strong>global</strong> a un objeto, digamos <code>environment_1</code>. Una cosa curiosa es que tras hacer esto, <code>environment_1</code> es un objeto que está en el <em>Environmet</em> <strong>global</strong>, pero al mismo tiempo es el <em>Environmet</em> <strong>global</strong>.</p>
+<pre class="r"><code>environment_1 &lt;- globalenv()
+class(environment_1)</code></pre>
+<pre><code>## [1] &quot;environment&quot;</code></pre>
+<pre class="r"><code>ls()</code></pre>
+<pre><code>## [1] &quot;environment_1&quot; &quot;x&quot;</code></pre>
+<p>Este caso podría interpretarse como usar una lista, tema que ya fue discutido en <a href="https://www.cesargamboasanabria.com/es/post/2019-12-08-lapply_sapply_vapply/">este post</a>. Como el objeto <code>environment_1</code> es el ambiente global, contiene al objeto <code>x</code>, que fue asignado al <em>Environment</em> <strong>global</strong>; y también se contiene a sí mismo de una manera algo cíclica…</p>
+<pre class="r"><code>environment_1$x</code></pre>
+<pre><code>## [1] 28022020</code></pre>
+<pre class="r"><code>environment_1$environment_1</code></pre>
+<pre><code>## &lt;environment: R_GlobalEnv&gt;</code></pre>
+<pre class="r"><code>environment_1$environment_1$environment_1</code></pre>
+<pre><code>## &lt;environment: R_GlobalEnv&gt;</code></pre>
+<pre class="r"><code>ls(environment_1$environment_1$environment_1$environment_1)</code></pre>
+<pre><code>## [1] &quot;environment_1&quot; &quot;x&quot;</code></pre>
+<p>El objeto <code>environment_1</code> podría, en palabras del buen docto Emmett Brown, crear una paradoja que destruiría el universo, así que lo mejor es eliminarlo. La sección 2.1.10 de la <a href="https://cran.r-project.org/doc/manuals/R-lang.html#Environment-objects">definición del lenguaje R</a> ofrece una descripción más formal de lo que es un <em>Environment</em>.</p>
+<pre class="r"><code>rm(environment_1)
+ls()</code></pre>
+<pre><code>## [1] &quot;x&quot;</code></pre>
+<p>Es posible crear un <em>Environment</em> nuevo que sea independiente del <em>Environment</em> <strong>global</strong>, la cual llamaremos <code>environment_2</code>. Al crearlo, podemos ver que este se encuentra vacío en comparación al <em>Environment</em> <strong>global</strong>, el cual contiene a <code>x</code> y a <code>environment_2</code>. Además, si generamos directamente una nueva variable, digamos <code>z</code>, esta se asignará al <em>Environment</em> <strong>global</strong>.</p>
+<pre class="r"><code>environment_2 &lt;- new.env()
+environment_2</code></pre>
+<pre><code>## &lt;environment: 0x000000000ee21aa8&gt;</code></pre>
+<pre class="r"><code>ls(globalenv())</code></pre>
+<pre><code>## [1] &quot;environment_2&quot; &quot;x&quot;</code></pre>
+<pre class="r"><code>ls(environment_2)</code></pre>
+<pre><code>## character(0)</code></pre>
+<pre class="r"><code>z &lt;- pi
+
+ls(globalenv())</code></pre>
+<pre><code>## [1] &quot;environment_2&quot; &quot;x&quot;             &quot;z&quot;</code></pre>
+<pre class="r"><code>ls(environment_2)</code></pre>
+<pre><code>## character(0)</code></pre>
+<p>Ahora crearemos una variable llamada <code>y</code> y se la asignaremos al <code>environment_2</code>. Tras hacer eso, la variable <code>y</code> estará contenida <strong>únicamente</strong> en el <code>environment_2</code> y no en el <em>Environment</em> <strong>global</strong>, a pesar de que este último contiene al <code>environment_2</code>.</p>
+<pre class="r"><code>environment_2$y &lt;- &quot;Esto es muy abstracto&quot;
+
+ls(globalenv())</code></pre>
+<pre><code>## [1] &quot;environment_2&quot; &quot;x&quot;             &quot;z&quot;</code></pre>
+<pre class="r"><code>ls(environment_2)</code></pre>
+<pre><code>## [1] &quot;y&quot;</code></pre>
+<pre class="r"><code>environment(x)</code></pre>
+<pre><code>## NULL</code></pre>
+<p>¿Los <em>Environment</em> sirven para algo más aparte de filosofar? La respuesta es que sí, y son fundamentales en algo muy utilizado en R: Las funciones. Por lo general, al construir una función se asume tiene únicamente dos componentes: los argumentos y el contenido de la función. Consideremos una sencilla función que invierte el signo de un número.</p>
+<pre class="r"><code>invertir_signo &lt;- function(numero){
+    numero*-1
+}</code></pre>
+<p>En el caso anterior, la función <code>invertir_signo()</code> <strong>numero</strong> tiene un único argumento, mientras que su contenido es <span class="math inline">\(numero\cdot -1\)</span>. Sin embargo, las funciones cuentan con un tercer argumento: El <em>Environment</em>. Cuando la función <code>invertir_signo()</code> fue creada, quedó almacenada en el <em>Environment</em> <strong>global</strong>.</p>
+<pre class="r"><code>ls(globalenv())</code></pre>
+<pre><code>## [1] &quot;environment_2&quot;  &quot;invertir_signo&quot; &quot;x&quot;              &quot;z&quot;</code></pre>
+<pre class="r"><code>ls(environment_2)</code></pre>
+<pre><code>## [1] &quot;y&quot;</code></pre>
+<pre class="r"><code>environment(invertir_signo)</code></pre>
+<pre><code>## &lt;environment: R_GlobalEnv&gt;</code></pre>
+<p>La consecuencia de esto es que la función <code>invertir_signo()</code> únicamente podrá ser evaluada en el <em>Environment</em> que tiene asignado. Por ejemplo, la función puede ser evaluada sobre el objeto <code>x</code>, que está en el <em>environment</em> <strong>global</strong>:</p>
+<pre class="r"><code>invertir_signo(x)</code></pre>
+<pre><code>## [1] -28022020</code></pre>
+<p>Si creamos un objeto que también se llame <code>x</code>, pero que se encuentre en el <code>environment_2</code>, la función <code>invertir_signo()</code> seguirá siendo evaluada en el <em>Environment</em> <strong>global</strong>.</p>
+<pre class="r"><code>environment_2$x &lt;- 123456
+invertir_signo(x)</code></pre>
+<pre><code>## [1] -28022020</code></pre>
+</div>
+<div id="la-función-eapply" class="section level2">
+<h2>La función eapply</h2>
+<p>Estos pequeños detalles que no suelen manejarse en la vida diaria pueden llegar a ser indispensables en ciertas situaciones, como cuando se quiere utilizar la función <code>eapply()</code>. Connociendo los aspectos más elementales de cómo trabajan los <em>Environment</em>, vamos a eliminar todos los objetos creados hasta ahora, esto para mantener el orden.</p>
+<pre class="r"><code>rm(list = ls())</code></pre>
+<p>Como también repasamos en <a href="https://www.cesargamboasanabria.com/es/post/2019-12-08-lapply_sapply_vapply/">este post</a>, la función <code>lapply()</code> aplica una función a cada elemento de una lista. De forma similar, la función <code>eapply()</code> aplica una función a cada elemento nombrado en un <em>Environment</em> con la diferencia que en <code>eaaply()</code> el primer argumento es un <em>Environment</em>, y no una lista como en <code>lapply()</code>. vamos a crear entonces un nuevo <em>Environment</em> para aplicarle una función a sus elemntos que devuelva la raíz cuadrada de cada uno y sumarle 10:</p>
+<pre class="r"><code>environment_1 &lt;- new.env()
+environment_1$elemento_1 &lt;- 4
+environment_1$elemento_2 &lt;- 9
+environment_1$elemento_3 &lt;- 25
+
+eapply(environment_1, function(x){
+    sqrt(x)+10
+})</code></pre>
+<pre><code>## $elemento_1
+## [1] 12
+## 
+## $elemento_2
+## [1] 13
+## 
+## $elemento_3
+## [1] 15</code></pre>
+<p>El resultado puede solicitarse sin las etiquetas de los nombres:</p>
+<pre class="r"><code>eapply(environment_1, function(x){
+    sqrt(x)+10
+}, USE.NAMES = FALSE)</code></pre>
+<pre><code>## [[1]]
+## [1] 12
+## 
+## [[2]]
+## [1] 13
+## 
+## [[3]]
+## [1] 15</code></pre>
+<p>Las anteriores ejecuciones de la función <code>eapply()</code> evalúan nuestra función en todos los elemntos que contenga el <em>Environment</em>, pero hay excepciones si se tienen <em>elementos ocultos</em>. Los <em>elementos ocultos</em> son objetos que existen pero que no están a simple vista, podems crear el <em>elemento_4</em> como oculto de la siguiente manera:</p>
+<pre class="r"><code>environment_1$.elemento_4 &lt;- 48
+ls(environment_1)</code></pre>
+<pre><code>## [1] &quot;elemento_1&quot; &quot;elemento_2&quot; &quot;elemento_3&quot;</code></pre>
+<p>Si repetimos la evaluación anterior de la función <code>eaaply()</code>, se ejecutará solamente con los <em>elementos visibles</em>:</p>
+<pre class="r"><code>eapply(environment_1, function(x){
+    sqrt(x)+10
+})</code></pre>
+<pre><code>## $elemento_1
+## [1] 12
+## 
+## $elemento_2
+## [1] 13
+## 
+## $elemento_3
+## [1] 15</code></pre>
+<p>Pero podemos pedir que se ejecute sobre <strong>todos</strong> los elementos:</p>
+<pre class="r"><code>eapply(environment_1, function(x){
+    sqrt(x)+10
+}, all.names = TRUE)</code></pre>
+<pre><code>## $.elemento_4
+## [1] 16.9282
+## 
+## $elemento_1
+## [1] 12
+## 
+## $elemento_2
+## [1] 13
+## 
+## $elemento_3
+## [1] 15</code></pre>
+</div>
+</div>
+<div id="función-rapply" class="section level1">
+<h1>Función rapply</h1>
+<p>En esta función, la “r” hace referencia a “recursivo”. Podría decirse que tiene dos objetivos: Aplicar una función de manera recursiva a una lista o aplicar dicha función a solo los elementos de una lista con una clase específica. Esto de especial utilidad, pues como ya lo hemos discutido, las listas en R son quizás los objetos más útiles que hay, pues de manera muy sencilla almacenan bases de datos, números, cadenas de caracteres, gráficos, y más, por lo que resulta útil aplicar una función a, digamos, todos los elementos numéricos de una lista, sin la necesidad de conocer en qué posiciones se encuentran dichos elementos dentro de la lista. Un ejemplo sencillo se puede aplicar al famoso conjunto de datos <code>iris</code>:</p>
+<pre class="r"><code>rapply(iris, mean, class=&quot;numeric&quot;)</code></pre>
+<pre><code>## Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
+##     5.843333     3.057333     3.758000     1.199333</code></pre>
+<pre class="r"><code>rapply(iris, table, class=&quot;factor&quot;)</code></pre>
+<pre><code>##     Species.setosa Species.versicolor  Species.virginica 
+##                 50                 50                 50</code></pre>
+<p>O bien, si tenemos una lista con distintas clases de objetos, podemos pedir que nos multiplique por dos aquellos elementos de la lista que son numéricos:</p>
+<pre class="r"><code>rapply(list(2,5,7,&quot;Esto no se puede multiplicar porque es una cadena de caracteres&quot;), function(x){x*2}, class=&quot;numeric&quot;)</code></pre>
+<pre><code>## [1]  4 10 14</code></pre>
+</div>
+<div id="función-mapply" class="section level1">
+<h1>Función mapply</h1>
+<p>La función <code>mapply()</code> puede verse como la versión multivariada de las funciones <em>apply</em>.Por ejemplo, con <code>lapply()</code> solo puede aplicarse la función a los elementos de una lista, pero si se tiene una lista cuyos elementos son un argumento de una función y otra lista a cuyos elementos son el otro argumento de la función, entonces se usa <code>mapply()</code>. La función que se va a aplicar debe tener un número de argumentos al menos igual al número de listas que se van a pasar a <code>mapply</code>. <code>MoreArgs</code> sirve en caso de que se tengan más argumentos que se necesiten pasar a la función. Resulta más sencillo mostrar su funcionamiento con un ejemplo que con palabras. Supongamos que queremos obtener el resultado de <span class="math inline">\(x*y+1\)</span> variando los valores de <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> de la siguiente manera: <span class="math inline">\(1\cdot2+1,2\cdot3+1,3\cdot4+1,\cdots,10000\cdot10001+1\)</span>. La forma de obtener este cálculo mediante un ciclo <code>for</code> es la siguiente:</p>
+<pre class="r"><code>z &lt;- NULL
+k &lt;- 1
+x &lt;- 1:10000
+y &lt;- 2:10001
+for(i in 1:10000){
+    z[k] &lt;- x[i]*y[i]+1
+    k &lt;- k+1
+}</code></pre>
+<p>Mientras que con la función <code>mapply()</code> se obtiene así:</p>
+<pre class="r"><code>mapply(function(x,y){x*y+1},
+       x=1:10000,
+       y=2:10001)</code></pre>
+<p>Ambas llegan al mismo resultado, sin embargo, <code>mapply()</code> es considerablemente más eficiente al realizar el cálculo. Compararemos los tiempos de ejecución de distintos procesos en el siguiente post, donde se mostrarán algunas versiones en paralelo de las funciones apply.</p>
+</div>
+
+    </div>
+
+    
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/es/tags/r/">R</a>
+  
+  <a class="badge badge-light" href="/es/tags/rstudio/">RStudio</a>
+  
+  <a class="badge badge-light" href="/es/tags/funciones-apply/">Funciones apply</a>
+  
+  <a class="badge badge-light" href="/es/tags/eapply/">eapply</a>
+  
+  <a class="badge badge-light" href="/es/tags/rapply/">rapply</a>
+  
+  <a class="badge badge-light" href="/es/tags/mapply/">mapply</a>
+  
+</div>
+
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+
+      
+      
+      <div class="article-widget">
+        <div class="hr-light"></div>
+        <h3>Relacionado</h3>
+        <ul>
+          
+          <li><a href="/es/post/2019-12-08-lapply_sapply_vapply/">Familia de funciones apply - Parte 3</a></li>
+          
+          <li><a href="/es/post/2019-07-31-tapply/">Familia de funciones apply - Parte 2</a></li>
+          
+          <li><a href="/es/post/2019-06-23-apply/">Familia de funciones apply - Parte 1</a></li>
+          
+          <li><a href="/es/post/2019-06-23-exploraci%C3%B3n-de-datos-categ%C3%B3ricos-con-el-paquete-inspectdf/">Análisis exploratorio de datos categóricos</a></li>
+          
+        </ul>
+      </div>
+      
+    
+
+    
+
+    
+<section id="comments">
+  <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "www-cesargamboasanabria-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML-full" integrity="sha256-GhM+5JHb6QUzOQPXSJLEWP7R73CbkisjzK5Eyij4U9w=" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==" crossorigin="anonymous"></script>
+    
+
+    
+    
+    
+    <script id="dsq-count-scr" src="//www-cesargamboasanabria-com.disqus.com/count.js" async></script>
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/es/index.json";
+      const i18n = {
+        'placeholder': "Buscar...",
+        'results': "resultados encontrados",
+        'no_results': "No se encontraron resultados"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Proyectos",
+        'publication' : "Publicaciones",
+        'talk' : "Charlas"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.3394a224b26ce58ff36f44c54743e0ab.js"></script>
+
+    
+
+
+
+
+
+
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    © 2019 &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Citar</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copiar
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Descargar
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

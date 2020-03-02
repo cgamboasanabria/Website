@@ -7,17 +7,62 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019</copyright>
-    <lastBuildDate>Sun, 08 Dec 2019 18:55:57 -0600</lastBuildDate>
+    <lastBuildDate>Sun, 01 Mar 2020 18:55:57 -0600</lastBuildDate>
     
 	    <atom:link href="/en/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Funciones apply</title>
-      <link>/en/tags/funciones-apply/</link>
-      <pubDate>Sun, 08 Dec 2019 18:55:57 -0600</pubDate>
+      <title>apply functions</title>
+      <link>/en/tags/apply-functions/</link>
+      <pubDate>Sun, 01 Mar 2020 18:55:57 -0600</pubDate>
       
-      <guid>/en/tags/funciones-apply/</guid>
+      <guid>/en/tags/apply-functions/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>eapply</title>
+      <link>/en/tags/eapply/</link>
+      <pubDate>Sun, 01 Mar 2020 18:55:57 -0600</pubDate>
+      
+      <guid>/en/tags/eapply/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mapply</title>
+      <link>/en/tags/mapply/</link>
+      <pubDate>Sun, 01 Mar 2020 18:55:57 -0600</pubDate>
+      
+      <guid>/en/tags/mapply/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>/en/tags/r/</link>
+      <pubDate>Sun, 01 Mar 2020 18:55:57 -0600</pubDate>
+      
+      <guid>/en/tags/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rapply</title>
+      <link>/en/tags/rapply/</link>
+      <pubDate>Sun, 01 Mar 2020 18:55:57 -0600</pubDate>
+      
+      <guid>/en/tags/rapply/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RStudio</title>
+      <link>/en/tags/rstudio/</link>
+      <pubDate>Sun, 01 Mar 2020 18:55:57 -0600</pubDate>
+      
+      <guid>/en/tags/rstudio/</guid>
       <description></description>
     </item>
     
@@ -27,24 +72,6 @@
       <pubDate>Sun, 08 Dec 2019 18:55:57 -0600</pubDate>
       
       <guid>/en/tags/lapply/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>R</title>
-      <link>/en/tags/r/</link>
-      <pubDate>Sun, 08 Dec 2019 18:55:57 -0600</pubDate>
-      
-      <guid>/en/tags/r/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>RStudio</title>
-      <link>/en/tags/rstudio/</link>
-      <pubDate>Sun, 08 Dec 2019 18:55:57 -0600</pubDate>
-      
-      <guid>/en/tags/rstudio/</guid>
       <description></description>
     </item>
     

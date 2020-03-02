@@ -1,0 +1,197 @@
+---
+# Documentation: https://sourcethemes.com/academic/docs/managing-content/
+
+title: "Familia de funciones apply - Parte 4"
+subtitle: "Las funciones eapply(), rapply() y mapply()"
+summary: "Se muestran ejemplos de uso de las funciones eapply(), rapply() y mapply()"
+authors: ["César Gamboa Sanabria"]
+tags: ["R", "RStudio", "Funciones apply", "eapply", "rapply", "mapply"]
+categories: ["Fundamentos de R"]
+date: 2020-03-01T18:55:57-06:00
+lastmod: 2020-03-01T18:55:57-06:00
+featured: false
+draft: false
+
+# Featured image
+# To use, add an image named `featured.jpg/png` to your page's folder.
+# Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
+image:
+  caption: ""
+  focal_point: ""
+  preview_only: false
+
+# Projects (optional).
+#   Associate this post with one or more of your projects.
+#   Simply enter your project's folder or file name without extension.
+#   E.g. `projects = ["internal-project"]` references `content/project/deep-learning/index.md`.
+#   Otherwise, set `projects = []`.
+projects: []
+---
+
+
+
+<div id="función-eapply" class="section level1">
+<h1>Función eapply</h1>
+<div id="uso-de-environments" class="section level2">
+<h2>Uso de Environments</h2>
+<p>En pocas palabras, en R un <em>Environment</em> es un sitio para almacenar variables, o valores que asignamos a objetos. Cada vez que se inicia una nueva sesión de R, todos los objetos creados se añadirán al <em>Environment</em> <strong>global</strong>. Si creamos el objeto <code>x</code>, este quedará entonces en el <em>Environment</em> predeterminado de R, la función <code>ls()</code> sirve para listar los objetos creados y en este caso comprobar que <code>x</code> existe.</p>
+<pre class="r"><code>x &lt;- 28022020
+ls()</code></pre>
+<pre><code>## [1] &quot;x&quot;</code></pre>
+<p>Es posible asignar el <em>Environment</em> <strong>global</strong> a un objeto, digamos <code>environment_1</code>. Una cosa curiosa es que tras hacer esto, <code>environment_1</code> es un objeto que está en el <em>Environmet</em> <strong>global</strong>, pero al mismo tiempo es el <em>Environmet</em> <strong>global</strong>.</p>
+<pre class="r"><code>environment_1 &lt;- globalenv()
+class(environment_1)</code></pre>
+<pre><code>## [1] &quot;environment&quot;</code></pre>
+<pre class="r"><code>ls()</code></pre>
+<pre><code>## [1] &quot;environment_1&quot; &quot;x&quot;</code></pre>
+<p>Este caso podría interpretarse como usar una lista, tema que ya fue discutido en <a href="https://www.cesargamboasanabria.com/es/post/2019-12-08-lapply_sapply_vapply/">este post</a>. Como el objeto <code>environment_1</code> es el ambiente global, contiene al objeto <code>x</code>, que fue asignado al <em>Environment</em> <strong>global</strong>; y también se contiene a sí mismo de una manera algo cíclica…</p>
+<pre class="r"><code>environment_1$x</code></pre>
+<pre><code>## [1] 28022020</code></pre>
+<pre class="r"><code>environment_1$environment_1</code></pre>
+<pre><code>## &lt;environment: R_GlobalEnv&gt;</code></pre>
+<pre class="r"><code>environment_1$environment_1$environment_1</code></pre>
+<pre><code>## &lt;environment: R_GlobalEnv&gt;</code></pre>
+<pre class="r"><code>ls(environment_1$environment_1$environment_1$environment_1)</code></pre>
+<pre><code>## [1] &quot;environment_1&quot; &quot;x&quot;</code></pre>
+<p>El objeto <code>environment_1</code> podría, en palabras del buen docto Emmett Brown, crear una paradoja que destruiría el universo, así que lo mejor es eliminarlo. La sección 2.1.10 de la <a href="https://cran.r-project.org/doc/manuals/R-lang.html#Environment-objects">definición del lenguaje R</a> ofrece una descripción más formal de lo que es un <em>Environment</em>.</p>
+<pre class="r"><code>rm(environment_1)
+ls()</code></pre>
+<pre><code>## [1] &quot;x&quot;</code></pre>
+<p>Es posible crear un <em>Environment</em> nuevo que sea independiente del <em>Environment</em> <strong>global</strong>, la cual llamaremos <code>environment_2</code>. Al crearlo, podemos ver que este se encuentra vacío en comparación al <em>Environment</em> <strong>global</strong>, el cual contiene a <code>x</code> y a <code>environment_2</code>. Además, si generamos directamente una nueva variable, digamos <code>z</code>, esta se asignará al <em>Environment</em> <strong>global</strong>.</p>
+<pre class="r"><code>environment_2 &lt;- new.env()
+environment_2</code></pre>
+<pre><code>## &lt;environment: 0x000000000ee21aa8&gt;</code></pre>
+<pre class="r"><code>ls(globalenv())</code></pre>
+<pre><code>## [1] &quot;environment_2&quot; &quot;x&quot;</code></pre>
+<pre class="r"><code>ls(environment_2)</code></pre>
+<pre><code>## character(0)</code></pre>
+<pre class="r"><code>z &lt;- pi
+
+ls(globalenv())</code></pre>
+<pre><code>## [1] &quot;environment_2&quot; &quot;x&quot;             &quot;z&quot;</code></pre>
+<pre class="r"><code>ls(environment_2)</code></pre>
+<pre><code>## character(0)</code></pre>
+<p>Ahora crearemos una variable llamada <code>y</code> y se la asignaremos al <code>environment_2</code>. Tras hacer eso, la variable <code>y</code> estará contenida <strong>únicamente</strong> en el <code>environment_2</code> y no en el <em>Environment</em> <strong>global</strong>, a pesar de que este último contiene al <code>environment_2</code>.</p>
+<pre class="r"><code>environment_2$y &lt;- &quot;Esto es muy abstracto&quot;
+
+ls(globalenv())</code></pre>
+<pre><code>## [1] &quot;environment_2&quot; &quot;x&quot;             &quot;z&quot;</code></pre>
+<pre class="r"><code>ls(environment_2)</code></pre>
+<pre><code>## [1] &quot;y&quot;</code></pre>
+<pre class="r"><code>environment(x)</code></pre>
+<pre><code>## NULL</code></pre>
+<p>¿Los <em>Environment</em> sirven para algo más aparte de filosofar? La respuesta es que sí, y son fundamentales en algo muy utilizado en R: Las funciones. Por lo general, al construir una función se asume tiene únicamente dos componentes: los argumentos y el contenido de la función. Consideremos una sencilla función que invierte el signo de un número.</p>
+<pre class="r"><code>invertir_signo &lt;- function(numero){
+    numero*-1
+}</code></pre>
+<p>En el caso anterior, la función <code>invertir_signo()</code> <strong>numero</strong> tiene un único argumento, mientras que su contenido es <span class="math inline">\(numero\cdot -1\)</span>. Sin embargo, las funciones cuentan con un tercer argumento: El <em>Environment</em>. Cuando la función <code>invertir_signo()</code> fue creada, quedó almacenada en el <em>Environment</em> <strong>global</strong>.</p>
+<pre class="r"><code>ls(globalenv())</code></pre>
+<pre><code>## [1] &quot;environment_2&quot;  &quot;invertir_signo&quot; &quot;x&quot;              &quot;z&quot;</code></pre>
+<pre class="r"><code>ls(environment_2)</code></pre>
+<pre><code>## [1] &quot;y&quot;</code></pre>
+<pre class="r"><code>environment(invertir_signo)</code></pre>
+<pre><code>## &lt;environment: R_GlobalEnv&gt;</code></pre>
+<p>La consecuencia de esto es que la función <code>invertir_signo()</code> únicamente podrá ser evaluada en el <em>Environment</em> que tiene asignado. Por ejemplo, la función puede ser evaluada sobre el objeto <code>x</code>, que está en el <em>environment</em> <strong>global</strong>:</p>
+<pre class="r"><code>invertir_signo(x)</code></pre>
+<pre><code>## [1] -28022020</code></pre>
+<p>Si creamos un objeto que también se llame <code>x</code>, pero que se encuentre en el <code>environment_2</code>, la función <code>invertir_signo()</code> seguirá siendo evaluada en el <em>Environment</em> <strong>global</strong>.</p>
+<pre class="r"><code>environment_2$x &lt;- 123456
+invertir_signo(x)</code></pre>
+<pre><code>## [1] -28022020</code></pre>
+</div>
+<div id="la-función-eapply" class="section level2">
+<h2>La función eapply</h2>
+<p>Estos pequeños detalles que no suelen manejarse en la vida diaria pueden llegar a ser indispensables en ciertas situaciones, como cuando se quiere utilizar la función <code>eapply()</code>. Connociendo los aspectos más elementales de cómo trabajan los <em>Environment</em>, vamos a eliminar todos los objetos creados hasta ahora, esto para mantener el orden.</p>
+<pre class="r"><code>rm(list = ls())</code></pre>
+<p>Como también repasamos en <a href="https://www.cesargamboasanabria.com/es/post/2019-12-08-lapply_sapply_vapply/">este post</a>, la función <code>lapply()</code> aplica una función a cada elemento de una lista. De forma similar, la función <code>eapply()</code> aplica una función a cada elemento nombrado en un <em>Environment</em> con la diferencia que en <code>eaaply()</code> el primer argumento es un <em>Environment</em>, y no una lista como en <code>lapply()</code>. vamos a crear entonces un nuevo <em>Environment</em> para aplicarle una función a sus elemntos que devuelva la raíz cuadrada de cada uno y sumarle 10:</p>
+<pre class="r"><code>environment_1 &lt;- new.env()
+environment_1$elemento_1 &lt;- 4
+environment_1$elemento_2 &lt;- 9
+environment_1$elemento_3 &lt;- 25
+
+eapply(environment_1, function(x){
+    sqrt(x)+10
+})</code></pre>
+<pre><code>## $elemento_1
+## [1] 12
+## 
+## $elemento_2
+## [1] 13
+## 
+## $elemento_3
+## [1] 15</code></pre>
+<p>El resultado puede solicitarse sin las etiquetas de los nombres:</p>
+<pre class="r"><code>eapply(environment_1, function(x){
+    sqrt(x)+10
+}, USE.NAMES = FALSE)</code></pre>
+<pre><code>## [[1]]
+## [1] 12
+## 
+## [[2]]
+## [1] 13
+## 
+## [[3]]
+## [1] 15</code></pre>
+<p>Las anteriores ejecuciones de la función <code>eapply()</code> evalúan nuestra función en todos los elemntos que contenga el <em>Environment</em>, pero hay excepciones si se tienen <em>elementos ocultos</em>. Los <em>elementos ocultos</em> son objetos que existen pero que no están a simple vista, podems crear el <em>elemento_4</em> como oculto de la siguiente manera:</p>
+<pre class="r"><code>environment_1$.elemento_4 &lt;- 48
+ls(environment_1)</code></pre>
+<pre><code>## [1] &quot;elemento_1&quot; &quot;elemento_2&quot; &quot;elemento_3&quot;</code></pre>
+<p>Si repetimos la evaluación anterior de la función <code>eaaply()</code>, se ejecutará solamente con los <em>elementos visibles</em>:</p>
+<pre class="r"><code>eapply(environment_1, function(x){
+    sqrt(x)+10
+})</code></pre>
+<pre><code>## $elemento_1
+## [1] 12
+## 
+## $elemento_2
+## [1] 13
+## 
+## $elemento_3
+## [1] 15</code></pre>
+<p>Pero podemos pedir que se ejecute sobre <strong>todos</strong> los elementos:</p>
+<pre class="r"><code>eapply(environment_1, function(x){
+    sqrt(x)+10
+}, all.names = TRUE)</code></pre>
+<pre><code>## $.elemento_4
+## [1] 16.9282
+## 
+## $elemento_1
+## [1] 12
+## 
+## $elemento_2
+## [1] 13
+## 
+## $elemento_3
+## [1] 15</code></pre>
+</div>
+</div>
+<div id="función-rapply" class="section level1">
+<h1>Función rapply</h1>
+<p>En esta función, la “r” hace referencia a “recursivo”. Podría decirse que tiene dos objetivos: Aplicar una función de manera recursiva a una lista o aplicar dicha función a solo los elementos de una lista con una clase específica. Esto de especial utilidad, pues como ya lo hemos discutido, las listas en R son quizás los objetos más útiles que hay, pues de manera muy sencilla almacenan bases de datos, números, cadenas de caracteres, gráficos, y más, por lo que resulta útil aplicar una función a, digamos, todos los elementos numéricos de una lista, sin la necesidad de conocer en qué posiciones se encuentran dichos elementos dentro de la lista. Un ejemplo sencillo se puede aplicar al famoso conjunto de datos <code>iris</code>:</p>
+<pre class="r"><code>rapply(iris, mean, class=&quot;numeric&quot;)</code></pre>
+<pre><code>## Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
+##     5.843333     3.057333     3.758000     1.199333</code></pre>
+<pre class="r"><code>rapply(iris, table, class=&quot;factor&quot;)</code></pre>
+<pre><code>##     Species.setosa Species.versicolor  Species.virginica 
+##                 50                 50                 50</code></pre>
+<p>O bien, si tenemos una lista con distintas clases de objetos, podemos pedir que nos multiplique por dos aquellos elementos de la lista que son numéricos:</p>
+<pre class="r"><code>rapply(list(2,5,7,&quot;Esto no se puede multiplicar porque es una cadena de caracteres&quot;), function(x){x*2}, class=&quot;numeric&quot;)</code></pre>
+<pre><code>## [1]  4 10 14</code></pre>
+</div>
+<div id="función-mapply" class="section level1">
+<h1>Función mapply</h1>
+<p>La función <code>mapply()</code> puede verse como la versión multivariada de las funciones <em>apply</em>.Por ejemplo, con <code>lapply()</code> solo puede aplicarse la función a los elementos de una lista, pero si se tiene una lista cuyos elementos son un argumento de una función y otra lista a cuyos elementos son el otro argumento de la función, entonces se usa <code>mapply()</code>. La función que se va a aplicar debe tener un número de argumentos al menos igual al número de listas que se van a pasar a <code>mapply</code>. <code>MoreArgs</code> sirve en caso de que se tengan más argumentos que se necesiten pasar a la función. Resulta más sencillo mostrar su funcionamiento con un ejemplo que con palabras. Supongamos que queremos obtener el resultado de <span class="math inline">\(x*y+1\)</span> variando los valores de <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> de la siguiente manera: <span class="math inline">\(1\cdot2+1,2\cdot3+1,3\cdot4+1,\cdots,10000\cdot10001+1\)</span>. La forma de obtener este cálculo mediante un ciclo <code>for</code> es la siguiente:</p>
+<pre class="r"><code>z &lt;- NULL
+k &lt;- 1
+x &lt;- 1:10000
+y &lt;- 2:10001
+for(i in 1:10000){
+    z[k] &lt;- x[i]*y[i]+1
+    k &lt;- k+1
+}</code></pre>
+<p>Mientras que con la función <code>mapply()</code> se obtiene así:</p>
+<pre class="r"><code>mapply(function(x,y){x*y+1},
+       x=1:10000,
+       y=2:10001)</code></pre>
+<p>Ambas llegan al mismo resultado, sin embargo, <code>mapply()</code> es considerablemente más eficiente al realizar el cálculo. Compararemos los tiempos de ejecución de distintos procesos en el siguiente post, donde se mostrarán algunas versiones en paralelo de las funciones apply.</p>
+</div>
