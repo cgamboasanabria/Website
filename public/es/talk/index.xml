@@ -7,10 +7,19 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>es-cr</language>
     <copyright>&amp;copy; 2019</copyright>
-    <lastBuildDate>Tue, 28 Jan 2020 17:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jul 2020 17:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="/es/talk/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Reducción de la dimensionalidad en matrices de datos</title>
+      <link>/es/talk/dcur/</link>
+      <pubDate>Thu, 02 Jul 2020 17:00:00 +0000</pubDate>
+      
+      <guid>/es/talk/dcur/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Programación estadística en R</title>
