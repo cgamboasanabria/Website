@@ -7,10 +7,19 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019</copyright>
-    <lastBuildDate>Tue, 28 Jan 2020 17:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 20 Jul 2020 17:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="/en/talk/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>R Programming</title>
+      <link>/en/talk/cursor202007/</link>
+      <pubDate>Mon, 20 Jul 2020 17:00:00 +0000</pubDate>
+      
+      <guid>/en/talk/cursor202007/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>R Programming</title>

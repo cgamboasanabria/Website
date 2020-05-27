@@ -4,7 +4,7 @@
   
   <url>
     <loc>/es/</loc>
-    <lastmod>2020-07-02T17:00:00+00:00</lastmod>
+    <lastmod>2020-07-20T17:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -18,8 +18,23 @@
   </url>
   
   <url>
+    <loc>/es/talk/cursor202007/</loc>
+    <lastmod>2020-07-20T17:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/talk/cursor202007/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/talk/cursor202007/"
+                />
+  </url>
+  
+  <url>
     <loc>/es/talk/</loc>
-    <lastmod>2020-07-02T17:00:00+00:00</lastmod>
+    <lastmod>2020-07-20T17:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
