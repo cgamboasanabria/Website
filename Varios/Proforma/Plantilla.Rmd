@@ -37,9 +37,9 @@ options(knitr.kable.NA = c(''))
 ```
 
 ```{r info}
-info <- list(cliente="Raquel Barrientos", empresa="UNICEF", 
-             direccion="Pavas", teléfono="8888888", 
-             correo="rbarrientos@unicef.org", validez=8, pago="50 adelantado y 50 contra entrega", condiciones_especiales="Puede haber alguna",
+info <- list(cliente="Ronald Brenes", empresa="Gente de Talento S.A.", 
+             direccion="Guachipelín de Escazú, Edificio VMG, piso 1 San José, Costa Rica", teléfono="25063840", 
+             correo="ronald.brenes@gentedt.com", validez=15, pago="Al contado", condiciones_especiales="El tiempo de la consulta es de una hora",
              moneda="colones costarricences", tipo_cambio="1")
 ```
 
@@ -144,7 +144,7 @@ costos <- function(ganancias, impuesto){
     base
 }
 
-datos <- costos(0,0)
+datos <- costos(0,13)
 ```
 
 ```{r}
