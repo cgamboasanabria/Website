@@ -1,0 +1,31 @@
+```{r}
+precios <- function(costo_hora=30000, horas, 
+                    producto=c("diseño experimental", "diseño de cuestionario", "tamaño de muestra",
+                               "revisión metodológica", "Análisis de datos", "SEM", "CFA", "Regresión",
+                               "interpretación de resultados", "consultoría", 
+                               "programación en R", "capacitación en R"),
+                    impuesto=13, margen=10){
+    #Precios de referencia: http://www.statswork.com/statistical-services-price/
+    
+    lista <- list(130, 140, 100, 
+                  110, 125, 200, 150, 125, 
+                  140, 100,
+                  120, 110)
+    names(lista) <- c("diseño experimental", "diseño de cuestionario", "tamaño de muestra",
+                      "revisión metodológica", "Análisis de datos", "SEM", "CFA", "Regresión",
+                      "interpretación de resultados", "consultoría", 
+                      "programación en R", "capacitación en R")
+    lista <- lapply(lista, function(x){x/100})
+    
+    precio <- costo_hora*lista[[producto]]
+    
+    c(`Precio sin margen`=precio*horas,
+      `Precio con margen`=precio*(1+margen/100)*horas,
+      `Precio sin margen con IVA`=precio*horas*(1+impuesto/100),
+      `Precio con margen con IVA`=precio*(1+margen/100)*(1+impuesto/100)*horas)
+    
+}
+
+precios(horas = 8, producto = "CFA")
+```
+

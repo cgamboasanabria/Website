@@ -1,0 +1,273 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  filecolor=Maroon,
+  citecolor=Blue,
+  urlcolor=blue,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+%\rhead{\includegraphics[width = 1\textwidth]{marca.jpg}}
+
+
+\usepackage{geometry}
+\geometry{a4paper, left=10mm, right=10mm, bottom=15mm, top=16mm}
+\usepackage{setspace}
+\doublespacing
+\usepackage[spanish]{babel}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{framed}
+\colorlet{shadecolor}{gray!20}
+\setcounter{secnumdepth}{0}
+\usepackage{sectsty}
+
+
+\chapternumberfont{\Large}
+\chaptertitlefont{\Large}
+\setcounter{tocdepth}{5}
+\setcounter{secnumdepth}{5}
+\setlength{\footskip}{20pt}%Esto sube el número de página
+\usepackage{graphics}
+\usepackage{setspace} %paquete para el doble espaciado
+%\doublespacing %inicia el doble espaciado
+ %Esto quita el punto final en la numeracion de cada seccion
+\usepackage{tocloft}
+
+\usepackage{titlesec}
+\titleformat{\section}
+{\Large\bfseries}{\thesection}{0.5em}{}
+\titleformat{\subsection}
+{\large\bfseries}{\thesubsection}{0.5em}{}
+\titleformat{\subsubsection}
+{\normalsize\bfseries}{\thesubsubsection}{0.5em}{}
+\titleformat{\paragraph}
+{\normalsize\bfseries}{\theparagraph}{0.5em}{}
+\renewcommand\cftsecaftersnum{}
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\rightmark}
+\fancyfoot[R]{\thepage}
+\fancyfoot[C]{Teléfono  8731-4699    |   info@cesargamboasanabria.com  |   www.cesargamboasanabria.com}
+\setlength{\headheight}{21.9pt}
+\renewcommand\sectionmark[1]{%
+\markright{\thesection\ #1}}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\headrulewidth}{0pt}
+
+%\renewcommand{\footnoterule}{%
+%  \kern -1pt
+%  \hrule width \textwidth height 1pt
+%  \kern 4pt
+%}
+
+
+%MARCA DE AGUA
+\usepackage{graphicx}
+ \usepackage{fancyhdr}
+  \pagestyle{fancy}
+  \setlength\headheight{28pt}
+   \fancyhead[L]{\includegraphics[width=19cm]{cabecera.jpg}}
+   \fancyfoot[LE,RO]{}
+
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+%\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+
+\usepackage{tocloft}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+%\renewcommand{\familydefault}{\sfdefault} %Para cambiar la fuente
+
+
+%Para referenciar chunks
+\usepackage{caption}
+\usepackage{floatrow}
+\floatsetup[figure]{capposition=top}
+\floatsetup[table]{capposition=top}
+\floatplacement{figure}{H}
+\floatplacement{table}{H}
+\captionsetup[table]{name=, labelformat=empty}
+
+\DeclareNewFloatType{chunk}{placement=H, fileext=chk, name=}
+\captionsetup{options=chunk}
+\renewcommand{\thechunk}{Código~\arabic{chunk}}
+\makeatletter
+\@addtoreset{chunk}{section}
+\makeatother
+
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\newcommand{\positiontextbox}[4][]{%
+  \begin{tikzpicture}[remember picture,overlay]
+%    \draw[step=0.5,gray!80!white] (current page.north west) grid (current page.south east); % For controlling
+    \node[inner sep=10pt,right,#1] at ($(current page.north west) + (#2,-#3)$) {#4};
+  \end{tikzpicture}%
+}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+
+\pagenumbering{gobble}
+\cleardoublepage
+
+\newpage
+
+\positiontextbox[]{1cm}{2.5cm}{\huge{\textbf{\textcolor{white}{César Gamboa Sanabria}}}}
+
+\positiontextbox[]{1cm}{3.25cm}{\Large{\textbf{\textcolor{white}{Analista de datos}}}}
+
+\positiontextbox[]{12.5cm}{1.5cm}{\LARGE{\textbf{\textcolor{white}{Cotización de servicios}}}}
+
+\subsection*{\Large{Cotizado el día 07 de junio del 2020 a las 10:47:41.}}
+
+\subsection*{\Large{Presupuesto para:}}
+
+\text{\large{Sr(a)(ita):  }}
+
+\text{\large{Empresa:  }}
+
+\text{\large{Dirección:   }}
+
+\text{\large{Teléfono:  | Correo electrónico: }}
+
+\begingroup\fontsize{9}{11}\selectfont
+
+\begin{longtabu} to \linewidth {>{\raggedright\arraybackslash}p{4cm}>{\raggedright\arraybackslash}p{5cm}>{\raggedright\arraybackslash}p{4cm}>{\raggedright}X>{\raggedright}X}
+\caption{\label{tab:unnamed-chunk-4}Términos y condiciones}\\
+\toprule
+Condiciones especiales & Validez de la oferta & Método de pago & Moneda & Tipo de cambio\\
+\midrule
+\endfirsthead
+\caption[]{Términos y condiciones (cont.)}\\
+\toprule
+Condiciones especiales & Validez de la oferta & Método de pago & Moneda & Tipo de cambio\\
+\midrule
+\endhead
+\
+\endfoot
+\bottomrule
+\endlastfoot
+ & 22 de junio del 2020 a las 10:47:42 & Al contado & colones costarricences & 1\\*
+\end{longtabu}
+\endgroup{}
+
+\begingroup\fontsize{9}{11}\selectfont
+
+\begin{longtabu} to \linewidth {>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{8cm}>{\raggedright}X>{\raggedright}X>{\raggedright}X}
+\caption{\label{tab:unnamed-chunk-6}Detalle de la cotización}\\
+\toprule
+Cantidad & Descripción & Precio & IVA & Subtotal\\
+\midrule
+\endfirsthead
+\caption[]{Detalle de la cotización (cont.)}\\
+\toprule
+Cantidad & Descripción & Precio & IVA & Subtotal\\
+\midrule
+\endhead
+\
+\endfoot
+\bottomrule
+\endlastfoot
+1 & Servicio de consultoría estadística. & 33,000.0 & 4,290.0 & 37,290.0\\
+ &  &  &  & \\
+\hline
+\textbf{Total} & \textbf{} & \textbf{} & \textbf{4,290.0} & \textbf{37,290.0}\\*
+\end{longtabu}
+\endgroup{}
+
+\text{\large{Gracias por su confianza.}}
+
+\end{document}

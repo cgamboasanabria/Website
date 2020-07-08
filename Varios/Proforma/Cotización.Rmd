@@ -1,0 +1,179 @@
+---
+always_allow_html: yes
+output: 
+    pdf_document:
+        keep_tex: yes
+        fig_caption: yes
+        include:
+          in_header: header.tex
+urlcolor: blue
+bibliography: mybibfile.bib
+link-citations: yes
+linkcolor: blue
+csl: apa.csl
+---
+
+\pagenumbering{gobble}
+\cleardoublepage
+
+\newpage
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(cache = FALSE, warning = FALSE, message = FALSE, dpi=1000,
+                      dev="jpeg", out.width = '100%', out.height='100%', fig.pos="!h",
+                      echo=FALSE)
+
+library(carlians)
+requeridos(knitr, ggplot2, tidyr, dplyr, lubridate, pander, readxl, kableExtra)
+
+oldSource <- knit_hooks$get("source")
+knit_hooks$set(source = function(x, options) {
+  x <- oldSource(x, options)
+  x <- ifelse(!is.null(options$ref), paste0("\\label{", options$ref,"}", x), x)
+  ifelse(!is.null(options$codecap), paste0("\\captionof{chunk}{", options$codecap,"}", x), x)
+})
+
+options(knitr.kable.NA = c(''))
+```
+
+```{r info}
+info <- list(cliente="", empresa="", 
+             direccion="", teléfono="", 
+             correo="", validez=15, pago="Al contado", condiciones_especiales="",
+             moneda="colones costarricences", tipo_cambio="1")
+```
+
+\positiontextbox[]{1cm}{2.5cm}{\huge{\textbf{\textcolor{white}{César Gamboa Sanabria}}}}
+
+\positiontextbox[]{1cm}{3.25cm}{\Large{\textbf{\textcolor{white}{Analista de datos}}}}
+
+\positiontextbox[]{12.5cm}{1.5cm}{\LARGE{\textbf{\textcolor{white}{Cotización de servicios}}}}
+
+\subsection*{\Large{Cotizado el día `r format(Sys.time(), '%d de %B del %Y a las %H:%M:%S')`.}}
+
+\subsection*{\Large{Presupuesto para:}}
+
+```{r cliente}
+cliente <- if(prod(is.null(info$cliente))<1){
+  info$cliente
+}else{NA}
+```
+
+```{r}
+if(sum(is.na(cliente))<1){
+  pander(paste("\\text{\\large{Sr(a)(ita):", cliente, "}}"))
+}
+```
+
+
+```{r empresa}
+empresa <- if(prod(is.null(info$empresa))<1){
+  info$empresa
+}else{NA}
+```
+
+```{r}
+if(sum(is.na(empresa))<1){
+  pander(paste("\\text{\\large{Empresa:", empresa, "}}"))
+}
+```
+
+
+```{r direccion}
+direccion <- if(prod(is.null(info$direccion))<1){
+  info$direccion
+}else{NA}
+```
+
+```{r}
+if(sum(is.na(direccion))<1){
+  pander(paste("\\text{\\large{Dirección: ", direccion, "}}"))
+}
+```
+
+\text{\large{Teléfono: `r info$teléfono` | Correo electrónico: `r info$correo`}}
+
+```{r}
+momento <- now()+days(info$validez)
+condiciones <- data.frame(`Condiciones especiales`=ifelse(is.na(info$condiciones_especiales), "Ninguna", info$condiciones_especiales),
+                          `Validez de la oferta`=paste(day(momento), "de", month(momento, label = TRUE, abbr=FALSE), "del", year(momento), "a las", paste(hour(momento),":",minute(momento), ":", round(second(momento),0), sep="")),
+                          `Método de pago`=info$pago,
+                          Moneda=info$moneda,
+                          `Tipo de cambio`=info$tipo_cambio)
+
+condiciones %>% 
+  rename("Condiciones especiales"=Condiciones.especiales,
+         "Validez de la oferta"=Validez.de.la.oferta,
+         "Método de pago"=Método.de.pago,
+         "Tipo de cambio"=Tipo.de.cambio) %>% 
+  kable(., "latex", booktabs=T, escape = F, longtable=T, caption = "Términos y condiciones", linesep="") %>% 
+  kable_styling(latex_options = c("scale_down", "repeat_header", "hold_position"), repeat_header_text = "(cont.)", full_width = T, font_size = 9) %>% 
+  column_spec(1, width = "4cm") %>% 
+  column_spec(2, width = "5cm") %>% 
+  column_spec(3, width = "4cm")
+```
+
+```{r}
+costos <- function(ganancias, impuesto){
+    archivos <- list.files(pattern = ".xlsx", full.names = T)
+    
+    bases <- lapply(archivos, read_excel)
+    
+    nombres <- gsub(".xlsx","",list.files(pattern = ".xlsx"))
+    for(i in 1:length(bases)){
+        bases[[i]] <- bases[[i]] %>% 
+            mutate(producto=nombres[i])
+    }
+    
+    base <- do.call(rbind, bases) %>% 
+        mutate(costo=(necesario/contenido)*precio)
+    
+    base <- base %>% 
+      group_by(producto) %>% 
+      summarise(costo=sum(costo)) %>% 
+      data.frame() %>% 
+      mutate(porc_ganancia=ganancias,
+             venta=costo*(porc_ganancia/100+1),
+             `venta+IVA`=venta*as.numeric(paste("1.", impuesto, sep="")),
+             IVA=`venta+IVA`-venta,
+             ganancia=venta-costo,
+             detalle=base$detalle) %>% 
+      dplyr::select(producto, detalle, costo, IVA, porc_ganancia, venta, `venta+IVA`, ganancia)
+    
+    names(base) <- c("Producto", "Detalle", "Costo", "IVA", "Porcentaje de ganancia", "Venta", "Venta + IVA", "Ganancia")
+    base
+}
+
+datos <- costos(0,13)
+```
+
+```{r}
+separador_miles <- function(numero){
+  format(round(numero, 1), nsmall=1, big.mark=",")
+}
+df <- data.frame(Cantidad=as.character(1), 
+           Descripción=datos$Detalle,
+           Precio=datos$Venta,
+           IVA=datos$IVA,
+           Subtotal=datos$`Venta + IVA`) 
+df[nrow(df)+1,] <- NA
+
+df <- df %>% 
+  bind_rows(., tibble(Cantidad="Total",
+                      IVA = sum(.[["IVA"]], na.rm=TRUE),
+                      Subtotal = sum(.[["Subtotal"]], na.rm=TRUE)))
+
+df %>% 
+  mutate_if(is.numeric, function(x){separador_miles(x)}) %>% 
+  mutate_all(as.character) %>% 
+  mutate_at(vars(Precio, IVA, Subtotal), function(x){gsub("\\s+","",x)}) %>% 
+  mutate_all(function(x){ifelse(is.na(x) | x=="NA", "", x)}) %>% 
+  kable(., "latex", booktabs=T, escape = F, longtable=T, caption = "Detalle de la cotización") %>% 
+  kable_styling(latex_options = c("scale_down", "repeat_header", "hold_position"), repeat_header_text = "(cont.)", full_width = T, font_size = 9) %>% 
+  column_spec(1, width = "1.5cm") %>% 
+  column_spec(2, width = "8cm") %>% 
+  row_spec(nrow(df)-1, bold = FALSE, hline_after = T) %>% 
+  row_spec(nrow(df), bold=TRUE)
+```
+
+\text{\large{Gracias por su confianza.}}
