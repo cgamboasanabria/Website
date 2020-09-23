@@ -10,11 +10,11 @@ precios <- function(costo_hora=30000, horas,
     lista <- list(130, 140, 100, 
                   110, 125, 200, 150, 125, 
                   140, 100,
-                  120, 110)
+                  120, 110, 115)
     names(lista) <- c("diseño experimental", "diseño de cuestionario", "tamaño de muestra",
                       "revisión metodológica", "Análisis de datos", "SEM", "CFA", "Regresión",
                       "interpretación de resultados", "consultoría", 
-                      "programación en R", "capacitación en R")
+                      "programación en R", "capacitación en R", "Creación de bases de datos")
     lista <- lapply(lista, function(x){x/100})
     
     precio <- costo_hora*lista[[producto]]
@@ -26,6 +26,6 @@ precios <- function(costo_hora=30000, horas,
     
 }
 
-precios(horas = 8, producto = "CFA")
+precios(horas = 10, producto = "Creación de bases de datos")
 ```
 
