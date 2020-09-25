@@ -61,7 +61,7 @@ ls()</code></pre>
 <p>It is possible to create a new <em>Environment</em> that is independent of the global <em>Environment</em>, which we will call <code>environment_2</code>. When creating it, we can see that it is empty compared to the <em>global</em> <strong>Environment</strong>, which contains <code>x</code> and <code>environment_2</code>. Also, if we directly generate a new variable, say <code>z</code>, it will set to the <em>global </em> <strong>Environment</strong>.</p>
 <pre class="r"><code>environment_2 &lt;- new.env()
 environment_2</code></pre>
-<pre><code>## &lt;environment: 0x000000001123e280&gt;</code></pre>
+<pre><code>## &lt;environment: 0x0000000015fbe3b8&gt;</code></pre>
 <pre class="r"><code>ls(globalenv())</code></pre>
 <pre><code>## [1] &quot;environment_2&quot; &quot;x&quot;</code></pre>
 <pre class="r"><code>ls(environment_2)</code></pre>
