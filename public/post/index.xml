@@ -2,121 +2,1334 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on </title>
-    <link>/post/</link>
+    <link>/en/post/</link>
     <description>Recent content in Posts on </description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 06 Jun 2019 10:43:02 -0600</lastBuildDate>
+    <copyright>&amp;copy; 2019</copyright>
+    <lastBuildDate>Sun, 01 Mar 2020 18:55:57 -0600</lastBuildDate>
     
-	    <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="/en/post/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>2019 06 06 Post De Prueba</title>
-      <link>/post/2019-06-06-post-de-prueba/</link>
-      <pubDate>Thu, 06 Jun 2019 10:43:02 -0600</pubDate>
-      
-      <guid>/post/2019-06-06-post-de-prueba/</guid>
-      <description></description>
-    </item>
     
     <item>
-      <title>A Plain Markdown Post</title>
-      <link>/post/2016-12-30-hello-markdown/</link>
-      <pubDate>Fri, 30 Dec 2016 21:49:57 -0700</pubDate>
+      <title>apply family functions - Part 4</title>
+      <link>/en/post/2020-03-01-eapply_rapply_mapply/</link>
+      <pubDate>Sun, 01 Mar 2020 18:55:57 -0600</pubDate>
       
-      <guid>/post/2016-12-30-hello-markdown/</guid>
-      <description>&lt;p&gt;This is a post written in plain Markdown (&lt;code&gt;*.md&lt;/code&gt;) instead of R Markdown (&lt;code&gt;*.Rmd&lt;/code&gt;). The major differences are:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;You cannot run any R code in a plain Markdown document, whereas in an R Markdown document, you can embed R code chunks (&lt;code&gt;```{r}&lt;/code&gt;);&lt;/li&gt;
-&lt;li&gt;A plain Markdown post is rendered through &lt;a href=&#34;https://gohugo.io/overview/configuration/&#34; target=&#34;_blank&#34;&gt;Blackfriday&lt;/a&gt;, and an R Markdown document is compiled by &lt;a href=&#34;http://rmarkdown.rstudio.com&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;rmarkdown&lt;/strong&gt;&lt;/a&gt; and &lt;a href=&#34;http://pandoc.org&#34; target=&#34;_blank&#34;&gt;Pandoc&lt;/a&gt;.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;There are many differences in syntax between Blackfriday&amp;rsquo;s Markdown and Pandoc&amp;rsquo;s Markdown. For example, you can write a task list with Blackfriday but not with Pandoc:&lt;/p&gt;
-
-&lt;ul class=&#34;task-list&#34;&gt;
-&lt;li&gt;&lt;label&gt;&lt;input type=&#34;checkbox&#34; checked disabled class=&#34;task-list-item&#34;&gt; Write an R package.&lt;/label&gt;&lt;/li&gt;
-&lt;li&gt;&lt;label&gt;&lt;input type=&#34;checkbox&#34; disabled class=&#34;task-list-item&#34;&gt; Write a book.&lt;/label&gt;&lt;/li&gt;
-&lt;li&gt;&lt;label&gt;&lt;input type=&#34;checkbox&#34; disabled class=&#34;task-list-item&#34;&gt; &amp;hellip;&lt;/label&gt;&lt;/li&gt;
-&lt;li&gt;&lt;label&gt;&lt;input type=&#34;checkbox&#34; disabled class=&#34;task-list-item&#34;&gt; Profit!&lt;/label&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Similarly, Blackfriday does not support LaTeX math and Pandoc does. I have added the MathJax support to this theme (&lt;a href=&#34;https://github.com/yihui/hugo-lithium&#34; target=&#34;_blank&#34;&gt;hugo-lithium&lt;/a&gt;) but there is a caveat for plain Markdown posts: you have to include math expressions in a pair of backticks (inline: &lt;code&gt;`$ $`&lt;/code&gt;; display style: &lt;code&gt;`$$ $$`&lt;/code&gt;), e.g., &lt;code&gt;$S_n = \sum_{i=1}^n X_i$&lt;/code&gt;.&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:This-is-because&#34;&gt;&lt;a href=&#34;#fn:This-is-because&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; For R Markdown posts, you do not need the backticks, because Pandoc can identify and process math expressions.&lt;/p&gt;
-
-&lt;p&gt;When creating a new post, you have to decide whether the post format is Markdown or R Markdown, and this can be done via the &lt;code&gt;ext&lt;/code&gt; argument of the function &lt;code&gt;blogdown::new_post()&lt;/code&gt;, e.g.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;blogdown::new_post(&amp;quot;Post Title&amp;quot;, ext = &#39;.Rmd&#39;)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&#34;footnotes&#34;&gt;
-
-&lt;hr /&gt;
-
-&lt;ol&gt;
-&lt;li id=&#34;fn:This-is-because&#34;&gt;This is because we have to protect the math expressions from being interpreted as Markdown. You may not need the backticks if your math expression does not contain any special Markdown syntax such as underscores or asterisks, but it is always a safer choice to use backticks. When you happen to have a pair of literal dollar signs inside the same element, you can escape one dollar sign, e.g., &lt;code&gt;\$50 and $100&lt;/code&gt; renders &amp;ldquo;\$50 and $100&amp;rdquo;. &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:This-is-because&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Hello R Markdown</title>
-      <link>/post/2015-07-23-r-rmarkdown/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-      
-      <guid>/post/2015-07-23-r-rmarkdown/</guid>
+      <guid>/en/post/2020-03-01-eapply_rapply_mapply/</guid>
       <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
-&lt;div id=&#34;r-markdown&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;R Markdown&lt;/h1&gt;
-&lt;p&gt;This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see &lt;a href=&#34;http://rmarkdown.rstudio.com&#34; class=&#34;uri&#34;&gt;http://rmarkdown.rstudio.com&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;You can embed an R code chunk like this:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(cars)
-##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00
-fit &amp;lt;- lm(dist ~ speed, data = cars)
-fit
-## 
-## Call:
-## lm(formula = dist ~ speed, data = cars)
-## 
-## Coefficients:
-## (Intercept)        speed  
-##     -17.579        3.932&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;eapply-function&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;eapply function&lt;/h1&gt;
+&lt;div id=&#34;using-environments&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Using environments&lt;/h2&gt;
+&lt;p&gt;In R, an &lt;em&gt;Environment&lt;/em&gt; is a site to assign variables or values that we assign to objects. Each time a new R session begins, all created objects stay in the &lt;em&gt;global&lt;/em&gt; &lt;strong&gt;environment&lt;/strong&gt;. If we create the object &lt;code&gt;x&lt;/code&gt;, it will then be in the &lt;em&gt;R&lt;/em&gt; default &lt;em&gt;Environment&lt;/em&gt;. The&lt;code&gt;ls()&lt;/code&gt; function lists the created objects, so we can check that &lt;code&gt;x&lt;/code&gt; actually exists.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- 28022020
+ls()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;x&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It is possible to assign the &lt;strong&gt;global&lt;/strong&gt; &lt;em&gt;Environment&lt;/em&gt; to an object that we’ll call &lt;code&gt;environment_1&lt;/code&gt;. The curious thing is that after doing this, &lt;code&gt;environment_1&lt;/code&gt; is an object into the &lt;strong&gt;global&lt;/strong&gt; &lt;em&gt;Environment&lt;/em&gt; , but at the same time, it is the &lt;strong&gt;global&lt;/strong&gt; &lt;em&gt;Environmet&lt;/em&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_1 &amp;lt;- globalenv()
+class(environment_1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;environment&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;environment_1&amp;quot; &amp;quot;x&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This process is similar to using a list, a topic that we talked about in &lt;a href=&#34;https://www.cesargamboasanabria.com/en/post/2019-12-08-lapply_sapply_vapply/&#34;&gt;this post&lt;/a&gt;. Since the object &lt;code&gt;environment_1&lt;/code&gt; is the global environment, it contains the object&lt;code&gt;x&lt;/code&gt;, which we assign to the &lt;strong&gt;global&lt;/strong&gt; &lt;em&gt;Environment&lt;/em&gt; and also includes itself in a cyclical way…&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_1$x&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 28022020&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_1$environment_1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;environment: R_GlobalEnv&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_1$environment_1$environment_1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;environment: R_GlobalEnv&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls(environment_1$environment_1$environment_1$environment_1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;environment_1&amp;quot; &amp;quot;x&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;environment_1&lt;/code&gt; object could, as Emmett Brown someday said, it creates a paradox that would destroy the universe, so it is best to eliminate it. Section 2.1.10 of the &lt;a href=&#34;https://cran.r-project.org/doc/manuals/R-lang.html#Environment-objects&#34;&gt;R language definition&lt;/a&gt; offers a more formal description of what a &lt;em&gt;Environment &lt;/em&gt; is.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rm(environment_1)
+ls()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;x&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It is possible to create a new &lt;em&gt;Environment&lt;/em&gt; that is independent of the global &lt;em&gt;Environment&lt;/em&gt;, which we will call &lt;code&gt;environment_2&lt;/code&gt;. When creating it, we can see that it is empty compared to the &lt;em&gt;global&lt;/em&gt; &lt;strong&gt;Environment&lt;/strong&gt;, which contains &lt;code&gt;x&lt;/code&gt; and &lt;code&gt;environment_2&lt;/code&gt;. Also, if we directly generate a new variable, say &lt;code&gt;z&lt;/code&gt;, it will set to the &lt;em&gt;global &lt;/em&gt; &lt;strong&gt;Environment&lt;/strong&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_2 &amp;lt;- new.env()
+environment_2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;environment: 0x000000001163e3b8&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls(globalenv())&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;environment_2&amp;quot; &amp;quot;x&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls(environment_2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## character(0)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;z &amp;lt;- pi
+
+ls(globalenv())&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;environment_2&amp;quot; &amp;quot;x&amp;quot;             &amp;quot;z&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls(environment_2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## character(0)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now we create a new object called &lt;code&gt;y&lt;/code&gt;and we assign it to &lt;code&gt;environment_2&lt;/code&gt;. Now, the object &lt;code&gt;y&lt;/code&gt; will be contain &lt;strong&gt;only&lt;/strong&gt; in &lt;code&gt;environment_2&lt;/code&gt; and not in &lt;em&gt;Environment&lt;/em&gt; &lt;strong&gt;global&lt;/strong&gt;, even if the last one contains &lt;code&gt;environment_2&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_2$y &amp;lt;- &amp;quot;This is an abstract topic&amp;quot;
+
+ls(globalenv())&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;environment_2&amp;quot; &amp;quot;x&amp;quot;             &amp;quot;z&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls(environment_2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;y&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment(x)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## NULL&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Has an &lt;em&gt;Environment&lt;/em&gt; a real use? The answer is yes, and they are fundamental in something widely used in R: Functions. In general, when building a function, it is assumed that it has only two components: the arguments and the content of the function. Consider a simple function that reverses the sign of a number.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;reverse_sign &amp;lt;- function(number){
+    number*-1
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In the previous case, the &lt;code&gt;reverse_sign()&lt;/code&gt; function has a single argument &lt;strong&gt;number&lt;/strong&gt;, while its content is &lt;span class=&#34;math inline&#34;&gt;\(number\cdot -1\)&lt;/span&gt;. However, the functions have a third argument: &lt;em&gt;Environment&lt;/em&gt;. When the &lt;code&gt;reverse_sign()&lt;/code&gt; function created, it was in the &lt;strong&gt;global&lt;/strong&gt; &lt;em&gt;Environment&lt;/em&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls(globalenv())&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;environment_2&amp;quot; &amp;quot;reverse_sign&amp;quot;  &amp;quot;x&amp;quot;             &amp;quot;z&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls(environment_2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;y&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment(reverse_sign)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;environment: R_GlobalEnv&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The consequence is that the &lt;code&gt;reverse_sign()&lt;/code&gt; function only works in the &lt;em&gt;Environment&lt;/em&gt; assigned to it. For example, the function run only on the object &lt;code&gt;x&lt;/code&gt; that is in the &lt;strong&gt;global&lt;/strong&gt; &lt;em&gt;Environment&lt;/em&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;reverse_sign(x)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] -28022020&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If we create an object that is also called &lt;code&gt;x&lt;/code&gt;, but that is in the&lt;code&gt;environment_2&lt;/code&gt;, the &lt;code&gt;reverse_sign()&lt;/code&gt; function still running only in the &lt;strong&gt;global&lt;/strong&gt; &lt;em&gt;Environment&lt;/em&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_2$x &amp;lt;- 123456
+reverse_sign(x)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] -28022020&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;div id=&#34;including-plots&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Including Plots&lt;/h1&gt;
-&lt;p&gt;You can also embed plots. See Figure &lt;a href=&#34;#fig:pie&#34;&gt;1&lt;/a&gt; for example:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;par(mar = c(0, 1, 0, 1))
-pie(
-  c(280, 60, 20),
-  c(&amp;#39;Sky&amp;#39;, &amp;#39;Sunny side of pyramid&amp;#39;, &amp;#39;Shady side of pyramid&amp;#39;),
-  col = c(&amp;#39;#0292D8&amp;#39;, &amp;#39;#F7EA39&amp;#39;, &amp;#39;#C4B632&amp;#39;),
-  init.angle = -50, border = NA
-)&lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:pie&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;/post/2015-07-23-r-rmarkdown_files/figure-html/pie-1.png&#34; alt=&#34;A fancy pie chart.&#34; width=&#34;672&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;
-Figure 1: A fancy pie chart.
-&lt;/p&gt;
+&lt;div id=&#34;eapply-function-1&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;eapply function&lt;/h2&gt;
+&lt;p&gt;These small details that we usually don’t handle in regular tasks using R may become indispensable in certain situations, such as when you want to use the &lt;code&gt;eapply()&lt;/code&gt; function. Knowing basics on how an &lt;em&gt;Environment&lt;/em&gt; works, we are going to eliminate all the objects created so far, this to keep everything in order.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rm(list = ls())&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As we also review in &lt;a href=&#34;https://www.cesargamboasanabria.com/en/post/2019-12-08-lapply_sapply_vapply/&#34;&gt;this post&lt;/a&gt;, the &lt;code&gt;lapply()&lt;/code&gt; function applies a function to each element of a list. Similarly, the &lt;code&gt;eapply()&lt;/code&gt; function applies a function to each element named in an &lt;em&gt;Environment&lt;/em&gt; with the difference that in &lt;code&gt;eaaply()&lt;/code&gt;, the first argument is an &lt;em&gt;Environment&lt;/em&gt;, and not a list as in &lt;code&gt;lapply()&lt;/code&gt;. Let’s create now a new &lt;em&gt;Environment&lt;/em&gt; to apply a function to its elements that return the square root of each one plus 10:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_1 &amp;lt;- new.env()
+environment_1$element_1 &amp;lt;- 4
+environment_1$element_2 &amp;lt;- 9
+environment_1$element_3 &amp;lt;- 25
+
+eapply(environment_1, function(x){
+    sqrt(x)+10
+})&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## $element_1
+## [1] 12
+## 
+## $element_2
+## [1] 13
+## 
+## $element_3
+## [1] 15&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can also display the result without name tags:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;eapply(environment_1, function(x){
+    sqrt(x)+10
+}, USE.NAMES = FALSE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [[1]]
+## [1] 12
+## 
+## [[2]]
+## [1] 13
+## 
+## [[3]]
+## [1] 15&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Previous runs of the &lt;code&gt;eapply()&lt;/code&gt; function evaluate our function in all the elements contained in the &lt;em&gt;Environment&lt;/em&gt;, but there are exceptions if there are &lt;em&gt;hidden elements&lt;/em&gt;. The &lt;em&gt;hidden elements&lt;/em&gt; are objects that exist but are not visible to the naked eye, we can create the &lt;em&gt;element_4&lt;/em&gt; as hidden as follows:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_1$.element_4 &amp;lt;- 48
+ls(environment_1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;element_1&amp;quot; &amp;quot;element_2&amp;quot; &amp;quot;element_3&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If we repeat the previous evaluation of the &lt;code&gt;eapply()&lt;/code&gt; function, it only runs with the &lt;em&gt;visible elements&lt;/em&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;eapply(environment_1, function(x){
+    sqrt(x)+10
+})&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## $element_1
+## [1] 12
+## 
+## $element_2
+## [1] 13
+## 
+## $element_3
+## [1] 15&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;But we can run that function over all elements:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;eapply(environment_1, function(x){
+    sqrt(x)+10
+}, all.names = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## $element_1
+## [1] 12
+## 
+## $.element_4
+## [1] 16.9282
+## 
+## $element_2
+## [1] 13
+## 
+## $element_3
+## [1] 15&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;rapply-function&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;rapply function&lt;/h1&gt;
+&lt;p&gt;In this function, the “r” refers to “recursive”. This function has two objectives: Apply a function recursively to a list or apply that function only to the elements of a list with a specific class. This second reason is especially useful because the lists in R are perhaps the most useful objects when we are using that language because they store databases, numbers, character strings, graphics, and more. We can apply a function to every numeric element of a list, without the need to know in which positions these elements are within the list. A simple example can be applied to the famous &lt;code&gt;iris&lt;/code&gt; data set:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rapply(iris, mean, class=&amp;quot;numeric&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
+##     5.843333     3.057333     3.758000     1.199333&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rapply(iris, table, class=&amp;quot;factor&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##     Species.setosa Species.versicolor  Species.virginica 
+##                 50                 50                 50&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Or, if we have a list with different classes, we may want to multiply by two those elements of the list that are numerical:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rapply(list(2,5,7,&amp;quot;We can&amp;#39;t multiply this element because is a string&amp;quot;), function(x){x*2}, class=&amp;quot;numeric&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1]  4 10 14&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;mapply-function&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;mapply function&lt;/h1&gt;
+&lt;p&gt;The &lt;code&gt;mapply()&lt;/code&gt; function can be seen as the multivariate version of the &lt;em&gt;apply&lt;/em&gt; functions. For example, &lt;code&gt;lapply()&lt;/code&gt; function can only be applied to the elements of a list, but if you have a list whose elements are an argument of a function and another list whose elements are the other argument of the function, then &lt;code&gt;mapply()&lt;/code&gt; is used. The function to be applied must have as many arguments as the number of lists to pass to &lt;code&gt;mapply()&lt;/code&gt;. &lt;code&gt;MoreArgs&lt;/code&gt; argument is useful if there are more arguments that need to use in the function. It is easier to show its operation with an example than with words. Suppose we want to obtain the result of &lt;span class=&#34;math inline&#34;&gt;\(x*y+1\)&lt;/span&gt; by varying the values of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; as follows: &lt;span class=&#34;math inline&#34;&gt;\(1\cdot 2 + 1, 2\cdot 3 + 1, 3\cdot 4 + 1, \cdots , 10000\cdot 10001 + 1\)&lt;/span&gt;. We can obtain this calculation through a &lt;code&gt;for&lt;/code&gt; loop as follows:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;z &amp;lt;- NULL
+k &amp;lt;- 1
+x &amp;lt;- 1:10000
+y &amp;lt;- 2:10001
+for(i in 1:10000){
+    z[k] &amp;lt;- x[i]*y[i]+1
+    k &amp;lt;- k+1
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;But we can also use the &lt;code&gt;mapply()&lt;/code&gt; function:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mapply(function(x,y){x*y+1},
+       x=1:10000,
+       y=2:10001)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Both functions display the same result; however, &lt;code&gt;mapply()&lt;/code&gt; is considerably more efficient when performing the calculation. We will compare the running time of different processes in the next post when I’ll show you some parallel versions of the apply family functions.&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
     
     <item>
-      <title>Lorem Ipsum</title>
-      <link>/post/2015-01-01-lorem-ipsum/</link>
-      <pubDate>Thu, 01 Jan 2015 13:09:13 -0600</pubDate>
+      <title>apply family functions - Part 3</title>
+      <link>/en/post/2019-12-08-lapply_sapply_vapply/</link>
+      <pubDate>Sun, 08 Dec 2019 18:55:57 -0600</pubDate>
       
-      <guid>/post/2015-01-01-lorem-ipsum/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Lorem ipsum&lt;/strong&gt; dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore &lt;em&gt;magna aliqua&lt;/em&gt;. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;
+      <guid>/en/post/2019-12-08-lapply_sapply_vapply/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;In this new post about the apply family functions, we’ll show some examples of three new functions: &lt;code&gt;lapply()&lt;/code&gt;, &lt;code&gt;sapply()&lt;/code&gt;, and &lt;code&gt;vapply()&lt;/code&gt;. These functions generally works with objects of class &lt;code&gt;list&lt;/code&gt;; however, other variants can work with vectors.&lt;/p&gt;
+&lt;p&gt;Suppose now we have several databases on which we need to obtain the sum of each column. We’ll generate a simple function that returns a database of random numbers in the range $ [1,100] $ and also contains missing values, with a certain number of rows and columns.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dat &amp;lt;- function(rows, columns){
+    values &amp;lt;- sample(x = c(NA,1:100), 
+        size = rows*columns,
+        replace = TRUE)
+    as.data.frame(matrix(data = values,
+                         nrow = rows, 
+                         ncol = columns))
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Thus, for example, we can generate a database with 50 rows and 5 columns by executing the following command:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(20191208)
+df1 &amp;lt;- dat(50, 5)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Let’s generate more other databases of dimensions &lt;span class=&#34;math inline&#34;&gt;\(100\times5\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(150\times5\)&lt;/span&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(20191208)
+df2 &amp;lt;- dat(100, 5)
+df3 &amp;lt;- dat(150, 5)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As we saw in &lt;a href=&#34;https://www.cesargamboasanabria.com/en/post/2019-06-23-apply/&#34;&gt;this post&lt;/a&gt;, we could use the &lt;code&gt;apply()&lt;/code&gt; function to get the sum of the columns.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(df1,2,sum)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   V1   V2   V3   V4   V5 
+## 2546 2602 2699 1993 2482&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(df2,2,sum)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   V1   V2   V3   V4   V5 
+## 5148 4692   NA 5024 5177&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(df3,2,sum)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   V1   V2   V3   V4   V5 
+##   NA 7554   NA   NA   NA&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Or, something simpler would be to use the function &lt;code&gt;colSums()&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;colSums(df1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   V1   V2   V3   V4   V5 
+## 2546 2602 2699 1993 2482&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;colSums(df2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   V1   V2   V3   V4   V5 
+## 5148 4692   NA 5024 5177&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;colSums(df3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   V1   V2   V3   V4   V5 
+##   NA 7554   NA   NA   NA&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;However, we could have a large number of databases, so the above procedures are not viable since writing so many lines of code is quite dull.&lt;/p&gt;
+&lt;p&gt;That’s the time the lists come into play. The three databases we generate can be stored in a single list as follows.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list1 &amp;lt;- list(df1, df2, df3)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;By having a list, each database becomes an element of that list. For example, element 1 is the set &lt;em&gt;df1&lt;/em&gt;, while the sets &lt;em&gt;df2&lt;/em&gt; and &lt;em&gt;df3&lt;/em&gt; are elements 2 and three, respectively. One way to call the elements within a list is by &lt;code&gt;[[]]&lt;/code&gt;, as follows we call the data set &lt;em&gt;df2&lt;/em&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list1[[2]]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      V1 V2  V3  V4  V5
+## 1    35 90  35  84  79
+## 2    51 36   4 100   5
+## 3    76 47  65  90  36
+## 4    17 22  97  72   1
+## 5    95 16   8  86  65
+## 6    73 31  47  52  87
+## 7    37 23  64  85  13
+## 8    81 62  33  82  27
+## 9    59 63  79  40  45
+## 10   38 25  34   9  24
+## 11   92 82  53  75  80
+## 12   94 51  50  35  87
+## 13   44 54  10  49  71
+## 14   96 23  54  62  99
+## 15   73 87   8  64  16
+## 16   58 94  67  41 100
+## 17   92 93  78  34  59
+## 18   30 64  53  49  80
+## 19   14 21  94  59  86
+## 20   14  9  51  42  19
+## 21   55 99  12  70  54
+## 22   30 34  93  76  68
+## 23   19 40  85  29  51
+## 24   46 83  98  41  88
+## 25   48 34 100  49  37
+## 26   29 34  72  11  62
+## 27   39 78  68  41  20
+## 28   68 62  51  68  76
+## 29   92 69  37  15  95
+## 30   15 25  63  72  24
+## 31   72 90   4  63  35
+## 32    7 34  91  95   5
+## 33   62 43   1  66  57
+## 34   32 69  29  87  30
+## 35   96 67  21  32  13
+## 36   13 71  26  96  91
+## 37   58 72  30  66   5
+## 38   80 45  84  45  86
+## 39   84 89  83  86   2
+## 40   44 78  13   6  23
+## 41   24 70  63  93   1
+## 42   22 65  32  85  40
+## 43   32 54  79  34  88
+## 44   10 12  37  31  21
+## 45   48 28   9  61  75
+## 46   19 95  22  71  41
+## 47   60 48   4  26  30
+## 48   79 34  59  80  65
+## 49   25 77  61   5  95
+## 50   69  7  71  75  60
+## 51   33 53 100  43  19
+## 52   16 82   9  98  52
+## 53   53 60  35   3  77
+## 54    9 31  33  61  72
+## 55   42 17  64  40  80
+## 56   71 87  95  31  72
+## 57   79 20  11   6  67
+## 58   67 55  57  55  31
+## 59   82 82   5  87  93
+## 60   84 34  20  22   9
+## 61   38 22  92  45  24
+## 62   48 75  60   5  74
+## 63   44 78  78  29  66
+## 64   10 70  14  37  16
+## 65   12 12  93  66  19
+## 66   88 29  63  94  30
+## 67   77 44  34  59  96
+## 68    5 46  81  11  72
+## 69   79 40  73  26  99
+## 70   96 24  46  94   7
+## 71   46 64  12   2  30
+## 72    3 38  50  89  85
+## 73   86 17  14  21  37
+## 74   57 37  NA  15  36
+## 75   23 12  48  20  46
+## 76   41  7  82  69  46
+## 77   59  5   4  93  98
+## 78   47 52  23  59  94
+## 79   19 47  58  12  47
+## 80   44 34  15  15  47
+## 81   15 38  57  84  67
+## 82   98  8  83  10  64
+## 83   50 38  48  95  40
+## 84   17 18  24   1  59
+## 85   73 12   2  30  48
+## 86   41 79  38  48  68
+## 87   12 84  77  25  79
+## 88   66 52   5  85  41
+## 89   80 39  60  29  29
+## 90  100 43  15  16   3
+## 91    9 37  75  52  94
+## 92   94 22  19  48  52
+## 93   53  9 100  83  52
+## 94   37 39  78  31  65
+## 95   96 26  66  87  22
+## 96   64 25  29   7  55
+## 97   62 50  91  21  45
+## 98   18 44  94  15  18
+## 99   61 11  48  48  50
+## 100  98 45  27  17  68&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now, if we need to apply the &lt;code&gt;colSums()&lt;/code&gt; function to each data set, we can use the &lt;code&gt;lapply()&lt;/code&gt; function:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lapply(list1, colSums)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [[1]]
+##   V1   V2   V3   V4   V5 
+## 2546 2602 2699 1993 2482 
+## 
+## [[2]]
+##   V1   V2   V3   V4   V5 
+## 5148 4692   NA 5024 5177 
+## 
+## [[3]]
+##   V1   V2   V3   V4   V5 
+##   NA 7554   NA   NA   NA&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The result is a list with the sum of the columns of each database. If we need to do the sums, but without counting the missing values, we have to incorporate the respective argument of the &lt;code&gt;colSums()&lt;/code&gt; function.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lapply(list1, colSums, na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [[1]]
+##   V1   V2   V3   V4   V5 
+## 2546 2602 2699 1993 2482 
+## 
+## [[2]]
+##   V1   V2   V3   V4   V5 
+## 5148 4692 4887 5024 5177 
+## 
+## [[3]]
+##   V1   V2   V3   V4   V5 
+## 7780 7554 7470 7826 7033&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As you can see, the &lt;code&gt;lapply()&lt;/code&gt; function works with three arguments: a list -in this case, the list object-, a function that we want to apply to each element of that list -in this case, &lt;code&gt;colSums()&lt;/code&gt;-, and if necessary, the arguments requested by the indicated function -in this case &lt;code&gt;na.rm = TRUE&lt;/code&gt; of the &lt;code&gt;colSums()&lt;/code&gt;- function.&lt;/p&gt;
+&lt;p&gt;The previous result returns the calculations in an object of class &lt;code&gt;list&lt;/code&gt;; however, in many cases, it is desirable to obtain a more orderly format. The &lt;code&gt;sapply()&lt;/code&gt; function works identically to &lt;code&gt;lapply()&lt;/code&gt;, with the proviso that &lt;strong&gt;if the result of each item in the list has the same length&lt;/strong&gt;, the &lt;code&gt;sapply()&lt;/code&gt; function groups the result. By using the &lt;code&gt;lapply()&lt;/code&gt; motion, we obtain a list of three elements, where each element is a vector of length five, that is, they all have the same length, so the &lt;code&gt;sapply()&lt;/code&gt; function would return the following:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sapply(list1, colSums)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    [,1] [,2] [,3]
+## V1 2546 5148   NA
+## V2 2602 4692 7554
+## V3 2699   NA   NA
+## V4 1993 5024   NA
+## V5 2482 5177   NA&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sapply(list1, colSums, na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    [,1] [,2] [,3]
+## V1 2546 5148 7780
+## V2 2602 4692 7554
+## V3 2699 4887 7470
+## V4 1993 5024 7826
+## V5 2482 5177 7033&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Although the &lt;code&gt;sapply()&lt;/code&gt; function seems more useful than &lt;code&gt;lapply()&lt;/code&gt;, it has a small inconvenience, and it is always going to work… How can this be an inconvenience? Let’s incorporate a new data set, but this time with six columns instead of five like the previous ones.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df4 &amp;lt;- dat(150, 6)
+list2 &amp;lt;- list(df1, df2, df3, df4)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If we use the &lt;code&gt;lapply()&lt;/code&gt; function again, we would again obtain the sums by columns in the form of a list:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lapply(list2, colSums, na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [[1]]
+##   V1   V2   V3   V4   V5 
+## 2546 2602 2699 1993 2482 
+## 
+## [[2]]
+##   V1   V2   V3   V4   V5 
+## 5148 4692 4887 5024 5177 
+## 
+## [[3]]
+##   V1   V2   V3   V4   V5 
+## 7780 7554 7470 7826 7033 
+## 
+## [[4]]
+##   V1   V2   V3   V4   V5   V6 
+## 8205 6712 6794 8049 7562 7335&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;While if we apply the &lt;code&gt;sapply()&lt;/code&gt; function:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sapply(list2, colSums, na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [[1]]
+##   V1   V2   V3   V4   V5 
+## 2546 2602 2699 1993 2482 
+## 
+## [[2]]
+##   V1   V2   V3   V4   V5 
+## 5148 4692 4887 5024 5177 
+## 
+## [[3]]
+##   V1   V2   V3   V4   V5 
+## 7780 7554 7470 7826 7033 
+## 
+## [[4]]
+##   V1   V2   V3   V4   V5   V6 
+## 8205 6712 6794 8049 7562 7335&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now we get a list, that is, the same result as with &lt;code&gt;sapply()&lt;/code&gt;. The reason is that not all elements have the same length, before there were three vectors of length five, while now also a vector of length six. This fact seems to be irrelevant, since a result is still being obtained, however depending on the context that result will not always be valid.&lt;/p&gt;
+&lt;p&gt;Suppose that based on the analysis we are doing, we know that the sum of the columns can only return a vector of length five and that if the result is something else, it may be due to an error in one of the databases, such as additional columns. The &lt;code&gt;vapply()&lt;/code&gt; function allows us, like &lt;code&gt;sapply()&lt;/code&gt;, to apply a function to the elements of a list, but specifying that the expected result, in this case, is a numerical vector of length five. Let’s first make a comparison between &lt;code&gt;sapply()&lt;/code&gt; and &lt;code&gt;vapply()&lt;/code&gt; with the object &lt;code&gt;list&lt;/code&gt;, which has three databases with five columns:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sapply(list1, colSums, na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    [,1] [,2] [,3]
+## V1 2546 5148 7780
+## V2 2602 4692 7554
+## V3 2699 4887 7470
+## V4 1993 5024 7826
+## V5 2482 5177 7033&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;vapply(list1, colSums, numeric(5), na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    [,1] [,2] [,3]
+## V1 2546 5148 7780
+## V2 2602 4692 7554
+## V3 2699 4887 7470
+## V4 1993 5024 7826
+## V5 2482 5177 7033&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The results are identical. But now let’s repeat the previous example but for the object &lt;code&gt;list2&lt;/code&gt;, which contains a data set with six columns.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sapply(list2, colSums, na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [[1]]
+##   V1   V2   V3   V4   V5 
+## 2546 2602 2699 1993 2482 
+## 
+## [[2]]
+##   V1   V2   V3   V4   V5 
+## 5148 4692 4887 5024 5177 
+## 
+## [[3]]
+##   V1   V2   V3   V4   V5 
+## 7780 7554 7470 7826 7033 
+## 
+## [[4]]
+##   V1   V2   V3   V4   V5   V6 
+## 8205 6712 6794 8049 7562 7335&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;sapply()&lt;/code&gt; function performs the calculation, but under the assumption that the expected result is vectors of length five, this result is incorrect. The &lt;code&gt;vapply()&lt;/code&gt; function helps us control this problem.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;vapply(list2, colSums, numeric(5), na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Error in vapply(list2, colSums, numeric(5), na.rm = TRUE): Los valores deben ser de longitud 5, 
+## pero el resultado FUN(X [[4]]) es la longitud 6&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;When trying to execute the code, we get an error, since evaluating the function in element number four of the list returns a vector of length six and not five as expected.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;vapply()&lt;/code&gt; function is generally more advisable than &lt;code&gt;sapply()&lt;/code&gt; because it allows you to have more control over the expected results.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Apply family functions - Part 2</title>
+      <link>/en/post/2019-07-31-tapply/</link>
+      <pubDate>Wed, 31 Jul 2019 18:55:57 -0600</pubDate>
+      
+      <guid>/en/post/2019-07-31-tapply/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;In this second part of the post series on the apply family of functions, it is the &lt;code&gt;tapply()&lt;/code&gt; function. Unlike the &lt;code&gt;apply ()&lt;/code&gt; function discussed in the first post, the &lt;code&gt;tapply()&lt;/code&gt; function is often used to apply a function to subsets of a vector. Usually, when working with databases, there are variables of different nature, some can be numerical, others categorical, the idea of &lt;code&gt;tapply()&lt;/code&gt; is to obtain summaries of a vector but being grouped concerning other vectors (variables).&lt;/p&gt;
+&lt;p&gt;On this occasion, we will use the starwars database seen in the post on the &lt;code&gt;inspectdf&lt;/code&gt; package again.&lt;/p&gt;
+&lt;p&gt;If we need to know the average height of the characters, execute the following command.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mean(starwars$height, na.rm = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 174.358&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;However, it is more valuable to obtain the average height according to another variable of interest that allows us to make some comparison, such as gender. For this, we can use the &lt;code&gt;tapply()&lt;/code&gt; function.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tapply(X=starwars$height,     
+       INDEX=starwars$gender, 
+       FUN=mean)              &lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  feminine masculine 
+##        NA        NA&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;em&gt;NA&lt;/em&gt; that appear are due to missing values within the database, so the &lt;code&gt;mean()&lt;/code&gt; function does not calculate the average correctly unless an imputation of these missing values is made or indicated that the &lt;code&gt;mean()&lt;/code&gt; function must omit the missing values using the argument &lt;code&gt;na.rm = TRUE&lt;/code&gt;. In most of the &lt;code&gt;apply&lt;/code&gt; family functions, the arguments that belong to the function being applied (in this case &lt;code&gt;mean()&lt;/code&gt;) must go after the &lt;code&gt;FUN&lt;/code&gt; argument.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tapply(X=starwars$height,     
+       INDEX=starwars$gender,
+       FUN=mean,              
+       na.rm=TRUE)            &lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  feminine masculine 
+##  164.6875  176.5161&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;tapply()&lt;/code&gt; function is not limited to a single grouping variable. The same “dimensions” concept that we discuss in the &lt;code&gt;apply ()&lt;/code&gt; function can be used to &lt;code&gt;tapply()&lt;/code&gt;, but this time the grouping variables must be specified within a list. As an example, suppose we are interested in the average height according to gender and eye color.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tapply(X=starwars$height,
+       INDEX=list(starwars$eye_color, starwars$gender), 
+       FUN=mean, 
+       na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##               feminine masculine
+## black            195.5  182.0000
+## blue             167.0  189.7500
+## blue-gray           NA  182.0000
+## brown            160.0  167.3846
+## dark                NA       NaN
+## gold                NA  191.0000
+## green, yellow       NA  216.0000
+## hazel            178.0  170.0000
+## orange              NA  180.5000
+## pink                NA  180.0000
+## red                 NA  154.8000
+## red, blue         96.0        NA
+## unknown             NA  136.0000
+## white               NA        NA
+## yellow           168.0  178.8000&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can add more grouping variables, but all of them must be within the list. For example, it is possible to grouping also by the skin color, although in this case, the result would show many missing values because not all combinations exist. That is a demonstration that each time we grouping variables, these groupings should make sense; otherwise, the analysis will not be useful.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tapply(X=starwars$height,
+       INDEX=list(starwars$eye_color, starwars$gender, starwars$skin_color), 
+       FUN=mean, 
+       na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## , , blue
+## 
+##               feminine masculine
+## black               NA        NA
+## blue                NA       196
+## blue-gray           NA        NA
+## brown               NA        NA
+## dark                NA        NA
+## gold                NA        NA
+## green, yellow       NA        NA
+## hazel              178        NA
+## orange              NA        NA
+## pink                NA        NA
+## red                 NA        NA
+## red, blue           NA        NA
+## unknown             NA        NA
+## white               NA        NA
+## yellow              NA        NA
+## 
+## , , blue, grey
+## 
+##               feminine masculine
+## black               NA        NA
+## blue                NA        NA
+## blue-gray           NA        NA
+## brown               NA        NA
+## dark                NA        NA
+## gold                NA        NA
+## green, yellow       NA        NA
+## hazel               NA        NA
+## orange              NA        NA
+## pink                NA        NA
+## red                 NA        NA
+## red, blue           NA        NA
+## unknown             NA        NA
+## white               NA        NA
+## yellow              NA     115.5
+## 
+## , , brown
+## 
+##               feminine masculine
+## black               NA        NA
+## blue                NA     234.0
+## blue-gray           NA        NA
+## brown               NA     129.5
+## dark                NA        NA
+## gold                NA        NA
+## green, yellow       NA        NA
+## hazel               NA        NA
+## orange              NA        NA
+## pink                NA        NA
+## red                 NA        NA
+## red, blue           NA        NA
+## unknown             NA        NA
+## white               NA        NA
+## yellow              NA     198.0
+## 
+## , , brown mottle
+## 
+##               feminine masculine
+## black               NA        NA
+## blue                NA        NA
+## blue-gray           NA        NA
+## brown               NA        NA
+## dark                NA        NA
+## gold                NA        NA
+## green, yellow       NA        NA
+## hazel               NA        NA
+## orange              NA       180
+## pink                NA        NA
+## red                 NA        NA
+## red, blue           NA        NA
+## unknown             NA        NA
+## white               NA        NA
+## yellow              NA        NA
+## 
+## , , brown, white
+## 
+##               feminine masculine
+## black               NA        NA
+## blue                NA        NA
+## blue-gray           NA        NA
+## brown               NA        NA
+## dark                NA        NA
+## gold                NA        NA
+## green, yellow       NA       216
+## hazel               NA        NA
+## orange              NA        NA
+## pink                NA        NA
+## red                 NA        NA
+## red, blue           NA        NA
+## unknown             NA        NA
+## white               NA        NA
+## yellow              NA        NA
+## 
+## , , dark
+## 
+##               feminine masculine
+## black               NA        NA
+## blue               184        NA
+## blue-gray           NA        NA
+## brown               NA  183.3333
+## dark                NA       NaN
+## gold                NA        NA
+## green, yellow       NA        NA
+## hazel               NA        NA
+## orange              NA        NA
+## pink                NA        NA
+## red                 NA        NA
+## red, blue           NA        NA
+## unknown             NA        NA
+## white               NA        NA
+## yellow              NA        NA
+## 
+## , , fair
+## 
+##               feminine masculine
+## black               NA        NA
+## blue             158.5  180.8571
+## blue-gray           NA  182.0000
+## brown            163.0  185.3333
+## dark                NA        NA
+## gold                NA        NA
+## green, yellow       NA        NA
+## hazel               NA  170.0000
+## orange              NA        NA
+## pink                NA        NA
+## red                 NA        NA
+## red, blue           NA        NA
+## unknown             NA        NA
+## white               NA        NA
+## yellow              NA        NA
+## 
+## , , fair, green, yellow
+## 
+##               feminine masculine
+## black               NA        NA
+## blue                NA        NA
+## blue-gray           NA        NA
+## brown               NA        NA
+## dark                NA        NA
+## gold                NA        NA
+## green, yellow       NA        NA
+## hazel               NA        NA
+## orange              NA        NA
+## pink                NA        NA
+## red                 NA        NA
+## red, blue           NA        NA
+## unknown             NA        NA
+## white               NA        NA
+## yellow             168        NA
+## 
+## , , gold
+## 
+##               feminine masculine
+## black               NA        NA
+## blue                NA        NA
+## blue-gray           NA        NA
+## brown               NA        NA
+## dark                NA        NA
+## gold                NA        NA
+## green, yellow       NA        NA
+## hazel               NA        NA
+## orange              NA        NA
+## pink                NA        NA
+## red                 NA        NA
+## red, blue           NA        NA
+## unknown             NA        NA
+## white               NA        NA
+## yellow              NA       167
+## 
+## , , green
+## 
+##               feminine masculine
+## black               NA     184.5
+## blue                NA        NA
+## blue-gray           NA        NA
+## brown               NA      66.0
+## dark                NA        NA
+## gold                NA        NA
+## green, yellow       NA        NA
+## hazel               NA        NA
+## orange              NA     206.0
+## pink                NA        NA
+## red                 NA     190.0
+## red, blue           NA        NA
+## unknown             NA        NA
+## white               NA        NA
+## yellow              NA     183.0
+## 
+## , , green-tan, brown
+## 
+##               feminine masculine
+## black               NA        NA
+## blue                NA        NA
+## blue-gray           NA        NA
+## brown               NA        NA
+## dark                NA        NA
+## gold                NA        NA
+## green, yellow       NA        NA
+## hazel               NA        NA
+## orange              NA       175
+## pink                NA        NA
+## red                 NA        NA
+## red, blue           NA        NA
+## unknown             NA        NA
+## white               NA        NA
+## yellow              NA        NA
+## 
+## , , green, grey
+## 
+##               feminine masculine
+## black               NA        NA
+## blue                NA        NA
+## blue-gray           NA        NA
+## brown               NA        NA
+## dark                NA        NA
+## gold                NA        NA
+## green, yellow       NA        NA
+## hazel               NA        NA
+## orange              NA        NA
+## pink                NA        NA
+## red                 NA        NA
+## red, blue           NA        NA
+## unknown             NA       193
+## white               NA        NA
+## yellow              NA        NA
+## 
+## , , grey
+## 
+##               feminine masculine
+## black              213  198.3333
+## blue                NA        NA
+## blue-gray           NA        NA
+## brown               NA        NA
+## dark                NA        NA
+## gold                NA  191.0000
+## green, yellow       NA        NA
+## hazel               NA        NA
+## orange              NA  224.0000
+## pink                NA        NA
+## red                 NA        NA
+## red, blue           NA        NA
+## unknown             NA        NA
+## white               NA        NA
+## yellow              NA        NA
+## 
+## , , grey, blue
+## 
+##               feminine masculine
+## black               NA        NA
+## blue                NA        NA
+## blue-gray           NA        NA
+## brown               NA        NA
+## dark                NA        NA
+## gold                NA        NA
+## green, yellow       NA        NA
+## hazel               NA        NA
+## orange              NA        NA
+## pink                NA        NA
+## red                 NA        NA
+## red, blue           NA        NA
+## unknown             NA        79
+## white               NA        NA
+## yellow              NA        NA
+## 
+## , , grey, green, yellow
+## 
+##               feminine masculine
+## black               NA        NA
+## blue                NA        NA
+## blue-gray           NA        NA
+## brown               NA        NA
+## dark                NA        NA
+## gold                NA        NA
+## green, yellow       NA        NA
+## hazel               NA        NA
+## orange              NA       163
+## pink                NA        NA
+## red                 NA        NA
+## red, blue           NA        NA
+## unknown             NA        NA
+## white               NA        NA
+## yellow              NA        NA
+## 
+## , , grey, red
+## 
+##               feminine masculine
+## black               NA        NA
+## blue                NA        NA
+## blue-gray           NA        NA
+## brown               NA        NA
+## dark                NA        NA
+## gold                NA        NA
+## green, yellow       NA        NA
+## hazel               NA        NA
+## orange              NA       112
+## pink                NA        NA
+## red                 NA        NA
+## red, blue           NA        NA
+## unknown             NA        NA
+## white               NA        NA
+## yellow              NA        NA
+## 
+## , , light
+## 
+##               feminine masculine
+## black               NA        NA
+## blue            165.00     176.5
+## blue-gray           NA        NA
+## brown           159.25     185.5
+## dark                NA        NA
+## gold                NA        NA
+## green, yellow       NA        NA
+## hazel              NaN        NA
+## orange              NA        NA
+## pink                NA        NA
+## red                 NA        NA
+## red, blue           NA        NA
+## unknown             NA        NA
+## white               NA        NA
+## yellow              NA        NA
+## 
+## , , metal
+## 
+##               feminine masculine
+## black               NA        NA
+## blue                NA        NA
+## blue-gray           NA        NA
+## brown               NA        NA
+## dark                NA        NA
+## gold                NA        NA
+## green, yellow       NA        NA
+## hazel               NA        NA
+## orange              NA        NA
+## pink                NA        NA
+## red                 NA       200
+## red, blue           NA        NA
+## unknown             NA        NA
+## white               NA        NA
+## yellow              NA        NA
+## 
+## , , mottled green
+## 
+##               feminine masculine
+## black               NA        NA
+## blue                NA        NA
+## blue-gray           NA        NA
+## brown               NA        NA
+## dark                NA        NA
+## gold                NA        NA
+## green, yellow       NA        NA
+## hazel               NA        NA
+## orange              NA        NA
+## pink                NA        NA
+## red                 NA       191
+## red, blue           NA        NA
+## unknown             NA        NA
+## white               NA        NA
+## yellow              NA        NA
+## 
+## , , none
+## 
+##               feminine masculine
+## black               NA       NaN
+## blue                NA        NA
+## blue-gray           NA        NA
+## brown               NA        NA
+## dark                NA        NA
+## gold                NA        NA
+## green, yellow       NA        NA
+## hazel               NA        NA
+## orange              NA        NA
+## pink                NA        NA
+## red                 NA        NA
+## red, blue           NA        NA
+## unknown             NA        NA
+## white               NA        NA
+## yellow              NA        NA
+## 
+## , , orange
+## 
+##               feminine masculine
+## black               NA       188
+## blue                NA        NA
+## blue-gray           NA        NA
+## brown               NA        NA
+## dark                NA        NA
+## gold                NA        NA
+## green, yellow       NA        NA
+## hazel               NA        NA
+## orange              NA       196
+## pink                NA        NA
+## red                 NA        NA
+## red, blue           NA        NA
+## unknown             NA        NA
+## white               NA        NA
+## yellow              NA        NA
+## 
+## , , pale
+## 
+##               feminine masculine
+## black               NA        NA
+## blue                NA        NA
+## blue-gray           NA        NA
+## brown               NA        NA
+## dark                NA        NA
+## gold                NA        NA
+## green, yellow       NA        NA
+## hazel               NA        NA
+## orange              NA       188
+## pink                NA       180
+## red                 NA        NA
+## red, blue           NA        NA
+## unknown             NA        NA
+## white               NA        NA
+## yellow              NA       184
+## 
+## , , red
+## 
+##               feminine masculine
+## black               NA        NA
+## blue                NA        NA
+## blue-gray           NA        NA
+## brown               NA        NA
+## dark                NA        NA
+## gold                NA        NA
+## green, yellow       NA        NA
+## hazel               NA        NA
+## orange              NA        NA
+## pink                NA        NA
+## red                 NA        NA
+## red, blue           NA        NA
+## unknown             NA        NA
+## white               NA        NA
+## yellow              NA       175
+## 
+## , , red, blue, white
+## 
+##               feminine masculine
+## black              178        NA
+## blue                NA        NA
+## blue-gray           NA        NA
+## brown               NA        NA
+## dark                NA        NA
+## gold                NA        NA
+## green, yellow       NA        NA
+## hazel               NA        NA
+## orange              NA        NA
+## pink                NA        NA
+## red                 NA        NA
+## red, blue           NA        NA
+## unknown             NA        NA
+## white               NA        NA
+## yellow              NA        NA
+## 
+## , , silver, red
+## 
+##               feminine masculine
+## black               NA        NA
+## blue                NA        NA
+## blue-gray           NA        NA
+## brown               NA        NA
+## dark                NA        NA
+## gold                NA        NA
+## green, yellow       NA        NA
+## hazel               NA        NA
+## orange              NA        NA
+## pink                NA        NA
+## red                 NA        NA
+## red, blue           96        NA
+## unknown             NA        NA
+## white               NA        NA
+## yellow              NA        NA
+## 
+## , , tan
+## 
+##               feminine masculine
+## black               NA        NA
+## blue                NA        NA
+## blue-gray           NA        NA
+## brown               NA       187
+## dark                NA        NA
+## gold                NA        NA
+## green, yellow       NA        NA
+## hazel               NA        NA
+## orange              NA        NA
+## pink                NA        NA
+## red                 NA        NA
+## red, blue           NA        NA
+## unknown             NA        NA
+## white               NA        NA
+## yellow              NA        NA
+## 
+## , , unknown
+## 
+##               feminine masculine
+## black               NA        NA
+## blue                NA       228
+## blue-gray           NA        NA
+## brown               NA        NA
+## dark                NA        NA
+## gold                NA        NA
+## green, yellow       NA        NA
+## hazel               NA        NA
+## orange              NA        NA
+## pink                NA        NA
+## red                 NA        NA
+## red, blue           NA        NA
+## unknown             NA        NA
+## white               NA        NA
+## yellow              NA        NA
+## 
+## , , white
+## 
+##               feminine masculine
+## black               NA        NA
+## blue                NA        NA
+## blue-gray           NA        NA
+## brown               NA        NA
+## dark                NA        NA
+## gold                NA        NA
+## green, yellow       NA        NA
+## hazel               NA        NA
+## orange              NA        NA
+## pink                NA        NA
+## red                 NA        NA
+## red, blue           NA        NA
+## unknown             NA        NA
+## white               NA        NA
+## yellow              NA       233
+## 
+## , , white, blue
+## 
+##               feminine masculine
+## black               NA       122
+## blue                NA        NA
+## blue-gray           NA        NA
+## brown               NA        NA
+## dark                NA        NA
+## gold                NA        NA
+## green, yellow       NA        NA
+## hazel               NA        NA
+## orange              NA        NA
+## pink                NA        NA
+## red                 NA        96
+## red, blue           NA        NA
+## unknown             NA        NA
+## white               NA        NA
+## yellow              NA        NA
+## 
+## , , white, red
+## 
+##               feminine masculine
+## black               NA        NA
+## blue                NA        NA
+## blue-gray           NA        NA
+## brown               NA        NA
+## dark                NA        NA
+## gold                NA        NA
+## green, yellow       NA        NA
+## hazel               NA        NA
+## orange              NA        NA
+## pink                NA        NA
+## red                 NA        97
+## red, blue           NA        NA
+## unknown             NA        NA
+## white               NA        NA
+## yellow              NA        NA
+## 
+## , , yellow
+## 
+##               feminine masculine
+## black               NA        NA
+## blue               168        NA
+## blue-gray           NA        NA
+## brown               NA        NA
+## dark                NA        NA
+## gold                NA        NA
+## green, yellow       NA        NA
+## hazel               NA        NA
+## orange              NA        NA
+## pink                NA        NA
+## red                 NA        NA
+## red, blue           NA        NA
+## unknown             NA        NA
+## white               NA        NA
+## yellow              NA        NA&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Apply family functions - Part 1</title>
+      <link>/en/post/2019-06-23-apply/</link>
+      <pubDate>Sun, 21 Jul 2019 17:42:09 -0600</pubDate>
+      
+      <guid>/en/post/2019-06-23-apply/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;The apply family functions belong to the R base package, they are especially useful when combining their use with functions to manipulate pieces of matrices, arrays, lists and data frames. These functions allow you to cross data in multiple ways to avoid the use of for loops that are usually computationally heavier.&lt;/p&gt;
+&lt;p&gt;The first function we will talk about in this series is the &lt;code&gt;apply ()&lt;/code&gt; function, which in its simplest form of use is used to evaluate the margins (1 = rows or 2 = columns) of a matrix or an array to apply a function to them.&lt;/p&gt;
+&lt;p&gt;As a first example, we start from a matrix with three rows and three columns.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mat &amp;lt;- matrix(c(2, 4, 6, 7, 8, 9, 1, 12, 21), nrow = 3, ncol = 3)
+mat&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      [,1] [,2] [,3]
+## [1,]    2    7    1
+## [2,]    4    8   12
+## [3,]    6    9   21&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you wish, for example, to obtain the sum of each column, you can use the &lt;code&gt;apply ()&lt;/code&gt; function as follows.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(mat, 2, sum)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 12 24 34&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can also calculate the average of each row.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(mat, 1, mean)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1]  3.333333  8.000000 12.000000&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;There are also some functions already programmed in the R &lt;code&gt;base&lt;/code&gt; package that quickly replicate the previous results. For example, there is the &lt;code&gt;colSums ()&lt;/code&gt; function to calculate the amount of each column, and &lt;code&gt;rowMeans ()&lt;/code&gt; to obtain the arithmetic mean of each row.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;colSums(mat)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 12 24 34&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rowMeans(mat)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1]  3.333333  8.000000 12.000000&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The two cases shown above exemplify a basic use of the &lt;code&gt;apply ()&lt;/code&gt; function, however, this function is much more powerful and is capable of working in a multidimensional way. Consider, for example, an object in two dimensions (rows and columns) similar to the one created previously, that is, an array.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mat2 &amp;lt;- matrix(1:9, nrow = 3, ncol = 3)
+mat2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;mat2&lt;/code&gt; object represents a particular case of an array, which can be created using the&lt;code&gt;array ()&lt;/code&gt;function.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;array(data=1:9, dim = c(3,3))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;array ()&lt;/code&gt; function also allows you to add tags to the rows and columns using its &lt;code&gt;dimnames&lt;/code&gt; argument.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;nombres.columnas &amp;lt;- c(&amp;quot;COL1&amp;quot;,&amp;quot;COL2&amp;quot;,&amp;quot;COL3&amp;quot;)
+nombres.filas &amp;lt;- c(&amp;quot;FILA1&amp;quot;,&amp;quot;FILA2&amp;quot;,&amp;quot;FILA3&amp;quot;)
+arreglo &amp;lt;- array(data=1:9, dim = c(3,3), 
+                 dimnames = list(nombres.columnas, nombres.filas))
+arreglo&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      FILA1 FILA2 FILA3
+## COL1     1     4     7
+## COL2     2     5     8
+## COL3     3     6     9&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can add multiple dimensions to an array. For this, suppose you want to have the following sizes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;DIM1: Numbers from 1 to 9.&lt;/li&gt;
+&lt;li&gt;DIM2: Numbers from 1 to 9 multiplied by 10.&lt;/li&gt;
+&lt;li&gt;DIM3: Numbers from 1 to 9 multiplied by 100.&lt;/li&gt;
+&lt;li&gt;DIM4: Numbers from 1 to 9 increased by 1000.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;One way to generate the previous arrangement is by using the following code:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;nombres.dimensiones &amp;lt;- c(&amp;quot;DIM1&amp;quot;,&amp;quot;DIM2&amp;quot;,&amp;quot;DIM3&amp;quot;,&amp;quot;DIM4&amp;quot;)
+arreglo &amp;lt;- array(data = c(seq(from=1, to=9, by=1),           #1 al 9
+                          seq(from=10, to=90, by=10),        #10 al 90
+                          seq(from=100, to=900, by=100),     #100 al 900
+                          seq(from=1000, to=9000, by=1000)), #1000 al 9000
+                 dim = c(3, 3, 4),                           #3 filas, 3 columnas y 4 dimensiones
+                 dimnames = list(nombres.filas,
+                                 nombres.columnas,
+                                 nombres.dimensiones))
+arreglo&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## , , DIM1
+## 
+##       COL1 COL2 COL3
+## FILA1    1    4    7
+## FILA2    2    5    8
+## FILA3    3    6    9
+## 
+## , , DIM2
+## 
+##       COL1 COL2 COL3
+## FILA1   10   40   70
+## FILA2   20   50   80
+## FILA3   30   60   90
+## 
+## , , DIM3
+## 
+##       COL1 COL2 COL3
+## FILA1  100  400  700
+## FILA2  200  500  800
+## FILA3  300  600  900
+## 
+## , , DIM4
+## 
+##       COL1 COL2 COL3
+## FILA1 1000 4000 7000
+## FILA2 2000 5000 8000
+## FILA3 3000 6000 9000&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Starting from the previous array, suppose that you want to obtain the maximum value per row from each dimension.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(arreglo, c(3,1), max)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      FILA1 FILA2 FILA3
+## DIM1     7     8     9
+## DIM2    70    80    90
+## DIM3   700   800   900
+## DIM4  7000  8000  9000&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Or, you may want to obtain the maximum value of each column from each dimension.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(arreglo, c(3,2), max)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      COL1 COL2 COL3
+## DIM1    3    6    9
+## DIM2   30   60   90
+## DIM3  300  600  900
+## DIM4 3000 6000 9000&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The following result shows the minimum of each column in each dimension.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(arreglo, c(2,3), min)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      DIM1 DIM2 DIM3 DIM4
+## COL1    1   10  100 1000
+## COL2    4   40  400 4000
+## COL3    7   70  700 7000&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The previous examples can be applied to arrays with a higher dimension; for this, it is enough to have an adequate arrangement and operate on the corresponding margins with the &lt;code&gt;apply ()&lt;/code&gt; function.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Exploratory data analysis with categorical data</title>
+      <link>/en/post/2019-06-23-exploraci%C3%B3n-de-datos-categ%C3%B3ricos-con-el-paquete-inspectdf/</link>
+      <pubDate>Sun, 23 Jun 2019 13:42:09 -0600</pubDate>
+      
+      <guid>/en/post/2019-06-23-exploraci%C3%B3n-de-datos-categ%C3%B3ricos-con-el-paquete-inspectdf/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;It is a common task to find datasets which have different types of variables, and they could be numeric, time data, or even categorical. The &lt;a href=&#34;https://github.com/alastairrushworth/inspectdf&#34;&gt;inspectdf&lt;/a&gt; package offers a set of functions to analyze the behavior of this kind of data.&lt;/p&gt;
+&lt;p&gt;First of all, we have to install the package.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(devtools)
+install_github(&amp;quot;alastairrushworth/inspectdf&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;When we installed the package, it is necessary to load it. We do the same with &lt;code&gt;dplyr&lt;/code&gt; package, especially for use the pipe &lt;code&gt;%&amp;gt;%&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(inspectdf)
+library(dplyr)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For this example, the dataset &lt;code&gt;starwars&lt;/code&gt; will be used. This dataset is in &lt;code&gt;dplyr&lt;/code&gt; package and which has data from various characters in this cinematographic universe.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;starwars %&amp;gt;% 
+    head()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 14
+##   name  height  mass hair_color skin_color eye_color birth_year sex   gender
+##   &amp;lt;chr&amp;gt;  &amp;lt;int&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;      &amp;lt;chr&amp;gt;      &amp;lt;chr&amp;gt;          &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; 
+## 1 Luke~    172    77 blond      fair       blue            19   male  mascu~
+## 2 C-3PO    167    75 &amp;lt;NA&amp;gt;       gold       yellow         112   none  mascu~
+## 3 R2-D2     96    32 &amp;lt;NA&amp;gt;       white, bl~ red             33   none  mascu~
+## 4 Dart~    202   136 none       white      yellow          41.9 male  mascu~
+## 5 Leia~    150    49 brown      light      brown           19   fema~ femin~
+## 6 Owen~    178   120 brown, gr~ light      blue            52   male  mascu~
+## # ... with 5 more variables: homeworld &amp;lt;chr&amp;gt;, species &amp;lt;chr&amp;gt;, films &amp;lt;list&amp;gt;,
+## #   vehicles &amp;lt;list&amp;gt;, starships &amp;lt;list&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;tabular-exploratory-data-analysis&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Tabular exploratory data analysis&lt;/h3&gt;
+&lt;p&gt;The &lt;code&gt;inspectdf&lt;/code&gt; package allows you to calculate some descriptive statistics quickly for any variable using the&lt;code&gt;inspect_types()&lt;/code&gt;function.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;starwars %&amp;gt;% 
+    inspect_types()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 4 x 4
+##   type        cnt  pcnt col_name    
+##   &amp;lt;chr&amp;gt;     &amp;lt;int&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;named list&amp;gt;
+## 1 character     8 57.1  &amp;lt;chr [8]&amp;gt;   
+## 2 list          3 21.4  &amp;lt;chr [3]&amp;gt;   
+## 3 numeric       2 14.3  &amp;lt;chr [2]&amp;gt;   
+## 4 integer       1  7.14 &amp;lt;chr [1]&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The previous result shows that there are seven variables of type &lt;code&gt;character&lt;/code&gt;, which represents 53.84% of the dataset. Also, there are two numerical variables, which represent 15.38%. The above is useful for a first look, but it is interesting to go a little further and describe all the variables in more detail. For this, the &lt;code&gt;inspect_cat ()&lt;/code&gt; function could be useful.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;starwars %&amp;gt;% 
+    inspect_cat()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 8 x 5
+##   col_name     cnt common    common_pcnt levels           
+##   &amp;lt;chr&amp;gt;      &amp;lt;int&amp;gt; &amp;lt;chr&amp;gt;           &amp;lt;dbl&amp;gt; &amp;lt;named list&amp;gt;     
+## 1 eye_color     15 brown           24.1  &amp;lt;tibble [15 x 3]&amp;gt;
+## 2 gender         3 masculine       75.9  &amp;lt;tibble [3 x 3]&amp;gt; 
+## 3 hair_color    13 none            42.5  &amp;lt;tibble [13 x 3]&amp;gt;
+## 4 homeworld     49 Naboo           12.6  &amp;lt;tibble [49 x 3]&amp;gt;
+## 5 name          87 Ackbar           1.15 &amp;lt;tibble [87 x 3]&amp;gt;
+## 6 sex            5 male            69.0  &amp;lt;tibble [5 x 3]&amp;gt; 
+## 7 skin_color    31 fair            19.5  &amp;lt;tibble [31 x 3]&amp;gt;
+## 8 species       38 Human           40.2  &amp;lt;tibble [38 x 3]&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;inspect_cat ()&lt;/code&gt; function shows in the first column the name of the variable, in the second one the number of unique values it contains, that is, the variable * eye_color * has 15 different levels, or what is the same, there are 15 colors and different eyes in the database. The third column shows the most common value that appears in the variable; for example, the most common species that appear in the dataset are humans. The fourth column indicates the percentage that represents the most common level; for example, the brown eyes represent 24.13% of all the colors present in the data. So what does the fifth column represent? Well, it is a list with the proportions of each level of the variable. Consider the * df * object from the previous result.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;- starwars %&amp;gt;% 
+    inspect_cat()
+df$levels$eye_color&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 15 x 3
+##    value           prop   cnt
+##    &amp;lt;chr&amp;gt;          &amp;lt;dbl&amp;gt; &amp;lt;int&amp;gt;
+##  1 brown         0.241     21
+##  2 blue          0.218     19
+##  3 yellow        0.126     11
+##  4 black         0.115     10
+##  5 orange        0.0920     8
+##  6 red           0.0575     5
+##  7 hazel         0.0345     3
+##  8 unknown       0.0345     3
+##  9 blue-gray     0.0115     1
+## 10 dark          0.0115     1
+## 11 gold          0.0115     1
+## 12 green, yellow 0.0115     1
+## 13 pink          0.0115     1
+## 14 red, blue     0.0115     1
+## 15 white         0.0115     1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The table above shows the proportion of each eye color. The same applies to any of the other variables.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;graphical-exploratory-data-analysis&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Graphical exploratory data analysis&lt;/h3&gt;
+&lt;p&gt;Sometimes the numerical values are not easy to interpret it, either due to a quantity of data or due to visual issues. The &lt;code&gt;inspectdf&lt;/code&gt; package also graphically allows for exploratory data analysis.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df %&amp;gt;% 
+    show_plot()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/en/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;The previous result contains the same information as the &lt;code&gt;df&lt;/code&gt; object, but now it is easier, faster, and even easier to interpret. However, this result can be improved, because the variable * name * does not work much in the graph because all the names are different. It can solve by modifying the argument &lt;code&gt;high_cardinality&lt;/code&gt;, which means that only those categories that appear a certain number of times say four will be in the plot.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df %&amp;gt;% 
+    show_plot(high_cardinality = 4)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/en/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Finally, if the colors are not entirely pleasant, they can be manipulated through the five color palettes offered by the package, we only have to modify the &lt;code&gt;col_palette&lt;/code&gt; argument with numbers between one and five to achieve this.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df %&amp;gt;% 
+    show_plot(high_cardinality = 4, col_palette = 4)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/en/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df %&amp;gt;% 
+    show_plot(high_cardinality = 4, col_palette = 5)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/en/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-9-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
 </description>
     </item>
     
