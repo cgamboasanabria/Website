@@ -1,14 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on </title>
     <link>/es/post/</link>
     <description>Recent content in Posts on </description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>es-cr</language>
     <copyright>&amp;copy; 2019</copyright>
     <lastBuildDate>Sun, 01 Mar 2020 18:55:57 -0600</lastBuildDate>
     
-        <atom:link href="/es/post/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="/es/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -51,7 +52,7 @@ ls()&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Es posible crear un &lt;em&gt;Environment&lt;/em&gt; nuevo que sea independiente del &lt;em&gt;Environment&lt;/em&gt; &lt;strong&gt;global&lt;/strong&gt;, la cual llamaremos &lt;code&gt;environment_2&lt;/code&gt;. Al crearlo, podemos ver que este se encuentra vacío en comparación al &lt;em&gt;Environment&lt;/em&gt; &lt;strong&gt;global&lt;/strong&gt;, el cual contiene a &lt;code&gt;x&lt;/code&gt; y a &lt;code&gt;environment_2&lt;/code&gt;. Además, si generamos directamente una nueva variable, digamos &lt;code&gt;z&lt;/code&gt;, esta se asignará al &lt;em&gt;Environment&lt;/em&gt; &lt;strong&gt;global&lt;/strong&gt;.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_2 &amp;lt;- new.env()
 environment_2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## &amp;lt;environment: 0x0000000015fce8d8&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;environment: 0x0000000015fbee98&amp;gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls(globalenv())&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] &amp;quot;environment_2&amp;quot; &amp;quot;x&amp;quot;&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls(environment_2)&lt;/code&gt;&lt;/pre&gt;
@@ -187,19 +188,6 @@ for(i in 1:10000){
 &lt;p&gt;Ambas llegan al mismo resultado, sin embargo, &lt;code&gt;mapply()&lt;/code&gt; es considerablemente más eficiente al realizar el cálculo. Compararemos los tiempos de ejecución de distintos procesos en el siguiente post, donde se mostrarán algunas versiones en paralelo de las funciones apply.&lt;/p&gt;
 &lt;/div&gt;
 </description>
-      
-            <category>R</category>
-      
-            <category>RStudio</category>
-      
-            <category>Funciones apply</category>
-      
-            <category>eapply</category>
-      
-            <category>rapply</category>
-      
-            <category>mapply</category>
-      
     </item>
     
     <item>
@@ -473,19 +461,6 @@ lista2 &amp;lt;- list(df1, df2, df3, df4)&lt;/code&gt;&lt;/pre&gt;
 ## pero el resultado FUN(X [[4]]) es la longitud 6&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Al intentar ejecutar el código obtenemos un error, pues evaluar la función en el elemento número cuatro de la lista hace que se obtenga un vector de longitud seis, y no de cinco como esperábamos. Utilizar &lt;code&gt;vapply()&lt;/code&gt; es, generalmente, más recomendable que &lt;code&gt;sapply()&lt;/code&gt; pues permite tener un mayor control sobre los resultados esperados.&lt;/p&gt;
 </description>
-      
-            <category>R</category>
-      
-            <category>RStudio</category>
-      
-            <category>Funciones apply</category>
-      
-            <category>lapply</category>
-      
-            <category>sapply</category>
-      
-            <category>vapply</category>
-      
     </item>
     
     <item>
@@ -1131,15 +1106,6 @@ lista2 &amp;lt;- list(df1, df2, df3, df4)&lt;/code&gt;&lt;/pre&gt;
 ## white               NA        NA
 ## yellow              NA        NA&lt;/code&gt;&lt;/pre&gt;
 </description>
-      
-            <category>R</category>
-      
-            <category>RStudio</category>
-      
-            <category>Funciones apply</category>
-      
-            <category>tapply</category>
-      
     </item>
     
     <item>
@@ -1262,15 +1228,6 @@ arreglo&lt;/code&gt;&lt;/pre&gt;
 ## COL3    7   70  700 7000&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Los ejemplos anteriores pueden ser aplicados a un número mayor de dimensiones, para ello basta con tener un arreglo adecuado y operar sobre los márgenes correspondientes con la función &lt;code&gt;apply()&lt;/code&gt;.&lt;/p&gt;
 </description>
-      
-            <category>R</category>
-      
-            <category>RStudio</category>
-      
-            <category>Funciones apply</category>
-      
-            <category>apply</category>
-      
     </item>
     
     <item>
@@ -1373,17 +1330,6 @@ df$levels$eye_color&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/es/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-9-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 </description>
-      
-            <category>R</category>
-      
-            <category>RStudio</category>
-      
-            <category>Análisis exploratorio</category>
-      
-            <category>Descripivos</category>
-      
-            <category>Datos categóricos</category>
-      
     </item>
     
   </channel>
