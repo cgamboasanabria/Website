@@ -18,6 +18,8 @@ organizations:
   url: "www.inec.go.cr"
 - name: Universidad de Costa Rica
   url: "http://estadistica.ucr.ac.cr/index.php/es/"
+- name: R-Bloggers
+  url: "https://www.r-bloggers.com/"
 
 # Short bio (displayed in user profile at end of posts)
 bio: Mi campo de estudio es la estadística, especialmente en pronósticos, análisis de clasificación y temas demográficos con enfoque en programación.

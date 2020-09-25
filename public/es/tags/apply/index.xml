@@ -19,6 +19,7 @@
       
       <guid>/es/post/2019-06-23-apply/</guid>
       <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;La familia de funciones apply pertenecen al paquete base de R, son de especial utilidad al combinar su uso con funciones para manipular porciones de matrices, arreglos, listas y marcos de datos de una manera repetitiva. Estas funciones permiten cruzar los datos de múltiples maneras para así evadir el uso de ciclos que usualmente son computacionalmente más pesados.&lt;/p&gt;

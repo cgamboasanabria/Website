@@ -552,6 +552,7 @@
 
     <div class="article-style" itemprop="articleBody">
       
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
 <p>It is a common task to find datasets which have different types of variables, and they could be numeric, time data, or even categorical. The <a href="https://github.com/alastairrushworth/inspectdf">inspectdf</a> package offers a set of functions to analyze the behavior of this kind of data.</p>
@@ -564,15 +565,15 @@ library(dplyr)</code></pre>
 <p>For this example, the dataset <code>starwars</code> will be used. This dataset is in <code>dplyr</code> package and which has data from various characters in this cinematographic universe.</p>
 <pre class="r"><code>starwars %&gt;% 
     head()</code></pre>
-<pre><code>## # A tibble: 6 x 13
-##   name  height  mass hair_color skin_color eye_color birth_year gender
-##   &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; 
-## 1 Luke~    172    77 blond      fair       blue            19   male  
-## 2 C-3PO    167    75 &lt;NA&gt;       gold       yellow         112   &lt;NA&gt;  
-## 3 R2-D2     96    32 &lt;NA&gt;       white, bl~ red             33   &lt;NA&gt;  
-## 4 Dart~    202   136 none       white      yellow          41.9 male  
-## 5 Leia~    150    49 brown      light      brown           19   female
-## 6 Owen~    178   120 brown, gr~ light      blue            52   male  
+<pre><code>## # A tibble: 6 x 14
+##   name  height  mass hair_color skin_color eye_color birth_year sex   gender
+##   &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+## 1 Luke~    172    77 blond      fair       blue            19   male  mascu~
+## 2 C-3PO    167    75 &lt;NA&gt;       gold       yellow         112   none  mascu~
+## 3 R2-D2     96    32 &lt;NA&gt;       white, bl~ red             33   none  mascu~
+## 4 Dart~    202   136 none       white      yellow          41.9 male  mascu~
+## 5 Leia~    150    49 brown      light      brown           19   fema~ femin~
+## 6 Owen~    178   120 brown, gr~ light      blue            52   male  mascu~
 ## # ... with 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
 ## #   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
 <div id="tabular-exploratory-data-analysis" class="section level3">
@@ -581,25 +582,26 @@ library(dplyr)</code></pre>
 <pre class="r"><code>starwars %&gt;% 
     inspect_types()</code></pre>
 <pre><code>## # A tibble: 4 x 4
-##   type        cnt  pcnt col_name 
-##   &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;list&gt;   
-## 1 character     7 53.8  &lt;chr [7]&gt;
-## 2 list          3 23.1  &lt;chr [3]&gt;
-## 3 numeric       2 15.4  &lt;chr [2]&gt;
-## 4 integer       1  7.69 &lt;chr [1]&gt;</code></pre>
+##   type        cnt  pcnt col_name    
+##   &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;named list&gt;
+## 1 character     8 57.1  &lt;chr [8]&gt;   
+## 2 list          3 21.4  &lt;chr [3]&gt;   
+## 3 numeric       2 14.3  &lt;chr [2]&gt;   
+## 4 integer       1  7.14 &lt;chr [1]&gt;</code></pre>
 <p>The previous result shows that there are seven variables of type <code>character</code>, which represents 53.84% of the dataset. Also, there are two numerical variables, which represent 15.38%. The above is useful for a first look, but it is interesting to go a little further and describe all the variables in more detail. For this, the <code>inspect_cat ()</code> function could be useful.</p>
 <pre class="r"><code>starwars %&gt;% 
     inspect_cat()</code></pre>
-<pre><code>## # A tibble: 7 x 5
-##   col_name     cnt common common_pcnt levels           
-##   &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;list&gt;           
-## 1 eye_color     15 brown        24.1  &lt;tibble [15 x 3]&gt;
-## 2 gender         5 male         71.3  &lt;tibble [5 x 3]&gt; 
-## 3 hair_color    13 none         42.5  &lt;tibble [13 x 3]&gt;
-## 4 homeworld     49 Naboo        12.6  &lt;tibble [49 x 3]&gt;
-## 5 name          87 Ackbar        1.15 &lt;tibble [87 x 3]&gt;
-## 6 skin_color    31 fair         19.5  &lt;tibble [31 x 3]&gt;
-## 7 species       38 Human        40.2  &lt;tibble [38 x 3]&gt;</code></pre>
+<pre><code>## # A tibble: 8 x 5
+##   col_name     cnt common    common_pcnt levels           
+##   &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;           &lt;dbl&gt; &lt;named list&gt;     
+## 1 eye_color     15 brown           24.1  &lt;tibble [15 x 3]&gt;
+## 2 gender         3 masculine       75.9  &lt;tibble [3 x 3]&gt; 
+## 3 hair_color    13 none            42.5  &lt;tibble [13 x 3]&gt;
+## 4 homeworld     49 Naboo           12.6  &lt;tibble [49 x 3]&gt;
+## 5 name          87 Ackbar           1.15 &lt;tibble [87 x 3]&gt;
+## 6 sex            5 male            69.0  &lt;tibble [5 x 3]&gt; 
+## 7 skin_color    31 fair            19.5  &lt;tibble [31 x 3]&gt;
+## 8 species       38 Human           40.2  &lt;tibble [38 x 3]&gt;</code></pre>
 <p>The <code>inspect_cat ()</code> function shows in the first column the name of the variable, in the second one the number of unique values it contains, that is, the variable * eye_color * has 15 different levels, or what is the same, there are 15 colors and different eyes in the database. The third column shows the most common value that appears in the variable; for example, the most common species that appear in the dataset are humans. The fourth column indicates the percentage that represents the most common level; for example, the brown eyes represent 24.13% of all the colors present in the data. So what does the fifth column represent? Well, it is a list with the proportions of each level of the variable. Consider the * df * object from the previous result.</p>
 <pre class="r"><code>df &lt;- starwars %&gt;% 
     inspect_cat()
@@ -629,18 +631,18 @@ df$levels$eye_color</code></pre>
 <p>Sometimes the numerical values are not easy to interpret it, either due to a quantity of data or due to visual issues. The <code>inspectdf</code> package also graphically allows for exploratory data analysis.</p>
 <pre class="r"><code>df %&gt;% 
     show_plot()</code></pre>
-<p><img src="/en/post/post1/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="/en/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>The previous result contains the same information as the <code>df</code> object, but now it is easier, faster, and even easier to interpret. However, this result can be improved, because the variable * name * does not work much in the graph because all the names are different. It can solve by modifying the argument <code>high_cardinality</code>, which means that only those categories that appear a certain number of times say four will be in the plot.</p>
 <pre class="r"><code>df %&gt;% 
     show_plot(high_cardinality = 4)</code></pre>
-<p><img src="/en/post/post1/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="/en/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>Finally, if the colors are not entirely pleasant, they can be manipulated through the five color palettes offered by the package, we only have to modify the <code>col_palette</code> argument with numbers between one and five to achieve this.</p>
 <pre class="r"><code>df %&gt;% 
     show_plot(high_cardinality = 4, col_palette = 4)</code></pre>
-<p><img src="/en/post/post1/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="/en/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <pre class="r"><code>df %&gt;% 
     show_plot(high_cardinality = 4, col_palette = 5)</code></pre>
-<p><img src="/en/post/post1/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-9-2.png" width="672" /></p>
+<p><img src="/en/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-9-2.png" width="672" /></p>
 </div>
 
     </div>

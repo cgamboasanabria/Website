@@ -28,6 +28,7 @@ image:
 projects: []
 ---
 
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
 <p>Es muy común en el día a día encontrarse con bases de datos que cuentan con diferentes tipos de variables, ya sean numéricas, temporales, de texto o categóricas. Estas últimas son el tema de discusión de este post. El paquete <a href="https://github.com/alastairrushworth/inspectdf">inspectdf</a> ofrece un conjunto de funciones que resultan particularmente útiles cuando lo que se busca es explorar el comportamiento de este tipo de variables.</p>
@@ -40,42 +41,43 @@ library(dplyr)</code></pre>
 <p>Para este ejemplo se utilizará la base de datos <code>starwars</code>, la cual viene incluida en el paquete <code>dplyr</code> y que cuenta con datos de varios personajes de este universo cinematográfico.</p>
 <pre class="r"><code>starwars %&gt;% 
     head()</code></pre>
-<pre><code>## # A tibble: 6 x 13
-##   name  height  mass hair_color skin_color eye_color birth_year gender
-##   &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; 
-## 1 Luke~    172    77 blond      fair       blue            19   male  
-## 2 C-3PO    167    75 &lt;NA&gt;       gold       yellow         112   &lt;NA&gt;  
-## 3 R2-D2     96    32 &lt;NA&gt;       white, bl~ red             33   &lt;NA&gt;  
-## 4 Dart~    202   136 none       white      yellow          41.9 male  
-## 5 Leia~    150    49 brown      light      brown           19   female
-## 6 Owen~    178   120 brown, gr~ light      blue            52   male  
+<pre><code>## # A tibble: 6 x 14
+##   name  height  mass hair_color skin_color eye_color birth_year sex   gender
+##   &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+## 1 Luke~    172    77 blond      fair       blue            19   male  mascu~
+## 2 C-3PO    167    75 &lt;NA&gt;       gold       yellow         112   none  mascu~
+## 3 R2-D2     96    32 &lt;NA&gt;       white, bl~ red             33   none  mascu~
+## 4 Dart~    202   136 none       white      yellow          41.9 male  mascu~
+## 5 Leia~    150    49 brown      light      brown           19   fema~ femin~
+## 6 Owen~    178   120 brown, gr~ light      blue            52   male  mascu~
 ## # ... with 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
 ## #   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
-<div id="analisis-exploratorio-de-manera-tabular" class="section level3">
+<div id="análisis-exploratorio-de-manera-tabular" class="section level3">
 <h3>Análisis exploratorio de manera tabular</h3>
 <p>EL paquete <code>inspectdf</code> permite calcular algunos estadísticos descriptivos rápidamente para cualquier tipo de variable mediante la función <code>inspect_types()</code>.</p>
 <pre class="r"><code>starwars %&gt;% 
     inspect_types()</code></pre>
 <pre><code>## # A tibble: 4 x 4
-##   type        cnt  pcnt col_name 
-##   &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;list&gt;   
-## 1 character     7 53.8  &lt;chr [7]&gt;
-## 2 list          3 23.1  &lt;chr [3]&gt;
-## 3 numeric       2 15.4  &lt;chr [2]&gt;
-## 4 integer       1  7.69 &lt;chr [1]&gt;</code></pre>
+##   type        cnt  pcnt col_name    
+##   &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;named list&gt;
+## 1 character     8 57.1  &lt;chr [8]&gt;   
+## 2 list          3 21.4  &lt;chr [3]&gt;   
+## 3 numeric       2 14.3  &lt;chr [2]&gt;   
+## 4 integer       1  7.14 &lt;chr [1]&gt;</code></pre>
 <p>El resultado anterior muestra que hay 7 variables de tipo <code>character</code>, lo cual representa el 53.84% de la base de datos. Además, hay dos variables de tipo numérico, que representa un 15.38% del total. Lo anterior es útil para un primer vistazo, pero resulta interesante ir un poco más allá y describir más en detalle todas las variables. Para esto puede usarse la función <code>inspect_cat()</code>.</p>
 <pre class="r"><code>starwars %&gt;% 
     inspect_cat()</code></pre>
-<pre><code>## # A tibble: 7 x 5
-##   col_name     cnt common common_pcnt levels           
-##   &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;list&gt;           
-## 1 eye_color     15 brown        24.1  &lt;tibble [15 x 3]&gt;
-## 2 gender         5 male         71.3  &lt;tibble [5 x 3]&gt; 
-## 3 hair_color    13 none         42.5  &lt;tibble [13 x 3]&gt;
-## 4 homeworld     49 Naboo        12.6  &lt;tibble [49 x 3]&gt;
-## 5 name          87 Ackbar        1.15 &lt;tibble [87 x 3]&gt;
-## 6 skin_color    31 fair         19.5  &lt;tibble [31 x 3]&gt;
-## 7 species       38 Human        40.2  &lt;tibble [38 x 3]&gt;</code></pre>
+<pre><code>## # A tibble: 8 x 5
+##   col_name     cnt common    common_pcnt levels           
+##   &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;           &lt;dbl&gt; &lt;named list&gt;     
+## 1 eye_color     15 brown           24.1  &lt;tibble [15 x 3]&gt;
+## 2 gender         3 masculine       75.9  &lt;tibble [3 x 3]&gt; 
+## 3 hair_color    13 none            42.5  &lt;tibble [13 x 3]&gt;
+## 4 homeworld     49 Naboo           12.6  &lt;tibble [49 x 3]&gt;
+## 5 name          87 Ackbar           1.15 &lt;tibble [87 x 3]&gt;
+## 6 sex            5 male            69.0  &lt;tibble [5 x 3]&gt; 
+## 7 skin_color    31 fair            19.5  &lt;tibble [31 x 3]&gt;
+## 8 species       38 Human           40.2  &lt;tibble [38 x 3]&gt;</code></pre>
 <p>La función <code>inspect_cat()</code> muestra en la primera columna el nombre de la variable, en la segunda la cantidad de valores únicos que contiene, es decir, la variable <em>eye_color</em> tiene 15 niveles diferentes, o lo que es lo mismo, hay 15 colores e ojos diferentes en la base de datos. La tercera columna muestra el valor más común que aparece en la variable, por ejemplo, la especie más común que aparece en la base de datos son los humanos. La cuarta columna indica el porcentaje que representa el nivel más común, por ejemplo, los ojos color café representan el 24.13% de todos los colores presentes en los datos. ¿Y qué representa la quinta columna? Pues es una lista con las proporciones de cada nivel de la variable. Para ejemplificar esto último, se asignará al objeto <em>df</em> el resultado anterior.</p>
 <pre class="r"><code>df &lt;- starwars %&gt;% 
     inspect_cat()
@@ -100,7 +102,7 @@ df$levels$eye_color</code></pre>
 ## 15 white         0.0115     1</code></pre>
 <p>La tabla anterior muestra la proporción de cada color de ojos. Esto mismo se aplica a cualquiera de las otras variables.</p>
 </div>
-<div id="analisis-exploratorio-de-manera-grafica" class="section level3">
+<div id="análisis-exploratorio-de-manera-gráfica" class="section level3">
 <h3>Análisis exploratorio de manera gráfica</h3>
 <p>En algunas ocasiones los valores numéricos no sean tan claros ni fáciles de interpretar, ya sea por a cantidad de datos o bien por cuestiones de comodidad. El paquete <code>inspectdf</code> también permite hacer análisis exploratorio de manera gráfica</p>
 <pre class="r"><code>df %&gt;% 
