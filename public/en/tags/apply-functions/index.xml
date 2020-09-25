@@ -52,7 +52,7 @@ ls()&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;It is possible to create a new &lt;em&gt;Environment&lt;/em&gt; that is independent of the global &lt;em&gt;Environment&lt;/em&gt;, which we will call &lt;code&gt;environment_2&lt;/code&gt;. When creating it, we can see that it is empty compared to the &lt;em&gt;global&lt;/em&gt; &lt;strong&gt;Environment&lt;/strong&gt;, which contains &lt;code&gt;x&lt;/code&gt; and &lt;code&gt;environment_2&lt;/code&gt;. Also, if we directly generate a new variable, say &lt;code&gt;z&lt;/code&gt;, it will set to the &lt;em&gt;global &lt;/em&gt; &lt;strong&gt;Environment&lt;/strong&gt;.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_2 &amp;lt;- new.env()
 environment_2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## &amp;lt;environment: 0x000000001163e3b8&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;environment: 0x000000001164e4e8&amp;gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls(globalenv())&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] &amp;quot;environment_2&amp;quot; &amp;quot;x&amp;quot;&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls(environment_2)&lt;/code&gt;&lt;/pre&gt;
