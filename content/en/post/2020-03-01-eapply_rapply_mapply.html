@@ -61,7 +61,7 @@ ls()</code></pre>
 <p>It is possible to create a new <em>Environment</em> that is independent of the global <em>Environment</em>, which we will call <code>environment_2</code>. When creating it, we can see that it is empty compared to the <em>global</em> <strong>Environment</strong>, which contains <code>x</code> and <code>environment_2</code>. Also, if we directly generate a new variable, say <code>z</code>, it will set to the <em>global </em> <strong>Environment</strong>.</p>
 <pre class="r"><code>environment_2 &lt;- new.env()
 environment_2</code></pre>
-<pre><code>## &lt;environment: 0x0000000011fce280&gt;</code></pre>
+<pre><code>## &lt;environment: 0x000000001564e3b8&gt;</code></pre>
 <pre class="r"><code>ls(globalenv())</code></pre>
 <pre><code>## [1] &quot;environment_2&quot; &quot;x&quot;</code></pre>
 <pre class="r"><code>ls(environment_2)</code></pre>
@@ -181,7 +181,7 @@ ls(environment_1)</code></pre>
 </div>
 <div id="mapply-function" class="section level1">
 <h1>mapply function</h1>
-<p>The <code>mapply()</code> function can be seen as the multivariate version of the <em>apply</em> functions. For example, <code>lapply()</code> function can only be applied to the elements of a list, but if you have a list whose elements are an argument of a function and another list whose elements are the other argument of the function, then <code>mapply()</code> is used. The function to be applied must have as many arguments as the number of lists to pass to <code>mapply()</code>. <code>MoreArgs</code> argument is useful if there are more arguments that need to use in the function. It is easier to show its operation with an example than with words. Suppose we want to obtain the result of <span class="math inline">\(x*y+1\)</span> by varying the values of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> as follows: <span class="math inline">\(1\cdot 2 + 1, 2\cdot 3 + 1, 3\cdot 4 + 1, \cdots , 10000\cdot 10001 + 1\)</span>. We can obtain this calculation through a <code>for</code> loop as follows:</p>
+<p>The <code>mapply()</code> function can be seen as the multivariate version of the <em>apply</em> functions. For example, <code>lapply()</code> function can only be applied to the elements of a list, but if you have a list whose elements are an argument of a function and another list whose elements are the other argument of the function, then <code>mapply()</code> is used. The function to be applied must have as many arguments as the number of lists to pass to <code>mapply()</code>. <code>MoreArgs</code> argument is useful if there are more arguments that need to use in the function. It is easier to show its operation with an example than with words. Suppose we want to obtain the result of <span class="math inline">\(x*y+1\)</span> by varying the values of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> as follows: <span class="math inline">\(1\cdot 2 + 1, 2\cdot 3 + 1, 3\cdot 4 + 1, \cdots , 10000\cdot 10001 + 1\)</span>. We can obtain this calculation through a <code>for</code> loop as follows:</p>
 <pre class="r"><code>z &lt;- NULL
 k &lt;- 1
 x &lt;- 1:10000

@@ -67,7 +67,7 @@ starwars %>%
     inspect_cat()
 ```
 
-The `inspect_cat ()` function shows in the first column the name of the variable, in the second one the number of unique values it contains, that is, the variable * eye_color * has 15 different levels, or what is the same, there are 15 colors and different eyes in the database. The third column shows the most common value that appears in the variable; for example, the most common species that appear in the dataset are humans. The fourth column indicates the percentage that represents the most common level; for example, the brown eyes represent 24.13% of all the colors present in the data. So what does the fifth column represent? Well, it is a list with the proportions of each level of the variable. Consider the * df * object from the previous result.
+The `inspect_cat ()` function shows in the first column the name of the variable, in the second one the number of unique values it contains, that is, the variable * eye_color * has 15 different levels, or what is the same, there are 15 colors and different eyes in the database. The third column shows the most common value that appears in the variable; for example, the most common species that appear in the dataset are humans. The fourth column indicates the percentage that represents the most common level; for example, the brown eyes represent 24.13% of all the colors present in the data. So what does the fifth column represent? Well, it is a list with the proportions of each level of the variable. Consider the * df * object from the previous result.
 
 ```{r}
 df <- starwars %>% 
@@ -79,7 +79,7 @@ The table above shows the proportion of each eye color. The same applies to any 
 
 ### Graphical exploratory data analysis
 
-Sometimes the numerical values are not easy to interpret it, either due to a quantity of data or due to visual issues. The `inspectdf` package also graphically allows for exploratory data analysis.
+Sometimes the numerical values are not easy to interpret it, either due to a quantity of data or due to visual issues. The `inspectdf` package also graphically allows for exploratory data analysis.
 
 ```{r}
 df %>% 

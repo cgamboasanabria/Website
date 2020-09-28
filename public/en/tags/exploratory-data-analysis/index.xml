@@ -69,7 +69,7 @@ library(dplyr)&lt;/code&gt;&lt;/pre&gt;
 ## 6 sex            5 male            69.0  &amp;lt;tibble [5 x 3]&amp;gt; 
 ## 7 skin_color    31 fair            19.5  &amp;lt;tibble [31 x 3]&amp;gt;
 ## 8 species       38 Human           40.2  &amp;lt;tibble [38 x 3]&amp;gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The &lt;code&gt;inspect_cat ()&lt;/code&gt; function shows in the first column the name of the variable, in the second one the number of unique values it contains, that is, the variable * eye_color * has 15 different levels, or what is the same, there are 15 colors and different eyes in the database. The third column shows the most common value that appears in the variable; for example, the most common species that appear in the dataset are humans. The fourth column indicates the percentage that represents the most common level; for example, the brown eyes represent 24.13% of all the colors present in the data. So what does the fifth column represent? Well, it is a list with the proportions of each level of the variable. Consider the * df * object from the previous result.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;inspect_cat ()&lt;/code&gt; function shows in the first column the name of the variable, in the second one the number of unique values it contains, that is, the variable * eye_color * has 15 different levels, or what is the same, there are 15 colors and different eyes in the database. The third column shows the most common value that appears in the variable; for example, the most common species that appear in the dataset are humans. The fourth column indicates the percentage that represents the most common level; for example, the brown eyes represent 24.13% of all the colors present in the data. So what does the fifth column represent? Well, it is a list with the proportions of each level of the variable. Consider the * df * object from the previous result.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;- starwars %&amp;gt;% 
     inspect_cat()
 df$levels$eye_color&lt;/code&gt;&lt;/pre&gt;
@@ -95,7 +95,7 @@ df$levels$eye_color&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;graphical-exploratory-data-analysis&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Graphical exploratory data analysis&lt;/h3&gt;
-&lt;p&gt;Sometimes the numerical values are not easy to interpret it, either due to a quantity of data or due to visual issues. The &lt;code&gt;inspectdf&lt;/code&gt; package also graphically allows for exploratory data analysis.&lt;/p&gt;
+&lt;p&gt;Sometimes the numerical values are not easy to interpret it, either due to a quantity of data or due to visual issues. The &lt;code&gt;inspectdf&lt;/code&gt; package also graphically allows for exploratory data analysis.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df %&amp;gt;% 
     show_plot()&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/en/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
