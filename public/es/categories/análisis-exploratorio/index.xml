@@ -1,14 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Análisis exploratorio on </title>
+    <title>Análisis exploratorio on caesaR&#39;s</title>
     <link>/es/categories/an%C3%A1lisis-exploratorio/</link>
-    <description>Recent content in Análisis exploratorio on </description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Análisis exploratorio on caesaR&#39;s</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>es-cr</language>
     <copyright>&amp;copy; 2019</copyright>
     <lastBuildDate>Sun, 23 Jun 2019 13:42:09 -0600</lastBuildDate>
     
-        <atom:link href="/es/categories/an%C3%A1lisis-exploratorio/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="/es/categories/an%C3%A1lisis-exploratorio/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -111,20 +112,6 @@ df$levels$eye_color&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/es/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-9-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 </description>
-      
-            <category>R</category>
-      
-            <category>RStudio</category>
-      
-            <category>Análisis exploratorio</category>
-      
-            <category>Descripivos</category>
-      
-            <category>Datos categóricos</category>
-      
-      
-            <category>Análisis exploratorio</category>
-      
     </item>
     
   </channel>

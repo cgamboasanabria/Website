@@ -1,14 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>R basics on </title>
+    <title>R basics on caesaR&#39;s</title>
     <link>/en/categories/r-basics/</link>
-    <description>Recent content in R basics on </description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in R basics on caesaR&#39;s</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019</copyright>
     <lastBuildDate>Mon, 28 Sep 2020 17:42:09 -0600</lastBuildDate>
     
-        <atom:link href="/en/categories/r-basics/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="/en/categories/r-basics/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -131,18 +132,6 @@ arreglo&lt;/code&gt;&lt;/pre&gt;
 ## COL3    7   70  700 7000&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The previous examples can be applied to arrays with a higher dimension; for this, it is enough to have an adequate arrangement and operate on the corresponding margins with the &lt;code&gt;apply ()&lt;/code&gt; function.&lt;/p&gt;
 </description>
-      
-            <category>R</category>
-      
-            <category>RStudio</category>
-      
-            <category>apply family functions</category>
-      
-            <category>apply</category>
-      
-      
-            <category>R basics</category>
-      
     </item>
     
     <item>
@@ -321,22 +310,6 @@ for(i in 1:10000){
 &lt;p&gt;Both functions display the same result; however, &lt;code&gt;mapply()&lt;/code&gt; is considerably more efficient when performing the calculation. We will compare the running time of different processes in the next post when I’ll show you some parallel versions of the apply family functions.&lt;/p&gt;
 &lt;/div&gt;
 </description>
-      
-            <category>R</category>
-      
-            <category>RStudio</category>
-      
-            <category>apply functions</category>
-      
-            <category>eapply</category>
-      
-            <category>rapply</category>
-      
-            <category>mapply</category>
-      
-      
-            <category>R basics</category>
-      
     </item>
     
     <item>
@@ -611,22 +584,6 @@ list2 &amp;lt;- list(df1, df2, df3, df4)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;When trying to execute the code, we get an error, since evaluating the function in element number four of the list returns a vector of length six and not five as expected.&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;vapply()&lt;/code&gt; function is generally more advisable than &lt;code&gt;sapply()&lt;/code&gt; because it allows you to have more control over the expected results.&lt;/p&gt;
 </description>
-      
-            <category>R</category>
-      
-            <category>RStudio</category>
-      
-            <category>apply functions</category>
-      
-            <category>lapply</category>
-      
-            <category>sapply</category>
-      
-            <category>vapply</category>
-      
-      
-            <category>R basics</category>
-      
     </item>
     
     <item>
@@ -1272,18 +1229,6 @@ list2 &amp;lt;- list(df1, df2, df3, df4)&lt;/code&gt;&lt;/pre&gt;
 ## white               NA        NA
 ## yellow              NA        NA&lt;/code&gt;&lt;/pre&gt;
 </description>
-      
-            <category>R</category>
-      
-            <category>RStudio</category>
-      
-            <category>apply family functions</category>
-      
-            <category>tapply</category>
-      
-      
-            <category>R basics</category>
-      
     </item>
     
   </channel>
