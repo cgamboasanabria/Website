@@ -7,10 +7,46 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019</copyright>
-    <lastBuildDate>Sun, 01 Mar 2020 18:55:57 -0600</lastBuildDate>
+    <lastBuildDate>Mon, 28 Sep 2020 17:42:09 -0600</lastBuildDate>
     
 	    <atom:link href="/en/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>apply</title>
+      <link>/en/tags/apply/</link>
+      <pubDate>Mon, 28 Sep 2020 17:42:09 -0600</pubDate>
+      
+      <guid>/en/tags/apply/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>apply family functions</title>
+      <link>/en/tags/apply-family-functions/</link>
+      <pubDate>Mon, 28 Sep 2020 17:42:09 -0600</pubDate>
+      
+      <guid>/en/tags/apply-family-functions/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>/en/tags/r/</link>
+      <pubDate>Mon, 28 Sep 2020 17:42:09 -0600</pubDate>
+      
+      <guid>/en/tags/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RStudio</title>
+      <link>/en/tags/rstudio/</link>
+      <pubDate>Mon, 28 Sep 2020 17:42:09 -0600</pubDate>
+      
+      <guid>/en/tags/rstudio/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>apply functions</title>
@@ -40,29 +76,11 @@
     </item>
     
     <item>
-      <title>R</title>
-      <link>/en/tags/r/</link>
-      <pubDate>Sun, 01 Mar 2020 18:55:57 -0600</pubDate>
-      
-      <guid>/en/tags/r/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>rapply</title>
       <link>/en/tags/rapply/</link>
       <pubDate>Sun, 01 Mar 2020 18:55:57 -0600</pubDate>
       
       <guid>/en/tags/rapply/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>RStudio</title>
-      <link>/en/tags/rstudio/</link>
-      <pubDate>Sun, 01 Mar 2020 18:55:57 -0600</pubDate>
-      
-      <guid>/en/tags/rstudio/</guid>
       <description></description>
     </item>
     
@@ -94,29 +112,11 @@
     </item>
     
     <item>
-      <title>apply family functions</title>
-      <link>/en/tags/apply-family-functions/</link>
-      <pubDate>Wed, 31 Jul 2019 18:55:57 -0600</pubDate>
-      
-      <guid>/en/tags/apply-family-functions/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>tapply</title>
       <link>/en/tags/tapply/</link>
       <pubDate>Wed, 31 Jul 2019 18:55:57 -0600</pubDate>
       
       <guid>/en/tags/tapply/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>apply</title>
-      <link>/en/tags/apply/</link>
-      <pubDate>Sun, 21 Jul 2019 17:42:09 -0600</pubDate>
-      
-      <guid>/en/tags/apply/</guid>
       <description></description>
     </item>
     
