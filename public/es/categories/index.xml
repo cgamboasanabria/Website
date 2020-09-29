@@ -1,15 +1,14 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on </title>
     <link>/es/categories/</link>
     <description>Recent content in Categories on </description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>es-cr</language>
     <copyright>&amp;copy; 2019</copyright>
     <lastBuildDate>Sun, 01 Mar 2020 18:55:57 -0600</lastBuildDate>
     
-	    <atom:link href="/es/categories/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/es/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,6 +18,8 @@
       
       <guid>/es/categories/fundamentos-de-r/</guid>
       <description></description>
+      
+      
     </item>
     
     <item>
@@ -28,6 +29,8 @@
       
       <guid>/es/categories/an%C3%A1lisis-exploratorio/</guid>
       <description></description>
+      
+      
     </item>
     
   </channel>
