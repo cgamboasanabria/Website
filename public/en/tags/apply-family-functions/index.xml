@@ -7,137 +7,15 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2020</copyright>
-    <lastBuildDate>Mon, 28 Sep 2020 17:42:09 -0600</lastBuildDate>
+    <lastBuildDate>Tue, 29 Sep 2020 18:55:57 -0600</lastBuildDate>
     
 	    <atom:link href="/en/tags/apply-family-functions/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Apply family functions - Part 1</title>
-      <link>/en/post/2019-06-23-apply/</link>
-      <pubDate>Mon, 28 Sep 2020 17:42:09 -0600</pubDate>
-      
-      <guid>/en/post/2019-06-23-apply/</guid>
-      <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;p&gt;The apply family functions belong to the R base package, they are especially useful when combining their use with functions to manipulate pieces of matrices, arrays, lists and data frames. These functions allow you to cross data in multiple ways to avoid the use of for loops that are usually computationally heavier.&lt;/p&gt;
-&lt;p&gt;The first function we will talk about in this series is the &lt;code&gt;apply ()&lt;/code&gt; function, which in its simplest form of use is used to evaluate the margins (1 = rows or 2 = columns) of a matrix or an array to apply a function to them.&lt;/p&gt;
-&lt;p&gt;As a first example, we start from a matrix with three rows and three columns.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mat &amp;lt;- matrix(c(2, 4, 6, 7, 8, 9, 1, 12, 21), nrow = 3, ncol = 3)
-mat&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##      [,1] [,2] [,3]
-## [1,]    2    7    1
-## [2,]    4    8   12
-## [3,]    6    9   21&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;If you wish, for example, to obtain the sum of each column, you can use the &lt;code&gt;apply ()&lt;/code&gt; function as follows.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(mat, 2, sum)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 12 24 34&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;We can also calculate the average of each row.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(mat, 1, mean)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1]  3.333333  8.000000 12.000000&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;There are also some functions already programmed in the R &lt;code&gt;base&lt;/code&gt; package that quickly replicate the previous results. For example, there is the &lt;code&gt;colSums ()&lt;/code&gt; function to calculate the amount of each column, and &lt;code&gt;rowMeans ()&lt;/code&gt; to obtain the arithmetic mean of each row.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;colSums(mat)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 12 24 34&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rowMeans(mat)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1]  3.333333  8.000000 12.000000&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The two cases shown above exemplify a basic use of the &lt;code&gt;apply ()&lt;/code&gt; function, however, this function is much more powerful and is capable of working in a multidimensional way. Consider, for example, an object in two dimensions (rows and columns) similar to the one created previously, that is, an array.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mat2 &amp;lt;- matrix(1:9, nrow = 3, ncol = 3)
-mat2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##      [,1] [,2] [,3]
-## [1,]    1    4    7
-## [2,]    2    5    8
-## [3,]    3    6    9&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The &lt;code&gt;mat2&lt;/code&gt; object represents a particular case of an array, which can be created using the&lt;code&gt;array ()&lt;/code&gt;function.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;array(data=1:9, dim = c(3,3))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##      [,1] [,2] [,3]
-## [1,]    1    4    7
-## [2,]    2    5    8
-## [3,]    3    6    9&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The &lt;code&gt;array ()&lt;/code&gt; function also allows you to add tags to the rows and columns using its &lt;code&gt;dimnames&lt;/code&gt; argument.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;nombres.columnas &amp;lt;- c(&amp;quot;COL1&amp;quot;,&amp;quot;COL2&amp;quot;,&amp;quot;COL3&amp;quot;)
-nombres.filas &amp;lt;- c(&amp;quot;FILA1&amp;quot;,&amp;quot;FILA2&amp;quot;,&amp;quot;FILA3&amp;quot;)
-arreglo &amp;lt;- array(data=1:9, dim = c(3,3), 
-                 dimnames = list(nombres.columnas, nombres.filas))
-arreglo&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##      FILA1 FILA2 FILA3
-## COL1     1     4     7
-## COL2     2     5     8
-## COL3     3     6     9&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;We can add multiple dimensions to an array. For this, suppose you want to have the following sizes:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;DIM1: Numbers from 1 to 9.&lt;/li&gt;
-&lt;li&gt;DIM2: Numbers from 1 to 9 multiplied by 10.&lt;/li&gt;
-&lt;li&gt;DIM3: Numbers from 1 to 9 multiplied by 100.&lt;/li&gt;
-&lt;li&gt;DIM4: Numbers from 1 to 9 increased by 1000.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;One way to generate the previous arrangement is by using the following code:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;nombres.dimensiones &amp;lt;- c(&amp;quot;DIM1&amp;quot;,&amp;quot;DIM2&amp;quot;,&amp;quot;DIM3&amp;quot;,&amp;quot;DIM4&amp;quot;)
-arreglo &amp;lt;- array(data = c(seq(from=1, to=9, by=1),           #1 al 9
-                          seq(from=10, to=90, by=10),        #10 al 90
-                          seq(from=100, to=900, by=100),     #100 al 900
-                          seq(from=1000, to=9000, by=1000)), #1000 al 9000
-                 dim = c(3, 3, 4),                           #3 filas, 3 columnas y 4 dimensiones
-                 dimnames = list(nombres.filas,
-                                 nombres.columnas,
-                                 nombres.dimensiones))
-arreglo&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## , , DIM1
-## 
-##       COL1 COL2 COL3
-## FILA1    1    4    7
-## FILA2    2    5    8
-## FILA3    3    6    9
-## 
-## , , DIM2
-## 
-##       COL1 COL2 COL3
-## FILA1   10   40   70
-## FILA2   20   50   80
-## FILA3   30   60   90
-## 
-## , , DIM3
-## 
-##       COL1 COL2 COL3
-## FILA1  100  400  700
-## FILA2  200  500  800
-## FILA3  300  600  900
-## 
-## , , DIM4
-## 
-##       COL1 COL2 COL3
-## FILA1 1000 4000 7000
-## FILA2 2000 5000 8000
-## FILA3 3000 6000 9000&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Starting from the previous array, suppose that you want to obtain the maximum value per row from each dimension.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(arreglo, c(3,1), max)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##      FILA1 FILA2 FILA3
-## DIM1     7     8     9
-## DIM2    70    80    90
-## DIM3   700   800   900
-## DIM4  7000  8000  9000&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Or, you may want to obtain the maximum value of each column from each dimension.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(arreglo, c(3,2), max)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##      COL1 COL2 COL3
-## DIM1    3    6    9
-## DIM2   30   60   90
-## DIM3  300  600  900
-## DIM4 3000 6000 9000&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The following result shows the minimum of each column in each dimension.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(arreglo, c(2,3), min)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##      DIM1 DIM2 DIM3 DIM4
-## COL1    1   10  100 1000
-## COL2    4   40  400 4000
-## COL3    7   70  700 7000&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The previous examples can be applied to arrays with a higher dimension; for this, it is enough to have an adequate arrangement and operate on the corresponding margins with the &lt;code&gt;apply ()&lt;/code&gt; function.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Apply family functions - Part 2</title>
       <link>/en/post/2019-07-31-tapply/</link>
-      <pubDate>Wed, 31 Jul 2019 18:55:57 -0600</pubDate>
+      <pubDate>Tue, 29 Sep 2020 18:55:57 -0600</pubDate>
       
       <guid>/en/post/2019-07-31-tapply/</guid>
       <description>
@@ -776,6 +654,128 @@ arreglo&lt;/code&gt;&lt;/pre&gt;
 ## unknown             NA        NA
 ## white               NA        NA
 ## yellow              NA        NA&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Apply family functions - Part 1</title>
+      <link>/en/post/2019-06-23-apply/</link>
+      <pubDate>Mon, 28 Sep 2020 17:42:09 -0600</pubDate>
+      
+      <guid>/en/post/2019-06-23-apply/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;The apply family functions belong to the R base package, they are especially useful when combining their use with functions to manipulate pieces of matrices, arrays, lists and data frames. These functions allow you to cross data in multiple ways to avoid the use of for loops that are usually computationally heavier.&lt;/p&gt;
+&lt;p&gt;The first function we will talk about in this series is the &lt;code&gt;apply ()&lt;/code&gt; function, which in its simplest form of use is used to evaluate the margins (1 = rows or 2 = columns) of a matrix or an array to apply a function to them.&lt;/p&gt;
+&lt;p&gt;As a first example, we start from a matrix with three rows and three columns.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mat &amp;lt;- matrix(c(2, 4, 6, 7, 8, 9, 1, 12, 21), nrow = 3, ncol = 3)
+mat&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      [,1] [,2] [,3]
+## [1,]    2    7    1
+## [2,]    4    8   12
+## [3,]    6    9   21&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you wish, for example, to obtain the sum of each column, you can use the &lt;code&gt;apply ()&lt;/code&gt; function as follows.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(mat, 2, sum)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 12 24 34&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can also calculate the average of each row.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(mat, 1, mean)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1]  3.333333  8.000000 12.000000&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;There are also some functions already programmed in the R &lt;code&gt;base&lt;/code&gt; package that quickly replicate the previous results. For example, there is the &lt;code&gt;colSums ()&lt;/code&gt; function to calculate the amount of each column, and &lt;code&gt;rowMeans ()&lt;/code&gt; to obtain the arithmetic mean of each row.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;colSums(mat)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 12 24 34&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rowMeans(mat)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1]  3.333333  8.000000 12.000000&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The two cases shown above exemplify a basic use of the &lt;code&gt;apply ()&lt;/code&gt; function, however, this function is much more powerful and is capable of working in a multidimensional way. Consider, for example, an object in two dimensions (rows and columns) similar to the one created previously, that is, an array.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mat2 &amp;lt;- matrix(1:9, nrow = 3, ncol = 3)
+mat2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;mat2&lt;/code&gt; object represents a particular case of an array, which can be created using the&lt;code&gt;array ()&lt;/code&gt;function.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;array(data=1:9, dim = c(3,3))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;array ()&lt;/code&gt; function also allows you to add tags to the rows and columns using its &lt;code&gt;dimnames&lt;/code&gt; argument.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;nombres.columnas &amp;lt;- c(&amp;quot;COL1&amp;quot;,&amp;quot;COL2&amp;quot;,&amp;quot;COL3&amp;quot;)
+nombres.filas &amp;lt;- c(&amp;quot;FILA1&amp;quot;,&amp;quot;FILA2&amp;quot;,&amp;quot;FILA3&amp;quot;)
+arreglo &amp;lt;- array(data=1:9, dim = c(3,3), 
+                 dimnames = list(nombres.columnas, nombres.filas))
+arreglo&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      FILA1 FILA2 FILA3
+## COL1     1     4     7
+## COL2     2     5     8
+## COL3     3     6     9&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can add multiple dimensions to an array. For this, suppose you want to have the following sizes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;DIM1: Numbers from 1 to 9.&lt;/li&gt;
+&lt;li&gt;DIM2: Numbers from 1 to 9 multiplied by 10.&lt;/li&gt;
+&lt;li&gt;DIM3: Numbers from 1 to 9 multiplied by 100.&lt;/li&gt;
+&lt;li&gt;DIM4: Numbers from 1 to 9 increased by 1000.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;One way to generate the previous arrangement is by using the following code:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;nombres.dimensiones &amp;lt;- c(&amp;quot;DIM1&amp;quot;,&amp;quot;DIM2&amp;quot;,&amp;quot;DIM3&amp;quot;,&amp;quot;DIM4&amp;quot;)
+arreglo &amp;lt;- array(data = c(seq(from=1, to=9, by=1),           #1 al 9
+                          seq(from=10, to=90, by=10),        #10 al 90
+                          seq(from=100, to=900, by=100),     #100 al 900
+                          seq(from=1000, to=9000, by=1000)), #1000 al 9000
+                 dim = c(3, 3, 4),                           #3 filas, 3 columnas y 4 dimensiones
+                 dimnames = list(nombres.filas,
+                                 nombres.columnas,
+                                 nombres.dimensiones))
+arreglo&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## , , DIM1
+## 
+##       COL1 COL2 COL3
+## FILA1    1    4    7
+## FILA2    2    5    8
+## FILA3    3    6    9
+## 
+## , , DIM2
+## 
+##       COL1 COL2 COL3
+## FILA1   10   40   70
+## FILA2   20   50   80
+## FILA3   30   60   90
+## 
+## , , DIM3
+## 
+##       COL1 COL2 COL3
+## FILA1  100  400  700
+## FILA2  200  500  800
+## FILA3  300  600  900
+## 
+## , , DIM4
+## 
+##       COL1 COL2 COL3
+## FILA1 1000 4000 7000
+## FILA2 2000 5000 8000
+## FILA3 3000 6000 9000&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Starting from the previous array, suppose that you want to obtain the maximum value per row from each dimension.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(arreglo, c(3,1), max)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      FILA1 FILA2 FILA3
+## DIM1     7     8     9
+## DIM2    70    80    90
+## DIM3   700   800   900
+## DIM4  7000  8000  9000&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Or, you may want to obtain the maximum value of each column from each dimension.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(arreglo, c(3,2), max)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      COL1 COL2 COL3
+## DIM1    3    6    9
+## DIM2   30   60   90
+## DIM3  300  600  900
+## DIM4 3000 6000 9000&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The following result shows the minimum of each column in each dimension.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(arreglo, c(2,3), min)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      DIM1 DIM2 DIM3 DIM4
+## COL1    1   10  100 1000
+## COL2    4   40  400 4000
+## COL3    7   70  700 7000&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The previous examples can be applied to arrays with a higher dimension; for this, it is enough to have an adequate arrangement and operate on the corresponding margins with the &lt;code&gt;apply ()&lt;/code&gt; function.&lt;/p&gt;
 </description>
     </item>
     

@@ -7,589 +7,15 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2020</copyright>
-    <lastBuildDate>Mon, 28 Sep 2020 17:42:09 -0600</lastBuildDate>
+    <lastBuildDate>Tue, 29 Sep 2020 18:55:57 -0600</lastBuildDate>
     
 	    <atom:link href="/en/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Apply family functions - Part 1</title>
-      <link>/en/post/2019-06-23-apply/</link>
-      <pubDate>Mon, 28 Sep 2020 17:42:09 -0600</pubDate>
-      
-      <guid>/en/post/2019-06-23-apply/</guid>
-      <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;p&gt;The apply family functions belong to the R base package, they are especially useful when combining their use with functions to manipulate pieces of matrices, arrays, lists and data frames. These functions allow you to cross data in multiple ways to avoid the use of for loops that are usually computationally heavier.&lt;/p&gt;
-&lt;p&gt;The first function we will talk about in this series is the &lt;code&gt;apply ()&lt;/code&gt; function, which in its simplest form of use is used to evaluate the margins (1 = rows or 2 = columns) of a matrix or an array to apply a function to them.&lt;/p&gt;
-&lt;p&gt;As a first example, we start from a matrix with three rows and three columns.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mat &amp;lt;- matrix(c(2, 4, 6, 7, 8, 9, 1, 12, 21), nrow = 3, ncol = 3)
-mat&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##      [,1] [,2] [,3]
-## [1,]    2    7    1
-## [2,]    4    8   12
-## [3,]    6    9   21&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;If you wish, for example, to obtain the sum of each column, you can use the &lt;code&gt;apply ()&lt;/code&gt; function as follows.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(mat, 2, sum)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 12 24 34&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;We can also calculate the average of each row.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(mat, 1, mean)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1]  3.333333  8.000000 12.000000&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;There are also some functions already programmed in the R &lt;code&gt;base&lt;/code&gt; package that quickly replicate the previous results. For example, there is the &lt;code&gt;colSums ()&lt;/code&gt; function to calculate the amount of each column, and &lt;code&gt;rowMeans ()&lt;/code&gt; to obtain the arithmetic mean of each row.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;colSums(mat)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 12 24 34&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rowMeans(mat)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1]  3.333333  8.000000 12.000000&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The two cases shown above exemplify a basic use of the &lt;code&gt;apply ()&lt;/code&gt; function, however, this function is much more powerful and is capable of working in a multidimensional way. Consider, for example, an object in two dimensions (rows and columns) similar to the one created previously, that is, an array.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mat2 &amp;lt;- matrix(1:9, nrow = 3, ncol = 3)
-mat2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##      [,1] [,2] [,3]
-## [1,]    1    4    7
-## [2,]    2    5    8
-## [3,]    3    6    9&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The &lt;code&gt;mat2&lt;/code&gt; object represents a particular case of an array, which can be created using the&lt;code&gt;array ()&lt;/code&gt;function.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;array(data=1:9, dim = c(3,3))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##      [,1] [,2] [,3]
-## [1,]    1    4    7
-## [2,]    2    5    8
-## [3,]    3    6    9&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The &lt;code&gt;array ()&lt;/code&gt; function also allows you to add tags to the rows and columns using its &lt;code&gt;dimnames&lt;/code&gt; argument.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;nombres.columnas &amp;lt;- c(&amp;quot;COL1&amp;quot;,&amp;quot;COL2&amp;quot;,&amp;quot;COL3&amp;quot;)
-nombres.filas &amp;lt;- c(&amp;quot;FILA1&amp;quot;,&amp;quot;FILA2&amp;quot;,&amp;quot;FILA3&amp;quot;)
-arreglo &amp;lt;- array(data=1:9, dim = c(3,3), 
-                 dimnames = list(nombres.columnas, nombres.filas))
-arreglo&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##      FILA1 FILA2 FILA3
-## COL1     1     4     7
-## COL2     2     5     8
-## COL3     3     6     9&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;We can add multiple dimensions to an array. For this, suppose you want to have the following sizes:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;DIM1: Numbers from 1 to 9.&lt;/li&gt;
-&lt;li&gt;DIM2: Numbers from 1 to 9 multiplied by 10.&lt;/li&gt;
-&lt;li&gt;DIM3: Numbers from 1 to 9 multiplied by 100.&lt;/li&gt;
-&lt;li&gt;DIM4: Numbers from 1 to 9 increased by 1000.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;One way to generate the previous arrangement is by using the following code:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;nombres.dimensiones &amp;lt;- c(&amp;quot;DIM1&amp;quot;,&amp;quot;DIM2&amp;quot;,&amp;quot;DIM3&amp;quot;,&amp;quot;DIM4&amp;quot;)
-arreglo &amp;lt;- array(data = c(seq(from=1, to=9, by=1),           #1 al 9
-                          seq(from=10, to=90, by=10),        #10 al 90
-                          seq(from=100, to=900, by=100),     #100 al 900
-                          seq(from=1000, to=9000, by=1000)), #1000 al 9000
-                 dim = c(3, 3, 4),                           #3 filas, 3 columnas y 4 dimensiones
-                 dimnames = list(nombres.filas,
-                                 nombres.columnas,
-                                 nombres.dimensiones))
-arreglo&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## , , DIM1
-## 
-##       COL1 COL2 COL3
-## FILA1    1    4    7
-## FILA2    2    5    8
-## FILA3    3    6    9
-## 
-## , , DIM2
-## 
-##       COL1 COL2 COL3
-## FILA1   10   40   70
-## FILA2   20   50   80
-## FILA3   30   60   90
-## 
-## , , DIM3
-## 
-##       COL1 COL2 COL3
-## FILA1  100  400  700
-## FILA2  200  500  800
-## FILA3  300  600  900
-## 
-## , , DIM4
-## 
-##       COL1 COL2 COL3
-## FILA1 1000 4000 7000
-## FILA2 2000 5000 8000
-## FILA3 3000 6000 9000&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Starting from the previous array, suppose that you want to obtain the maximum value per row from each dimension.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(arreglo, c(3,1), max)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##      FILA1 FILA2 FILA3
-## DIM1     7     8     9
-## DIM2    70    80    90
-## DIM3   700   800   900
-## DIM4  7000  8000  9000&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Or, you may want to obtain the maximum value of each column from each dimension.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(arreglo, c(3,2), max)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##      COL1 COL2 COL3
-## DIM1    3    6    9
-## DIM2   30   60   90
-## DIM3  300  600  900
-## DIM4 3000 6000 9000&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The following result shows the minimum of each column in each dimension.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(arreglo, c(2,3), min)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##      DIM1 DIM2 DIM3 DIM4
-## COL1    1   10  100 1000
-## COL2    4   40  400 4000
-## COL3    7   70  700 7000&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The previous examples can be applied to arrays with a higher dimension; for this, it is enough to have an adequate arrangement and operate on the corresponding margins with the &lt;code&gt;apply ()&lt;/code&gt; function.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>apply family functions - Part 4</title>
-      <link>/en/post/2020-03-01-eapply_rapply_mapply/</link>
-      <pubDate>Sun, 01 Mar 2020 18:55:57 -0600</pubDate>
-      
-      <guid>/en/post/2020-03-01-eapply_rapply_mapply/</guid>
-      <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;div id=&#34;eapply-function&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;eapply function&lt;/h1&gt;
-&lt;div id=&#34;using-environments&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Using environments&lt;/h2&gt;
-&lt;p&gt;In R, an &lt;em&gt;Environment&lt;/em&gt; is a site to assign variables or values that we assign to objects. Each time a new R session begins, all created objects stay in the &lt;em&gt;global&lt;/em&gt; &lt;strong&gt;environment&lt;/strong&gt;. If we create the object &lt;code&gt;x&lt;/code&gt;, it will then be in the &lt;em&gt;R&lt;/em&gt; default &lt;em&gt;Environment&lt;/em&gt;. The&lt;code&gt;ls()&lt;/code&gt; function lists the created objects, so we can check that &lt;code&gt;x&lt;/code&gt; actually exists.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- 28022020
-ls()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;x&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;It is possible to assign the &lt;strong&gt;global&lt;/strong&gt; &lt;em&gt;Environment&lt;/em&gt; to an object that we’ll call &lt;code&gt;environment_1&lt;/code&gt;. The curious thing is that after doing this, &lt;code&gt;environment_1&lt;/code&gt; is an object into the &lt;strong&gt;global&lt;/strong&gt; &lt;em&gt;Environment&lt;/em&gt; , but at the same time, it is the &lt;strong&gt;global&lt;/strong&gt; &lt;em&gt;Environmet&lt;/em&gt;.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_1 &amp;lt;- globalenv()
-class(environment_1)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;environment&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;environment_1&amp;quot; &amp;quot;x&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This process is similar to using a list, a topic that we talked about in &lt;a href=&#34;https://www.cesargamboasanabria.com/en/post/2019-12-08-lapply_sapply_vapply/&#34;&gt;this post&lt;/a&gt;. Since the object &lt;code&gt;environment_1&lt;/code&gt; is the global environment, it contains the object&lt;code&gt;x&lt;/code&gt;, which we assign to the &lt;strong&gt;global&lt;/strong&gt; &lt;em&gt;Environment&lt;/em&gt; and also includes itself in a cyclical way…&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_1$x&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 28022020&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_1$environment_1&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## &amp;lt;environment: R_GlobalEnv&amp;gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_1$environment_1$environment_1&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## &amp;lt;environment: R_GlobalEnv&amp;gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls(environment_1$environment_1$environment_1$environment_1)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;environment_1&amp;quot; &amp;quot;x&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The &lt;code&gt;environment_1&lt;/code&gt; object could, as Emmett Brown someday said, it creates a paradox that would destroy the universe, so it is best to eliminate it. Section 2.1.10 of the &lt;a href=&#34;https://cran.r-project.org/doc/manuals/R-lang.html#Environment-objects&#34;&gt;R language definition&lt;/a&gt; offers a more formal description of what a &lt;em&gt;Environment &lt;/em&gt; is.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rm(environment_1)
-ls()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;x&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;It is possible to create a new &lt;em&gt;Environment&lt;/em&gt; that is independent of the global &lt;em&gt;Environment&lt;/em&gt;, which we will call &lt;code&gt;environment_2&lt;/code&gt;. When creating it, we can see that it is empty compared to the &lt;em&gt;global&lt;/em&gt; &lt;strong&gt;Environment&lt;/strong&gt;, which contains &lt;code&gt;x&lt;/code&gt; and &lt;code&gt;environment_2&lt;/code&gt;. Also, if we directly generate a new variable, say &lt;code&gt;z&lt;/code&gt;, it will set to the &lt;em&gt;global &lt;/em&gt; &lt;strong&gt;Environment&lt;/strong&gt;.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_2 &amp;lt;- new.env()
-environment_2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## &amp;lt;environment: 0x000000001564e3b8&amp;gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls(globalenv())&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;environment_2&amp;quot; &amp;quot;x&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls(environment_2)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## character(0)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;z &amp;lt;- pi
-
-ls(globalenv())&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;environment_2&amp;quot; &amp;quot;x&amp;quot;             &amp;quot;z&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls(environment_2)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## character(0)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Now we create a new object called &lt;code&gt;y&lt;/code&gt;and we assign it to &lt;code&gt;environment_2&lt;/code&gt;. Now, the object &lt;code&gt;y&lt;/code&gt; will be contain &lt;strong&gt;only&lt;/strong&gt; in &lt;code&gt;environment_2&lt;/code&gt; and not in &lt;em&gt;Environment&lt;/em&gt; &lt;strong&gt;global&lt;/strong&gt;, even if the last one contains &lt;code&gt;environment_2&lt;/code&gt;.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_2$y &amp;lt;- &amp;quot;This is an abstract topic&amp;quot;
-
-ls(globalenv())&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;environment_2&amp;quot; &amp;quot;x&amp;quot;             &amp;quot;z&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls(environment_2)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;y&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment(x)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## NULL&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Has an &lt;em&gt;Environment&lt;/em&gt; a real use? The answer is yes, and they are fundamental in something widely used in R: Functions. In general, when building a function, it is assumed that it has only two components: the arguments and the content of the function. Consider a simple function that reverses the sign of a number.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;reverse_sign &amp;lt;- function(number){
-    number*-1
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;In the previous case, the &lt;code&gt;reverse_sign()&lt;/code&gt; function has a single argument &lt;strong&gt;number&lt;/strong&gt;, while its content is &lt;span class=&#34;math inline&#34;&gt;\(number\cdot -1\)&lt;/span&gt;. However, the functions have a third argument: &lt;em&gt;Environment&lt;/em&gt;. When the &lt;code&gt;reverse_sign()&lt;/code&gt; function created, it was in the &lt;strong&gt;global&lt;/strong&gt; &lt;em&gt;Environment&lt;/em&gt;.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls(globalenv())&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;environment_2&amp;quot; &amp;quot;reverse_sign&amp;quot;  &amp;quot;x&amp;quot;             &amp;quot;z&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls(environment_2)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;y&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment(reverse_sign)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## &amp;lt;environment: R_GlobalEnv&amp;gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The consequence is that the &lt;code&gt;reverse_sign()&lt;/code&gt; function only works in the &lt;em&gt;Environment&lt;/em&gt; assigned to it. For example, the function run only on the object &lt;code&gt;x&lt;/code&gt; that is in the &lt;strong&gt;global&lt;/strong&gt; &lt;em&gt;Environment&lt;/em&gt;:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;reverse_sign(x)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] -28022020&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;If we create an object that is also called &lt;code&gt;x&lt;/code&gt;, but that is in the&lt;code&gt;environment_2&lt;/code&gt;, the &lt;code&gt;reverse_sign()&lt;/code&gt; function still running only in the &lt;strong&gt;global&lt;/strong&gt; &lt;em&gt;Environment&lt;/em&gt;.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_2$x &amp;lt;- 123456
-reverse_sign(x)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] -28022020&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;eapply-function-1&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;eapply function&lt;/h2&gt;
-&lt;p&gt;These small details that we usually don’t handle in regular tasks using R may become indispensable in certain situations, such as when you want to use the &lt;code&gt;eapply()&lt;/code&gt; function. Knowing basics on how an &lt;em&gt;Environment&lt;/em&gt; works, we are going to eliminate all the objects created so far, this to keep everything in order.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rm(list = ls())&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;As we also review in &lt;a href=&#34;https://www.cesargamboasanabria.com/en/post/2019-12-08-lapply_sapply_vapply/&#34;&gt;this post&lt;/a&gt;, the &lt;code&gt;lapply()&lt;/code&gt; function applies a function to each element of a list. Similarly, the &lt;code&gt;eapply()&lt;/code&gt; function applies a function to each element named in an &lt;em&gt;Environment&lt;/em&gt; with the difference that in &lt;code&gt;eaaply()&lt;/code&gt;, the first argument is an &lt;em&gt;Environment&lt;/em&gt;, and not a list as in &lt;code&gt;lapply()&lt;/code&gt;. Let’s create now a new &lt;em&gt;Environment&lt;/em&gt; to apply a function to its elements that return the square root of each one plus 10:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_1 &amp;lt;- new.env()
-environment_1$element_1 &amp;lt;- 4
-environment_1$element_2 &amp;lt;- 9
-environment_1$element_3 &amp;lt;- 25
-
-eapply(environment_1, function(x){
-    sqrt(x)+10
-})&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## $element_1
-## [1] 12
-## 
-## $element_2
-## [1] 13
-## 
-## $element_3
-## [1] 15&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;We can also display the result without name tags:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;eapply(environment_1, function(x){
-    sqrt(x)+10
-}, USE.NAMES = FALSE)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [[1]]
-## [1] 12
-## 
-## [[2]]
-## [1] 13
-## 
-## [[3]]
-## [1] 15&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Previous runs of the &lt;code&gt;eapply()&lt;/code&gt; function evaluate our function in all the elements contained in the &lt;em&gt;Environment&lt;/em&gt;, but there are exceptions if there are &lt;em&gt;hidden elements&lt;/em&gt;. The &lt;em&gt;hidden elements&lt;/em&gt; are objects that exist but are not visible to the naked eye, we can create the &lt;em&gt;element_4&lt;/em&gt; as hidden as follows:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_1$.element_4 &amp;lt;- 48
-ls(environment_1)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;element_1&amp;quot; &amp;quot;element_2&amp;quot; &amp;quot;element_3&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;If we repeat the previous evaluation of the &lt;code&gt;eapply()&lt;/code&gt; function, it only runs with the &lt;em&gt;visible elements&lt;/em&gt;:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;eapply(environment_1, function(x){
-    sqrt(x)+10
-})&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## $element_1
-## [1] 12
-## 
-## $element_2
-## [1] 13
-## 
-## $element_3
-## [1] 15&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;But we can run that function over all elements:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;eapply(environment_1, function(x){
-    sqrt(x)+10
-}, all.names = TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## $element_1
-## [1] 12
-## 
-## $.element_4
-## [1] 16.9282
-## 
-## $element_2
-## [1] 13
-## 
-## $element_3
-## [1] 15&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;rapply-function&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;rapply function&lt;/h1&gt;
-&lt;p&gt;In this function, the “r” refers to “recursive”. This function has two objectives: Apply a function recursively to a list or apply that function only to the elements of a list with a specific class. This second reason is especially useful because the lists in R are perhaps the most useful objects when we are using that language because they store databases, numbers, character strings, graphics, and more. We can apply a function to every numeric element of a list, without the need to know in which positions these elements are within the list. A simple example can be applied to the famous &lt;code&gt;iris&lt;/code&gt; data set:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rapply(iris, mean, class=&amp;quot;numeric&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
-##     5.843333     3.057333     3.758000     1.199333&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rapply(iris, table, class=&amp;quot;factor&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##     Species.setosa Species.versicolor  Species.virginica 
-##                 50                 50                 50&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Or, if we have a list with different classes, we may want to multiply by two those elements of the list that are numerical:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rapply(list(2,5,7,&amp;quot;We can&amp;#39;t multiply this element because is a string&amp;quot;), function(x){x*2}, class=&amp;quot;numeric&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1]  4 10 14&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;mapply-function&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;mapply function&lt;/h1&gt;
-&lt;p&gt;The &lt;code&gt;mapply()&lt;/code&gt; function can be seen as the multivariate version of the &lt;em&gt;apply&lt;/em&gt; functions. For example, &lt;code&gt;lapply()&lt;/code&gt; function can only be applied to the elements of a list, but if you have a list whose elements are an argument of a function and another list whose elements are the other argument of the function, then &lt;code&gt;mapply()&lt;/code&gt; is used. The function to be applied must have as many arguments as the number of lists to pass to &lt;code&gt;mapply()&lt;/code&gt;. &lt;code&gt;MoreArgs&lt;/code&gt; argument is useful if there are more arguments that need to use in the function. It is easier to show its operation with an example than with words. Suppose we want to obtain the result of &lt;span class=&#34;math inline&#34;&gt;\(x*y+1\)&lt;/span&gt; by varying the values of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; as follows: &lt;span class=&#34;math inline&#34;&gt;\(1\cdot 2 + 1, 2\cdot 3 + 1, 3\cdot 4 + 1, \cdots , 10000\cdot 10001 + 1\)&lt;/span&gt;. We can obtain this calculation through a &lt;code&gt;for&lt;/code&gt; loop as follows:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;z &amp;lt;- NULL
-k &amp;lt;- 1
-x &amp;lt;- 1:10000
-y &amp;lt;- 2:10001
-for(i in 1:10000){
-    z[k] &amp;lt;- x[i]*y[i]+1
-    k &amp;lt;- k+1
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;But we can also use the &lt;code&gt;mapply()&lt;/code&gt; function:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mapply(function(x,y){x*y+1},
-       x=1:10000,
-       y=2:10001)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Both functions display the same result; however, &lt;code&gt;mapply()&lt;/code&gt; is considerably more efficient when performing the calculation. We will compare the running time of different processes in the next post when I’ll show you some parallel versions of the apply family functions.&lt;/p&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>apply family functions - Part 3</title>
-      <link>/en/post/2019-12-08-lapply_sapply_vapply/</link>
-      <pubDate>Sun, 08 Dec 2019 18:55:57 -0600</pubDate>
-      
-      <guid>/en/post/2019-12-08-lapply_sapply_vapply/</guid>
-      <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;p&gt;In this new post about the apply family functions, we’ll show some examples of three new functions: &lt;code&gt;lapply()&lt;/code&gt;, &lt;code&gt;sapply()&lt;/code&gt;, and &lt;code&gt;vapply()&lt;/code&gt;. These functions generally works with objects of class &lt;code&gt;list&lt;/code&gt;; however, other variants can work with vectors.&lt;/p&gt;
-&lt;p&gt;Suppose now we have several databases on which we need to obtain the sum of each column. We’ll generate a simple function that returns a database of random numbers in the range $ [1,100] $ and also contains missing values, with a certain number of rows and columns.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dat &amp;lt;- function(rows, columns){
-    values &amp;lt;- sample(x = c(NA,1:100), 
-        size = rows*columns,
-        replace = TRUE)
-    as.data.frame(matrix(data = values,
-                         nrow = rows, 
-                         ncol = columns))
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Thus, for example, we can generate a database with 50 rows and 5 columns by executing the following command:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(20191208)
-df1 &amp;lt;- dat(50, 5)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Let’s generate more other databases of dimensions &lt;span class=&#34;math inline&#34;&gt;\(100\times5\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(150\times5\)&lt;/span&gt;.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(20191208)
-df2 &amp;lt;- dat(100, 5)
-df3 &amp;lt;- dat(150, 5)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;As we saw in &lt;a href=&#34;https://www.cesargamboasanabria.com/en/post/2019-06-23-apply/&#34;&gt;this post&lt;/a&gt;, we could use the &lt;code&gt;apply()&lt;/code&gt; function to get the sum of the columns.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(df1,2,sum)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   V1   V2   V3   V4   V5 
-## 2546 2602 2699 1993 2482&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(df2,2,sum)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   V1   V2   V3   V4   V5 
-## 5148 4692   NA 5024 5177&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(df3,2,sum)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   V1   V2   V3   V4   V5 
-##   NA 7554   NA   NA   NA&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Or, something simpler would be to use the function &lt;code&gt;colSums()&lt;/code&gt;.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;colSums(df1)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   V1   V2   V3   V4   V5 
-## 2546 2602 2699 1993 2482&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;colSums(df2)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   V1   V2   V3   V4   V5 
-## 5148 4692   NA 5024 5177&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;colSums(df3)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   V1   V2   V3   V4   V5 
-##   NA 7554   NA   NA   NA&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;However, we could have a large number of databases, so the above procedures are not viable since writing so many lines of code is quite dull.&lt;/p&gt;
-&lt;p&gt;That’s the time the lists come into play. The three databases we generate can be stored in a single list as follows.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list1 &amp;lt;- list(df1, df2, df3)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;By having a list, each database becomes an element of that list. For example, element 1 is the set &lt;em&gt;df1&lt;/em&gt;, while the sets &lt;em&gt;df2&lt;/em&gt; and &lt;em&gt;df3&lt;/em&gt; are elements 2 and three, respectively. One way to call the elements within a list is by &lt;code&gt;[[]]&lt;/code&gt;, as follows we call the data set &lt;em&gt;df2&lt;/em&gt;:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list1[[2]]&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##      V1 V2  V3  V4  V5
-## 1    35 90  35  84  79
-## 2    51 36   4 100   5
-## 3    76 47  65  90  36
-## 4    17 22  97  72   1
-## 5    95 16   8  86  65
-## 6    73 31  47  52  87
-## 7    37 23  64  85  13
-## 8    81 62  33  82  27
-## 9    59 63  79  40  45
-## 10   38 25  34   9  24
-## 11   92 82  53  75  80
-## 12   94 51  50  35  87
-## 13   44 54  10  49  71
-## 14   96 23  54  62  99
-## 15   73 87   8  64  16
-## 16   58 94  67  41 100
-## 17   92 93  78  34  59
-## 18   30 64  53  49  80
-## 19   14 21  94  59  86
-## 20   14  9  51  42  19
-## 21   55 99  12  70  54
-## 22   30 34  93  76  68
-## 23   19 40  85  29  51
-## 24   46 83  98  41  88
-## 25   48 34 100  49  37
-## 26   29 34  72  11  62
-## 27   39 78  68  41  20
-## 28   68 62  51  68  76
-## 29   92 69  37  15  95
-## 30   15 25  63  72  24
-## 31   72 90   4  63  35
-## 32    7 34  91  95   5
-## 33   62 43   1  66  57
-## 34   32 69  29  87  30
-## 35   96 67  21  32  13
-## 36   13 71  26  96  91
-## 37   58 72  30  66   5
-## 38   80 45  84  45  86
-## 39   84 89  83  86   2
-## 40   44 78  13   6  23
-## 41   24 70  63  93   1
-## 42   22 65  32  85  40
-## 43   32 54  79  34  88
-## 44   10 12  37  31  21
-## 45   48 28   9  61  75
-## 46   19 95  22  71  41
-## 47   60 48   4  26  30
-## 48   79 34  59  80  65
-## 49   25 77  61   5  95
-## 50   69  7  71  75  60
-## 51   33 53 100  43  19
-## 52   16 82   9  98  52
-## 53   53 60  35   3  77
-## 54    9 31  33  61  72
-## 55   42 17  64  40  80
-## 56   71 87  95  31  72
-## 57   79 20  11   6  67
-## 58   67 55  57  55  31
-## 59   82 82   5  87  93
-## 60   84 34  20  22   9
-## 61   38 22  92  45  24
-## 62   48 75  60   5  74
-## 63   44 78  78  29  66
-## 64   10 70  14  37  16
-## 65   12 12  93  66  19
-## 66   88 29  63  94  30
-## 67   77 44  34  59  96
-## 68    5 46  81  11  72
-## 69   79 40  73  26  99
-## 70   96 24  46  94   7
-## 71   46 64  12   2  30
-## 72    3 38  50  89  85
-## 73   86 17  14  21  37
-## 74   57 37  NA  15  36
-## 75   23 12  48  20  46
-## 76   41  7  82  69  46
-## 77   59  5   4  93  98
-## 78   47 52  23  59  94
-## 79   19 47  58  12  47
-## 80   44 34  15  15  47
-## 81   15 38  57  84  67
-## 82   98  8  83  10  64
-## 83   50 38  48  95  40
-## 84   17 18  24   1  59
-## 85   73 12   2  30  48
-## 86   41 79  38  48  68
-## 87   12 84  77  25  79
-## 88   66 52   5  85  41
-## 89   80 39  60  29  29
-## 90  100 43  15  16   3
-## 91    9 37  75  52  94
-## 92   94 22  19  48  52
-## 93   53  9 100  83  52
-## 94   37 39  78  31  65
-## 95   96 26  66  87  22
-## 96   64 25  29   7  55
-## 97   62 50  91  21  45
-## 98   18 44  94  15  18
-## 99   61 11  48  48  50
-## 100  98 45  27  17  68&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Now, if we need to apply the &lt;code&gt;colSums()&lt;/code&gt; function to each data set, we can use the &lt;code&gt;lapply()&lt;/code&gt; function:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lapply(list1, colSums)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [[1]]
-##   V1   V2   V3   V4   V5 
-## 2546 2602 2699 1993 2482 
-## 
-## [[2]]
-##   V1   V2   V3   V4   V5 
-## 5148 4692   NA 5024 5177 
-## 
-## [[3]]
-##   V1   V2   V3   V4   V5 
-##   NA 7554   NA   NA   NA&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The result is a list with the sum of the columns of each database. If we need to do the sums, but without counting the missing values, we have to incorporate the respective argument of the &lt;code&gt;colSums()&lt;/code&gt; function.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lapply(list1, colSums, na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [[1]]
-##   V1   V2   V3   V4   V5 
-## 2546 2602 2699 1993 2482 
-## 
-## [[2]]
-##   V1   V2   V3   V4   V5 
-## 5148 4692 4887 5024 5177 
-## 
-## [[3]]
-##   V1   V2   V3   V4   V5 
-## 7780 7554 7470 7826 7033&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;As you can see, the &lt;code&gt;lapply()&lt;/code&gt; function works with three arguments: a list -in this case, the list object-, a function that we want to apply to each element of that list -in this case, &lt;code&gt;colSums()&lt;/code&gt;-, and if necessary, the arguments requested by the indicated function -in this case &lt;code&gt;na.rm = TRUE&lt;/code&gt; of the &lt;code&gt;colSums()&lt;/code&gt;- function.&lt;/p&gt;
-&lt;p&gt;The previous result returns the calculations in an object of class &lt;code&gt;list&lt;/code&gt;; however, in many cases, it is desirable to obtain a more orderly format. The &lt;code&gt;sapply()&lt;/code&gt; function works identically to &lt;code&gt;lapply()&lt;/code&gt;, with the proviso that &lt;strong&gt;if the result of each item in the list has the same length&lt;/strong&gt;, the &lt;code&gt;sapply()&lt;/code&gt; function groups the result. By using the &lt;code&gt;lapply()&lt;/code&gt; motion, we obtain a list of three elements, where each element is a vector of length five, that is, they all have the same length, so the &lt;code&gt;sapply()&lt;/code&gt; function would return the following:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sapply(list1, colSums)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##    [,1] [,2] [,3]
-## V1 2546 5148   NA
-## V2 2602 4692 7554
-## V3 2699   NA   NA
-## V4 1993 5024   NA
-## V5 2482 5177   NA&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sapply(list1, colSums, na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##    [,1] [,2] [,3]
-## V1 2546 5148 7780
-## V2 2602 4692 7554
-## V3 2699 4887 7470
-## V4 1993 5024 7826
-## V5 2482 5177 7033&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Although the &lt;code&gt;sapply()&lt;/code&gt; function seems more useful than &lt;code&gt;lapply()&lt;/code&gt;, it has a small inconvenience, and it is always going to work… How can this be an inconvenience? Let’s incorporate a new data set, but this time with six columns instead of five like the previous ones.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df4 &amp;lt;- dat(150, 6)
-list2 &amp;lt;- list(df1, df2, df3, df4)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;If we use the &lt;code&gt;lapply()&lt;/code&gt; function again, we would again obtain the sums by columns in the form of a list:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lapply(list2, colSums, na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [[1]]
-##   V1   V2   V3   V4   V5 
-## 2546 2602 2699 1993 2482 
-## 
-## [[2]]
-##   V1   V2   V3   V4   V5 
-## 5148 4692 4887 5024 5177 
-## 
-## [[3]]
-##   V1   V2   V3   V4   V5 
-## 7780 7554 7470 7826 7033 
-## 
-## [[4]]
-##   V1   V2   V3   V4   V5   V6 
-## 8205 6712 6794 8049 7562 7335&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;While if we apply the &lt;code&gt;sapply()&lt;/code&gt; function:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sapply(list2, colSums, na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [[1]]
-##   V1   V2   V3   V4   V5 
-## 2546 2602 2699 1993 2482 
-## 
-## [[2]]
-##   V1   V2   V3   V4   V5 
-## 5148 4692 4887 5024 5177 
-## 
-## [[3]]
-##   V1   V2   V3   V4   V5 
-## 7780 7554 7470 7826 7033 
-## 
-## [[4]]
-##   V1   V2   V3   V4   V5   V6 
-## 8205 6712 6794 8049 7562 7335&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Now we get a list, that is, the same result as with &lt;code&gt;sapply()&lt;/code&gt;. The reason is that not all elements have the same length, before there were three vectors of length five, while now also a vector of length six. This fact seems to be irrelevant, since a result is still being obtained, however depending on the context that result will not always be valid.&lt;/p&gt;
-&lt;p&gt;Suppose that based on the analysis we are doing, we know that the sum of the columns can only return a vector of length five and that if the result is something else, it may be due to an error in one of the databases, such as additional columns. The &lt;code&gt;vapply()&lt;/code&gt; function allows us, like &lt;code&gt;sapply()&lt;/code&gt;, to apply a function to the elements of a list, but specifying that the expected result, in this case, is a numerical vector of length five. Let’s first make a comparison between &lt;code&gt;sapply()&lt;/code&gt; and &lt;code&gt;vapply()&lt;/code&gt; with the object &lt;code&gt;list&lt;/code&gt;, which has three databases with five columns:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sapply(list1, colSums, na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##    [,1] [,2] [,3]
-## V1 2546 5148 7780
-## V2 2602 4692 7554
-## V3 2699 4887 7470
-## V4 1993 5024 7826
-## V5 2482 5177 7033&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;vapply(list1, colSums, numeric(5), na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##    [,1] [,2] [,3]
-## V1 2546 5148 7780
-## V2 2602 4692 7554
-## V3 2699 4887 7470
-## V4 1993 5024 7826
-## V5 2482 5177 7033&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The results are identical. But now let’s repeat the previous example but for the object &lt;code&gt;list2&lt;/code&gt;, which contains a data set with six columns.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sapply(list2, colSums, na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [[1]]
-##   V1   V2   V3   V4   V5 
-## 2546 2602 2699 1993 2482 
-## 
-## [[2]]
-##   V1   V2   V3   V4   V5 
-## 5148 4692 4887 5024 5177 
-## 
-## [[3]]
-##   V1   V2   V3   V4   V5 
-## 7780 7554 7470 7826 7033 
-## 
-## [[4]]
-##   V1   V2   V3   V4   V5   V6 
-## 8205 6712 6794 8049 7562 7335&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The &lt;code&gt;sapply()&lt;/code&gt; function performs the calculation, but under the assumption that the expected result is vectors of length five, this result is incorrect. The &lt;code&gt;vapply()&lt;/code&gt; function helps us control this problem.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;vapply(list2, colSums, numeric(5), na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Error in vapply(list2, colSums, numeric(5), na.rm = TRUE): Los valores deben ser de longitud 5, 
-## pero el resultado FUN(X [[4]]) es la longitud 6&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;When trying to execute the code, we get an error, since evaluating the function in element number four of the list returns a vector of length six and not five as expected.&lt;/p&gt;
-&lt;p&gt;The &lt;code&gt;vapply()&lt;/code&gt; function is generally more advisable than &lt;code&gt;sapply()&lt;/code&gt; because it allows you to have more control over the expected results.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Apply family functions - Part 2</title>
       <link>/en/post/2019-07-31-tapply/</link>
-      <pubDate>Wed, 31 Jul 2019 18:55:57 -0600</pubDate>
+      <pubDate>Tue, 29 Sep 2020 18:55:57 -0600</pubDate>
       
       <guid>/en/post/2019-07-31-tapply/</guid>
       <description>
@@ -1228,6 +654,580 @@ list2 &amp;lt;- list(df1, df2, df3, df4)&lt;/code&gt;&lt;/pre&gt;
 ## unknown             NA        NA
 ## white               NA        NA
 ## yellow              NA        NA&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Apply family functions - Part 1</title>
+      <link>/en/post/2019-06-23-apply/</link>
+      <pubDate>Mon, 28 Sep 2020 17:42:09 -0600</pubDate>
+      
+      <guid>/en/post/2019-06-23-apply/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;The apply family functions belong to the R base package, they are especially useful when combining their use with functions to manipulate pieces of matrices, arrays, lists and data frames. These functions allow you to cross data in multiple ways to avoid the use of for loops that are usually computationally heavier.&lt;/p&gt;
+&lt;p&gt;The first function we will talk about in this series is the &lt;code&gt;apply ()&lt;/code&gt; function, which in its simplest form of use is used to evaluate the margins (1 = rows or 2 = columns) of a matrix or an array to apply a function to them.&lt;/p&gt;
+&lt;p&gt;As a first example, we start from a matrix with three rows and three columns.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mat &amp;lt;- matrix(c(2, 4, 6, 7, 8, 9, 1, 12, 21), nrow = 3, ncol = 3)
+mat&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      [,1] [,2] [,3]
+## [1,]    2    7    1
+## [2,]    4    8   12
+## [3,]    6    9   21&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you wish, for example, to obtain the sum of each column, you can use the &lt;code&gt;apply ()&lt;/code&gt; function as follows.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(mat, 2, sum)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 12 24 34&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can also calculate the average of each row.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(mat, 1, mean)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1]  3.333333  8.000000 12.000000&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;There are also some functions already programmed in the R &lt;code&gt;base&lt;/code&gt; package that quickly replicate the previous results. For example, there is the &lt;code&gt;colSums ()&lt;/code&gt; function to calculate the amount of each column, and &lt;code&gt;rowMeans ()&lt;/code&gt; to obtain the arithmetic mean of each row.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;colSums(mat)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 12 24 34&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rowMeans(mat)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1]  3.333333  8.000000 12.000000&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The two cases shown above exemplify a basic use of the &lt;code&gt;apply ()&lt;/code&gt; function, however, this function is much more powerful and is capable of working in a multidimensional way. Consider, for example, an object in two dimensions (rows and columns) similar to the one created previously, that is, an array.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mat2 &amp;lt;- matrix(1:9, nrow = 3, ncol = 3)
+mat2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;mat2&lt;/code&gt; object represents a particular case of an array, which can be created using the&lt;code&gt;array ()&lt;/code&gt;function.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;array(data=1:9, dim = c(3,3))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;array ()&lt;/code&gt; function also allows you to add tags to the rows and columns using its &lt;code&gt;dimnames&lt;/code&gt; argument.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;nombres.columnas &amp;lt;- c(&amp;quot;COL1&amp;quot;,&amp;quot;COL2&amp;quot;,&amp;quot;COL3&amp;quot;)
+nombres.filas &amp;lt;- c(&amp;quot;FILA1&amp;quot;,&amp;quot;FILA2&amp;quot;,&amp;quot;FILA3&amp;quot;)
+arreglo &amp;lt;- array(data=1:9, dim = c(3,3), 
+                 dimnames = list(nombres.columnas, nombres.filas))
+arreglo&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      FILA1 FILA2 FILA3
+## COL1     1     4     7
+## COL2     2     5     8
+## COL3     3     6     9&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can add multiple dimensions to an array. For this, suppose you want to have the following sizes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;DIM1: Numbers from 1 to 9.&lt;/li&gt;
+&lt;li&gt;DIM2: Numbers from 1 to 9 multiplied by 10.&lt;/li&gt;
+&lt;li&gt;DIM3: Numbers from 1 to 9 multiplied by 100.&lt;/li&gt;
+&lt;li&gt;DIM4: Numbers from 1 to 9 increased by 1000.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;One way to generate the previous arrangement is by using the following code:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;nombres.dimensiones &amp;lt;- c(&amp;quot;DIM1&amp;quot;,&amp;quot;DIM2&amp;quot;,&amp;quot;DIM3&amp;quot;,&amp;quot;DIM4&amp;quot;)
+arreglo &amp;lt;- array(data = c(seq(from=1, to=9, by=1),           #1 al 9
+                          seq(from=10, to=90, by=10),        #10 al 90
+                          seq(from=100, to=900, by=100),     #100 al 900
+                          seq(from=1000, to=9000, by=1000)), #1000 al 9000
+                 dim = c(3, 3, 4),                           #3 filas, 3 columnas y 4 dimensiones
+                 dimnames = list(nombres.filas,
+                                 nombres.columnas,
+                                 nombres.dimensiones))
+arreglo&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## , , DIM1
+## 
+##       COL1 COL2 COL3
+## FILA1    1    4    7
+## FILA2    2    5    8
+## FILA3    3    6    9
+## 
+## , , DIM2
+## 
+##       COL1 COL2 COL3
+## FILA1   10   40   70
+## FILA2   20   50   80
+## FILA3   30   60   90
+## 
+## , , DIM3
+## 
+##       COL1 COL2 COL3
+## FILA1  100  400  700
+## FILA2  200  500  800
+## FILA3  300  600  900
+## 
+## , , DIM4
+## 
+##       COL1 COL2 COL3
+## FILA1 1000 4000 7000
+## FILA2 2000 5000 8000
+## FILA3 3000 6000 9000&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Starting from the previous array, suppose that you want to obtain the maximum value per row from each dimension.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(arreglo, c(3,1), max)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      FILA1 FILA2 FILA3
+## DIM1     7     8     9
+## DIM2    70    80    90
+## DIM3   700   800   900
+## DIM4  7000  8000  9000&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Or, you may want to obtain the maximum value of each column from each dimension.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(arreglo, c(3,2), max)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      COL1 COL2 COL3
+## DIM1    3    6    9
+## DIM2   30   60   90
+## DIM3  300  600  900
+## DIM4 3000 6000 9000&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The following result shows the minimum of each column in each dimension.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(arreglo, c(2,3), min)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      DIM1 DIM2 DIM3 DIM4
+## COL1    1   10  100 1000
+## COL2    4   40  400 4000
+## COL3    7   70  700 7000&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The previous examples can be applied to arrays with a higher dimension; for this, it is enough to have an adequate arrangement and operate on the corresponding margins with the &lt;code&gt;apply ()&lt;/code&gt; function.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>apply family functions - Part 4</title>
+      <link>/en/post/2020-03-01-eapply_rapply_mapply/</link>
+      <pubDate>Sun, 01 Mar 2020 18:55:57 -0600</pubDate>
+      
+      <guid>/en/post/2020-03-01-eapply_rapply_mapply/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;eapply-function&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;eapply function&lt;/h1&gt;
+&lt;div id=&#34;using-environments&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Using environments&lt;/h2&gt;
+&lt;p&gt;In R, an &lt;em&gt;Environment&lt;/em&gt; is a site to assign variables or values that we assign to objects. Each time a new R session begins, all created objects stay in the &lt;em&gt;global&lt;/em&gt; &lt;strong&gt;environment&lt;/strong&gt;. If we create the object &lt;code&gt;x&lt;/code&gt;, it will then be in the &lt;em&gt;R&lt;/em&gt; default &lt;em&gt;Environment&lt;/em&gt;. The&lt;code&gt;ls()&lt;/code&gt; function lists the created objects, so we can check that &lt;code&gt;x&lt;/code&gt; actually exists.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- 28022020
+ls()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;x&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It is possible to assign the &lt;strong&gt;global&lt;/strong&gt; &lt;em&gt;Environment&lt;/em&gt; to an object that we’ll call &lt;code&gt;environment_1&lt;/code&gt;. The curious thing is that after doing this, &lt;code&gt;environment_1&lt;/code&gt; is an object into the &lt;strong&gt;global&lt;/strong&gt; &lt;em&gt;Environment&lt;/em&gt; , but at the same time, it is the &lt;strong&gt;global&lt;/strong&gt; &lt;em&gt;Environmet&lt;/em&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_1 &amp;lt;- globalenv()
+class(environment_1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;environment&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;environment_1&amp;quot; &amp;quot;x&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This process is similar to using a list, a topic that we talked about in &lt;a href=&#34;https://www.cesargamboasanabria.com/en/post/2019-12-08-lapply_sapply_vapply/&#34;&gt;this post&lt;/a&gt;. Since the object &lt;code&gt;environment_1&lt;/code&gt; is the global environment, it contains the object&lt;code&gt;x&lt;/code&gt;, which we assign to the &lt;strong&gt;global&lt;/strong&gt; &lt;em&gt;Environment&lt;/em&gt; and also includes itself in a cyclical way…&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_1$x&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 28022020&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_1$environment_1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;environment: R_GlobalEnv&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_1$environment_1$environment_1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;environment: R_GlobalEnv&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls(environment_1$environment_1$environment_1$environment_1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;environment_1&amp;quot; &amp;quot;x&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;environment_1&lt;/code&gt; object could, as Emmett Brown someday said, it creates a paradox that would destroy the universe, so it is best to eliminate it. Section 2.1.10 of the &lt;a href=&#34;https://cran.r-project.org/doc/manuals/R-lang.html#Environment-objects&#34;&gt;R language definition&lt;/a&gt; offers a more formal description of what a &lt;em&gt;Environment &lt;/em&gt; is.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rm(environment_1)
+ls()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;x&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It is possible to create a new &lt;em&gt;Environment&lt;/em&gt; that is independent of the global &lt;em&gt;Environment&lt;/em&gt;, which we will call &lt;code&gt;environment_2&lt;/code&gt;. When creating it, we can see that it is empty compared to the &lt;em&gt;global&lt;/em&gt; &lt;strong&gt;Environment&lt;/strong&gt;, which contains &lt;code&gt;x&lt;/code&gt; and &lt;code&gt;environment_2&lt;/code&gt;. Also, if we directly generate a new variable, say &lt;code&gt;z&lt;/code&gt;, it will set to the &lt;em&gt;global &lt;/em&gt; &lt;strong&gt;Environment&lt;/strong&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_2 &amp;lt;- new.env()
+environment_2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;environment: 0x000000001564e3b8&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls(globalenv())&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;environment_2&amp;quot; &amp;quot;x&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls(environment_2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## character(0)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;z &amp;lt;- pi
+
+ls(globalenv())&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;environment_2&amp;quot; &amp;quot;x&amp;quot;             &amp;quot;z&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls(environment_2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## character(0)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now we create a new object called &lt;code&gt;y&lt;/code&gt;and we assign it to &lt;code&gt;environment_2&lt;/code&gt;. Now, the object &lt;code&gt;y&lt;/code&gt; will be contain &lt;strong&gt;only&lt;/strong&gt; in &lt;code&gt;environment_2&lt;/code&gt; and not in &lt;em&gt;Environment&lt;/em&gt; &lt;strong&gt;global&lt;/strong&gt;, even if the last one contains &lt;code&gt;environment_2&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_2$y &amp;lt;- &amp;quot;This is an abstract topic&amp;quot;
+
+ls(globalenv())&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;environment_2&amp;quot; &amp;quot;x&amp;quot;             &amp;quot;z&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls(environment_2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;y&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment(x)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## NULL&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Has an &lt;em&gt;Environment&lt;/em&gt; a real use? The answer is yes, and they are fundamental in something widely used in R: Functions. In general, when building a function, it is assumed that it has only two components: the arguments and the content of the function. Consider a simple function that reverses the sign of a number.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;reverse_sign &amp;lt;- function(number){
+    number*-1
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In the previous case, the &lt;code&gt;reverse_sign()&lt;/code&gt; function has a single argument &lt;strong&gt;number&lt;/strong&gt;, while its content is &lt;span class=&#34;math inline&#34;&gt;\(number\cdot -1\)&lt;/span&gt;. However, the functions have a third argument: &lt;em&gt;Environment&lt;/em&gt;. When the &lt;code&gt;reverse_sign()&lt;/code&gt; function created, it was in the &lt;strong&gt;global&lt;/strong&gt; &lt;em&gt;Environment&lt;/em&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls(globalenv())&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;environment_2&amp;quot; &amp;quot;reverse_sign&amp;quot;  &amp;quot;x&amp;quot;             &amp;quot;z&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ls(environment_2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;y&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment(reverse_sign)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;environment: R_GlobalEnv&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The consequence is that the &lt;code&gt;reverse_sign()&lt;/code&gt; function only works in the &lt;em&gt;Environment&lt;/em&gt; assigned to it. For example, the function run only on the object &lt;code&gt;x&lt;/code&gt; that is in the &lt;strong&gt;global&lt;/strong&gt; &lt;em&gt;Environment&lt;/em&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;reverse_sign(x)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] -28022020&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If we create an object that is also called &lt;code&gt;x&lt;/code&gt;, but that is in the&lt;code&gt;environment_2&lt;/code&gt;, the &lt;code&gt;reverse_sign()&lt;/code&gt; function still running only in the &lt;strong&gt;global&lt;/strong&gt; &lt;em&gt;Environment&lt;/em&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_2$x &amp;lt;- 123456
+reverse_sign(x)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] -28022020&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;eapply-function-1&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;eapply function&lt;/h2&gt;
+&lt;p&gt;These small details that we usually don’t handle in regular tasks using R may become indispensable in certain situations, such as when you want to use the &lt;code&gt;eapply()&lt;/code&gt; function. Knowing basics on how an &lt;em&gt;Environment&lt;/em&gt; works, we are going to eliminate all the objects created so far, this to keep everything in order.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rm(list = ls())&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As we also review in &lt;a href=&#34;https://www.cesargamboasanabria.com/en/post/2019-12-08-lapply_sapply_vapply/&#34;&gt;this post&lt;/a&gt;, the &lt;code&gt;lapply()&lt;/code&gt; function applies a function to each element of a list. Similarly, the &lt;code&gt;eapply()&lt;/code&gt; function applies a function to each element named in an &lt;em&gt;Environment&lt;/em&gt; with the difference that in &lt;code&gt;eaaply()&lt;/code&gt;, the first argument is an &lt;em&gt;Environment&lt;/em&gt;, and not a list as in &lt;code&gt;lapply()&lt;/code&gt;. Let’s create now a new &lt;em&gt;Environment&lt;/em&gt; to apply a function to its elements that return the square root of each one plus 10:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_1 &amp;lt;- new.env()
+environment_1$element_1 &amp;lt;- 4
+environment_1$element_2 &amp;lt;- 9
+environment_1$element_3 &amp;lt;- 25
+
+eapply(environment_1, function(x){
+    sqrt(x)+10
+})&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## $element_1
+## [1] 12
+## 
+## $element_2
+## [1] 13
+## 
+## $element_3
+## [1] 15&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can also display the result without name tags:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;eapply(environment_1, function(x){
+    sqrt(x)+10
+}, USE.NAMES = FALSE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [[1]]
+## [1] 12
+## 
+## [[2]]
+## [1] 13
+## 
+## [[3]]
+## [1] 15&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Previous runs of the &lt;code&gt;eapply()&lt;/code&gt; function evaluate our function in all the elements contained in the &lt;em&gt;Environment&lt;/em&gt;, but there are exceptions if there are &lt;em&gt;hidden elements&lt;/em&gt;. The &lt;em&gt;hidden elements&lt;/em&gt; are objects that exist but are not visible to the naked eye, we can create the &lt;em&gt;element_4&lt;/em&gt; as hidden as follows:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;environment_1$.element_4 &amp;lt;- 48
+ls(environment_1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;element_1&amp;quot; &amp;quot;element_2&amp;quot; &amp;quot;element_3&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If we repeat the previous evaluation of the &lt;code&gt;eapply()&lt;/code&gt; function, it only runs with the &lt;em&gt;visible elements&lt;/em&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;eapply(environment_1, function(x){
+    sqrt(x)+10
+})&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## $element_1
+## [1] 12
+## 
+## $element_2
+## [1] 13
+## 
+## $element_3
+## [1] 15&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;But we can run that function over all elements:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;eapply(environment_1, function(x){
+    sqrt(x)+10
+}, all.names = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## $element_1
+## [1] 12
+## 
+## $.element_4
+## [1] 16.9282
+## 
+## $element_2
+## [1] 13
+## 
+## $element_3
+## [1] 15&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;rapply-function&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;rapply function&lt;/h1&gt;
+&lt;p&gt;In this function, the “r” refers to “recursive”. This function has two objectives: Apply a function recursively to a list or apply that function only to the elements of a list with a specific class. This second reason is especially useful because the lists in R are perhaps the most useful objects when we are using that language because they store databases, numbers, character strings, graphics, and more. We can apply a function to every numeric element of a list, without the need to know in which positions these elements are within the list. A simple example can be applied to the famous &lt;code&gt;iris&lt;/code&gt; data set:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rapply(iris, mean, class=&amp;quot;numeric&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
+##     5.843333     3.057333     3.758000     1.199333&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rapply(iris, table, class=&amp;quot;factor&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##     Species.setosa Species.versicolor  Species.virginica 
+##                 50                 50                 50&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Or, if we have a list with different classes, we may want to multiply by two those elements of the list that are numerical:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rapply(list(2,5,7,&amp;quot;We can&amp;#39;t multiply this element because is a string&amp;quot;), function(x){x*2}, class=&amp;quot;numeric&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1]  4 10 14&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;mapply-function&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;mapply function&lt;/h1&gt;
+&lt;p&gt;The &lt;code&gt;mapply()&lt;/code&gt; function can be seen as the multivariate version of the &lt;em&gt;apply&lt;/em&gt; functions. For example, &lt;code&gt;lapply()&lt;/code&gt; function can only be applied to the elements of a list, but if you have a list whose elements are an argument of a function and another list whose elements are the other argument of the function, then &lt;code&gt;mapply()&lt;/code&gt; is used. The function to be applied must have as many arguments as the number of lists to pass to &lt;code&gt;mapply()&lt;/code&gt;. &lt;code&gt;MoreArgs&lt;/code&gt; argument is useful if there are more arguments that need to use in the function. It is easier to show its operation with an example than with words. Suppose we want to obtain the result of &lt;span class=&#34;math inline&#34;&gt;\(x*y+1\)&lt;/span&gt; by varying the values of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; as follows: &lt;span class=&#34;math inline&#34;&gt;\(1\cdot 2 + 1, 2\cdot 3 + 1, 3\cdot 4 + 1, \cdots , 10000\cdot 10001 + 1\)&lt;/span&gt;. We can obtain this calculation through a &lt;code&gt;for&lt;/code&gt; loop as follows:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;z &amp;lt;- NULL
+k &amp;lt;- 1
+x &amp;lt;- 1:10000
+y &amp;lt;- 2:10001
+for(i in 1:10000){
+    z[k] &amp;lt;- x[i]*y[i]+1
+    k &amp;lt;- k+1
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;But we can also use the &lt;code&gt;mapply()&lt;/code&gt; function:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mapply(function(x,y){x*y+1},
+       x=1:10000,
+       y=2:10001)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Both functions display the same result; however, &lt;code&gt;mapply()&lt;/code&gt; is considerably more efficient when performing the calculation. We will compare the running time of different processes in the next post when I’ll show you some parallel versions of the apply family functions.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>apply family functions - Part 3</title>
+      <link>/en/post/2019-12-08-lapply_sapply_vapply/</link>
+      <pubDate>Sun, 08 Dec 2019 18:55:57 -0600</pubDate>
+      
+      <guid>/en/post/2019-12-08-lapply_sapply_vapply/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;In this new post about the apply family functions, we’ll show some examples of three new functions: &lt;code&gt;lapply()&lt;/code&gt;, &lt;code&gt;sapply()&lt;/code&gt;, and &lt;code&gt;vapply()&lt;/code&gt;. These functions generally works with objects of class &lt;code&gt;list&lt;/code&gt;; however, other variants can work with vectors.&lt;/p&gt;
+&lt;p&gt;Suppose now we have several databases on which we need to obtain the sum of each column. We’ll generate a simple function that returns a database of random numbers in the range $ [1,100] $ and also contains missing values, with a certain number of rows and columns.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dat &amp;lt;- function(rows, columns){
+    values &amp;lt;- sample(x = c(NA,1:100), 
+        size = rows*columns,
+        replace = TRUE)
+    as.data.frame(matrix(data = values,
+                         nrow = rows, 
+                         ncol = columns))
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Thus, for example, we can generate a database with 50 rows and 5 columns by executing the following command:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(20191208)
+df1 &amp;lt;- dat(50, 5)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Let’s generate more other databases of dimensions &lt;span class=&#34;math inline&#34;&gt;\(100\times5\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(150\times5\)&lt;/span&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(20191208)
+df2 &amp;lt;- dat(100, 5)
+df3 &amp;lt;- dat(150, 5)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As we saw in &lt;a href=&#34;https://www.cesargamboasanabria.com/en/post/2019-06-23-apply/&#34;&gt;this post&lt;/a&gt;, we could use the &lt;code&gt;apply()&lt;/code&gt; function to get the sum of the columns.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(df1,2,sum)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   V1   V2   V3   V4   V5 
+## 2546 2602 2699 1993 2482&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(df2,2,sum)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   V1   V2   V3   V4   V5 
+## 5148 4692   NA 5024 5177&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;apply(df3,2,sum)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   V1   V2   V3   V4   V5 
+##   NA 7554   NA   NA   NA&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Or, something simpler would be to use the function &lt;code&gt;colSums()&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;colSums(df1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   V1   V2   V3   V4   V5 
+## 2546 2602 2699 1993 2482&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;colSums(df2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   V1   V2   V3   V4   V5 
+## 5148 4692   NA 5024 5177&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;colSums(df3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   V1   V2   V3   V4   V5 
+##   NA 7554   NA   NA   NA&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;However, we could have a large number of databases, so the above procedures are not viable since writing so many lines of code is quite dull.&lt;/p&gt;
+&lt;p&gt;That’s the time the lists come into play. The three databases we generate can be stored in a single list as follows.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list1 &amp;lt;- list(df1, df2, df3)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;By having a list, each database becomes an element of that list. For example, element 1 is the set &lt;em&gt;df1&lt;/em&gt;, while the sets &lt;em&gt;df2&lt;/em&gt; and &lt;em&gt;df3&lt;/em&gt; are elements 2 and three, respectively. One way to call the elements within a list is by &lt;code&gt;[[]]&lt;/code&gt;, as follows we call the data set &lt;em&gt;df2&lt;/em&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list1[[2]]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      V1 V2  V3  V4  V5
+## 1    35 90  35  84  79
+## 2    51 36   4 100   5
+## 3    76 47  65  90  36
+## 4    17 22  97  72   1
+## 5    95 16   8  86  65
+## 6    73 31  47  52  87
+## 7    37 23  64  85  13
+## 8    81 62  33  82  27
+## 9    59 63  79  40  45
+## 10   38 25  34   9  24
+## 11   92 82  53  75  80
+## 12   94 51  50  35  87
+## 13   44 54  10  49  71
+## 14   96 23  54  62  99
+## 15   73 87   8  64  16
+## 16   58 94  67  41 100
+## 17   92 93  78  34  59
+## 18   30 64  53  49  80
+## 19   14 21  94  59  86
+## 20   14  9  51  42  19
+## 21   55 99  12  70  54
+## 22   30 34  93  76  68
+## 23   19 40  85  29  51
+## 24   46 83  98  41  88
+## 25   48 34 100  49  37
+## 26   29 34  72  11  62
+## 27   39 78  68  41  20
+## 28   68 62  51  68  76
+## 29   92 69  37  15  95
+## 30   15 25  63  72  24
+## 31   72 90   4  63  35
+## 32    7 34  91  95   5
+## 33   62 43   1  66  57
+## 34   32 69  29  87  30
+## 35   96 67  21  32  13
+## 36   13 71  26  96  91
+## 37   58 72  30  66   5
+## 38   80 45  84  45  86
+## 39   84 89  83  86   2
+## 40   44 78  13   6  23
+## 41   24 70  63  93   1
+## 42   22 65  32  85  40
+## 43   32 54  79  34  88
+## 44   10 12  37  31  21
+## 45   48 28   9  61  75
+## 46   19 95  22  71  41
+## 47   60 48   4  26  30
+## 48   79 34  59  80  65
+## 49   25 77  61   5  95
+## 50   69  7  71  75  60
+## 51   33 53 100  43  19
+## 52   16 82   9  98  52
+## 53   53 60  35   3  77
+## 54    9 31  33  61  72
+## 55   42 17  64  40  80
+## 56   71 87  95  31  72
+## 57   79 20  11   6  67
+## 58   67 55  57  55  31
+## 59   82 82   5  87  93
+## 60   84 34  20  22   9
+## 61   38 22  92  45  24
+## 62   48 75  60   5  74
+## 63   44 78  78  29  66
+## 64   10 70  14  37  16
+## 65   12 12  93  66  19
+## 66   88 29  63  94  30
+## 67   77 44  34  59  96
+## 68    5 46  81  11  72
+## 69   79 40  73  26  99
+## 70   96 24  46  94   7
+## 71   46 64  12   2  30
+## 72    3 38  50  89  85
+## 73   86 17  14  21  37
+## 74   57 37  NA  15  36
+## 75   23 12  48  20  46
+## 76   41  7  82  69  46
+## 77   59  5   4  93  98
+## 78   47 52  23  59  94
+## 79   19 47  58  12  47
+## 80   44 34  15  15  47
+## 81   15 38  57  84  67
+## 82   98  8  83  10  64
+## 83   50 38  48  95  40
+## 84   17 18  24   1  59
+## 85   73 12   2  30  48
+## 86   41 79  38  48  68
+## 87   12 84  77  25  79
+## 88   66 52   5  85  41
+## 89   80 39  60  29  29
+## 90  100 43  15  16   3
+## 91    9 37  75  52  94
+## 92   94 22  19  48  52
+## 93   53  9 100  83  52
+## 94   37 39  78  31  65
+## 95   96 26  66  87  22
+## 96   64 25  29   7  55
+## 97   62 50  91  21  45
+## 98   18 44  94  15  18
+## 99   61 11  48  48  50
+## 100  98 45  27  17  68&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now, if we need to apply the &lt;code&gt;colSums()&lt;/code&gt; function to each data set, we can use the &lt;code&gt;lapply()&lt;/code&gt; function:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lapply(list1, colSums)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [[1]]
+##   V1   V2   V3   V4   V5 
+## 2546 2602 2699 1993 2482 
+## 
+## [[2]]
+##   V1   V2   V3   V4   V5 
+## 5148 4692   NA 5024 5177 
+## 
+## [[3]]
+##   V1   V2   V3   V4   V5 
+##   NA 7554   NA   NA   NA&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The result is a list with the sum of the columns of each database. If we need to do the sums, but without counting the missing values, we have to incorporate the respective argument of the &lt;code&gt;colSums()&lt;/code&gt; function.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lapply(list1, colSums, na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [[1]]
+##   V1   V2   V3   V4   V5 
+## 2546 2602 2699 1993 2482 
+## 
+## [[2]]
+##   V1   V2   V3   V4   V5 
+## 5148 4692 4887 5024 5177 
+## 
+## [[3]]
+##   V1   V2   V3   V4   V5 
+## 7780 7554 7470 7826 7033&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As you can see, the &lt;code&gt;lapply()&lt;/code&gt; function works with three arguments: a list -in this case, the list object-, a function that we want to apply to each element of that list -in this case, &lt;code&gt;colSums()&lt;/code&gt;-, and if necessary, the arguments requested by the indicated function -in this case &lt;code&gt;na.rm = TRUE&lt;/code&gt; of the &lt;code&gt;colSums()&lt;/code&gt;- function.&lt;/p&gt;
+&lt;p&gt;The previous result returns the calculations in an object of class &lt;code&gt;list&lt;/code&gt;; however, in many cases, it is desirable to obtain a more orderly format. The &lt;code&gt;sapply()&lt;/code&gt; function works identically to &lt;code&gt;lapply()&lt;/code&gt;, with the proviso that &lt;strong&gt;if the result of each item in the list has the same length&lt;/strong&gt;, the &lt;code&gt;sapply()&lt;/code&gt; function groups the result. By using the &lt;code&gt;lapply()&lt;/code&gt; motion, we obtain a list of three elements, where each element is a vector of length five, that is, they all have the same length, so the &lt;code&gt;sapply()&lt;/code&gt; function would return the following:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sapply(list1, colSums)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    [,1] [,2] [,3]
+## V1 2546 5148   NA
+## V2 2602 4692 7554
+## V3 2699   NA   NA
+## V4 1993 5024   NA
+## V5 2482 5177   NA&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sapply(list1, colSums, na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    [,1] [,2] [,3]
+## V1 2546 5148 7780
+## V2 2602 4692 7554
+## V3 2699 4887 7470
+## V4 1993 5024 7826
+## V5 2482 5177 7033&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Although the &lt;code&gt;sapply()&lt;/code&gt; function seems more useful than &lt;code&gt;lapply()&lt;/code&gt;, it has a small inconvenience, and it is always going to work… How can this be an inconvenience? Let’s incorporate a new data set, but this time with six columns instead of five like the previous ones.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df4 &amp;lt;- dat(150, 6)
+list2 &amp;lt;- list(df1, df2, df3, df4)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If we use the &lt;code&gt;lapply()&lt;/code&gt; function again, we would again obtain the sums by columns in the form of a list:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lapply(list2, colSums, na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [[1]]
+##   V1   V2   V3   V4   V5 
+## 2546 2602 2699 1993 2482 
+## 
+## [[2]]
+##   V1   V2   V3   V4   V5 
+## 5148 4692 4887 5024 5177 
+## 
+## [[3]]
+##   V1   V2   V3   V4   V5 
+## 7780 7554 7470 7826 7033 
+## 
+## [[4]]
+##   V1   V2   V3   V4   V5   V6 
+## 8205 6712 6794 8049 7562 7335&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;While if we apply the &lt;code&gt;sapply()&lt;/code&gt; function:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sapply(list2, colSums, na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [[1]]
+##   V1   V2   V3   V4   V5 
+## 2546 2602 2699 1993 2482 
+## 
+## [[2]]
+##   V1   V2   V3   V4   V5 
+## 5148 4692 4887 5024 5177 
+## 
+## [[3]]
+##   V1   V2   V3   V4   V5 
+## 7780 7554 7470 7826 7033 
+## 
+## [[4]]
+##   V1   V2   V3   V4   V5   V6 
+## 8205 6712 6794 8049 7562 7335&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now we get a list, that is, the same result as with &lt;code&gt;sapply()&lt;/code&gt;. The reason is that not all elements have the same length, before there were three vectors of length five, while now also a vector of length six. This fact seems to be irrelevant, since a result is still being obtained, however depending on the context that result will not always be valid.&lt;/p&gt;
+&lt;p&gt;Suppose that based on the analysis we are doing, we know that the sum of the columns can only return a vector of length five and that if the result is something else, it may be due to an error in one of the databases, such as additional columns. The &lt;code&gt;vapply()&lt;/code&gt; function allows us, like &lt;code&gt;sapply()&lt;/code&gt;, to apply a function to the elements of a list, but specifying that the expected result, in this case, is a numerical vector of length five. Let’s first make a comparison between &lt;code&gt;sapply()&lt;/code&gt; and &lt;code&gt;vapply()&lt;/code&gt; with the object &lt;code&gt;list&lt;/code&gt;, which has three databases with five columns:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sapply(list1, colSums, na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    [,1] [,2] [,3]
+## V1 2546 5148 7780
+## V2 2602 4692 7554
+## V3 2699 4887 7470
+## V4 1993 5024 7826
+## V5 2482 5177 7033&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;vapply(list1, colSums, numeric(5), na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    [,1] [,2] [,3]
+## V1 2546 5148 7780
+## V2 2602 4692 7554
+## V3 2699 4887 7470
+## V4 1993 5024 7826
+## V5 2482 5177 7033&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The results are identical. But now let’s repeat the previous example but for the object &lt;code&gt;list2&lt;/code&gt;, which contains a data set with six columns.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sapply(list2, colSums, na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [[1]]
+##   V1   V2   V3   V4   V5 
+## 2546 2602 2699 1993 2482 
+## 
+## [[2]]
+##   V1   V2   V3   V4   V5 
+## 5148 4692 4887 5024 5177 
+## 
+## [[3]]
+##   V1   V2   V3   V4   V5 
+## 7780 7554 7470 7826 7033 
+## 
+## [[4]]
+##   V1   V2   V3   V4   V5   V6 
+## 8205 6712 6794 8049 7562 7335&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;sapply()&lt;/code&gt; function performs the calculation, but under the assumption that the expected result is vectors of length five, this result is incorrect. The &lt;code&gt;vapply()&lt;/code&gt; function helps us control this problem.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;vapply(list2, colSums, numeric(5), na.rm=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Error in vapply(list2, colSums, numeric(5), na.rm = TRUE): Los valores deben ser de longitud 5, 
+## pero el resultado FUN(X [[4]]) es la longitud 6&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;When trying to execute the code, we get an error, since evaluating the function in element number four of the list returns a vector of length six and not five as expected.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;vapply()&lt;/code&gt; function is generally more advisable than &lt;code&gt;sapply()&lt;/code&gt; because it allows you to have more control over the expected results.&lt;/p&gt;
 </description>
     </item>
     
