@@ -19,7 +19,7 @@ organizations:
 - name: University of Costa Rica
   url: "http://estadistica.ucr.ac.cr/index.php/es/"
 - name: R-Bloggers
-  url: "https://www.r-bloggers.com/"
+  url: "https://www.r-bloggers.com/2020/03/apply-family-functions-part-4/"
 
 # Short bio (displayed in user profile at end of posts)
 bio: My field of study is statistics, especially in classification analysis, forecasts and demographic topics focusing on programming.
@@ -37,6 +37,9 @@ education:
   - course: Masters in Statistics
     institution: University of Costa Rica
     year: 2018-presente
+  - course: Specialization in Demographic Analysis for Sustainable Development
+    institution: CELADE-CEPAL
+    year: 2020
   - course: B.S. in Statistics
     institution: University of Costa Rica
     year: 2017
@@ -75,6 +78,6 @@ user_groups:
 - Visitors
 ---
 
-Born in San José, Costa Rica in 1989, César Gamboa is a Statistician graduated from the School of Statistics of University of Costa Rica. Professor of Probability and Statistics, in addition to programming in the R language, he is also a demographic researcher dedicated to the use of algorithms for optimization and analysis by through computer simulations.
+Born in San José, Costa Rica, in 1989, César Gamboa is a Statistician who graduated from the School of Statistics of the University of Costa Rica. Professor of Probability and Statistics, in addition to programming in the R language, is also a demographic researcher dedicated to algorithms for optimization and analysis through computer simulations.
 
-Recognized for his capacity for statistical analysis,  software and programming languages management for data analysis such as R, Python, and Git. Versatile for the automation of processes through specialized algorithms, analytical and mathematical capacity and the ability for self-taught learning.
+He is recognized for his capacity for statistical analysis,  software, and programming languages management for data analysis such as R, Python, and Git. Versatile for the automation of processes through specialized algorithms, analytical and mathematical capacity, and the ability for self-taught learning.

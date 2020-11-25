@@ -19,7 +19,7 @@ organizations:
 - name: Universidad de Costa Rica
   url: "http://estadistica.ucr.ac.cr/index.php/es/"
 - name: R-Bloggers
-  url: "https://www.r-bloggers.com/"
+  url: "https://www.r-bloggers.com/2020/03/apply-family-functions-part-4/"
 
 # Short bio (displayed in user profile at end of posts)
 bio: Mi campo de estudio es la estadística, especialmente en pronósticos, análisis de clasificación y temas demográficos con enfoque en programación.
@@ -37,6 +37,9 @@ education:
   - course: Maestría Académica en Estadística
     institution: Universidad de Costa Rica
     year: 2018-presente
+  - course: Especialización en Análisis Demográfico para el Desarrollo Sostenible
+    institution: CELADE-CEPAL
+    year: 2020
   - course: Bachillerato en Estadística
     institution: Universidad de Costa Rica
     year: 2017

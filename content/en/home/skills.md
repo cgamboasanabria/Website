@@ -18,19 +18,19 @@ subtitle = ""
   icon = "r-project"
   icon_pack = "fab"
   name = "R"
-  description = "100% (this webpage has been developed using RStudio)"
+  description = "(this webpage has been developed using RStudio)"
   
 [[feature]]
   icon = "python"
   icon_pack = "fab"
   name = "Python"
-  description = "70%"  
+  description = ""  
   
 [[feature]]
   icon = "github"
   icon_pack = "fab"
   name = "git"
-  description = "100%" 
+  description = "" 
   
 [[feature]]
   icon = "chart-area"
