@@ -14,6 +14,6 @@ Estudiantes Ingeniería Mecánica UCR
 Generación B UCR
 
 
-¡Hola! Los días 8, 10, 15 y 17 de febrero estaré impartiendo un curso de programación de R de manera 100% en línea. Para más información pueden ponerse en contacto con la Unidad de Servicios Estadísticos - USES​ de la Universidad de Costa Rica por medio de su página de Facebook o al correo electrónico uses.ee@ucr.ac.cr.
+¡Hola! Los días 1, 4, 8 y 11 de agosto estaré impartiendo el curso Principios de Machine Learning para problemas de clasificación con R de manera 100% en línea. Para más información pueden ponerse en contacto con la Unidad de Servicios Estadísticos - USES​ de la Universidad de Costa Rica por medio de su página de Facebook o al correo electrónico uses.ee@ucr.ac.cr.
 
 ¡Hola! Puedes obtener más detalles contactando directamente a la Universidad de Costa Rica al correo electrónico uses.ee@ucr.ac.cr.
