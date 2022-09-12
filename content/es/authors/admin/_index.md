@@ -67,6 +67,9 @@ social:
 - icon: cv
   icon_pack: ai
   link: files/CV.pdf
+- icon: youtube
+  icon_pack: fab
+  link: https://www.youtube.com/channel/UCUNLO5uWG-naqKm17utC69w
 
 # Enter email to display Gravatar (if Gravatar enabled in Config)
 email: ""
