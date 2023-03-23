@@ -2,7 +2,6 @@ R project en Español
 Yo, Estadístico
 SIG con R, Python y QGIS
 Minería de Datos con R y Python
-R Markdown y Latex En español
 Big Data y Analítica con R, Python, Hadoop, Spark, MongoDB, etc.
 Analista de datos (Data Analyst)
 Inteligencia de Negocios con R, Python y Power BI
@@ -13,7 +12,11 @@ ESTADÍSTICA Y PROGRAMACIÓN
 Estudiantes Ingeniería Mecánica UCR
 Generación B UCR
 
-
+Mi curso:
 ¡Hola! Los días 1, 4, 8 y 11 de agosto estaré impartiendo el curso Principios de Machine Learning para problemas de clasificación con R de manera 100% en línea. Para más información pueden ponerse en contacto con la Unidad de Servicios Estadísticos - USES​ de la Universidad de Costa Rica por medio de su página de Facebook o al correo electrónico uses.ee@ucr.ac.cr.
+
+Curso Stefany:
+
+¡Hola! Los días 16, 19, 23 y 26 de enero la Universidad de Costa Rica estará impartiendo el curso programación estadística con R de manera 100% en línea. Para más información pueden ponerse en contacto con la Unidad de Servicios Estadísticos - USES​ de la Universidad de Costa Rica por medio de su página de Facebook o al correo electrónico uses.ee@ucr.ac.cr.
 
 ¡Hola! Puedes obtener más detalles contactando directamente a la Universidad de Costa Rica al correo electrónico uses.ee@ucr.ac.cr.
