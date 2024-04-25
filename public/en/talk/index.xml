@@ -2,49 +2,85 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Recent &amp; Upcoming Talks on caesaR&#39;s</title>
-    <link>/en/talk/</link>
+    <link>//localhost:4321/en/talk/</link>
     <description>Recent content in Recent &amp; Upcoming Talks on caesaR&#39;s</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
-    <copyright>&amp;copy; 2020</copyright>
-    <lastBuildDate>Mon, 20 Jul 2020 17:00:00 +0000</lastBuildDate>
+    <copyright>&amp;copy; 2024</copyright>
+    <lastBuildDate>Tue, 28 Feb 2023 17:00:00 +0000</lastBuildDate>
     
-	    <atom:link href="/en/talk/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="//localhost:4321/en/talk/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Machine Learning for clasification problems with R</title>
+      <link>//localhost:4321/en/talk/cursorml202302/</link>
+      <pubDate>Tue, 28 Feb 2023 17:00:00 +0000</pubDate>
+      
+      <guid>//localhost:4321/en/talk/cursorml202302/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>R Programming</title>
-      <link>/en/talk/cursor202007/</link>
+      <link>//localhost:4321/en/talk/cursor202301/</link>
+      <pubDate>Mon, 16 Jan 2023 17:00:00 +0000</pubDate>
+      
+      <guid>//localhost:4321/en/talk/cursor202301/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Machine Learning for clasification problems with R</title>
+      <link>//localhost:4321/en/talk/cursorml202208/</link>
+      <pubDate>Tue, 08 Mar 2022 17:00:00 +0000</pubDate>
+      
+      <guid>//localhost:4321/en/talk/cursorml202208/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R Programming</title>
+      <link>//localhost:4321/en/talk/cursor202203/</link>
+      <pubDate>Tue, 08 Mar 2022 17:00:00 +0000</pubDate>
+      
+      <guid>//localhost:4321/en/talk/cursor202203/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R Programming</title>
+      <link>//localhost:4321/en/talk/cursor202007/</link>
       <pubDate>Mon, 20 Jul 2020 17:00:00 +0000</pubDate>
       
-      <guid>/en/talk/cursor202007/</guid>
+      <guid>//localhost:4321/en/talk/cursor202007/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R Programming</title>
-      <link>/en/talk/cursor202001/</link>
+      <link>//localhost:4321/en/talk/cursor202001/</link>
       <pubDate>Tue, 28 Jan 2020 17:00:00 +0000</pubDate>
       
-      <guid>/en/talk/cursor202001/</guid>
+      <guid>//localhost:4321/en/talk/cursor202001/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R Programming</title>
-      <link>/en/talk/cursor201906/</link>
+      <link>//localhost:4321/en/talk/cursor201906/</link>
       <pubDate>Tue, 16 Jul 2019 17:00:00 +0000</pubDate>
       
-      <guid>/en/talk/cursor201906/</guid>
+      <guid>//localhost:4321/en/talk/cursor201906/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R as a tool of statistical analysis</title>
-      <link>/en/talk/conversatorior/</link>
+      <link>//localhost:4321/en/talk/conversatorior/</link>
       <pubDate>Thu, 27 Jun 2019 10:00:00 +0000</pubDate>
       
-      <guid>/en/talk/conversatorior/</guid>
+      <guid>//localhost:4321/en/talk/conversatorior/</guid>
       <description></description>
     </item>
     

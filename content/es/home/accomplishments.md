@@ -277,4 +277,24 @@ date_format = "Jan 2006"
   date_start = "2016-06-01"
   date_end = ""
   description = ""
+ 
+[[item]]
+  organization = "DataCamp"
+  organization_url = "https://www.datacamp.com"
+  title = "Analista de datos con SQL"
+  url = ""
+  certificate_url = "https://www.datacamp.com/statement-of-accomplishment/track/a4c5128d9d52b645c65f10b6469772992ba835a8"
+  date_start = "2022-06-01"
+  date_end = ""
+  description = ""
+  
+[[item]]
+  organization = "DataCamp"
+  organization_url = "https://www.datacamp.com"
+  title = "Analista de datos con Tableau"
+  url = ""
+  certificate_url = "https://www.datacamp.com/statement-of-accomplishment/track/3de7440c7ec3c62189fca574c0fd4f7a23960000?raw=1"
+  date_start = "2023-06-01"
+  date_end = ""
+  description = ""
 +++

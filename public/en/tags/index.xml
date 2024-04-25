@@ -2,148 +2,148 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on caesaR&#39;s</title>
-    <link>/en/tags/</link>
+    <link>//localhost:4321/en/tags/</link>
     <description>Recent content in Tags on caesaR&#39;s</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
-    <copyright>&amp;copy; 2020</copyright>
+    <copyright>&amp;copy; 2024</copyright>
     <lastBuildDate>Tue, 29 Sep 2020 18:55:57 -0600</lastBuildDate>
     
-	    <atom:link href="/en/tags/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="//localhost:4321/en/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>apply family functions</title>
-      <link>/en/tags/apply-family-functions/</link>
+      <title>Apply Family Functions</title>
+      <link>//localhost:4321/en/tags/apply-family-functions/</link>
       <pubDate>Tue, 29 Sep 2020 18:55:57 -0600</pubDate>
       
-      <guid>/en/tags/apply-family-functions/</guid>
+      <guid>//localhost:4321/en/tags/apply-family-functions/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R</title>
-      <link>/en/tags/r/</link>
+      <link>//localhost:4321/en/tags/r/</link>
       <pubDate>Tue, 29 Sep 2020 18:55:57 -0600</pubDate>
       
-      <guid>/en/tags/r/</guid>
+      <guid>//localhost:4321/en/tags/r/</guid>
       <description></description>
     </item>
     
     <item>
       <title>RStudio</title>
-      <link>/en/tags/rstudio/</link>
+      <link>//localhost:4321/en/tags/rstudio/</link>
       <pubDate>Tue, 29 Sep 2020 18:55:57 -0600</pubDate>
       
-      <guid>/en/tags/rstudio/</guid>
+      <guid>//localhost:4321/en/tags/rstudio/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>tapply</title>
-      <link>/en/tags/tapply/</link>
+      <title>Tapply</title>
+      <link>//localhost:4321/en/tags/tapply/</link>
       <pubDate>Tue, 29 Sep 2020 18:55:57 -0600</pubDate>
       
-      <guid>/en/tags/tapply/</guid>
+      <guid>//localhost:4321/en/tags/tapply/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>apply</title>
-      <link>/en/tags/apply/</link>
+      <title>Apply</title>
+      <link>//localhost:4321/en/tags/apply/</link>
       <pubDate>Mon, 28 Sep 2020 17:42:09 -0600</pubDate>
       
-      <guid>/en/tags/apply/</guid>
+      <guid>//localhost:4321/en/tags/apply/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>apply functions</title>
-      <link>/en/tags/apply-functions/</link>
+      <title>Apply Functions</title>
+      <link>//localhost:4321/en/tags/apply-functions/</link>
       <pubDate>Sun, 01 Mar 2020 18:55:57 -0600</pubDate>
       
-      <guid>/en/tags/apply-functions/</guid>
+      <guid>//localhost:4321/en/tags/apply-functions/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>eapply</title>
-      <link>/en/tags/eapply/</link>
+      <title>Eapply</title>
+      <link>//localhost:4321/en/tags/eapply/</link>
       <pubDate>Sun, 01 Mar 2020 18:55:57 -0600</pubDate>
       
-      <guid>/en/tags/eapply/</guid>
+      <guid>//localhost:4321/en/tags/eapply/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>mapply</title>
-      <link>/en/tags/mapply/</link>
+      <title>Mapply</title>
+      <link>//localhost:4321/en/tags/mapply/</link>
       <pubDate>Sun, 01 Mar 2020 18:55:57 -0600</pubDate>
       
-      <guid>/en/tags/mapply/</guid>
+      <guid>//localhost:4321/en/tags/mapply/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>rapply</title>
-      <link>/en/tags/rapply/</link>
+      <title>Rapply</title>
+      <link>//localhost:4321/en/tags/rapply/</link>
       <pubDate>Sun, 01 Mar 2020 18:55:57 -0600</pubDate>
       
-      <guid>/en/tags/rapply/</guid>
+      <guid>//localhost:4321/en/tags/rapply/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>lapply</title>
-      <link>/en/tags/lapply/</link>
+      <title>Lapply</title>
+      <link>//localhost:4321/en/tags/lapply/</link>
       <pubDate>Sun, 08 Dec 2019 18:55:57 -0600</pubDate>
       
-      <guid>/en/tags/lapply/</guid>
+      <guid>//localhost:4321/en/tags/lapply/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>sapply</title>
-      <link>/en/tags/sapply/</link>
+      <title>Sapply</title>
+      <link>//localhost:4321/en/tags/sapply/</link>
       <pubDate>Sun, 08 Dec 2019 18:55:57 -0600</pubDate>
       
-      <guid>/en/tags/sapply/</guid>
+      <guid>//localhost:4321/en/tags/sapply/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>vapply</title>
-      <link>/en/tags/vapply/</link>
+      <title>Vapply</title>
+      <link>//localhost:4321/en/tags/vapply/</link>
       <pubDate>Sun, 08 Dec 2019 18:55:57 -0600</pubDate>
       
-      <guid>/en/tags/vapply/</guid>
+      <guid>//localhost:4321/en/tags/vapply/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Categorical data</title>
-      <link>/en/tags/categorical-data/</link>
+      <title>Categorical Data</title>
+      <link>//localhost:4321/en/tags/categorical-data/</link>
       <pubDate>Sun, 23 Jun 2019 13:42:09 -0600</pubDate>
       
-      <guid>/en/tags/categorical-data/</guid>
+      <guid>//localhost:4321/en/tags/categorical-data/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Descriptive</title>
-      <link>/en/tags/descriptive/</link>
+      <link>//localhost:4321/en/tags/descriptive/</link>
       <pubDate>Sun, 23 Jun 2019 13:42:09 -0600</pubDate>
       
-      <guid>/en/tags/descriptive/</guid>
+      <guid>//localhost:4321/en/tags/descriptive/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Exploratory data analysis</title>
-      <link>/en/tags/exploratory-data-analysis/</link>
+      <title>Exploratory Data Analysis</title>
+      <link>//localhost:4321/en/tags/exploratory-data-analysis/</link>
       <pubDate>Sun, 23 Jun 2019 13:42:09 -0600</pubDate>
       
-      <guid>/en/tags/exploratory-data-analysis/</guid>
+      <guid>//localhost:4321/en/tags/exploratory-data-analysis/</guid>
       <description></description>
     </item>
     

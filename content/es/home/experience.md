@@ -18,12 +18,23 @@ date_format = "Jan 2006"
 #   Leave `date_end` empty if it's your current employer.
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
 [[experience]]
-  title = "Profesional en análisis demográfico"
+  title = "Científico de Datos II"
+  company = "BAC"
+  company_url = "https://www.baccredomatic.com/"
+  location = "San José, Costa Rica"
+  date_start = "2022-11-21"
+  date_end = ""
+  description = """
+  * Proyecciones Macroeconómicas
+  * Modelos de riesgo de crédito
+  """
+[[experience]]
+  title = "Demógrafo"
   company = "Instituto Nacional de Estadística y Censos"
   company_url = "http://www.inec.go.cr/"
   location = "San José, Costa Rica"
   date_start = "2018-02-16"
-  date_end = ""
+  date_end = "2022-11-20"
   description = """
   * Estimaciones y proyecciones de población
   * Automatización de procesos y depuración de bases de datos
@@ -35,10 +46,11 @@ date_format = "Jan 2006"
   company_url = "http://www.ucr.ac.cr/"
   location = "San José, Costa Rica"
   date_start = "2018-05-16"
-  date_end = ""
+  date_end = "2023-02-18"
   description = """
   * Programación Estadística con R
   * Probabilidad y Estadística I
+  * Estadística computacional
   """
 [[experience]]
   title = "Analista de la calidad del servicio y atención al cliente"

@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on caesaR&#39;s</title>
-    <link>/en/categories/</link>
+    <link>//localhost:4321/en/categories/</link>
     <description>Recent content in Categories on caesaR&#39;s</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
-    <copyright>&amp;copy; 2020</copyright>
+    <copyright>&amp;copy; 2024</copyright>
     <lastBuildDate>Tue, 29 Sep 2020 18:55:57 -0600</lastBuildDate>
     
-	    <atom:link href="/en/categories/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="//localhost:4321/en/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>R basics</title>
-      <link>/en/categories/r-basics/</link>
+      <title>R Basics</title>
+      <link>//localhost:4321/en/categories/r-basics/</link>
       <pubDate>Tue, 29 Sep 2020 18:55:57 -0600</pubDate>
       
-      <guid>/en/categories/r-basics/</guid>
+      <guid>//localhost:4321/en/categories/r-basics/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Exploratory data analysis</title>
-      <link>/en/categories/exploratory-data-analysis/</link>
+      <title>Exploratory Data Analysis</title>
+      <link>//localhost:4321/en/categories/exploratory-data-analysis/</link>
       <pubDate>Sun, 23 Jun 2019 13:42:09 -0600</pubDate>
       
-      <guid>/en/categories/exploratory-data-analysis/</guid>
+      <guid>//localhost:4321/en/categories/exploratory-data-analysis/</guid>
       <description></description>
     </item>
     

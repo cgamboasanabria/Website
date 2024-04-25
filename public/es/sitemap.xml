@@ -1,487 +1,465 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
-    <loc>/es/</loc>
+    <loc>//localhost:4321/es/</loc>
+    <lastmod>2023-02-28T17:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="//localhost:4321/en/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-cr"
+                href="//localhost:4321/es/"
+                />
+  </url><url>
+    <loc>//localhost:4321/es/talk/cursorml202302/</loc>
+    <lastmod>2023-02-28T17:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="//localhost:4321/en/talk/cursorml202302/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-cr"
+                href="//localhost:4321/es/talk/cursorml202302/"
+                />
+  </url><url>
+    <loc>//localhost:4321/es/talk/</loc>
+    <lastmod>2023-02-28T17:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="//localhost:4321/en/talk/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-cr"
+                href="//localhost:4321/es/talk/"
+                />
+  </url><url>
+    <loc>//localhost:4321/es/talk/cursor202301/</loc>
+    <lastmod>2023-01-16T17:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="//localhost:4321/en/talk/cursor202301/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-cr"
+                href="//localhost:4321/es/talk/cursor202301/"
+                />
+  </url><url>
+    <loc>//localhost:4321/es/talk/cursorml202208/</loc>
+    <lastmod>2022-08-01T17:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="//localhost:4321/en/talk/cursorml202208/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-cr"
+                href="//localhost:4321/es/talk/cursorml202208/"
+                />
+  </url><url>
+    <loc>//localhost:4321/es/talk/cursor202203/</loc>
+    <lastmod>2022-03-08T17:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="//localhost:4321/en/talk/cursor202203/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-cr"
+                href="//localhost:4321/es/talk/cursor202203/"
+                />
+  </url><url>
+    <loc>//localhost:4321/es/talk/cursor202007/</loc>
     <lastmod>2020-07-20T17:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="/en/"
+                hreflang="en-us"
+                href="//localhost:4321/en/talk/cursor202007/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="es"
-                href="/es/"
+                hreflang="es-cr"
+                href="//localhost:4321/es/talk/cursor202007/"
                 />
-  </url>
-  
-  <url>
-    <loc>/es/talk/cursor202007/</loc>
-    <lastmod>2020-07-20T17:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/talk/cursor202007/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/talk/cursor202007/"
-                />
-  </url>
-  
-  <url>
-    <loc>/es/talk/</loc>
-    <lastmod>2020-07-20T17:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/talk/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/talk/"
-                />
-  </url>
-  
-  <url>
-    <loc>/es/talk/dcur/</loc>
+  </url><url>
+    <loc>//localhost:4321/es/talk/dcur/</loc>
     <lastmod>2020-07-02T17:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/es/authors/</loc>
+  </url><url>
+    <loc>//localhost:4321/es/authors/</loc>
     <lastmod>2020-03-01T18:55:57-06:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="/en/authors/"
+                hreflang="en-us"
+                href="//localhost:4321/en/authors/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="es"
-                href="/es/authors/"
+                hreflang="es-cr"
+                href="//localhost:4321/es/authors/"
                 />
-  </url>
-  
-  <url>
-    <loc>/es/categories/</loc>
+  </url><url>
+    <loc>//localhost:4321/es/categories/</loc>
     <lastmod>2020-03-01T18:55:57-06:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="/en/categories/"
+                hreflang="en-us"
+                href="//localhost:4321/en/categories/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="es"
-                href="/es/categories/"
+                hreflang="es-cr"
+                href="//localhost:4321/es/categories/"
                 />
-  </url>
-  
-  <url>
-    <loc>/es/authors/c%C3%A9sar-gamboa-sanabria/</loc>
+  </url><url>
+    <loc>//localhost:4321/es/authors/c%C3%A9sar-gamboa-sanabria/</loc>
     <lastmod>2020-03-01T18:55:57-06:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="/en/authors/c%C3%A9sar-gamboa-sanabria/"
+                hreflang="en-us"
+                href="//localhost:4321/en/authors/c%C3%A9sar-gamboa-sanabria/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="es"
-                href="/es/authors/c%C3%A9sar-gamboa-sanabria/"
+                hreflang="es-cr"
+                href="//localhost:4321/es/authors/c%C3%A9sar-gamboa-sanabria/"
                 />
-  </url>
-  
-  <url>
-    <loc>/es/tags/eapply/</loc>
+  </url><url>
+    <loc>//localhost:4321/es/tags/eapply/</loc>
     <lastmod>2020-03-01T18:55:57-06:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="/en/tags/eapply/"
+                hreflang="en-us"
+                href="//localhost:4321/en/tags/eapply/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="es"
-                href="/es/tags/eapply/"
+                hreflang="es-cr"
+                href="//localhost:4321/es/tags/eapply/"
                 />
-  </url>
-  
-  <url>
-    <loc>/es/post/2020-03-01-eapply_rapply_mapply/</loc>
+  </url><url>
+    <loc>//localhost:4321/es/post/2020-03-01-eapply_rapply_mapply/</loc>
     <lastmod>2020-03-01T18:55:57-06:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="/en/post/2020-03-01-eapply_rapply_mapply/"
+                hreflang="en-us"
+                href="//localhost:4321/en/post/2020-03-01-eapply_rapply_mapply/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="es"
-                href="/es/post/2020-03-01-eapply_rapply_mapply/"
+                hreflang="es-cr"
+                href="//localhost:4321/es/post/2020-03-01-eapply_rapply_mapply/"
                 />
-  </url>
-  
-  <url>
-    <loc>/es/tags/funciones-apply/</loc>
+  </url><url>
+    <loc>//localhost:4321/es/tags/funciones-apply/</loc>
     <lastmod>2020-03-01T18:55:57-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/es/categories/fundamentos-de-r/</loc>
+  </url><url>
+    <loc>//localhost:4321/es/categories/fundamentos-de-r/</loc>
     <lastmod>2020-03-01T18:55:57-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/es/tags/mapply/</loc>
+  </url><url>
+    <loc>//localhost:4321/es/tags/mapply/</loc>
     <lastmod>2020-03-01T18:55:57-06:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="/en/tags/mapply/"
+                hreflang="en-us"
+                href="//localhost:4321/en/tags/mapply/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="es"
-                href="/es/tags/mapply/"
+                hreflang="es-cr"
+                href="//localhost:4321/es/tags/mapply/"
                 />
-  </url>
-  
-  <url>
-    <loc>/es/post/</loc>
+  </url><url>
+    <loc>//localhost:4321/es/post/</loc>
     <lastmod>2020-03-01T18:55:57-06:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="/en/post/"
+                hreflang="en-us"
+                href="//localhost:4321/en/post/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="es"
-                href="/es/post/"
+                hreflang="es-cr"
+                href="//localhost:4321/es/post/"
                 />
-  </url>
-  
-  <url>
-    <loc>/es/tags/r/</loc>
+  </url><url>
+    <loc>//localhost:4321/es/tags/r/</loc>
     <lastmod>2020-03-01T18:55:57-06:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="/en/tags/r/"
+                hreflang="en-us"
+                href="//localhost:4321/en/tags/r/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="es"
-                href="/es/tags/r/"
+                hreflang="es-cr"
+                href="//localhost:4321/es/tags/r/"
                 />
-  </url>
-  
-  <url>
-    <loc>/es/tags/rapply/</loc>
+  </url><url>
+    <loc>//localhost:4321/es/tags/rapply/</loc>
     <lastmod>2020-03-01T18:55:57-06:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="/en/tags/rapply/"
+                hreflang="en-us"
+                href="//localhost:4321/en/tags/rapply/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="es"
-                href="/es/tags/rapply/"
+                hreflang="es-cr"
+                href="//localhost:4321/es/tags/rapply/"
                 />
-  </url>
-  
-  <url>
-    <loc>/es/tags/rstudio/</loc>
+  </url><url>
+    <loc>//localhost:4321/es/tags/rstudio/</loc>
     <lastmod>2020-03-01T18:55:57-06:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="/en/tags/rstudio/"
+                hreflang="en-us"
+                href="//localhost:4321/en/tags/rstudio/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="es"
-                href="/es/tags/rstudio/"
+                hreflang="es-cr"
+                href="//localhost:4321/es/tags/rstudio/"
                 />
-  </url>
-  
-  <url>
-    <loc>/es/tags/</loc>
+  </url><url>
+    <loc>//localhost:4321/es/tags/</loc>
     <lastmod>2020-03-01T18:55:57-06:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="/en/tags/"
+                hreflang="en-us"
+                href="//localhost:4321/en/tags/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="es"
-                href="/es/tags/"
+                hreflang="es-cr"
+                href="//localhost:4321/es/tags/"
                 />
-  </url>
-  
-  <url>
-    <loc>/es/talk/cursor202001/</loc>
+  </url><url>
+    <loc>//localhost:4321/es/talk/cursor202001/</loc>
     <lastmod>2020-01-28T17:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="/en/talk/cursor202001/"
+                hreflang="en-us"
+                href="//localhost:4321/en/talk/cursor202001/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="es"
-                href="/es/talk/cursor202001/"
+                hreflang="es-cr"
+                href="//localhost:4321/es/talk/cursor202001/"
                 />
-  </url>
-  
-  <url>
-    <loc>/es/post/2019-12-08-lapply_sapply_vapply/</loc>
+  </url><url>
+    <loc>//localhost:4321/es/post/2019-12-08-lapply_sapply_vapply/</loc>
     <lastmod>2019-12-08T18:55:57-06:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="/en/post/2019-12-08-lapply_sapply_vapply/"
+                hreflang="en-us"
+                href="//localhost:4321/en/post/2019-12-08-lapply_sapply_vapply/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="es"
-                href="/es/post/2019-12-08-lapply_sapply_vapply/"
+                hreflang="es-cr"
+                href="//localhost:4321/es/post/2019-12-08-lapply_sapply_vapply/"
                 />
-  </url>
-  
-  <url>
-    <loc>/es/tags/lapply/</loc>
+  </url><url>
+    <loc>//localhost:4321/es/tags/lapply/</loc>
     <lastmod>2019-12-08T18:55:57-06:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="/en/tags/lapply/"
+                hreflang="en-us"
+                href="//localhost:4321/en/tags/lapply/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="es"
-                href="/es/tags/lapply/"
+                hreflang="es-cr"
+                href="//localhost:4321/es/tags/lapply/"
                 />
-  </url>
-  
-  <url>
-    <loc>/es/tags/sapply/</loc>
+  </url><url>
+    <loc>//localhost:4321/es/tags/sapply/</loc>
     <lastmod>2019-12-08T18:55:57-06:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="/en/tags/sapply/"
+                hreflang="en-us"
+                href="//localhost:4321/en/tags/sapply/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="es"
-                href="/es/tags/sapply/"
+                hreflang="es-cr"
+                href="//localhost:4321/es/tags/sapply/"
                 />
-  </url>
-  
-  <url>
-    <loc>/es/tags/vapply/</loc>
+  </url><url>
+    <loc>//localhost:4321/es/tags/vapply/</loc>
     <lastmod>2019-12-08T18:55:57-06:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="/en/tags/vapply/"
+                hreflang="en-us"
+                href="//localhost:4321/en/tags/vapply/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="es"
-                href="/es/tags/vapply/"
+                hreflang="es-cr"
+                href="//localhost:4321/es/tags/vapply/"
                 />
-  </url>
-  
-  <url>
-    <loc>/es/post/2019-07-31-tapply/</loc>
+  </url><url>
+    <loc>//localhost:4321/es/post/2019-07-31-tapply/</loc>
     <lastmod>2019-07-31T18:55:57-06:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="/en/post/2019-07-31-tapply/"
+                hreflang="en-us"
+                href="//localhost:4321/en/post/2019-07-31-tapply/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="es"
-                href="/es/post/2019-07-31-tapply/"
+                hreflang="es-cr"
+                href="//localhost:4321/es/post/2019-07-31-tapply/"
                 />
-  </url>
-  
-  <url>
-    <loc>/es/tags/tapply/</loc>
+  </url><url>
+    <loc>//localhost:4321/es/tags/tapply/</loc>
     <lastmod>2019-07-31T18:55:57-06:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="/en/tags/tapply/"
+                hreflang="en-us"
+                href="//localhost:4321/en/tags/tapply/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="es"
-                href="/es/tags/tapply/"
+                hreflang="es-cr"
+                href="//localhost:4321/es/tags/tapply/"
                 />
-  </url>
-  
-  <url>
-    <loc>/es/tags/apply/</loc>
+  </url><url>
+    <loc>//localhost:4321/es/tags/apply/</loc>
     <lastmod>2019-07-21T17:42:09-06:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="/en/tags/apply/"
+                hreflang="en-us"
+                href="//localhost:4321/en/tags/apply/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="es"
-                href="/es/tags/apply/"
+                hreflang="es-cr"
+                href="//localhost:4321/es/tags/apply/"
                 />
-  </url>
-  
-  <url>
-    <loc>/es/post/2019-06-23-apply/</loc>
+  </url><url>
+    <loc>//localhost:4321/es/post/2019-06-23-apply/</loc>
     <lastmod>2019-07-21T17:42:09-06:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="/en/post/2019-06-23-apply/"
+                hreflang="en-us"
+                href="//localhost:4321/en/post/2019-06-23-apply/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="es"
-                href="/es/post/2019-06-23-apply/"
+                hreflang="es-cr"
+                href="//localhost:4321/es/post/2019-06-23-apply/"
                 />
-  </url>
-  
-  <url>
-    <loc>/es/talk/cursor201906/</loc>
+  </url><url>
+    <loc>//localhost:4321/es/talk/cursor201906/</loc>
     <lastmod>2019-07-16T17:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="/en/talk/cursor201906/"
+                hreflang="en-us"
+                href="//localhost:4321/en/talk/cursor201906/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="es"
-                href="/es/talk/cursor201906/"
+                hreflang="es-cr"
+                href="//localhost:4321/es/talk/cursor201906/"
                 />
-  </url>
-  
-  <url>
-    <loc>/es/talk/conversatorior/</loc>
+  </url><url>
+    <loc>//localhost:4321/es/talk/conversatorior/</loc>
     <lastmod>2019-06-27T10:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="/en/talk/conversatorior/"
+                hreflang="en-us"
+                href="//localhost:4321/en/talk/conversatorior/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="es"
-                href="/es/talk/conversatorior/"
+                hreflang="es-cr"
+                href="//localhost:4321/es/talk/conversatorior/"
                 />
-  </url>
-  
-  <url>
-    <loc>/es/tags/an%C3%A1lisis-exploratorio/</loc>
+  </url><url>
+    <loc>//localhost:4321/es/tags/an%C3%A1lisis-exploratorio/</loc>
     <lastmod>2019-06-23T13:42:09-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/es/categories/an%C3%A1lisis-exploratorio/</loc>
+  </url><url>
+    <loc>//localhost:4321/es/categories/an%C3%A1lisis-exploratorio/</loc>
     <lastmod>2019-06-23T13:42:09-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/es/post/2019-06-23-exploraci%C3%B3n-de-datos-categ%C3%B3ricos-con-el-paquete-inspectdf/</loc>
+  </url><url>
+    <loc>//localhost:4321/es/post/2019-06-23-exploraci%C3%B3n-de-datos-categ%C3%B3ricos-con-el-paquete-inspectdf/</loc>
     <lastmod>2019-06-23T13:42:09-06:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="/en/post/2019-06-23-exploraci%C3%B3n-de-datos-categ%C3%B3ricos-con-el-paquete-inspectdf/"
+                hreflang="en-us"
+                href="//localhost:4321/en/post/2019-06-23-exploraci%C3%B3n-de-datos-categ%C3%B3ricos-con-el-paquete-inspectdf/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="es"
-                href="/es/post/2019-06-23-exploraci%C3%B3n-de-datos-categ%C3%B3ricos-con-el-paquete-inspectdf/"
+                hreflang="es-cr"
+                href="//localhost:4321/es/post/2019-06-23-exploraci%C3%B3n-de-datos-categ%C3%B3ricos-con-el-paquete-inspectdf/"
                 />
-  </url>
-  
-  <url>
-    <loc>/es/tags/datos-categ%C3%B3ricos/</loc>
+  </url><url>
+    <loc>//localhost:4321/es/tags/datos-categ%C3%B3ricos/</loc>
     <lastmod>2019-06-23T13:42:09-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/es/tags/descripivos/</loc>
+  </url><url>
+    <loc>//localhost:4321/es/tags/descripivos/</loc>
     <lastmod>2019-06-23T13:42:09-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/es/about/</loc>
+  </url><url>
+    <loc>//localhost:4321/es/about/</loc>
     <lastmod>2016-05-05T21:48:51-07:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="/en/about/"
+                hreflang="en-us"
+                href="//localhost:4321/en/about/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="es"
-                href="/es/about/"
+                hreflang="es-cr"
+                href="//localhost:4321/es/about/"
+                />
+  </url><url>
+    <loc>//localhost:4321/es/authors/admin/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="//localhost:4321/en/authors/admin/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-cr"
+                href="//localhost:4321/es/authors/admin/"
+                />
+  </url><url>
+    <loc>//localhost:4321/es/publication_types/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="//localhost:4321/en/publication_types/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-cr"
+                href="//localhost:4321/es/publication_types/"
+                />
+  </url><url>
+    <loc>//localhost:4321/es/publication/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="//localhost:4321/en/publication/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es-cr"
+                href="//localhost:4321/es/publication/"
                 />
   </url>
-  
-  <url>
-    <loc>/es/authors/admin/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/authors/admin/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/authors/admin/"
-                />
-  </url>
-  
-  <url>
-    <loc>/es/publication_types/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/publication_types/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/publication_types/"
-                />
-  </url>
-  
-  <url>
-    <loc>/es/publication/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/publication/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/publication/"
-                />
-  </url>
-  
 </urlset>

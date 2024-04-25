@@ -10,10 +10,12 @@ authors:
 superuser: true
 
 # Role/position
-role: Data analyst
+role: Data Scientist | Consulting
 
 # Organizations/Affiliations
 organizations:
+- name: BAC
+  url: "https://www.baccredomatic.com/"
 - name: National Institute of Statistics and Census
   url: "www.inec.go.cr"
 - name: University of Costa Rica
@@ -36,7 +38,7 @@ education:
   courses:
   - course: Masters in Statistics
     institution: University of Costa Rica
-    year: 2018-presente
+    year: 2023
   - course: Specialization in Demographic Analysis for Sustainable Development
     institution: CELADE-CEPAL
     year: 2020
@@ -52,7 +54,7 @@ social:
 - icon: envelope
   icon_pack: fas
   link: '#contact'  # For a direct email link, use "mailto:test@example.org".
-  mailto: cesar.gamboa.sanabria@gmail.com
+  mailto: info@cesargamboasanabria.com
 - icon: twitter
   icon_pack: fab
   link: https://twitter.com/gamboasanabria
@@ -78,6 +80,4 @@ user_groups:
 - Visitors
 ---
 
-Born in San José, Costa Rica, in 1989, César Gamboa is a Statistician who graduated from the School of Statistics of the University of Costa Rica. Professor of Probability and Statistics, in addition to programming in the R language, is also a demographic researcher dedicated to algorithms for optimization and analysis through computer simulations.
-
-He is recognized for his capacity for statistical analysis,  software, and programming languages management for data analysis such as R, Python, and Git. Versatile for the automation of processes through specialized algorithms, analytical and mathematical capacity, and the ability for self-taught learning.
+Master's degree in Statistics from the University of Costa Rica. Data scientist with experience in demographic research, political science, banking, and finance. College professor since 2018. Private consultant for entities such as the Population Division of the United Nations (UNFPA) and UNICEF. Proficient in programming languages such as Python and R, as well as tools like SQL, Tableau, and version control using Git. Developer of R packages dCUR for dimensionality reduction, and popstudy, for time series analysis and other methods used in demographic estimates, both available on CRAN.

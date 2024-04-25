@@ -10,14 +10,16 @@ authors:
 superuser: true
 
 # Role/position
-role: Analista de datos
+role: Científico de Datos | Consultor | Docente
 
 # Organizations/Affiliations
 organizations:
+- name: BAC
+  url: "https://www.baccredomatic.com/"
 - name: Instituto Nacional de Estadística y Censos
-  url: "www.inec.go.cr"
+  url: "https://inec.cr/estadisticas-fuentes/estadisticas-demograficas"
 - name: Universidad de Costa Rica
-  url: "http://estadistica.ucr.ac.cr/index.php/es/"
+  url: "https://www.estadistica.ucr.ac.cr/"
 - name: R-Bloggers
   url: "https://www.r-bloggers.com/2020/03/apply-family-functions-part-4/"
 
@@ -36,7 +38,7 @@ education:
   courses:
   - course: Maestría Académica en Estadística
     institution: Universidad de Costa Rica
-    year: 2018-presente
+    year: 2023
   - course: Especialización en Análisis Demográfico para el Desarrollo Sostenible
     institution: CELADE-CEPAL
     year: 2020
@@ -52,7 +54,7 @@ social:
 - icon: envelope
   icon_pack: fas
   link: '#contact'  # For a direct email link, use "mailto:test@example.org".
-  mailto: cesar.gamboa.sanabria@gmail.com
+  mailto: info@cesargamboasanabria.com
 - icon: twitter
   icon_pack: fab
   link: https://twitter.com/gamboasanabria
@@ -81,6 +83,4 @@ user_groups:
 - Visitors
 ---
 
-Nacido en San José, Costa Rica en 1989, César Gamboa es un Estadístico egresado de la Escuela de Estadística de la Universidad de Costa Rica. Profesor universitario de Probabilidad y Estadística, además de programación en el lenguaje R, es también un investigador de temas demográficos dedicado a la utilización de algoritmos para la optimización de procesos y el análisis por medio de simulaciones computacionales. 
-
-Reconocido por su capacidad de análisis estadístico, manejo de distintos software y lenguajes de programación para análisis de datos como R, Python, Git, o Unix. Versatil para la automatización de procesos mediante algoritmos especializados, capacidad analítica y matemática y gran facilidad para el aprendizaje de forma autodidacta.
+Máster en estadística de la Universidad de Costa Rica. Es un científico de datos con experiencia investigación demográfica, ciencias políticas, banca y finanzas. Docente en educación superior desde 2018. Consultor privado de entidades como la división de población de la Organización de las Naciones Unidas (UNFPA) y UNICEF. Experto en el uso de lenguajes de programación como Python y R, además de herramientas como SQL, Tableau y control de versiones mediante Git. Desarrollador de los paquetes de R [dCUR](https://cran.r-project.org/web/packages/dCUR/index.html) para reducción de dimensiones, y [popstudy](https://cran.r-project.org/web/packages/popstudy/index.html), para el análisis de series temporales y otros métodos utilizados en estimaciones demográficas, ambos disponibles en CRAN.

@@ -2,14 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>caesaR&#39;s</title>
-    <link>/es/authors/admin/</link>
+    <link>//localhost:4321/es/authors/admin/</link>
     <description>Recent content on caesaR&#39;s</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>es-cr</language>
-    <copyright>&amp;copy; 2020</copyright>
+    <copyright>&amp;copy; 2024</copyright>
     
-	    <atom:link href="/es/authors/admin/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="//localhost:4321/es/authors/admin/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title></title>
+      <link>//localhost:4321/es/authors/admin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:4321/es/authors/admin/</guid>
+      <description>&lt;p&gt;Máster en estadística de la Universidad de Costa Rica. Es un científico de datos con experiencia investigación demográfica, ciencias políticas, banca y finanzas. Docente en educación superior desde 2018. Consultor privado de entidades como la división de población de la Organización de las Naciones Unidas (UNFPA) y UNICEF. Experto en el uso de lenguajes de programación como Python y R, además de herramientas como SQL, Tableau y control de versiones mediante Git. Desarrollador de los paquetes de R &lt;a href=&#34;https://cran.r-project.org/web/packages/dCUR/index.html&#34;&gt;dCUR&lt;/a&gt; para reducción de dimensiones, y &lt;a href=&#34;https://cran.r-project.org/web/packages/popstudy/index.html&#34;&gt;popstudy&lt;/a&gt;, para el análisis de series temporales y otros métodos utilizados en estimaciones demográficas, ambos disponibles en CRAN.&lt;/p&gt;
+</description>
+    </item>
     
   </channel>
 </rss>
