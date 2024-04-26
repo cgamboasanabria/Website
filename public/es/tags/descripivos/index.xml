@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Descripivos on caesaR&#39;s</title>
-    <link>//localhost:4321/es/tags/descripivos/</link>
+    <link>/es/tags/descripivos/</link>
     <description>Recent content in Descripivos on caesaR&#39;s</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>es-cr</language>
     <copyright>&amp;copy; 2024</copyright>
     <lastBuildDate>Sun, 23 Jun 2019 13:42:09 -0600</lastBuildDate>
     
-	    <atom:link href="//localhost:4321/es/tags/descripivos/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="/es/tags/descripivos/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Análisis exploratorio de datos categóricos</title>
-      <link>//localhost:4321/es/post/2019-06-23-exploraci%C3%B3n-de-datos-categ%C3%B3ricos-con-el-paquete-inspectdf/</link>
+      <link>/es/post/2019-06-23-exploraci%C3%B3n-de-datos-categ%C3%B3ricos-con-el-paquete-inspectdf/</link>
       <pubDate>Sun, 23 Jun 2019 13:42:09 -0600</pubDate>
       
-      <guid>//localhost:4321/es/post/2019-06-23-exploraci%C3%B3n-de-datos-categ%C3%B3ricos-con-el-paquete-inspectdf/</guid>
+      <guid>/es/post/2019-06-23-exploraci%C3%B3n-de-datos-categ%C3%B3ricos-con-el-paquete-inspectdf/</guid>
       <description>
-&lt;script src=&#34;//localhost:4321/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Es muy común en el día a día encontrarse con bases de datos que cuentan con diferentes tipos de variables, ya sean numéricas, temporales, de texto o categóricas. Estas últimas son el tema de discusión de este post. El paquete &lt;a href=&#34;https://github.com/alastairrushworth/inspectdf&#34;&gt;inspectdf&lt;/a&gt; ofrece un conjunto de funciones que resultan particularmente útiles cuando lo que se busca es explorar el comportamiento de este tipo de variables.&lt;/p&gt;
@@ -98,18 +98,18 @@ df$levels$eye_color&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;En algunas ocasiones los valores numéricos no sean tan claros ni fáciles de interpretar, ya sea por a cantidad de datos o bien por cuestiones de comodidad. El paquete &lt;code&gt;inspectdf&lt;/code&gt; también permite hacer análisis exploratorio de manera gráfica&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df %&amp;gt;% 
     show_plot()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;//localhost:4321/es/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/es/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Este resultado contiene la misma información que el objeto &lt;code&gt;df&lt;/code&gt;, pero ahora es más fácil, rápido e incluso agradable para interpretar. Sin embargo, este resultado puede mejorar, pues por ejemplo la variable &lt;em&gt;name&lt;/em&gt; no sirve de mucho en el gráfico porque todos los nombres son diferentes. Esto se puede solucionar modificando el argumento &lt;code&gt;high_cardinality&lt;/code&gt;, lo cual hace que únicamente se grafiquen todas aquellas categorías que aparezcan un determinado número de veces, digamos cuatro.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df %&amp;gt;% 
     show_plot(high_cardinality = 4)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;//localhost:4321/es/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/es/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Finalmente, si los colores no resultan del todo agradables, pueden manipularse a voluntad mediante las 5 paletas de colores que ofrece el paquete y que e el futuro serán más, basta modificar el argumento &lt;code&gt;col_palette&lt;/code&gt; con los números entre uno y cinco para lograr esto.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df %&amp;gt;% 
     show_plot(high_cardinality = 4, col_palette = 4)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;//localhost:4321/es/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/es/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df %&amp;gt;% 
     show_plot(high_cardinality = 4, col_palette = 5)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;//localhost:4321/es/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-9-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/es/post/2019-06-23-exploración-de-datos-categóricos-con-el-paquete-inspectdf_files/figure-html/unnamed-chunk-9-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>

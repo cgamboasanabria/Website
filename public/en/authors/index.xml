@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Authors on caesaR&#39;s</title>
-    <link>//localhost:4321/en/authors/</link>
+    <link>/en/authors/</link>
     <description>Recent content in Authors on caesaR&#39;s</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2024</copyright>
     <lastBuildDate>Tue, 29 Sep 2020 18:55:57 -0600</lastBuildDate>
     
-	    <atom:link href="//localhost:4321/en/authors/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="/en/authors/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>César Gamboa Sanabria</title>
-      <link>//localhost:4321/en/authors/c%C3%A9sar-gamboa-sanabria/</link>
+      <link>/en/authors/c%C3%A9sar-gamboa-sanabria/</link>
       <pubDate>Tue, 29 Sep 2020 18:55:57 -0600</pubDate>
       
-      <guid>//localhost:4321/en/authors/c%C3%A9sar-gamboa-sanabria/</guid>
+      <guid>/en/authors/c%C3%A9sar-gamboa-sanabria/</guid>
       <description></description>
     </item>
     
     <item>
       <title></title>
-      <link>//localhost:4321/en/authors/admin/</link>
+      <link>/en/authors/admin/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:4321/en/authors/admin/</guid>
+      <guid>/en/authors/admin/</guid>
       <description>&lt;p&gt;Master&amp;rsquo;s degree in Statistics from the University of Costa Rica. Data scientist with experience in demographic research, political science, banking, and finance. College professor since 2018. Private consultant for entities such as the Population Division of the United Nations (UNFPA) and UNICEF. Proficient in programming languages such as Python and R, as well as tools like SQL, Tableau, and version control using Git. Developer of R packages dCUR for dimensionality reduction, and popstudy, for time series analysis and other methods used in demographic estimates, both available on CRAN.&lt;/p&gt;
 </description>
     </item>

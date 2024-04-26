@@ -2,94 +2,94 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Recent &amp; Upcoming Talks on caesaR&#39;s</title>
-    <link>//localhost:4321/es/talk/</link>
+    <link>/es/talk/</link>
     <description>Recent content in Recent &amp; Upcoming Talks on caesaR&#39;s</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>es-cr</language>
     <copyright>&amp;copy; 2024</copyright>
     <lastBuildDate>Tue, 28 Feb 2023 17:00:00 +0000</lastBuildDate>
     
-	    <atom:link href="//localhost:4321/es/talk/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="/es/talk/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Principios de Machine Learning para problemas de clasificación con R</title>
-      <link>//localhost:4321/es/talk/cursorml202302/</link>
+      <link>/es/talk/cursorml202302/</link>
       <pubDate>Tue, 28 Feb 2023 17:00:00 +0000</pubDate>
       
-      <guid>//localhost:4321/es/talk/cursorml202302/</guid>
+      <guid>/es/talk/cursorml202302/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Programación estadística en R</title>
-      <link>//localhost:4321/es/talk/cursor202301/</link>
+      <link>/es/talk/cursor202301/</link>
       <pubDate>Mon, 16 Jan 2023 17:00:00 +0000</pubDate>
       
-      <guid>//localhost:4321/es/talk/cursor202301/</guid>
+      <guid>/es/talk/cursor202301/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Principios de Machine Learning para problemas de clasificación con R</title>
-      <link>//localhost:4321/es/talk/cursorml202208/</link>
+      <link>/es/talk/cursorml202208/</link>
       <pubDate>Mon, 01 Aug 2022 17:00:00 +0000</pubDate>
       
-      <guid>//localhost:4321/es/talk/cursorml202208/</guid>
+      <guid>/es/talk/cursorml202208/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Programación estadística en R</title>
-      <link>//localhost:4321/es/talk/cursor202203/</link>
+      <link>/es/talk/cursor202203/</link>
       <pubDate>Tue, 08 Mar 2022 17:00:00 +0000</pubDate>
       
-      <guid>//localhost:4321/es/talk/cursor202203/</guid>
+      <guid>/es/talk/cursor202203/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Programación estadística en R</title>
-      <link>//localhost:4321/es/talk/cursor202007/</link>
+      <link>/es/talk/cursor202007/</link>
       <pubDate>Mon, 20 Jul 2020 17:00:00 +0000</pubDate>
       
-      <guid>//localhost:4321/es/talk/cursor202007/</guid>
+      <guid>/es/talk/cursor202007/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Reducción de la dimensionalidad en matrices de datos</title>
-      <link>//localhost:4321/es/talk/dcur/</link>
+      <link>/es/talk/dcur/</link>
       <pubDate>Thu, 02 Jul 2020 17:00:00 +0000</pubDate>
       
-      <guid>//localhost:4321/es/talk/dcur/</guid>
+      <guid>/es/talk/dcur/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Programación estadística en R</title>
-      <link>//localhost:4321/es/talk/cursor202001/</link>
+      <link>/es/talk/cursor202001/</link>
       <pubDate>Tue, 28 Jan 2020 17:00:00 +0000</pubDate>
       
-      <guid>//localhost:4321/es/talk/cursor202001/</guid>
+      <guid>/es/talk/cursor202001/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Programación estadística en R</title>
-      <link>//localhost:4321/es/talk/cursor201906/</link>
+      <link>/es/talk/cursor201906/</link>
       <pubDate>Tue, 16 Jul 2019 17:00:00 +0000</pubDate>
       
-      <guid>//localhost:4321/es/talk/cursor201906/</guid>
+      <guid>/es/talk/cursor201906/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Uso de R como herramienta de análisis estadístico</title>
-      <link>//localhost:4321/es/talk/conversatorior/</link>
+      <link>/es/talk/conversatorior/</link>
       <pubDate>Thu, 27 Jun 2019 10:00:00 +0000</pubDate>
       
-      <guid>//localhost:4321/es/talk/conversatorior/</guid>
+      <guid>/es/talk/conversatorior/</guid>
       <description></description>
     </item>
     
